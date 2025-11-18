@@ -84,14 +84,14 @@
 #    Classes
 #################################################################
 
-###  http://www.co-ode.org/ontologies/ont.owl#Agreebleness
-<http://www.co-ode.org/ontologies/ont.owl#Agreebleness> rdf:type owl:Class ;
-                                                        rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#Personality> .
+###  http://www.co-ode.org/ontologies/ont.owl#Agreeableness
+<http://www.co-ode.org/ontologies/ont.owl#Agreeableness> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#Personality> .
 
 
-###  http://www.co-ode.org/ontologies/ont.owl#Consientiousness
-<http://www.co-ode.org/ontologies/ont.owl#Consientiousness> rdf:type owl:Class ;
-                                                            rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#Personality> .
+###  http://www.co-ode.org/ontologies/ont.owl#Conscientiousness
+<http://www.co-ode.org/ontologies/ont.owl#Conscientiousness> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#Personality> .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Extraversion
@@ -143,105 +143,132 @@
 
 ###  http://www.co-ode.org/ontologies/ont.owl#AchievementStriving
 <http://www.co-ode.org/ontologies/ont.owl#AchievementStriving> rdf:type owl:NamedIndividual ,
-                                                                        <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> .
+                                                                        <http://www.co-ode.org/ontologies/ont.owl#Conscientiousness> ;
+                                                               <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Conscientiousness .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Activity
 <http://www.co-ode.org/ontologies/ont.owl#Activity> rdf:type owl:NamedIndividual ,
-                                                             <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+                                                             <http://www.co-ode.org/ontologies/ont.owl#Extraversion> ;
+                                                    <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Extraversion .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Altruism
 <http://www.co-ode.org/ontologies/ont.owl#Altruism> rdf:type owl:NamedIndividual ,
-                                                             <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> ,
-                                                             <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+                                                             <http://www.co-ode.org/ontologies/ont.owl#Agreeableness> ,
+                                                             <http://www.co-ode.org/ontologies/ont.owl#Extraversion> ;
+                                                    <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Agreeableness ,
+                                                                                                        :Extraversion .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Assertiveness
 <http://www.co-ode.org/ontologies/ont.owl#Assertiveness> rdf:type owl:NamedIndividual ,
-                                                                  <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> ,
-                                                                  <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> ,
-                                                                  <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+                                                                  <http://www.co-ode.org/ontologies/ont.owl#Agreeableness> ,
+                                                                  <http://www.co-ode.org/ontologies/ont.owl#Conscientiousness> ,
+                                                                  <http://www.co-ode.org/ontologies/ont.owl#Extraversion> ;
+                                                         <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Agreeableness ,
+                                                                                                             :Conscientiousness ,
+                                                                                                             :Extraversion .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Competence
 <http://www.co-ode.org/ontologies/ont.owl#Competence> rdf:type owl:NamedIndividual ,
-                                                               <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> ,
-                                                               <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> .
+                                                               <http://www.co-ode.org/ontologies/ont.owl#Agreeableness> ,
+                                                               <http://www.co-ode.org/ontologies/ont.owl#Conscientiousness> ;
+                                                      <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Agreeableness ,
+                                                                                                          :Conscientiousness .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Compliance
 <http://www.co-ode.org/ontologies/ont.owl#Compliance> rdf:type owl:NamedIndividual ,
-                                                               <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> .
+                                                               <http://www.co-ode.org/ontologies/ont.owl#Agreeableness> ;
+                                                      <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Agreeableness .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Deliberation
 <http://www.co-ode.org/ontologies/ont.owl#Deliberation> rdf:type owl:NamedIndividual ,
-                                                                 <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> .
+                                                                 <http://www.co-ode.org/ontologies/ont.owl#Conscientiousness> ;
+                                                        <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Conscientiousness .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Dutifullness
 <http://www.co-ode.org/ontologies/ont.owl#Dutifullness> rdf:type owl:NamedIndividual ,
-                                                                 <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> .
+                                                                 <http://www.co-ode.org/ontologies/ont.owl#Conscientiousness> ;
+                                                        <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Conscientiousness .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Excitement_Seeking
 <http://www.co-ode.org/ontologies/ont.owl#Excitement_Seeking> rdf:type owl:NamedIndividual ,
-                                                                       <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> ,
-                                                                       <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+                                                                       <http://www.co-ode.org/ontologies/ont.owl#Conscientiousness> ,
+                                                                       <http://www.co-ode.org/ontologies/ont.owl#Extraversion> ;
+                                                              <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Conscientiousness ,
+                                                                                                                  :Extraversion .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Gregariousness
 <http://www.co-ode.org/ontologies/ont.owl#Gregariousness> rdf:type owl:NamedIndividual ,
-                                                                   <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> ,
-                                                                   <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+                                                                   <http://www.co-ode.org/ontologies/ont.owl#Agreeableness> ,
+                                                                   <http://www.co-ode.org/ontologies/ont.owl#Extraversion> ;
+                                                          <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Agreeableness ,
+                                                                                                              :Extraversion .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Ideas
 <http://www.co-ode.org/ontologies/ont.owl#Ideas> rdf:type owl:NamedIndividual ,
-                                                          <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> ,
-                                                          <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+                                                          <http://www.co-ode.org/ontologies/ont.owl#Agreeableness> ,
+                                                          <http://www.co-ode.org/ontologies/ont.owl#Extraversion> ;
+                                                 <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Agreeableness ,
+                                                                                                     :Extraversion .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Modesty
 <http://www.co-ode.org/ontologies/ont.owl#Modesty> rdf:type owl:NamedIndividual ,
-                                                            <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> .
+                                                            <http://www.co-ode.org/ontologies/ont.owl#Agreeableness> ;
+                                                   <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Agreeableness .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Order
 <http://www.co-ode.org/ontologies/ont.owl#Order> rdf:type owl:NamedIndividual ,
-                                                          <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> ,
-                                                          <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+                                                          <http://www.co-ode.org/ontologies/ont.owl#Conscientiousness> ,
+                                                          <http://www.co-ode.org/ontologies/ont.owl#Extraversion> ;
+                                                 <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Conscientiousness ,
+                                                                                                     :Extraversion .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Positive_Emotions
 <http://www.co-ode.org/ontologies/ont.owl#Positive_Emotions> rdf:type owl:NamedIndividual ,
-                                                                      <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+                                                                      <http://www.co-ode.org/ontologies/ont.owl#Extraversion> ;
+                                                             <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Extraversion .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Self_Disicpline
 <http://www.co-ode.org/ontologies/ont.owl#Self_Disicpline> rdf:type owl:NamedIndividual ,
-                                                                    <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> .
+                                                                    <http://www.co-ode.org/ontologies/ont.owl#Conscientiousness> ;
+                                                           <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Conscientiousness .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Straightforwardness
 <http://www.co-ode.org/ontologies/ont.owl#Straightforwardness> rdf:type owl:NamedIndividual ,
-                                                                        <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> .
+                                                                        <http://www.co-ode.org/ontologies/ont.owl#Agreeableness> ;
+                                                               <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Agreeableness .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Tendermindedness
 <http://www.co-ode.org/ontologies/ont.owl#Tendermindedness> rdf:type owl:NamedIndividual ,
-                                                                     <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> .
+                                                                     <http://www.co-ode.org/ontologies/ont.owl#Agreeableness> ;
+                                                            <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Agreeableness .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Trust
 <http://www.co-ode.org/ontologies/ont.owl#Trust> rdf:type owl:NamedIndividual ,
-                                                          <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> .
+                                                          <http://www.co-ode.org/ontologies/ont.owl#Agreeableness> ;
+                                                 <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Agreeableness .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#Warmth
 <http://www.co-ode.org/ontologies/ont.owl#Warmth> rdf:type owl:NamedIndividual ,
-                                                           <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+                                                           <http://www.co-ode.org/ontologies/ont.owl#Extraversion> ;
+                                                  <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Extraversion .
 
 
 ###  http://www.co-ode.org/ontologies/ont.owl#gue_beranikan_diri
