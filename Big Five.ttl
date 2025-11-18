@@ -123,10 +123,6 @@
 <http://www.co-ode.org/ontologies/ont.owl#WorkStyle> rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#PersonalityTrait
-:PersonalityTrait rdf:type owl:Class .
-
-
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Neuroticism
 :Neuroticism rdf:type owl:Class ;
              rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#Personality> .
@@ -135,6 +131,10 @@
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Openness
 :Openness rdf:type owl:Class ;
           rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#Personality> .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/PersonalityTrait
+:PersonalityTrait rdf:type owl:Class .
 
 
 #################################################################
@@ -146,191 +146,289 @@
                                                                         <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> .
 
 
+###  http://www.co-ode.org/ontologies/ont.owl#Activity
+<http://www.co-ode.org/ontologies/ont.owl#Activity> rdf:type owl:NamedIndividual ,
+                                                             <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Altruism
+<http://www.co-ode.org/ontologies/ont.owl#Altruism> rdf:type owl:NamedIndividual ,
+                                                             <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> ,
+                                                             <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Assertiveness
+<http://www.co-ode.org/ontologies/ont.owl#Assertiveness> rdf:type owl:NamedIndividual ,
+                                                                  <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> ,
+                                                                  <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> ,
+                                                                  <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Competence
+<http://www.co-ode.org/ontologies/ont.owl#Competence> rdf:type owl:NamedIndividual ,
+                                                               <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> ,
+                                                               <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Compliance
+<http://www.co-ode.org/ontologies/ont.owl#Compliance> rdf:type owl:NamedIndividual ,
+                                                               <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Deliberation
+<http://www.co-ode.org/ontologies/ont.owl#Deliberation> rdf:type owl:NamedIndividual ,
+                                                                 <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Dutifullness
+<http://www.co-ode.org/ontologies/ont.owl#Dutifullness> rdf:type owl:NamedIndividual ,
+                                                                 <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Excitement_Seeking
+<http://www.co-ode.org/ontologies/ont.owl#Excitement_Seeking> rdf:type owl:NamedIndividual ,
+                                                                       <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> ,
+                                                                       <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Gregariousness
+<http://www.co-ode.org/ontologies/ont.owl#Gregariousness> rdf:type owl:NamedIndividual ,
+                                                                   <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> ,
+                                                                   <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Ideas
+<http://www.co-ode.org/ontologies/ont.owl#Ideas> rdf:type owl:NamedIndividual ,
+                                                          <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> ,
+                                                          <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Modesty
+<http://www.co-ode.org/ontologies/ont.owl#Modesty> rdf:type owl:NamedIndividual ,
+                                                            <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Order
+<http://www.co-ode.org/ontologies/ont.owl#Order> rdf:type owl:NamedIndividual ,
+                                                          <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> ,
+                                                          <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Positive_Emotions
+<http://www.co-ode.org/ontologies/ont.owl#Positive_Emotions> rdf:type owl:NamedIndividual ,
+                                                                      <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Self_Disicpline
+<http://www.co-ode.org/ontologies/ont.owl#Self_Disicpline> rdf:type owl:NamedIndividual ,
+                                                                    <http://www.co-ode.org/ontologies/ont.owl#Consientiousness> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Straightforwardness
+<http://www.co-ode.org/ontologies/ont.owl#Straightforwardness> rdf:type owl:NamedIndividual ,
+                                                                        <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Tendermindedness
+<http://www.co-ode.org/ontologies/ont.owl#Tendermindedness> rdf:type owl:NamedIndividual ,
+                                                                     <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Trust
+<http://www.co-ode.org/ontologies/ont.owl#Trust> rdf:type owl:NamedIndividual ,
+                                                          <http://www.co-ode.org/ontologies/ont.owl#Agreebleness> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Warmth
+<http://www.co-ode.org/ontologies/ont.owl#Warmth> rdf:type owl:NamedIndividual ,
+                                                           <http://www.co-ode.org/ontologies/ont.owl#Extraversion> .
+
+
 ###  http://www.co-ode.org/ontologies/ont.owl#gue_beranikan_diri
 <http://www.co-ode.org/ontologies/ont.owl#gue_beranikan_diri> rdf:type owl:NamedIndividual ,
                                                                        <http://www.co-ode.org/ontologies/ont.owl#WordExpression> ;
                                                               <http://www.co-ode.org/ontologies/ont.owl#hasTrait> <http://www.co-ode.org/ontologies/ont.owl#AchievementStriving> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Action
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Action
 :Action rdf:type owl:NamedIndividual ,
                  :Openness ;
         <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Openness .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Aesthetic
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Aesthetic
 :Aesthetic rdf:type owl:NamedIndividual ,
                     :Openness ;
            <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Openness .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Agreeableness
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Agreeableness
 :Agreeableness rdf:type owl:NamedIndividual ,
                         :PersonalityTrait .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Anxiety
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Anxiety
 :Anxiety rdf:type owl:NamedIndividual ,
                   :Neuroticism ;
          <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Neuroticism .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Architecture_and_Engineering
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Architecture_and_Engineering
 :Architecture_and_Engineering rdf:type owl:NamedIndividual ,
                                        <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Arts_Design_Entertaiment_Sport_and_Media
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Arts_Design_Entertaiment_Sport_and_Media
 :Arts_Design_Entertaiment_Sport_and_Media rdf:type owl:NamedIndividual ,
                                                    <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Building_and_Grounds_Cleaning_and_Maintenance
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Building_and_Grounds_Cleaning_and_Maintenance
 :Building_and_Grounds_Cleaning_and_Maintenance rdf:type owl:NamedIndividual ,
                                                         <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Business_and_Financial_Operations
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Business_and_Financial_Operations
 :Business_and_Financial_Operations rdf:type owl:NamedIndividual ,
                                             <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Community_and_Social_Service
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Community_and_Social_Service
 :Community_and_Social_Service rdf:type owl:NamedIndividual ,
                                        <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Computer_and_Mathematical
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Computer_and_Mathematical
 :Computer_and_Mathematical rdf:type owl:NamedIndividual ,
                                     <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Conscientiousness
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Conscientiousness
 :Conscientiousness rdf:type owl:NamedIndividual ,
                             :PersonalityTrait .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Construction_and_Extraction
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Construction_and_Extraction
 :Construction_and_Extraction rdf:type owl:NamedIndividual ,
                                       <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Depression
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Depression
 :Depression rdf:type owl:NamedIndividual ,
                      :Neuroticism ;
             <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Neuroticism .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Educational_Instrucction_and_Library
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Educational_Instrucction_and_Library
 :Educational_Instrucction_and_Library rdf:type owl:NamedIndividual ,
                                                <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Extraversion
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Extraversion
 :Extraversion rdf:type owl:NamedIndividual ,
                        :PersonalityTrait .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Fantasy
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Fantasy
 :Fantasy rdf:type owl:NamedIndividual ,
                   :Openness ;
          <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Openness .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Farming_Fishing_and_Forestry
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Farming_Fishing_and_Forestry
 :Farming_Fishing_and_Forestry rdf:type owl:NamedIndividual ,
                                        <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Feeling
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Feeling
 :Feeling rdf:type owl:NamedIndividual ,
                   :Openness ;
          <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Openness .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Food_Preparation_and_Serving_Related
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Food_Preparation_and_Serving_Related
 :Food_Preparation_and_Serving_Related rdf:type owl:NamedIndividual ,
                                                <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Healthcare_Practitioners_and_Technical
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Healthcare_Practitioners_and_Technical
 :Healthcare_Practitioners_and_Technical rdf:type owl:NamedIndividual ,
                                                  <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Healthcare_Support
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Healthcare_Support
 :Healthcare_Support rdf:type owl:NamedIndividual ,
                              <http://www.co-ode.org/ontologies/ont.owl#JobField> .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Hostility
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Hostility
 :Hostility rdf:type owl:NamedIndividual ,
                     :Neuroticism ;
            <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Neuroticism .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Idea
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Idea
 :Idea rdf:type owl:NamedIndividual ,
                :Openness ;
       <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Openness .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Impulsiveness
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Impulsiveness
 :Impulsiveness rdf:type owl:NamedIndividual ,
                         :Neuroticism ;
                <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Neuroticism .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Neuroticism
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Neuroticism
 :Neuroticism rdf:type owl:NamedIndividual ,
                       :PersonalityTrait .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Openness
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Openness
 :Openness rdf:type owl:NamedIndividual ,
                    :PersonalityTrait .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Self-Consciousness
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Self-Consciousness
 :Self-Consciousness rdf:type owl:NamedIndividual ,
                              :Neuroticism ;
                     <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Neuroticism .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Value
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Value
 :Value rdf:type owl:NamedIndividual ,
                 :Openness ;
        <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Openness .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#Vulnerability
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/Vulnerability
 :Vulnerability rdf:type owl:NamedIndividual ,
                         :Neuroticism ;
                <http://www.co-ode.org/ontologies/ont.owl#hasTrait> :Neuroticism .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#balap
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/balap
 :balap rdf:type owl:NamedIndividual ,
                 <http://www.co-ode.org/ontologies/ont.owl#WordExpression> ;
        <http://www.co-ode.org/ontologies/ont.owl#representFacet> :Action ;
        <http://www.co-ode.org/ontologies/ont.owl#representTrait> :Openness .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#coba
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/coba
 :coba rdf:type owl:NamedIndividual ,
                <http://www.co-ode.org/ontologies/ont.owl#WordExpression> ;
       <http://www.co-ode.org/ontologies/ont.owl#representFacet> :Action ;
       <http://www.co-ode.org/ontologies/ont.owl#representTrait> :Openness .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#ngangkat
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/ngangkat
 :ngangkat rdf:type owl:NamedIndividual ,
                    <http://www.co-ode.org/ontologies/ont.owl#WordExpression> ;
           <http://www.co-ode.org/ontologies/ont.owl#representFacet> :Action ;
           <http://www.co-ode.org/ontologies/ont.owl#representTrait> :Openness .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23#rilis
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/untitled-ontology-23/rilis
 :rilis rdf:type owl:NamedIndividual ,
                 <http://www.co-ode.org/ontologies/ont.owl#WordExpression> ;
        <http://www.co-ode.org/ontologies/ont.owl#representFacet> :Action ;
