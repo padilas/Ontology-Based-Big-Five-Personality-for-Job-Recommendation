@@ -8,10 +8,7 @@
 # ONTOLOGY METADATA
 #################################################################
 
-<http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology> a owl:Ontology ;
-    rdfs:label "Recruitment Ontology – Full SROIQ(D)" ;
-    owl:versionInfo "3.0" ;
-    rdfs:comment "Ontology integrates personality test (Question→Facet→Trait), 100+ skills, 50+ jobs, weighted matching, job suggestions, and SROIQ(D) expressivity." .
+<http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology> a owl:Ontology .
 
 #################################################################
 # CORE CLASSES
@@ -195,7 +192,7 @@
 :Q30 a :PersonalityQuestion ; :measuresFacet :C_Orderliness .
 
 #################################################################
-# 100+ Skills — SOFT SKILLS (40+)
+#  SOFT SKILLS 
 #################################################################
 
 :CommunicationSkill a :SoftSkill .
@@ -333,7 +330,7 @@
 :CustomerService_Field a :JobField .
 
 #################################################################
-# PROPERTY CHAINS (lanjutan, setelah definisi properties di Part 1)
+# PROPERTY CHAINS
 #################################################################
 
 # Candidate hasFacet → facetOfTrait → hasPersonalityTrait
@@ -377,7 +374,7 @@
     ] .
 
 #################################################################
-# JOB OCCUPATIONS (50+; sebagian detail)
+# JOB OCCUPATIONS
 #################################################################
 
 :SoftwareEngineer a owl:Class ;
@@ -476,26 +473,6 @@
     rdfs:subClassOf :JobOccupation ,
         [ owl:onProperty :inJobField ; owl:hasValue :Data_Field ] .
 
-# 30+ generic job classes
-:Job_01 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_02 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_03 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_04 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_05 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_06 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_07 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_08 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_09 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_10 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_11 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_12 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_13 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_14 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_15 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_16 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_17 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_18 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_19 a owl:Class ; rdfs:subClassOf :JobOccupation .
 :Job_20 a owl:Class ; rdfs:subClassOf :JobOccupation .
 :Job_21 a owl:Class ; rdfs:subClassOf :JobOccupation .
 :Job_22 a owl:Class ; rdfs:subClassOf :JobOccupation .
@@ -651,8 +628,6 @@
 # PART 3 — CANDIDATES + EXPERIENCES + APPLICATIONS
 #################################################################
 
-########## 1. Minie – HighMatch Software Engineer ##########
-
 :Candidate01_Minie a :Candidate ;
     :hasPersonalityTrait :OpennessTrait , :ConscientiousnessTrait ;
     :hasFacet :O_Creativity , :C_SelfDiscipline , :C_AchievementStriving ;
@@ -671,9 +646,6 @@
 :App01_Minie_SE a :Application ;
     :hasApplicant :Candidate01_Minie ;
     :forJob :SoftwareEngineer .
-
-
-########## 2. Budi – HighMatch DataScientist, MediumMatch SE ##########
 
 :Candidate02_Budi a :Candidate ;
     :hasPersonalityTrait :OpennessTrait ;
@@ -698,9 +670,6 @@
     :hasApplicant :Candidate02_Budi ;
     :forJob :SoftwareEngineer .
 
-
-########## 3. Sari – cocok Marketing, LowMatch SE ##########
-
 :Candidate03_Sari a :Candidate ;
     :hasPersonalityTrait :AgreeablenessTrait ;
     :hasFacet :A_Altruism , :A_Trust ;
@@ -724,9 +693,6 @@
     :hasApplicant :Candidate03_Sari ;
     :forJob :SoftwareEngineer .
 
-
-########## 4. Andi – DevOps Engineer ##########
-
 :Candidate04_Andi a :Candidate ;
     :hasPersonalityTrait :ConscientiousnessTrait ;
     :hasFacet :C_Orderliness , :C_SelfDiscipline ;
@@ -744,9 +710,6 @@
 :App04_Andi_DevOps a :Application ;
     :hasApplicant :Candidate04_Andi ;
     :forJob :DevOpsEngineer .
-
-
-########## 5. Rina – Product Manager ##########
 
 :Candidate05_Rina a :Candidate ;
     :hasPersonalityTrait :OpennessTrait , :ExtraversionTrait ;
@@ -767,9 +730,6 @@
     :hasApplicant :Candidate05_Rina ;
     :forJob :ProductManager .
 
-
-########## 6. Dimas – Finance Analyst ##########
-
 :Candidate06_Dimas a :Candidate ;
     :hasPersonalityTrait :ConscientiousnessTrait ;
     :hasFacet :C_AchievementStriving ;
@@ -787,9 +747,6 @@
 :App06_Dimas_FA a :Application ;
     :hasApplicant :Candidate06_Dimas ;
     :forJob :FinanceAnalystJob .
-
-
-########## 7. Lala – HR Generalist ##########
 
 :Candidate07_Lala a :Candidate ;
     :hasPersonalityTrait :AgreeablenessTrait ;
@@ -809,9 +766,6 @@
     :hasApplicant :Candidate07_Lala ;
     :forJob :HRGeneralistJob .
 
-
-########## 8. Yoga – Sales Executive ##########
-
 :Candidate08_Yoga a :Candidate ;
     :hasPersonalityTrait :ExtraversionTrait ;
     :hasFacet :E_Assertiveness , :E_Gregariousness ;
@@ -829,9 +783,6 @@
 :App08_Yoga_SELL a :Application ;
     :hasApplicant :Candidate08_Yoga ;
     :forJob :SalesExecutiveJob .
-
-
-########## 9. Nia – Customer Support ##########
 
 :Candidate09_Nia a :Candidate ;
     :hasPersonalityTrait :AgreeablenessTrait ;
@@ -851,9 +802,6 @@
     :hasApplicant :Candidate09_Nia ;
     :forJob :CustomerSupportRepJob .
 
-
-########## 10. Arif – QA Engineer ##########
-
 :Candidate10_Arif a :Candidate ;
     :hasPersonalityTrait :ConscientiousnessTrait ;
     :hasFacet :C_Orderliness , :C_SelfDiscipline ;
@@ -872,200 +820,6 @@
     :hasApplicant :Candidate10_Arif ;
     :forJob :QAEngineer .
 
-
 #################################################################
-# CANDIDATE 11–20 (compact but valid)
-#################################################################
-
-########## 11. UI/UX Intern ##########
-
-:Candidate11 a :Candidate ;
-    :hasPersonalityTrait :OpennessTrait ;
-    :hasSoftSkill :CreativeThinkingSkill ;
-    :hasHardSkill :UIUXDesignSkill , :FigmaSkill ;
-    :hasExperience :Exp11 ; :hasApplication :App11_UI .
-
-:Exp11 a :Experience ;
-    :experienceInField :Technology_Field ;
-    :yearsOfExperience "1"^^xsd:int ;
-    :hasTitle "UI/UX Intern" ;
-    :hasDescription "Created wireframes and prototypes." .
-
-:App11_UI a :Application ;
-    :hasApplicant :Candidate11 ;
-    :forJob :UIUXDesigner .
-
-
-########## 12. Marketing Associate ##########
-
-:Candidate12 a :Candidate ;
-    :hasPersonalityTrait :ExtraversionTrait ;
-    :hasSoftSkill :PublicSpeakingSkill , :PresentationSkill ;
-    :hasHardSkill :DigitalMarketingSkill , :SocialMediaMarketingSkill ;
-    :hasExperience :Exp12 ; :hasApplication :App12_DM .
-
-:Exp12 a :Experience ;
-    :experienceInField :Marketing_Field ;
-    :yearsOfExperience "2"^^xsd:int ;
-    :hasTitle "Marketing Associate" ;
-    :hasDescription "Managed campaign presentations and advertising content." .
-
-:App12_DM a :Application ;
-    :hasApplicant :Candidate12 ;
-    :forJob :DigitalMarketerJob .
-
-
-########## 13. Junior Accountant ##########
-
-:Candidate13 a :Candidate ;
-    :hasPersonalityTrait :NeuroticismTrait ;
-    :hasSoftSkill :TimeManagementSkill ;
-    :hasHardSkill :AccountingSkill ;
-    :hasExperience :Exp13 ; :hasApplication :App13_ACC .
-
-:Exp13 a :Experience ;
-    :experienceInField :Finance_Field ;
-    :yearsOfExperience "1"^^xsd:int ;
-    :hasTitle "Junior Accountant" ;
-    :hasDescription "Performed bookkeeping and invoice entry." .
-
-:App13_ACC a :Application ;
-    :hasApplicant :Candidate13 ;
-    :forJob :AccountantJob .
-
-
-########## 14. Business Analyst ##########
-
-:Candidate14 a :Candidate ;
-    :hasPersonalityTrait :OpennessTrait ;
-    :hasSoftSkill :AnalyticalThinkingSkill , :ProblemSolvingSkill ;
-    :hasHardSkill :BusinessAnalysisSkill , :RequirementGatheringSkill ;
-    :hasExperience :Exp14 ; :hasApplication :App14_BA .
-
-:Exp14 a :Experience ;
-    :experienceInField :Product_Field ;
-    :yearsOfExperience "3"^^xsd:int ;
-    :hasTitle "Business Analyst" ;
-    :hasDescription "Captured business requirements and modeled processes." .
-
-:App14_BA a :Application ;
-    :hasApplicant :Candidate14 ;
-    :forJob :BusinessAnalystJob .
-
-
-########## 15. Project Manager ##########
-
-:Candidate15 a :Candidate ;
-    :hasPersonalityTrait :ConscientiousnessTrait ;
-    :hasSoftSkill :LeadershipSkill , :TeamCoordinationSkill ;
-    :hasHardSkill :ProjectManagementSkill , :OperationsManagementSkill ;
-    :hasExperience :Exp15 ; :hasApplication :App15_PM .
-
-:Exp15 a :Experience ;
-    :experienceInField :Operations_Field ;
-    :yearsOfExperience "5"^^xsd:int ;
-    :hasTitle "Project Manager" ;
-    :hasDescription "Led multiple cross-department implementation projects." .
-
-:App15_PM a :Application ;
-    :hasApplicant :Candidate15 ;
-    :forJob :ProjectManagerJob .
-
-
-########## 16. Customer Support ##########
-
-:Candidate16 a :Candidate ;
-    :hasPersonalityTrait :AgreeablenessTrait ;
-    :hasSoftSkill :EmpathySkill ;
-    :hasHardSkill :CustomerSupportToolSkill ;
-    :hasExperience :Exp16 ; :hasApplication :App16_CS .
-
-:Exp16 a :Experience ;
-    :experienceInField :CustomerService_Field ;
-    :yearsOfExperience "1"^^xsd:int ;
-    :hasTitle "Customer Support" ;
-    :hasDescription "Helped users through email and chat." .
-
-:App16_CS a :Application ;
-    :hasApplicant :Candidate16 ;
-    :forJob :CustomerSupportRepJob .
-
-
-########## 17. Data Intern ##########
-
-:Candidate17 a :Candidate ;
-    :hasPersonalityTrait :OpennessTrait , :ConscientiousnessTrait ;
-    :hasSoftSkill :ProblemSolvingSkill , :AnalyticalThinkingSkill ;
-    :hasHardSkill :PythonSkill , :DataAnalysisSkill ;
-    :hasExperience :Exp17 ; :hasApplication :App17_DS .
-
-:Exp17 a :Experience ;
-    :experienceInField :Data_Field ;
-    :yearsOfExperience "1"^^xsd:int ;
-    :hasTitle "Data Intern" ;
-    :hasDescription "Assisted with dashboards and simple reports." .
-
-:App17_DS a :Application ;
-    :hasApplicant :Candidate17 ;
-    :forJob :DataScientist .
-
-
-########## 18. Sales Representative ##########
-
-:Candidate18 a :Candidate ;
-    :hasPersonalityTrait :ExtraversionTrait ;
-    :hasSoftSkill :NegotiationSkill , :CommunicationSkill ;
-    :hasHardSkill :SalesOperationsSkill ;
-    :hasExperience :Exp18 ; :hasApplication :App18_Sales .
-
-:Exp18 a :Experience ;
-    :experienceInField :Sales_Field ;
-    :yearsOfExperience "2"^^xsd:int ;
-    :hasTitle "Sales Representative" ;
-    :hasDescription "Maintained client relationships and pipeline." .
-
-:App18_Sales a :Application ;
-    :hasApplicant :Candidate18 ;
-    :forJob :SalesExecutiveJob .
-
-
-########## 19. QA Intern ##########
-
-:Candidate19 a :Candidate ;
-    :hasPersonalityTrait :ConscientiousnessTrait ;
-    :hasSoftSkill :AttentionToDetailSkill ;
-    :hasHardSkill :TestingQASkill ;
-    :hasExperience :Exp19 ; :hasApplication :App19_QA .
-
-:Exp19 a :Experience ;
-    :experienceInField :Technology_Field ;
-    :yearsOfExperience "1"^^xsd:int ;
-    :hasTitle "QA Intern" ;
-    :hasDescription "Performed manual test execution." .
-
-:App19_QA a :Application ;
-    :hasApplicant :Candidate19 ;
-    :forJob :QAEngineer .
-
-
-########## 20. Content Creator ##########
-
-:Candidate20 a :Candidate ;
-    :hasPersonalityTrait :OpennessTrait ;
-    :hasSoftSkill :CreativitySoftSkill , :ContentWritingSkill ;
-    :hasHardSkill :ContentWritingSkill , :SocialMediaMarketingSkill ;
-    :hasExperience :Exp20 ; :hasApplication :App20_Content .
-
-:Exp20 a :Experience ;
-    :experienceInField :Marketing_Field ;
-    :yearsOfExperience "2"^^xsd:int ;
-    :hasTitle "Content Creator" ;
-    :hasDescription "Produced short-form video content for social media." .
-
-:App20_Content a :Application ;
-    :hasApplicant :Candidate20 ;
-    :forJob :ContentWriterJob .
-
-#################################################################
-# END OF PART 3
+# END
 #################################################################
