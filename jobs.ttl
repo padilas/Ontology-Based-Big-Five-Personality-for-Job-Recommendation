@@ -1860,10 +1860,6 @@ _:genid157 a owl:Restriction ;
 
 :StrategicPartnershipAndGovernmentRelationAssociateJob rdfs:label "Strategic Partnership & Government Relation Associate" .
 # 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SuggestionClass
-
-:SuggestionClass a owl:Class .
-# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SupplyChainManager
 
 :SupplyChainManager a owl:Class ;
@@ -2988,14 +2984,6 @@ _:genid173 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#StressManagementSkill
 
 :StressManagementSkill a owl:NamedIndividual , :SoftSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SuggestedForDataScientist
-
-:SuggestedForDataScientist a owl:NamedIndividual , :SuggestionClass .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SuggestedForSoftwareEngineer
-
-:SuggestedForSoftwareEngineer a owl:NamedIndividual , :SuggestionClass .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SupplyChainSkill
 
