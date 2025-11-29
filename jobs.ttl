@@ -15,6 +15,10 @@
 # #################################################################
 # 
 # 
+# http://www.co-ode.org/ontologies/ont.owl#measuresTrait
+
+<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> a owl:ObjectProperty .
+# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#answeredBy
 
 :answeredBy a owl:ObjectProperty .
@@ -3371,52 +3375,62 @@ _:genid250 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q1
 
 :Q1 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :O_Creativity .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya tertarik mencoba hal-hal baru meskipun belum pernah ada yang saya kenal mencobanya"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q10
 
 :Q10 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :E_Gregariousness .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya jarang menunda pekerjaan penting hingga mendekati batas waktu"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q11
 
 :Q11 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :E_Activity .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya merasa terganggu jika pekerjaan dilakukan dengan asal-asalan"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q12
 
 :Q12 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :A_Trust .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya menjaga barang-barang dan lingkungan saya tetap rapi dan tertata"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q13
 
 :Q13 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :A_Altruism .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Saya merasa bersemangat ketika bertemu dan berinteraksi dengan banyak orang"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q14
 
 :Q14 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :A_Compliance .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Dalam suatu kelompok, saya cenderung aktif berbicara daripada hanya mendengarkan"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q15
 
 :Q15 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :N_Anxiety .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Saya menikmati menjadi pusat perhatian dalam situasi sosial tertentu."^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q16
 
 :Q16 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :N_Anxiety .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Saya mudah memulai obrolan dengan orang yang baru saya kenal"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q17
 
 :Q17 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :N_Depression .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Saya lebih merasa berenergi setelah berkumpul dengan orang lain daripada sendirian"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q18
 
 :Q18 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :N_SelfConsciousness .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Saya suka terlibat dalam kegiatan atau acara yang ramai dan penuh orang"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q19
 
@@ -3426,7 +3440,8 @@ _:genid250 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q2
 
 :Q2 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :O_Creativity .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya menikmati membaca atau menonton hal-hal yang membuat saya banyak berpikir"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q20
 
@@ -3481,7 +3496,8 @@ _:genid250 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q3
 
 :Q3 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :O_Curiosity .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya sering membayangkan berbagai kemungkinan dan ide kreatif dalam hidup saya"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q30
 
@@ -3491,32 +3507,38 @@ _:genid250 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q4
 
 :Q4 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :O_Aesthetic .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya merasa bosan jika harus melakukan hal yang itu-itu saja terus-menerus"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q5
 
 :Q5 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :C_Orderliness .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya tertarik dengan seni, musik, atau karya kreatif lainnya"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q6
 
 :Q6 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :C_Orderliness .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya senang mempelajari sudut pandang atau budaya yang berbeda dari yang biasa saya temui"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q7
 
 :Q7 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :C_SelfDiscipline .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya biasanya menyelesaikan tugas sampai tuntas sebelum beralih ke hal lain"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q8
 
 :Q8 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :C_AchievementStriving .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya merencanakan kegiatan saya terlebih dahulu, bukan menjalani hari secara asal"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q9
 
 :Q9 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :E_Assertiveness .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya berusaha tepat waktu dalam janji atau tenggat (deadline)"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#QAEngineer
 
@@ -3739,4 +3761,4 @@ _:genid250 a owl:Restriction ;
 :word_supported_customers a owl:NamedIndividual , :WordExpression ;
 	:representsFacet :A_Altruism .
 # 
-# Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi
