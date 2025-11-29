@@ -150,6 +150,10 @@ _:genid11 a rdf:List ;
 
 :measuresFacet a owl:ObjectProperty .
 # 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#measuresTrait
+
+:measuresTrait a owl:ObjectProperty .
+# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#mentionsWord
 
 :mentionsWord a owl:ObjectProperty .
@@ -3435,7 +3439,8 @@ _:genid250 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q19
 
 :Q19 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :O_Creativity .
+	:measuresTrait :NeuroticismTrait ;
+	:hasQuestion "Saya sering merasa khawatir terhadap banyak hal, bahkan hal-hal kecil"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q2
 
@@ -3446,52 +3451,62 @@ _:genid250 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q20
 
 :Q20 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :C_SelfDiscipline .
+	:measuresTrait :NeuroticismTrait ;
+	:hasQuestion "Perasaan saya mudah berubah-ubah sepanjang hari"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q21
 
 :Q21 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :E_Assertiveness .
+	:measuresTrait :NeuroticismTrait ;
+	:hasQuestion "Saya sering memikirkan kesalahan atau kegagalan saya di masa lalu"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q22
 
 :Q22 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :A_Trust .
+	:measuresTrait :NeuroticismTrait ;
+	:hasQuestion "Saya mudah merasa tegang atau gelisah dalam situasi yang tidak pasti"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q23
 
 :Q23 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :A_Altruism .
+	:measuresTrait :NeuroticismTrait ;
+	:hasQuestion "Ketika ada masalah kecil, saya cenderung langsung kepikiran yang terburuk"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q24
 
 :Q24 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :O_Curiosity .
+	:measuresTrait :NeuroticismTrait ;
+	:hasQuestion "Saya sering merasa lelah secara emosional setelah melalui hari yang berat"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q25
 
 :Q25 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :C_AchievementStriving .
+	:measuresTrait :OpennessTrait ;
+	:hasQuestion "Saya tertarik mencoba hal-hal baru meskipun belum pernah ada yang saya kenal mencobanya"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q26
 
 :Q26 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :E_Gregariousness .
+	:measuresTrait :OpennessTrait ;
+	:hasQuestion "Saya menikmati membaca atau menonton hal-hal yang membuat saya banyak berpikir"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q27
 
 :Q27 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :N_Anxiety .
+	:measuresTrait :OpennessTrait ;
+	:hasQuestion "Saya sering membayangkan berbagai kemungkinan dan ide kreatif dalam hidup saya"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q28
 
 :Q28 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :N_SelfConsciousness .
+	:measuresTrait :OpennessTrait ;
+	:hasQuestion "Saya merasa bosan jika harus melakukan hal yang itu-itu saja terus-menerus"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q29
 
 :Q29 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :O_Aesthetic .
+	:measuresTrait :OpennessTrait ;
+	:hasQuestion "Saya tertarik dengan seni, musik, atau karya kreatif lainnya"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q3
 
@@ -3502,7 +3517,8 @@ _:genid250 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q30
 
 :Q30 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :C_Orderliness .
+	:measuresTrait :OpennessTrait ;
+	:hasQuestion "Saya senang mempelajari sudut pandang atau budaya yang berbeda dari yang biasa saya temui"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q4
 
