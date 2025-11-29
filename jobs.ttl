@@ -207,6 +207,7 @@ _:genid11 a rdf:List ;
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#yearsOfExperience
 
+<<<<<<< Updated upstream
 :yearsOfExperience a owl:DatatypeProperty ;
 	rdfs:range xsd:int .
 # 
@@ -220,6 +221,269 @@ _:genid11 a rdf:List ;
 # 
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AccountManagerJob
+=======
+:OpennessTrait a :PersonalityTrait .
+:ConscientiousnessTrait a :PersonalityTrait .
+:ExtraversionTrait a :PersonalityTrait .
+:AgreeablenessTrait a :PersonalityTrait .
+:NeuroticismTrait a :PersonalityTrait .
+
+#################################################################
+# FACETS (subset)
+#################################################################
+
+:O_Creativity a :PersonalityFacet ; :facetOfTrait :OpennessTrait .
+:O_Curiosity a :PersonalityFacet ; :facetOfTrait :OpennessTrait .
+:O_Aesthetic a :PersonalityFacet ; :facetOfTrait :OpennessTrait .
+
+:C_Orderliness a :PersonalityFacet ; :facetOfTrait :ConscientiousnessTrait .
+:C_SelfDiscipline a :PersonalityFacet ; :facetOfTrait :ConscientiousnessTrait .
+:C_AchievementStriving a :PersonalityFacet ; :facetOfTrait :ConscientiousnessTrait .
+
+:E_Assertiveness a :PersonalityFacet ; :facetOfTrait :ExtraversionTrait .
+:E_Gregariousness a :PersonalityFacet ; :facetOfTrait :ExtraversionTrait .
+:E_Activity a :PersonalityFacet ; :facetOfTrait :ExtraversionTrait .
+
+:A_Trust a :PersonalityFacet ; :facetOfTrait :AgreeablenessTrait .
+:A_Altruism a :PersonalityFacet ; :facetOfTrait :AgreeablenessTrait .
+:A_Compliance a :PersonalityFacet ; :facetOfTrait :AgreeablenessTrait .
+
+:N_Anxiety a :PersonalityFacet ; :facetOfTrait :NeuroticismTrait .
+:N_Depression a :PersonalityFacet ; :facetOfTrait :NeuroticismTrait .
+:N_SelfConsciousness a :PersonalityFacet ; :facetOfTrait :NeuroticismTrait .
+
+#################################################################
+# 30 QUESTIONS
+#################################################################
+
+:Q1 a :PersonalityQuestion ; :measuresFacet :O_Creativity .
+:Q2 a :PersonalityQuestion ; :measuresFacet :O_Creativity .
+:Q3 a :PersonalityQuestion ; :measuresFacet :O_Curiosity .
+:Q4 a :PersonalityQuestion ; :measuresFacet :O_Aesthetic .
+:Q5 a :PersonalityQuestion ; :measuresFacet :C_Orderliness .
+:Q6 a :PersonalityQuestion ; :measuresFacet :C_Orderliness .
+:Q7 a :PersonalityQuestion ; :measuresFacet :C_SelfDiscipline .
+:Q8 a :PersonalityQuestion ; :measuresFacet :C_AchievementStriving .
+:Q9 a :PersonalityQuestion ; :measuresFacet :E_Assertiveness .
+:Q10 a :PersonalityQuestion ; :measuresFacet :E_Gregariousness .
+:Q11 a :PersonalityQuestion ; :measuresFacet :E_Activity .
+:Q12 a :PersonalityQuestion ; :measuresFacet :A_Trust .
+:Q13 a :PersonalityQuestion ; :measuresFacet :A_Altruism .
+:Q14 a :PersonalityQuestion ; :measuresFacet :A_Compliance .
+:Q15 a :PersonalityQuestion ; :measuresFacet :N_Anxiety .
+:Q16 a :PersonalityQuestion ; :measuresFacet :N_Anxiety .
+:Q17 a :PersonalityQuestion ; :measuresFacet :N_Depression .
+:Q18 a :PersonalityQuestion ; :measuresFacet :N_SelfConsciousness .
+:Q19 a :PersonalityQuestion ; :measuresFacet :O_Creativity .
+:Q20 a :PersonalityQuestion ; :measuresFacet :C_SelfDiscipline .
+:Q21 a :PersonalityQuestion ; :measuresFacet :E_Assertiveness .
+:Q22 a :PersonalityQuestion ; :measuresFacet :A_Trust .
+:Q23 a :PersonalityQuestion ; :measuresFacet :A_Altruism .
+:Q24 a :PersonalityQuestion ; :measuresFacet :O_Curiosity .
+:Q25 a :PersonalityQuestion ; :measuresFacet :C_AchievementStriving .
+:Q26 a :PersonalityQuestion ; :measuresFacet :E_Gregariousness .
+:Q27 a :PersonalityQuestion ; :measuresFacet :N_Anxiety .
+:Q28 a :PersonalityQuestion ; :measuresFacet :N_SelfConsciousness .
+:Q29 a :PersonalityQuestion ; :measuresFacet :O_Aesthetic .
+:Q30 a :PersonalityQuestion ; :measuresFacet :C_Orderliness .
+
+#################################################################
+#  SOFT SKILLS 
+#################################################################
+
+:CommunicationSkill a :SoftSkill .
+:TeamworkSkill a :SoftSkill .
+:ProblemSolvingSkill a :SoftSkill .
+:LeadershipSkill a :SoftSkill .
+:TimeManagementSkill a :SoftSkill .
+:AdaptabilitySkill a :SoftSkill .
+:CreativitySoftSkill a :SoftSkill .
+:NegotiationSkill a :SoftSkill .
+:EmpathySkill a :SoftSkill .
+:ConflictResolutionSkill a :SoftSkill .
+:AnalyticalThinkingSkill a :SoftSkill .
+:PublicSpeakingSkill a :SoftSkill .
+:WorkEthicSkill a :SoftSkill .
+:AttentionToDetailSkill a :SoftSkill .
+:DecisionMakingSkill a :SoftSkill .
+:PresentationSkill a :SoftSkill .
+:TeamCoordinationSkill a :SoftSkill .
+:StakeholderManagementSkill a :SoftSkill .
+:CoachingSkill a :SoftSkill .
+:MentoringSkill a :SoftSkill .
+:ActiveListeningSkill a :SoftSkill .
+:CustomerOrientationSkill a :SoftSkill .
+:StressManagementSkill a :SoftSkill .
+:ConflictManagementSkill a :SoftSkill .
+:CollaborationSkill a :SoftSkill .
+:PlanningSkill a :SoftSkill .
+:OrganizingSkill a :SoftSkill .
+:PersuasionSkill a :SoftSkill .
+:NetworkingSoftSkill a :SoftSkill .
+:StrategicThinkingSkill a :SoftSkill .
+:InitiativeSkill a :SoftSkill .
+:SelfMotivationSkill a :SoftSkill .
+:ResilienceSkill a :SoftSkill .
+:AdaptableCommunicationSkill a :SoftSkill .
+:InterpersonalSkill a :SoftSkill .
+:DetailOrientedSkill a :SoftSkill .
+:ResultOrientedSkill a :SoftSkill .
+:CreativeThinkingSkill a :SoftSkill .
+:LogicalThinkingSkill a :SoftSkill .
+:ProblemIdentificationSkill a :SoftSkill .
+:CollaborationRemoteSkill a :SoftSkill .
+:ContentWritingSkill a :SoftSkill .
+
+#################################################################
+# Skills — HARD SKILLS
+#################################################################
+:TechHardSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:DataHardSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:UIUXHardSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:ProductManagementHardSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:MarketingHardSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:SalesHardSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:FinanceHardSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:HRHardSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:OperationsHardSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:CustomerServiceHardSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:UniversalHardSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+
+#################################################################
+# HARD SKILLS - SUBS
+#################################################################
+:SoftwareEngineeringSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:DevOpsAndInfrastructureSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:QAAndTestingSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:DataScienceSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:DataEngineeringSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:DataAnalyticsSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:ProductManagementSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:UIUXDesignSkillGroup a owl:Class ; rdfs:subClassOf :HardSkill .
+:DigitalMarketingSkillGroup a owl:Class ; rdfs:subClassOf :HardSkill .
+:ContentAndCreativeSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:SalesAndBusinessDevelopmentSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:CustomerSupportAndSuccessSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+:BusinessOperationsSkill a owl:Class ; rdfs:subClassOf :HardSkill .
+
+#################################################################
+# JOB FIELDS
+#################################################################
+
+:Technology_Field a :JobField .
+:Data_Field a :JobField ; :hasSubField :Technology_Field .
+:Product_Field a :JobField ; :hasSubField :Technology_Field .
+:Marketing_Field a :JobField .
+:Sales_Field a :JobField .
+:Finance_Field a :JobField .
+:HR_Field a :JobField .
+:Operations_Field a :JobField .
+:CustomerService_Field a :JobField .
+
+#################################################################
+# PROPERTY CHAINS
+#################################################################
+
+# Candidate hasFacet → facetOfTrait → hasPersonalityTrait
+:hasPersonalityTrait
+    owl:propertyChainAxiom ( :hasFacet :facetOfTrait ) .
+
+# Experience → WordExpression → Facet/Trait → Candidate
+:hasFacet
+    owl:propertyChainAxiom ( :hasExperience :mentionsWord :representsFacet ) .
+
+:hasPersonalityTrait
+    owl:propertyChainAxiom ( :hasExperience :mentionsWord :representsTrait ) .
+
+# JobField hierarchy propagation
+:inJobField
+    owl:propertyChainAxiom ( :inJobField :hasSubField ) .
+
+#################################################################
+# QUALIFIED CARDINALITY (Q) – Global Constraints
+#################################################################
+
+# Kandidat minimal punya 1 trait dan 1 soft skill
+:Candidate rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty :hasPersonalityTrait ;
+      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass :PersonalityTrait
+    ] ,
+    [ a owl:Restriction ;
+      owl:onProperty :hasSoftSkill ;
+      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass :SoftSkill
+    ] .
+
+# JobOccupation minimal punya 1 requiresHardSkill
+:JobOccupation rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty :requiresHardSkill ;
+      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass :HardSkill
+    ] .
+
+#################################################################
+# JOB OCCUPATIONS
+#################################################################
+
+:SoftwareEngineer a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ,
+        [ a owl:Restriction ;
+          owl:onProperty :requiresHardSkill ;
+          owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+          owl:onClass :HardSkill
+        ] ,
+        [ a owl:Restriction ;
+          owl:onProperty :requiresSoftSkill ;
+          owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+          owl:onClass :SoftSkill
+        ] .
+
+:DataScientist a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Data_Field ] ,
+        [ a owl:Restriction ;
+          owl:onProperty :requiresHardSkill ;
+          owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+          owl:onClass :HardSkill
+        ] ,
+        [ a owl:Restriction ;
+          owl:onProperty :requiresSoftSkill ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass :SoftSkill
+        ] .
+
+:ProductManager a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Product_Field ] .
+
+:UIUXDesigner a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:DevOpsEngineer a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:QAEngineer a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:DigitalMarketerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] .
+
+:ContentWriterJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] .
+
+:SalesExecutiveJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] .
+>>>>>>> Stashed changes
 
 :AccountManagerJob a owl:Class ;
 	rdfs:subClassOf :JobOccupation , _:genid13 .
@@ -243,10 +507,630 @@ _:genid14 a owl:Restriction ;
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Application
 
+<<<<<<< Updated upstream
 :Application a owl:Class ;
 	owl:disjointWith :Person .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ApplicationWithHighMatch_DS
+=======
+:OperationsManagerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] .
+
+:CustomerSupportRepJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] .
+
+:BusinessAnalystJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Product_Field ] .
+
+:ProjectManagerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] .
+
+:ResearchScientistJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Data_Field ] .
+
+### FINANCIAL SERVICE & LEGAL/FINANCE  → :Finance_Field
+
+:FinancialServiceJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Financial Service" .
+
+:BusinessOperationSupportJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Business Operation Support" .
+
+:CreditAnalystAndDataMonitoringJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Credit Analyst and Data Monitoring" .
+
+:CreditFinanceOperationJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Credit Finance Operation" .
+
+:CreditManagerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Credit Manager" .
+
+:MerchantBusinessFinancialServiceJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Merchant Business (Financial Service)" .
+
+:LegalOfficerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Legal Officer" .
+
+:PayrollAndTaxComplianceJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Payroll & Tax Compliance" .
+
+:ReportingSpecialistJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Reporting Specialist" .
+
+:FinancialReportingJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Financial Reporting" .
+
+:TaxOfficerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Tax Officer" .
+
+:AuditAndReportingAnalystJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Audit & Reporting Analyst" .
+
+:FinanceAndAccountingStaffJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Finance & Accounting Staff" .
+
+:AccountReceivableStaffJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Account Receivable Staff" .
+
+:AccountReceivableAnalystJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Account Receivable Analyst" .
+
+:AccountPayableJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] ;
+    rdfs:label "Account Payable" .
+
+### OPERATIONS / PEOPLE / PARTNERSHIP  → :Operations_Field
+
+:PeopleAndCultureJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "People & Culture" .
+
+:HRAndGAOfficerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "HR & GA Officer" .
+
+:GAAndITSupportJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "GA & IT Support" .
+
+:PeopleAnalyticsJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "People Analytics" .
+
+:PeopleStrategyJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "People Strategy" .
+
+:EmployerBrandActivationJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "Employer Brand Activation" .
+
+:EmployerBrandingJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "Employer Branding" .
+
+:PeopleDevelopmentJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "People Development" .
+
+:PeopleEngagementJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "People Engagement" .
+
+:PartnershipStrategistJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "Partnership Strategist" .
+
+:StrategicPartnershipAndGovernmentRelationAssociateJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "Strategic Partnership & Government Relation Associate" .
+
+:ProjectManagementOfficeJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] ;
+    rdfs:label "Project Management Office" ,
+               "Project Management Office (PMO)" .
+
+### HR-SPECIFIC ROLES  → :HR_Field
+
+:TalentAcquisitionSpecialistJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :HR_Field ] ;
+    rdfs:label "Talent Acquisition" .
+
+:HRPeopleDevelopmentJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :HR_Field ] ;
+    rdfs:label "People Development (HR)" .
+
+:HRPeopleEngagementJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :HR_Field ] ;
+    rdfs:label "People Engagement (HR)" .
+
+:HREmployerBrandingJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :HR_Field ] ;
+    rdfs:label "Employer Branding (HR)" .
+
+### TECHNOLOGY / ENGINEERING / INFRA / SECURITY  → :Technology_Field
+
+:TechnologyJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "Technology" .
+
+:SoftwareEngineerFrontendJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "Software Engineer - Frontend" .
+
+:TechnicalProgramManagerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "Technical Program Manager" .
+
+:MobileDeveloperAndroidJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "Mobile Developer - Android" .
+
+:MobileDeveloperIOSJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "Mobile Developer - iOS" .
+
+:MobileDeveloperFlutterInternJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "Mobile Developer - Flutter Intern" .
+
+:DevOpsJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "DevOps" .
+
+:SDETJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "SDET" .
+
+:QualityAssuranceJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "Quality Assurance" .
+
+:RiskManagementJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "Risk Management" .
+
+:InformationSecurityJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "Information Security" .
+
+:ProjectManagementTechJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ;
+    rdfs:label "Project Management (Information Security & Compliance)" .
+
+### DATA ROLES  → :Data_Field
+
+:DataEngineerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Data_Field ] ;
+    rdfs:label "Data Engineer" .
+
+:BusinessIntelligenceJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Data_Field ] ;
+    rdfs:label "Business Intelligence" .
+
+### CUSTOMER / CS / RETENTION / PARTNER SUCCESS  → :CustomerService_Field
+
+:CustomerExperienceJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Customer Experience" .
+
+:CRMSpecialistJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "CRM Specialist" .
+
+:ProductMarketingAndCampaignSpecialistJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Product Marketing & Campaign Specialist" .
+
+:PartnerSuccessJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Partner Success" .
+
+:PartnerSuccessActivationJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Partner Success Activation" .
+
+:CustomerSupportJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Customer Support" .
+
+:TechnicalSupportJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Technical Support" .
+
+:CustomerEngagementJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Customer Engagement" .
+
+:CustomerSuccessJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Customer Success" .
+
+:KeyAccountManagementJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Key Account Management" .
+
+:CustomerSuccessAdminJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Customer Success Admin" .
+
+:ImplementationSpecialistJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Implementation Specialist" .
+
+:SalesOperationRenewalJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "Sales Operation - Renewal" .
+
+:CSOperationsJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] ;
+    rdfs:label "CS Operations" .
+
+### REVENUE / SALES / PARTNER ACQUISITION  → :Sales_Field
+
+:LeadsManagementJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] ;
+    rdfs:label "Leads Management" .
+
+:TelesalesJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] ;
+    rdfs:label "Telesales" .
+
+:CenterOfExcellenceJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] ;
+    rdfs:label "Center of Excellence" .
+
+:PartnerAccountExecutiveJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] ;
+    rdfs:label "Partner Account Executive" .
+
+:BusinessDevelopmentJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] ;
+    rdfs:label "Business Development" .
+
+:SalesOperationJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] ;
+    rdfs:label "Sales Operation" .
+
+:LeadGenerationJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] ;
+    rdfs:label "Lead Generation" .
+
+:SalesDevelopmentRepresentativeJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] ;
+    rdfs:label "Sales Development Representative" .
+
+:PartnerAcquisitionJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] ;
+    rdfs:label "Partners Acquisition" .
+
+### MARKETING / GROWTH / CREATIVE  → :Marketing_Field
+
+:MarketingAndCreativesJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Marketing & Creatives" .
+
+:WordPressDeveloperJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "WordPress Developer" .
+
+:GraphicDesignerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Graphic Designer" .
+
+:PerformanceMarketingJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Performance Marketing" .
+
+:MotionGraphicDesignerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Motion Graphic Designer" .
+
+:CommunityMarketingJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Community Marketing" .
+
+:SocialMediaJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Social Media" .
+
+:EventMarketingJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Event Marketing" .
+
+:ContentMarketingJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Content Marketing" .
+
+:SEOSpecialistJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "SEO Specialist" .
+
+:ContentStrategistJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Content Strategist" .
+
+:MarketingAnalyticsJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Marketing Analytics" .
+
+:ProductMarketingJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Product Marketing" .
+
+:GrowthMarketingJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Growth Marketing" .
+
+:CopywriterJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Copywriter" .
+
+:DigitalMarketingJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Digital Marketing" .
+
+:CRMAndEmailMarketingJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "CRM & Email Marketing" .
+
+:PRAndActivationJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "PR & Activation" .
+
+:EventActivationJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] ;
+    rdfs:label "Event Activation" .
+
+### PRODUCT / DESIGN / UX  → :Product_Field
+
+:ProductDesignJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Product_Field ] ;
+    rdfs:label "Product Design" .
+
+:UXResearcherJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Product_Field ] ;
+    rdfs:label "UX Researcher" .
+
+:UXWriterJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Product_Field ] ;
+    rdfs:label "UX Writer" .
+
+:IllustratorJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Product_Field ] ;
+    rdfs:label "Illustrator" .
+
+:ProductManagementJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Product_Field ] ;
+    rdfs:label "Product Management" .
+
+:ProductOwnerJob a owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+        [ owl:onProperty :inJobField ; owl:hasValue :Product_Field ] ;
+    rdfs:label "Product Owner" .
+
+#################################################################
+# NOMINALS (O) – Skill cluster untuk Software Engineer
+#################################################################
+
+:RequiredSESkills owl:oneOf ( :ProgrammingSkill :JavaSkill :PythonSkill :TestingQASkill :GitSkill ) .
+
+#################################################################
+# MATCH CATEGORY CLASSES (High / Medium / Low) – Job-specific
+#################################################################
+
+# HighMatch_SoftwareEngineer ≈ punya hampir semua skill penting + trait C & O
+:HighMatch_SoftwareEngineer a owl:Class , :MatchCategory ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :Candidate
+            [ owl:onProperty :hasPersonalityTrait ; owl:hasValue :ConscientiousnessTrait ]
+            [ owl:onProperty :hasPersonalityTrait ; owl:hasValue :OpennessTrait ]
+            [ owl:onProperty :hasHardSkill ; owl:hasValue :ProgrammingSkill ]
+            [ owl:onProperty :hasHardSkill ; owl:hasValue :JavaSkill ]
+            [ owl:onProperty :hasHardSkill ; owl:hasValue :TestingQASkill ]
+            [ owl:onProperty :hasHardSkill ; owl:hasValue :GitSkill ]
+            [ owl:onProperty :hasSoftSkill ; owl:hasValue :ProblemSolvingSkill ]
+            [ owl:onProperty :hasSoftSkill ; owl:hasValue :TeamworkSkill ]
+        )
+    ] .
+
+:MediumMatch_SoftwareEngineer a owl:Class , :MatchCategory ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :Candidate
+            [ owl:onProperty :hasHardSkill ; owl:hasValue :ProgrammingSkill ]
+            [ owl:onProperty :hasSoftSkill ; owl:hasValue :ProblemSolvingSkill ]
+        )
+    ] .
+
+:LowMatch_SoftwareEngineer a owl:Class , :MatchCategory ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :Candidate
+            [ owl:onProperty :hasHardSkill ; owl:hasValue :ProgrammingSkill ]
+        )
+    ] .
+
+# HighMatch_DataScientist – punya DataAnalysis + ML + Statistics + AnalyticalThinking + Openness
+:HighMatch_DataScientist a owl:Class , :MatchCategory ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :Candidate
+            [ owl:onProperty :hasPersonalityTrait ; owl:hasValue :OpennessTrait ]
+            [ owl:onProperty :hasHardSkill ; owl:hasValue :DataAnalysisSkill ]
+            [ owl:onProperty :hasHardSkill ; owl:hasValue :MachineLearningSkill ]
+            [ owl:onProperty :hasHardSkill ; owl:hasValue :StatisticsSkill ]
+            [ owl:onProperty :hasSoftSkill ; owl:hasValue :AnalyticalThinkingSkill ]
+        )
+    ] .
+
+:MediumMatch_DataScientist a owl:Class , :MatchCategory ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :Candidate
+            [ owl:onProperty :hasHardSkill ; owl:hasValue :DataAnalysisSkill ]
+            [ owl:onProperty :hasSoftSkill ; owl:hasValue :AnalyticalThinkingSkill ]
+        )
+    ] .
+
+:LowMatch_DataScientist a owl:Class , :MatchCategory ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :Candidate
+            [ owl:onProperty :hasHardSkill ; owl:hasValue :DataAnalysisSkill ]
+        )
+    ] .
+
+#################################################################
+# SUGGESTION CLASSES (B: SuggestedFor<Job>)
+#################################################################
+
+:SuggestedForSoftwareEngineer a owl:Class , :SuggestionClass ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf ( :Candidate :HighMatch_SoftwareEngineer )
+    ] .
+
+:SuggestedForDataScientist a owl:Class , :SuggestionClass ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf ( :Candidate :HighMatch_DataScientist )
+    ] .
+
+#################################################################
+# APPLICATION-BASED MATCH CLASSES
+#################################################################
+
+:ApplicationWithHighMatch_SE a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :Application
+            [ owl:onProperty :hasApplicant ; owl:someValuesFrom :HighMatch_SoftwareEngineer ]
+            [ owl:onProperty :forJob ; owl:hasValue :SoftwareEngineer ]
+        )
+    ] .
+>>>>>>> Stashed changes
 
 :ApplicationWithHighMatch_DS a owl:Class ;
 	owl:equivalentClass _:genid15 .
