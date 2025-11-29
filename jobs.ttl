@@ -207,7 +207,6 @@ _:genid11 a rdf:List ;
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#yearsOfExperience
 
-<<<<<<< Updated upstream
 :yearsOfExperience a owl:DatatypeProperty ;
 	rdfs:range xsd:int .
 # 
@@ -221,7 +220,7 @@ _:genid11 a rdf:List ;
 # 
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AccountManagerJob
-=======
+
 :OpennessTrait a :PersonalityTrait .
 :ConscientiousnessTrait a :PersonalityTrait .
 :ExtraversionTrait a :PersonalityTrait .
@@ -483,7 +482,6 @@ _:genid11 a rdf:List ;
 :SalesExecutiveJob a owl:Class ;
     rdfs:subClassOf :JobOccupation ,
         [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] .
->>>>>>> Stashed changes
 
 :AccountManagerJob a owl:Class ;
 	rdfs:subClassOf :JobOccupation , _:genid13 .
@@ -507,12 +505,11 @@ _:genid14 a owl:Restriction ;
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Application
 
-<<<<<<< Updated upstream
 :Application a owl:Class ;
 	owl:disjointWith :Person .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ApplicationWithHighMatch_DS
-=======
+
 :OperationsManagerJob a owl:Class ;
     rdfs:subClassOf :JobOccupation ,
         [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] .
@@ -1130,7 +1127,6 @@ _:genid14 a owl:Restriction ;
             [ owl:onProperty :forJob ; owl:hasValue :SoftwareEngineer ]
         )
     ] .
->>>>>>> Stashed changes
 
 :ApplicationWithHighMatch_DS a owl:Class ;
 	owl:equivalentClass _:genid15 .
