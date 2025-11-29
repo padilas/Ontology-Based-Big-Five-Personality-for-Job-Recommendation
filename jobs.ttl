@@ -1,825 +1,2569 @@
 @prefix : <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-#################################################################
-# ONTOLOGY METADATA
-#################################################################
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology> a owl:Ontology .
-
-#################################################################
-# CORE CLASSES
-#################################################################
-
-:Person a owl:Class .
-:Candidate a owl:Class ; rdfs:subClassOf :Person .
-:Recruiter a owl:Class ; rdfs:subClassOf :Person .
-
-:Application a owl:Class .
-:MatchCategory a owl:Class .
-:SuggestionClass a owl:Class .
-
-:Skill a owl:Class .
-:SoftSkill a owl:Class ; rdfs:subClassOf :Skill .
-:HardSkill a owl:Class ; rdfs:subClassOf :Skill .
-
-:Experience a owl:Class .
-:JobField a owl:Class .
-:JobOccupation a owl:Class .
-
-:PersonalityTrait a owl:Class .
-:PersonalityFacet a owl:Class .
-:PersonalityQuestion a owl:Class .
-:WordExpression a owl:Class .
-
-#################################################################
-# DISJOINTNESS
-#################################################################
-
-:Person owl:disjointWith :Skill, :Experience, :JobField, :JobOccupation, :Application, :MatchCategory .
-:Skill owl:disjointWith :Experience, :JobField, :JobOccupation, :PersonalityTrait, :PersonalityFacet .
-:JobField owl:disjointWith :JobOccupation .
-:PersonalityTrait owl:disjointWith :PersonalityFacet .
-
-#################################################################
-# OBJECT PROPERTIES
-#################################################################
-
-:hasPersonalityTrait a owl:ObjectProperty .
-:hasFacet a owl:ObjectProperty .
-:facetOfTrait a owl:ObjectProperty .
-:hasFacetDefinition a owl:ObjectProperty .
-
-:hasSkill a owl:ObjectProperty .
-:hasSoftSkill a owl:ObjectProperty .
-:hasHardSkill a owl:ObjectProperty .
-
-:requiresSkill a owl:ObjectProperty .
-:requiresSoftSkill a owl:ObjectProperty .
-:requiresHardSkill a owl:ObjectProperty .
-
-:hasExperience a owl:ObjectProperty .
-:experienceInField a owl:ObjectProperty .
-
-:mentionsWord a owl:ObjectProperty .
-:representsFacet a owl:ObjectProperty .
-:representsTrait a owl:ObjectProperty .
-
-:inJobField a owl:ObjectProperty .
-:hasSubField a owl:ObjectProperty .
-
-:hasApplication a owl:ObjectProperty .
-:hasApplicant a owl:ObjectProperty .
-:forJob a owl:ObjectProperty .
-:hasMatchCategory a owl:ObjectProperty .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#answeredBy
 
 :answeredBy a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#experienceInField
+
+:experienceInField a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#facetOfTrait
+
+:facetOfTrait a owl:ObjectProperty ;
+	owl:inverseOf :hasFacetDefinition .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#forJob
+
+:forJob a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasApplicant
+
+:hasApplicant a owl:ObjectProperty ;
+	owl:inverseOf :hasApplication .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasApplication
+
+:hasApplication a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasExperience
+
+:hasExperience a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasFacet
+
+:hasFacet a owl:ObjectProperty ;
+	owl:propertyChainAxiom _:genid3 .
+
+_:genid3 a rdf:List ;
+	rdf:first :hasExperience ;
+	rdf:rest _:genid2 .
+
+_:genid2 a rdf:List ;
+	rdf:first :mentionsWord ;
+	rdf:rest _:genid1 .
+
+_:genid1 a rdf:List ;
+	rdf:first :representsFacet ;
+	rdf:rest rdf:nil .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasFacetDefinition
+
+:hasFacetDefinition a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasHardSkill
+
+:hasHardSkill a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasMatchCategory
+
+:hasMatchCategory a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasPersonalityTrait
+
+:hasPersonalityTrait a owl:ObjectProperty ;
+	owl:propertyChainAxiom _:genid6 .
+
+_:genid6 a rdf:List ;
+	rdf:first :hasExperience ;
+	rdf:rest _:genid5 .
+
+_:genid5 a rdf:List ;
+	rdf:first :mentionsWord ;
+	rdf:rest _:genid4 .
+
+_:genid4 a rdf:List ;
+	rdf:first :representsTrait ;
+	rdf:rest rdf:nil .
+
+:hasPersonalityTrait owl:propertyChainAxiom _:genid8 .
+
+_:genid8 a rdf:List ;
+	rdf:first :hasFacet ;
+	rdf:rest _:genid7 .
+
+_:genid7 a rdf:List ;
+	rdf:first :facetOfTrait ;
+	rdf:rest rdf:nil .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasSkill
+
+:hasSkill a owl:ObjectProperty ;
+	owl:propertyChainAxiom _:genid10 .
+
+_:genid10 a rdf:List ;
+	rdf:first :hasHardSkill ;
+	rdf:rest _:genid9 .
+
+_:genid9 a rdf:List ;
+	rdf:first :hasSoftSkill ;
+	rdf:rest rdf:nil .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasSoftSkill
+
+:hasSoftSkill a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasSubField
+
+:hasSubField a owl:ObjectProperty , owl:TransitiveProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#inJobField
+
+:inJobField a owl:ObjectProperty ;
+	owl:propertyChainAxiom _:genid12 .
+
+_:genid12 a rdf:List ;
+	rdf:first :inJobField ;
+	rdf:rest _:genid11 .
+
+_:genid11 a rdf:List ;
+	rdf:first :hasSubField ;
+	rdf:rest rdf:nil .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#manages
+
+:manages a owl:ObjectProperty ;
+	rdfs:subPropertyOf :supervises .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#measuresFacet
+
 :measuresFacet a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#mentionsWord
 
-#################################################################
-# (S) TRANSITIVE ROLES
-#################################################################
+:mentionsWord a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#oversees
 
-:hasSubField a owl:TransitiveProperty .
-
-# SROIQ requirement: at least one extra example
 :oversees a owl:ObjectProperty , owl:TransitiveProperty .
-:supervises a owl:ObjectProperty .
-:manages a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#representsFacet
 
-:manages rdfs:subPropertyOf :supervises .
-:supervises rdfs:subPropertyOf :oversees .
+:representsFacet a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#representsTrait
 
-#################################################################
-# (R) ROLE HIERARCHY + ROLE INCLUSION
-#################################################################
+:representsTrait a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#requiresHardSkill
 
-:hasHardSkill rdfs:subPropertyOf :hasSkill .
-:hasSoftSkill rdfs:subPropertyOf :hasSkill .
-:requiresHardSkill rdfs:subPropertyOf :requiresSkill .
-:requiresSoftSkill rdfs:subPropertyOf :requiresSkill .
+:requiresHardSkill a owl:ObjectProperty ;
+	rdfs:subPropertyOf :requiresSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#requiresSkill
 
-# Complex role inclusion → MAKES R ACTIVE → SROIQ(D)
-:hasSkill
-    owl:propertyChainAxiom ( :hasHardSkill :hasSoftSkill ) .
+:requiresSkill a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#requiresSoftSkill
 
-#################################################################
-# INVERSE ROLES (I)
-#################################################################
+:requiresSoftSkill a owl:ObjectProperty ;
+	rdfs:subPropertyOf :requiresSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#supervises
 
-:hasApplication owl:inverseOf :hasApplicant .
-:hasFacetDefinition owl:inverseOf :facetOfTrait .
+:supervises a owl:ObjectProperty ;
+	rdfs:subPropertyOf :oversees .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasDescription
 
-#################################################################
-# DATA PROPERTIES (D)
-#################################################################
+:hasDescription a owl:DatatypeProperty ;
+	rdfs:range xsd:string .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasTitle
 
-:yearsOfExperience a owl:DatatypeProperty ; rdfs:range xsd:int .
-:hasTitle a owl:DatatypeProperty ; rdfs:range xsd:string .
-:hasDescription a owl:DatatypeProperty ; rdfs:range xsd:string .
-:questionScore a owl:DatatypeProperty ; rdfs:range xsd:int .
+:hasTitle a owl:DatatypeProperty ;
+	rdfs:range xsd:string .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#questionScore
 
-#################################################################
-# BIG FIVE (traits) — O (nominals)
-#################################################################
+:questionScore a owl:DatatypeProperty ;
+	rdfs:range xsd:int .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#yearsOfExperience
 
-:OpennessTrait a :PersonalityTrait .
-:ConscientiousnessTrait a :PersonalityTrait .
-:ExtraversionTrait a :PersonalityTrait .
-:AgreeablenessTrait a :PersonalityTrait .
-:NeuroticismTrait a :PersonalityTrait .
-
-#################################################################
-# FACETS (subset)
-#################################################################
-
-:O_Creativity a :PersonalityFacet ; :facetOfTrait :OpennessTrait .
-:O_Curiosity a :PersonalityFacet ; :facetOfTrait :OpennessTrait .
-:O_Aesthetic a :PersonalityFacet ; :facetOfTrait :OpennessTrait .
-
-:C_Orderliness a :PersonalityFacet ; :facetOfTrait :ConscientiousnessTrait .
-:C_SelfDiscipline a :PersonalityFacet ; :facetOfTrait :ConscientiousnessTrait .
-:C_AchievementStriving a :PersonalityFacet ; :facetOfTrait :ConscientiousnessTrait .
-
-:E_Assertiveness a :PersonalityFacet ; :facetOfTrait :ExtraversionTrait .
-:E_Gregariousness a :PersonalityFacet ; :facetOfTrait :ExtraversionTrait .
-:E_Activity a :PersonalityFacet ; :facetOfTrait :ExtraversionTrait .
-
-:A_Trust a :PersonalityFacet ; :facetOfTrait :AgreeablenessTrait .
-:A_Altruism a :PersonalityFacet ; :facetOfTrait :AgreeablenessTrait .
-:A_Compliance a :PersonalityFacet ; :facetOfTrait :AgreeablenessTrait .
-
-:N_Anxiety a :PersonalityFacet ; :facetOfTrait :NeuroticismTrait .
-:N_Depression a :PersonalityFacet ; :facetOfTrait :NeuroticismTrait .
-:N_SelfConsciousness a :PersonalityFacet ; :facetOfTrait :NeuroticismTrait .
-
-#################################################################
-# 30 QUESTIONS
-#################################################################
-
-:Q1 a :PersonalityQuestion ; :measuresFacet :O_Creativity .
-:Q2 a :PersonalityQuestion ; :measuresFacet :O_Creativity .
-:Q3 a :PersonalityQuestion ; :measuresFacet :O_Curiosity .
-:Q4 a :PersonalityQuestion ; :measuresFacet :O_Aesthetic .
-:Q5 a :PersonalityQuestion ; :measuresFacet :C_Orderliness .
-:Q6 a :PersonalityQuestion ; :measuresFacet :C_Orderliness .
-:Q7 a :PersonalityQuestion ; :measuresFacet :C_SelfDiscipline .
-:Q8 a :PersonalityQuestion ; :measuresFacet :C_AchievementStriving .
-:Q9 a :PersonalityQuestion ; :measuresFacet :E_Assertiveness .
-:Q10 a :PersonalityQuestion ; :measuresFacet :E_Gregariousness .
-:Q11 a :PersonalityQuestion ; :measuresFacet :E_Activity .
-:Q12 a :PersonalityQuestion ; :measuresFacet :A_Trust .
-:Q13 a :PersonalityQuestion ; :measuresFacet :A_Altruism .
-:Q14 a :PersonalityQuestion ; :measuresFacet :A_Compliance .
-:Q15 a :PersonalityQuestion ; :measuresFacet :N_Anxiety .
-:Q16 a :PersonalityQuestion ; :measuresFacet :N_Anxiety .
-:Q17 a :PersonalityQuestion ; :measuresFacet :N_Depression .
-:Q18 a :PersonalityQuestion ; :measuresFacet :N_SelfConsciousness .
-:Q19 a :PersonalityQuestion ; :measuresFacet :O_Creativity .
-:Q20 a :PersonalityQuestion ; :measuresFacet :C_SelfDiscipline .
-:Q21 a :PersonalityQuestion ; :measuresFacet :E_Assertiveness .
-:Q22 a :PersonalityQuestion ; :measuresFacet :A_Trust .
-:Q23 a :PersonalityQuestion ; :measuresFacet :A_Altruism .
-:Q24 a :PersonalityQuestion ; :measuresFacet :O_Curiosity .
-:Q25 a :PersonalityQuestion ; :measuresFacet :C_AchievementStriving .
-:Q26 a :PersonalityQuestion ; :measuresFacet :E_Gregariousness .
-:Q27 a :PersonalityQuestion ; :measuresFacet :N_Anxiety .
-:Q28 a :PersonalityQuestion ; :measuresFacet :N_SelfConsciousness .
-:Q29 a :PersonalityQuestion ; :measuresFacet :O_Aesthetic .
-:Q30 a :PersonalityQuestion ; :measuresFacet :C_Orderliness .
-
-#################################################################
-#  SOFT SKILLS 
-#################################################################
-
-:CommunicationSkill a :SoftSkill .
-:TeamworkSkill a :SoftSkill .
-:ProblemSolvingSkill a :SoftSkill .
-:LeadershipSkill a :SoftSkill .
-:TimeManagementSkill a :SoftSkill .
-:AdaptabilitySkill a :SoftSkill .
-:CreativitySoftSkill a :SoftSkill .
-:NegotiationSkill a :SoftSkill .
-:EmpathySkill a :SoftSkill .
-:ConflictResolutionSkill a :SoftSkill .
-:AnalyticalThinkingSkill a :SoftSkill .
-:PublicSpeakingSkill a :SoftSkill .
-:WorkEthicSkill a :SoftSkill .
-:AttentionToDetailSkill a :SoftSkill .
-:DecisionMakingSkill a :SoftSkill .
-:PresentationSkill a :SoftSkill .
-:TeamCoordinationSkill a :SoftSkill .
-:StakeholderManagementSkill a :SoftSkill .
-:CoachingSkill a :SoftSkill .
-:MentoringSkill a :SoftSkill .
-:ActiveListeningSkill a :SoftSkill .
-:CustomerOrientationSkill a :SoftSkill .
-:StressManagementSkill a :SoftSkill .
-:ConflictManagementSkill a :SoftSkill .
-:CollaborationSkill a :SoftSkill .
-:PlanningSkill a :SoftSkill .
-:OrganizingSkill a :SoftSkill .
-:PersuasionSkill a :SoftSkill .
-:NetworkingSoftSkill a :SoftSkill .
-:StrategicThinkingSkill a :SoftSkill .
-:InitiativeSkill a :SoftSkill .
-:SelfMotivationSkill a :SoftSkill .
-:ResilienceSkill a :SoftSkill .
-:AdaptableCommunicationSkill a :SoftSkill .
-:InterpersonalSkill a :SoftSkill .
-:DetailOrientedSkill a :SoftSkill .
-:ResultOrientedSkill a :SoftSkill .
-:CreativeThinkingSkill a :SoftSkill .
-:LogicalThinkingSkill a :SoftSkill .
-:ProblemIdentificationSkill a :SoftSkill .
-:CollaborationRemoteSkill a :SoftSkill .
-:ContentWritingSkill a :SoftSkill .
-
-#################################################################
-# 100+ Skills — HARD SKILLS (60+)
-#################################################################
-
-:ProgrammingSkill a :HardSkill .
-:JavaSkill a :HardSkill .
-:PythonSkill a :HardSkill .
-:JavaScriptSkill a :HardSkill .
-:SQLSkill a :HardSkill .
-:CSharpSkill a :HardSkill .
-:PHPSkill a :HardSkill .
-:HTMLCSSSkill a :HardSkill .
-:ReactSkill a :HardSkill .
-:NodeJSSkill a :HardSkill .
-:SpringBootSkill a :HardSkill .
-:DataAnalysisSkill a :HardSkill .
-:MachineLearningSkill a :HardSkill .
-:DeepLearningSkill a :HardSkill .
-:StatisticsSkill a :HardSkill .
-:RSkill a :HardSkill .
-:ExcelAdvancedSkill a :HardSkill .
-:PowerBISkill a :HardSkill .
-:TableauSkill a :HardSkill .
-:CloudComputingSkill a :HardSkill .
-:AWSkill a :HardSkill .
-:AzureSkill a :HardSkill .
-:GCPCloudSkill a :HardSkill .
-:LinuxSkill a :HardSkill .
-:DockerSkill a :HardSkill .
-:KubernetesSkill a :HardSkill .
-:DevOpsSkill a :HardSkill .
-:CI_CD_Skill a :HardSkill .
-:TestingQASkill a :HardSkill .
-:UnitTestingSkill a :HardSkill .
-:IntegrationTestingSkill a :HardSkill .
-:UIUXDesignSkill a :HardSkill .
-:FigmaSkill a :HardSkill .
-:AdobeXDSkill a :HardSkill .
-:WireframingSkill a :HardSkill .
-:PrototypingSkill a :HardSkill .
-:UserResearchSkill a :HardSkill .
-:DigitalMarketingSkill a :HardSkill .
-:SEO_Skill a :HardSkill .
-:SEM_Skill a :HardSkill .
-:SocialMediaMarketingSkill a :HardSkill .
-:CopywritingSkill a :HardSkill .
-:EmailMarketingSkill a :HardSkill .
-:GoogleAnalyticsSkill a :HardSkill .
-:CRMToolSkill a :HardSkill .
-:SalesOperationsSkill a :HardSkill .
-:ColdCallingSkill a :HardSkill .
-:SalesPresentationSkill a :HardSkill .
-:PipedriveSkill a :HardSkill .
-:HubspotSkill a :HardSkill .
-:FinanceAnalysisSkill a :HardSkill .
-:AccountingSkill a :HardSkill .
-:BudgetingSkill a :HardSkill .
-:ForecastingSkill a :HardSkill .
-:ERPManagementSkill a :HardSkill .
-:SAPSkill a :HardSkill .
-:HRISSkill a :HardSkill .
-:RecruitmentSkill a :HardSkill .
-:InterviewSkill a :HardSkill .
-:PayrollSkill a :HardSkill .
-:CompensationBenefitSkill a :HardSkill .
-:LegalComplianceSkill a :HardSkill .
-:RiskManagementSkill a :HardSkill .
-:BusinessAnalysisSkill a :HardSkill .
-:RequirementGatheringSkill a :HardSkill .
-:ProcessModelingSkill a :HardSkill .
-:OperationsManagementSkill a :HardSkill .
-:SupplyChainSkill a :HardSkill .
-:InventoryManagementSkill a :HardSkill .
-:CustomerSupportToolSkill a :HardSkill .
-:TicketingSystemSkill a :HardSkill .
-:GitSkill a :HardSkill .
-
-#################################################################
-# JOB FIELDS
-#################################################################
-
-:Technology_Field a :JobField .
-:Data_Field a :JobField ; :hasSubField :Technology_Field .
-:Product_Field a :JobField ; :hasSubField :Technology_Field .
-:Marketing_Field a :JobField .
-:Sales_Field a :JobField .
-:Finance_Field a :JobField .
-:HR_Field a :JobField .
-:Operations_Field a :JobField .
-:CustomerService_Field a :JobField .
-
-#################################################################
-# PROPERTY CHAINS
-#################################################################
-
-# Candidate hasFacet → facetOfTrait → hasPersonalityTrait
-:hasPersonalityTrait
-    owl:propertyChainAxiom ( :hasFacet :facetOfTrait ) .
-
-# Experience → WordExpression → Facet/Trait → Candidate
-:hasFacet
-    owl:propertyChainAxiom ( :hasExperience :mentionsWord :representsFacet ) .
-
-:hasPersonalityTrait
-    owl:propertyChainAxiom ( :hasExperience :mentionsWord :representsTrait ) .
-
-# JobField hierarchy propagation
-:inJobField
-    owl:propertyChainAxiom ( :inJobField :hasSubField ) .
-
-#################################################################
-# QUALIFIED CARDINALITY (Q) – Global Constraints
-#################################################################
-
-# Kandidat minimal punya 1 trait dan 1 soft skill
-:Candidate rdfs:subClassOf
-    [ a owl:Restriction ;
-      owl:onProperty :hasPersonalityTrait ;
-      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onClass :PersonalityTrait
-    ] ,
-    [ a owl:Restriction ;
-      owl:onProperty :hasSoftSkill ;
-      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onClass :SoftSkill
-    ] .
-
-# JobOccupation minimal punya 1 requiresHardSkill
-:JobOccupation rdfs:subClassOf
-    [ a owl:Restriction ;
-      owl:onProperty :requiresHardSkill ;
-      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onClass :HardSkill
-    ] .
-
-#################################################################
-# JOB OCCUPATIONS
-#################################################################
-
-:SoftwareEngineer a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] ,
-        [ a owl:Restriction ;
-          owl:onProperty :requiresHardSkill ;
-          owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-          owl:onClass :HardSkill
-        ] ,
-        [ a owl:Restriction ;
-          owl:onProperty :requiresSoftSkill ;
-          owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-          owl:onClass :SoftSkill
-        ] .
-
-:DataScientist a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Data_Field ] ,
-        [ a owl:Restriction ;
-          owl:onProperty :requiresHardSkill ;
-          owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-          owl:onClass :HardSkill
-        ] ,
-        [ a owl:Restriction ;
-          owl:onProperty :requiresSoftSkill ;
-          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-          owl:onClass :SoftSkill
-        ] .
-
-:ProductManager a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Product_Field ] .
-
-:UIUXDesigner a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
-
-:DevOpsEngineer a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
-
-:QAEngineer a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
-
-:DigitalMarketerJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] .
-
-:ContentWriterJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] .
-
-:SalesExecutiveJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] .
+:yearsOfExperience a owl:DatatypeProperty ;
+	rdfs:range xsd:int .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AccountManagerJob
 
 :AccountManagerJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] .
+	rdfs:subClassOf :JobOccupation , _:genid13 .
 
-:FinanceAnalystJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] .
+_:genid13 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Sales_Field .
+
+:Sales_Field a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AccountantJob
 
 :AccountantJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] .
+	rdfs:subClassOf :JobOccupation , _:genid14 .
 
-:HRGeneralistJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :HR_Field ] .
+_:genid14 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Finance_Field .
 
-:TalentAcquisitionJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :HR_Field ] .
+:Finance_Field a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Application
 
-:OperationsManagerJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] .
-
-:CustomerSupportRepJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] .
-
-:BusinessAnalystJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Product_Field ] .
-
-:ProjectManagerJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] .
-
-:ResearchScientistJob a owl:Class ;
-    rdfs:subClassOf :JobOccupation ,
-        [ owl:onProperty :inJobField ; owl:hasValue :Data_Field ] .
-
-:Job_20 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_21 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_22 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_23 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_24 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_25 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_26 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_27 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_28 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_29 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_30 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_31 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_32 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_33 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_34 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_35 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_36 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_37 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_38 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_39 a owl:Class ; rdfs:subClassOf :JobOccupation .
-:Job_40 a owl:Class ; rdfs:subClassOf :JobOccupation .
-
-#################################################################
-# NOMINALS (O) – Skill cluster untuk Software Engineer
-#################################################################
-
-:RequiredSESkills owl:oneOf ( :ProgrammingSkill :JavaSkill :PythonSkill :TestingQASkill :GitSkill ) .
-
-#################################################################
-# MATCH CATEGORY CLASSES (High / Medium / Low) – Job-specific
-#################################################################
-
-# HighMatch_SoftwareEngineer ≈ punya hampir semua skill penting + trait C & O
-:HighMatch_SoftwareEngineer a owl:Class , :MatchCategory ;
-    owl:equivalentClass [
-        a owl:Class ;
-        owl:intersectionOf (
-            :Candidate
-            [ owl:onProperty :hasPersonalityTrait ; owl:hasValue :ConscientiousnessTrait ]
-            [ owl:onProperty :hasPersonalityTrait ; owl:hasValue :OpennessTrait ]
-            [ owl:onProperty :hasHardSkill ; owl:hasValue :ProgrammingSkill ]
-            [ owl:onProperty :hasHardSkill ; owl:hasValue :JavaSkill ]
-            [ owl:onProperty :hasHardSkill ; owl:hasValue :TestingQASkill ]
-            [ owl:onProperty :hasHardSkill ; owl:hasValue :GitSkill ]
-            [ owl:onProperty :hasSoftSkill ; owl:hasValue :ProblemSolvingSkill ]
-            [ owl:onProperty :hasSoftSkill ; owl:hasValue :TeamworkSkill ]
-        )
-    ] .
-
-:MediumMatch_SoftwareEngineer a owl:Class , :MatchCategory ;
-    owl:equivalentClass [
-        a owl:Class ;
-        owl:intersectionOf (
-            :Candidate
-            [ owl:onProperty :hasHardSkill ; owl:hasValue :ProgrammingSkill ]
-            [ owl:onProperty :hasSoftSkill ; owl:hasValue :ProblemSolvingSkill ]
-        )
-    ] .
-
-:LowMatch_SoftwareEngineer a owl:Class , :MatchCategory ;
-    owl:equivalentClass [
-        a owl:Class ;
-        owl:intersectionOf (
-            :Candidate
-            [ owl:onProperty :hasHardSkill ; owl:hasValue :ProgrammingSkill ]
-        )
-    ] .
-
-# HighMatch_DataScientist – punya DataAnalysis + ML + Statistics + AnalyticalThinking + Openness
-:HighMatch_DataScientist a owl:Class , :MatchCategory ;
-    owl:equivalentClass [
-        a owl:Class ;
-        owl:intersectionOf (
-            :Candidate
-            [ owl:onProperty :hasPersonalityTrait ; owl:hasValue :OpennessTrait ]
-            [ owl:onProperty :hasHardSkill ; owl:hasValue :DataAnalysisSkill ]
-            [ owl:onProperty :hasHardSkill ; owl:hasValue :MachineLearningSkill ]
-            [ owl:onProperty :hasHardSkill ; owl:hasValue :StatisticsSkill ]
-            [ owl:onProperty :hasSoftSkill ; owl:hasValue :AnalyticalThinkingSkill ]
-        )
-    ] .
-
-:MediumMatch_DataScientist a owl:Class , :MatchCategory ;
-    owl:equivalentClass [
-        a owl:Class ;
-        owl:intersectionOf (
-            :Candidate
-            [ owl:onProperty :hasHardSkill ; owl:hasValue :DataAnalysisSkill ]
-            [ owl:onProperty :hasSoftSkill ; owl:hasValue :AnalyticalThinkingSkill ]
-        )
-    ] .
-
-:LowMatch_DataScientist a owl:Class , :MatchCategory ;
-    owl:equivalentClass [
-        a owl:Class ;
-        owl:intersectionOf (
-            :Candidate
-            [ owl:onProperty :hasHardSkill ; owl:hasValue :DataAnalysisSkill ]
-        )
-    ] .
-
-#################################################################
-# SUGGESTION CLASSES (B: SuggestedFor<Job>)
-#################################################################
-
-:SuggestedForSoftwareEngineer a owl:Class , :SuggestionClass ;
-    owl:equivalentClass [
-        a owl:Class ;
-        owl:intersectionOf ( :Candidate :HighMatch_SoftwareEngineer )
-    ] .
-
-:SuggestedForDataScientist a owl:Class , :SuggestionClass ;
-    owl:equivalentClass [
-        a owl:Class ;
-        owl:intersectionOf ( :Candidate :HighMatch_DataScientist )
-    ] .
-
-#################################################################
-# APPLICATION-BASED MATCH CLASSES
-#################################################################
-
-:ApplicationWithHighMatch_SE a owl:Class ;
-    owl:equivalentClass [
-        a owl:Class ;
-        owl:intersectionOf (
-            :Application
-            [ owl:onProperty :hasApplicant ; owl:someValuesFrom :HighMatch_SoftwareEngineer ]
-            [ owl:onProperty :forJob ; owl:hasValue :SoftwareEngineer ]
-        )
-    ] .
+:Application a owl:Class ;
+	owl:disjointWith :Person .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ApplicationWithHighMatch_DS
 
 :ApplicationWithHighMatch_DS a owl:Class ;
-    owl:equivalentClass [
-        a owl:Class ;
-        owl:intersectionOf (
-            :Application
-            [ owl:onProperty :hasApplicant ; owl:someValuesFrom :HighMatch_DataScientist ]
-            [ owl:onProperty :forJob ; owl:hasValue :DataScientist ]
-        )
-    ] .
+	owl:equivalentClass _:genid15 .
+
+_:genid15 owl:intersectionOf _:genid20 .
+
+_:genid20 a rdf:List ;
+	rdf:first :Application ;
+	rdf:rest _:genid18 .
+
+_:genid18 a rdf:List ;
+	rdf:first _:genid19 .
+
+_:genid19 a owl:Restriction ;
+	owl:onProperty :hasApplicant ;
+	owl:someValuesFrom :HighMatch_DataScientist .
+
+_:genid18 rdf:rest _:genid16 .
+
+_:genid16 a rdf:List ;
+	rdf:first _:genid17 .
+
+_:genid17 a owl:Restriction ;
+	owl:onProperty :forJob ;
+	owl:hasValue :DataScientist .
+
+:DataScientist a owl:NamedIndividual .
+
+_:genid16 rdf:rest rdf:nil .
+
+_:genid15 a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ApplicationWithHighMatch_SE
+
+:ApplicationWithHighMatch_SE a owl:Class ;
+	owl:equivalentClass _:genid21 .
+
+_:genid21 owl:intersectionOf _:genid26 .
+
+_:genid26 a rdf:List ;
+	rdf:first :Application ;
+	rdf:rest _:genid24 .
+
+_:genid24 a rdf:List ;
+	rdf:first _:genid25 .
+
+_:genid25 a owl:Restriction ;
+	owl:onProperty :hasApplicant ;
+	owl:someValuesFrom :HighMatch_SoftwareEngineer .
+
+_:genid24 rdf:rest _:genid22 .
+
+_:genid22 a rdf:List ;
+	rdf:first _:genid23 .
+
+_:genid23 a owl:Restriction ;
+	owl:onProperty :forJob ;
+	owl:hasValue :SoftwareEngineer .
+
+:SoftwareEngineer a owl:NamedIndividual .
+
+_:genid22 rdf:rest rdf:nil .
+
+_:genid21 a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessAnalystJob
+
+:BusinessAnalystJob a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid27 .
+
+_:genid27 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Product_Field .
+
+:Product_Field a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate
+
+:Candidate a owl:Class ;
+	rdfs:subClassOf :Person , _:genid28 .
+
+_:genid28 a owl:Restriction ;
+	owl:onProperty :hasPersonalityTrait ;
+	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :PersonalityTrait .
+
+:Candidate rdfs:subClassOf _:genid29 .
+
+_:genid29 a owl:Restriction ;
+	owl:onProperty :hasSoftSkill ;
+	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ContentWriterJob
+
+:ContentWriterJob a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid30 .
+
+_:genid30 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Marketing_Field .
+
+:Marketing_Field a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSupportRepJob
+
+:CustomerSupportRepJob a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid31 .
+
+_:genid31 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :CustomerService_Field .
+
+:CustomerService_Field a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataScientist
+
+:DataScientist a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid32 .
+
+_:genid32 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Data_Field .
+
+:Data_Field a owl:NamedIndividual .
+
+:DataScientist rdfs:subClassOf _:genid33 .
+
+_:genid33 a owl:Restriction ;
+	owl:onProperty :requiresHardSkill ;
+	owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+	owl:onClass :HardSkill .
+
+:DataScientist rdfs:subClassOf _:genid34 .
+
+_:genid34 a owl:Restriction ;
+	owl:onProperty :requiresSoftSkill ;
+	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DevOpsEngineer
+
+:DevOpsEngineer a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid35 .
+
+_:genid35 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Technology_Field .
+
+:Technology_Field a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketerJob
+
+:DigitalMarketerJob a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid36 .
+
+_:genid36 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Marketing_Field .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Experience
+
+:Experience a owl:Class ;
+	owl:disjointWith :Person , :Skill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinanceAnalystJob
+
+:FinanceAnalystJob a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid37 .
+
+_:genid37 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Finance_Field .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRGeneralistJob
+
+:HRGeneralistJob a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid38 .
+
+_:genid38 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :HR_Field .
+
+:HR_Field a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HardSkill
+
+:HardSkill a owl:Class ;
+	rdfs:subClassOf :Skill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HighMatch_DataScientist
+
+:HighMatch_DataScientist a owl:Class ;
+	owl:equivalentClass _:genid39 .
+
+_:genid39 owl:intersectionOf _:genid50 .
+
+_:genid50 a rdf:List ;
+	rdf:first :Candidate ;
+	rdf:rest _:genid48 .
+
+_:genid48 a rdf:List ;
+	rdf:first _:genid49 .
+
+_:genid49 a owl:Restriction ;
+	owl:onProperty :hasHardSkill ;
+	owl:hasValue :DataAnalysisSkill .
+
+:DataAnalysisSkill a owl:NamedIndividual .
+
+_:genid48 rdf:rest _:genid46 .
+
+_:genid46 a rdf:List ;
+	rdf:first _:genid47 .
+
+_:genid47 a owl:Restriction ;
+	owl:onProperty :hasHardSkill ;
+	owl:hasValue :MachineLearningSkill .
+
+:MachineLearningSkill a owl:NamedIndividual .
+
+_:genid46 rdf:rest _:genid44 .
+
+_:genid44 a rdf:List ;
+	rdf:first _:genid45 .
+
+_:genid45 a owl:Restriction ;
+	owl:onProperty :hasHardSkill ;
+	owl:hasValue :StatisticsSkill .
+
+:StatisticsSkill a owl:NamedIndividual .
+
+_:genid44 rdf:rest _:genid42 .
+
+_:genid42 a rdf:List ;
+	rdf:first _:genid43 .
+
+_:genid43 a owl:Restriction ;
+	owl:onProperty :hasPersonalityTrait ;
+	owl:hasValue :OpennessTrait .
+
+:OpennessTrait a owl:NamedIndividual .
+
+_:genid42 rdf:rest _:genid40 .
+
+_:genid40 a rdf:List ;
+	rdf:first _:genid41 .
+
+_:genid41 a owl:Restriction ;
+	owl:onProperty :hasSoftSkill ;
+	owl:hasValue :AnalyticalThinkingSkill .
+
+:AnalyticalThinkingSkill a owl:NamedIndividual .
+
+_:genid40 rdf:rest rdf:nil .
+
+_:genid39 a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HighMatch_SoftwareEngineer
+
+:HighMatch_SoftwareEngineer a owl:Class ;
+	owl:equivalentClass _:genid51 .
+
+_:genid51 owl:intersectionOf _:genid68 .
+
+_:genid68 a rdf:List ;
+	rdf:first :Candidate ;
+	rdf:rest _:genid66 .
+
+_:genid66 a rdf:List ;
+	rdf:first _:genid67 .
+
+_:genid67 a owl:Restriction ;
+	owl:onProperty :hasHardSkill ;
+	owl:hasValue :GitSkill .
+
+:GitSkill a owl:NamedIndividual .
+
+_:genid66 rdf:rest _:genid64 .
+
+_:genid64 a rdf:List ;
+	rdf:first _:genid65 .
+
+_:genid65 a owl:Restriction ;
+	owl:onProperty :hasHardSkill ;
+	owl:hasValue :JavaSkill .
+
+:JavaSkill a owl:NamedIndividual .
+
+_:genid64 rdf:rest _:genid62 .
+
+_:genid62 a rdf:List ;
+	rdf:first _:genid63 .
+
+_:genid63 a owl:Restriction ;
+	owl:onProperty :hasHardSkill ;
+	owl:hasValue :ProgrammingSkill .
+
+:ProgrammingSkill a owl:NamedIndividual .
+
+_:genid62 rdf:rest _:genid60 .
+
+_:genid60 a rdf:List ;
+	rdf:first _:genid61 .
+
+_:genid61 a owl:Restriction ;
+	owl:onProperty :hasHardSkill ;
+	owl:hasValue :TestingQASkill .
+
+:TestingQASkill a owl:NamedIndividual .
+
+_:genid60 rdf:rest _:genid58 .
+
+_:genid58 a rdf:List ;
+	rdf:first _:genid59 .
+
+_:genid59 a owl:Restriction ;
+	owl:onProperty :hasPersonalityTrait ;
+	owl:hasValue :ConscientiousnessTrait .
+
+:ConscientiousnessTrait a owl:NamedIndividual .
+
+_:genid58 rdf:rest _:genid56 .
+
+_:genid56 a rdf:List ;
+	rdf:first _:genid57 .
+
+_:genid57 a owl:Restriction ;
+	owl:onProperty :hasPersonalityTrait ;
+	owl:hasValue :OpennessTrait .
+
+_:genid56 rdf:rest _:genid54 .
+
+_:genid54 a rdf:List ;
+	rdf:first _:genid55 .
+
+_:genid55 a owl:Restriction ;
+	owl:onProperty :hasSoftSkill ;
+	owl:hasValue :ProblemSolvingSkill .
+
+:ProblemSolvingSkill a owl:NamedIndividual .
+
+_:genid54 rdf:rest _:genid52 .
+
+_:genid52 a rdf:List ;
+	rdf:first _:genid53 .
+
+_:genid53 a owl:Restriction ;
+	owl:onProperty :hasSoftSkill ;
+	owl:hasValue :TeamworkSkill .
+
+:TeamworkSkill a owl:NamedIndividual .
+
+_:genid52 rdf:rest rdf:nil .
+
+_:genid51 a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#JobField
+
+:JobField a owl:Class ;
+	owl:disjointWith :JobOccupation , :Person , :Skill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#JobOccupation
+
+:JobOccupation a owl:Class ;
+	rdfs:subClassOf _:genid69 .
+
+_:genid69 a owl:Restriction ;
+	owl:onProperty :requiresHardSkill ;
+	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :HardSkill .
+
+:JobOccupation owl:disjointWith :Person , :Skill .
 
 #################################################################
-# WORD EXPRESSIONS – NLP-ish mapping
+#    CLEANED & MODERN CORPORATE JOBS
 #################################################################
 
-:word_led_team a :WordExpression ; :representsFacet :E_Assertiveness .
-:word_created_new_feature a :WordExpression ; :representsFacet :O_Creativity .
-:word_debugged_complex_bug a :WordExpression ; :representsFacet :C_SelfDiscipline .
-:word_analyzed_data a :WordExpression ; :representsFacet :O_Curiosity .
-:word_supported_customers a :WordExpression ; :representsFacet :A_Altruism .
+# --- TECHNOLOGY & IT JOBS ---
 
-#################################################################
-# PART 3 — CANDIDATES + EXPERIENCES + APPLICATIONS
-#################################################################
+:SoftwareEngineer rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:FrontendDeveloper rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:BackendDeveloper rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:FullStackDeveloper rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:MobileDeveloper rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:DevOpsEngineer rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:QAEngineer rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:UIUXDesigner rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:SystemAdministrator rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:NetworkArchitect rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:ITManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:ITSupportSpecialist rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+:SecurityAnalyst rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Technology_Field ] .
+
+
+# --- DATA & ANALYTICS JOBS ---
+
+:DataScientist rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Data_Field ] .
+
+:DataAnalyst rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Data_Field ] .
+
+:DataEngineer rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Data_Field ] .
+
+:BusinessIntelligenceAnalyst rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Data_Field ] .
+
+:Statistician rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Data_Field ] .
+
+
+# --- PRODUCT JOBS ---
+
+:ProductManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Product_Field ] .
+
+:ProductOwner rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Product_Field ] .
+
+:BusinessAnalyst rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Product_Field ] .
+
+:ScrumMaster rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Product_Field ] .
+
+
+# --- MARKETING JOBS ---
+
+:MarketingManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] .
+
+:DigitalMarketer rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] .
+
+:SocialMediaSpecialist rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] .
+
+:ContentWriter rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] .
+
+:SEO_Specialist rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] .
+
+:PublicRelationsSpecialist rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] .
+
+:BrandManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Marketing_Field ] .
+
+
+# --- SALES JOBS ---
+
+:SalesManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] .
+
+:AccountExecutive rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] .
+
+:BusinessDevelopmentManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] .
+
+:SalesRepresentative rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] .
+
+:SalesEngineer rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Sales_Field ] .
+
+
+# --- FINANCE & ACCOUNTING JOBS ---
+
+:FinanceManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] .
+
+:FinancialAnalyst rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] .
+
+:Accountant rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] .
+
+:Auditor rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] .
+
+:TaxSpecialist rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] .
+
+:AccountingClerk rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Finance_Field ] .
+
+
+# --- HR JOBS ---
+
+:HRManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :HR_Field ] .
+
+:HRGeneralist rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :HR_Field ] .
+
+:Recruiter rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :HR_Field ] .
+
+:TalentAcquisitionSpecialist rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :HR_Field ] .
+
+:HRAssistant rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :HR_Field ] .
+
+:TrainingSpecialist rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :HR_Field ] .
+
+
+# --- OPERATIONS & MANAGEMENT JOBS ---
+
+:OperationsManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] .
+
+:ProjectManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] .
+
+:OfficeManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] .
+
+:SupplyChainManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] .
+
+:LogisticsCoordinator rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] .
+
+:ManagementConsultant rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :Operations_Field ] .
+
+
+# --- CUSTOMER SERVICE JOBS ---
+
+:CustomerServiceManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] .
+
+:CustomerSupportSpecialist rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] .
+
+:CustomerSuccessManager rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] .
+
+:CallCenterAgent rdf:type owl:Class ;
+    rdfs:subClassOf :JobOccupation ,
+    [ rdf:type owl:Restriction ; owl:onProperty :inJobField ; owl:hasValue :CustomerService_Field ] .
+
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LowMatch_DataScientist
+
+:LowMatch_DataScientist a owl:Class ;
+	owl:equivalentClass _:genid70 .
+
+_:genid70 owl:intersectionOf _:genid73 .
+
+_:genid73 a rdf:List ;
+	rdf:first :Candidate ;
+	rdf:rest _:genid71 .
+
+_:genid71 a rdf:List ;
+	rdf:first _:genid72 .
+
+_:genid72 a owl:Restriction ;
+	owl:onProperty :hasHardSkill ;
+	owl:hasValue :DataAnalysisSkill .
+
+_:genid71 rdf:rest rdf:nil .
+
+_:genid70 a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LowMatch_SoftwareEngineer
+
+:LowMatch_SoftwareEngineer a owl:Class ;
+	owl:equivalentClass _:genid74 .
+
+_:genid74 owl:intersectionOf _:genid77 .
+
+_:genid77 a rdf:List ;
+	rdf:first :Candidate ;
+	rdf:rest _:genid75 .
+
+_:genid75 a rdf:List ;
+	rdf:first _:genid76 .
+
+_:genid76 a owl:Restriction ;
+	owl:onProperty :hasHardSkill ;
+	owl:hasValue :ProgrammingSkill .
+
+_:genid75 rdf:rest rdf:nil .
+
+_:genid74 a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MatchCategory
+
+:MatchCategory a owl:Class ;
+	owl:disjointWith :Person .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MediumMatch_DataScientist
+
+:MediumMatch_DataScientist a owl:Class ;
+	owl:equivalentClass _:genid78 .
+
+_:genid78 owl:intersectionOf _:genid83 .
+
+_:genid83 a rdf:List ;
+	rdf:first :Candidate ;
+	rdf:rest _:genid81 .
+
+_:genid81 a rdf:List ;
+	rdf:first _:genid82 .
+
+_:genid82 a owl:Restriction ;
+	owl:onProperty :hasHardSkill ;
+	owl:hasValue :DataAnalysisSkill .
+
+_:genid81 rdf:rest _:genid79 .
+
+_:genid79 a rdf:List ;
+	rdf:first _:genid80 .
+
+_:genid80 a owl:Restriction ;
+	owl:onProperty :hasSoftSkill ;
+	owl:hasValue :AnalyticalThinkingSkill .
+
+_:genid79 rdf:rest rdf:nil .
+
+_:genid78 a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MediumMatch_SoftwareEngineer
+
+:MediumMatch_SoftwareEngineer a owl:Class ;
+	owl:equivalentClass _:genid84 .
+
+_:genid84 owl:intersectionOf _:genid89 .
+
+_:genid89 a rdf:List ;
+	rdf:first :Candidate ;
+	rdf:rest _:genid87 .
+
+_:genid87 a rdf:List ;
+	rdf:first _:genid88 .
+
+_:genid88 a owl:Restriction ;
+	owl:onProperty :hasHardSkill ;
+	owl:hasValue :ProgrammingSkill .
+
+_:genid87 rdf:rest _:genid85 .
+
+_:genid85 a rdf:List ;
+	rdf:first _:genid86 .
+
+_:genid86 a owl:Restriction ;
+	owl:onProperty :hasSoftSkill ;
+	owl:hasValue :ProblemSolvingSkill .
+
+_:genid85 rdf:rest rdf:nil .
+
+_:genid84 a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#OperationsManagerJob
+
+:OperationsManagerJob a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid90 .
+
+_:genid90 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Operations_Field .
+
+:Operations_Field a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Person
+
+:Person a owl:Class ;
+	owl:disjointWith :Skill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PersonalityFacet
+
+:PersonalityFacet a owl:Class ;
+	owl:disjointWith :PersonalityTrait , :Skill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PersonalityQuestion
+
+:PersonalityQuestion a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PersonalityTrait
+
+:PersonalityTrait a owl:Class ;
+	owl:disjointWith :Skill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductManager
+
+:ProductManager a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid91 .
+
+_:genid91 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Product_Field .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProjectManagerJob
+
+:ProjectManagerJob a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid92 .
+
+_:genid92 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Operations_Field .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#QAEngineer
+
+:QAEngineer a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid93 .
+
+_:genid93 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Technology_Field .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Recruiter
+
+:Recruiter a owl:Class ;
+	rdfs:subClassOf :Person .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#RequiredSESkills
+
+:RequiredSESkills a owl:Class ;
+	owl:equivalentClass _:genid94 .
+
+_:genid94 a owl:Class ;
+	owl:oneOf _:genid99 .
+
+_:genid99 a rdf:List ;
+	rdf:first :GitSkill ;
+	rdf:rest _:genid98 .
+
+_:genid98 a rdf:List ;
+	rdf:first :JavaSkill ;
+	rdf:rest _:genid97 .
+
+_:genid97 a rdf:List ;
+	rdf:first :ProgrammingSkill ;
+	rdf:rest _:genid96 .
+
+_:genid96 a rdf:List ;
+	rdf:first :PythonSkill .
+
+:PythonSkill a owl:NamedIndividual .
+
+_:genid96 rdf:rest _:genid95 .
+
+_:genid95 a rdf:List ;
+	rdf:first :TestingQASkill ;
+	rdf:rest rdf:nil .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ResearchScientistJob
+
+:ResearchScientistJob a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid100 .
+
+_:genid100 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Data_Field .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesExecutiveJob
+
+:SalesExecutiveJob a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid101 .
+
+_:genid101 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Sales_Field .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Skill
+
+:Skill a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SoftSkill
+
+:SoftSkill a owl:Class ;
+	rdfs:subClassOf :Skill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SoftwareEngineer
+
+:SoftwareEngineer a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid102 .
+
+_:genid102 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Technology_Field .
+
+:SoftwareEngineer rdfs:subClassOf _:genid103 .
+
+_:genid103 a owl:Restriction ;
+	owl:onProperty :requiresHardSkill ;
+	owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+	owl:onClass :HardSkill .
+
+:SoftwareEngineer rdfs:subClassOf _:genid104 .
+
+_:genid104 a owl:Restriction ;
+	owl:onProperty :requiresSoftSkill ;
+	owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+	owl:onClass :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SuggestedForDataScientist
+
+:SuggestedForDataScientist a owl:Class ;
+	owl:equivalentClass _:genid105 .
+
+_:genid105 owl:intersectionOf _:genid107 .
+
+_:genid107 a rdf:List ;
+	rdf:first :Candidate ;
+	rdf:rest _:genid106 .
+
+_:genid106 a rdf:List ;
+	rdf:first :HighMatch_DataScientist ;
+	rdf:rest rdf:nil .
+
+_:genid105 a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SuggestedForSoftwareEngineer
+
+:SuggestedForSoftwareEngineer a owl:Class ;
+	owl:equivalentClass _:genid108 .
+
+_:genid108 owl:intersectionOf _:genid110 .
+
+_:genid110 a rdf:List ;
+	rdf:first :Candidate ;
+	rdf:rest _:genid109 .
+
+_:genid109 a rdf:List ;
+	rdf:first :HighMatch_SoftwareEngineer ;
+	rdf:rest rdf:nil .
+
+_:genid108 a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SuggestionClass
+
+:SuggestionClass a owl:Class .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TalentAcquisitionJob
+
+:TalentAcquisitionJob a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid111 .
+
+_:genid111 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :HR_Field .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#UIUXDesigner
+
+:UIUXDesigner a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid112 .
+
+_:genid112 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Technology_Field .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#WordExpression
+
+:WordExpression a owl:Class .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AWSkill
+
+:AWSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#A_Altruism
+
+:A_Altruism a owl:NamedIndividual , :PersonalityFacet ;
+	:facetOfTrait :AgreeablenessTrait .
+
+:AgreeablenessTrait a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#A_Compliance
+
+:A_Compliance a owl:NamedIndividual , :PersonalityFacet ;
+	:facetOfTrait :AgreeablenessTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#A_Trust
+
+:A_Trust a owl:NamedIndividual , :PersonalityFacet ;
+	:facetOfTrait :AgreeablenessTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AccountingSkill
+
+:AccountingSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ActiveListeningSkill
+
+:ActiveListeningSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AdaptabilitySkill
+
+:AdaptabilitySkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AdaptableCommunicationSkill
+
+:AdaptableCommunicationSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AdobeXDSkill
+
+:AdobeXDSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AgreeablenessTrait
+
+:AgreeablenessTrait a :PersonalityTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AnalyticalThinkingSkill
+
+:AnalyticalThinkingSkill a :SoftSkill .
+:ActiveLearning rdf:type :SoftSkill .
+:ActiveListening rdf:type :SoftSkill .
+:ComplexProblemSolving rdf:type :SoftSkill .
+:Coordination rdf:type :SoftSkill .
+:CriticalThinking rdf:type :SoftSkill .
+:EquipmentMaintenance rdf:type :SoftSkill .
+:EquipmentSelection rdf:type :SoftSkill .
+:Installation rdf:type :SoftSkill .
+:Instructing rdf:type :SoftSkill .
+:JudgmentAndDecisionMaking rdf:type :SoftSkill .
+:LearningStrategies rdf:type :SoftSkill .
+:ManagementOfFinancialResources rdf:type :SoftSkill .
+:ManagementOfMaterialResources rdf:type :SoftSkill .
+:ManagementOfPersonnelResources rdf:type :SoftSkill .
+:Mathematics rdf:type :SoftSkill .
+:Monitoring rdf:type :SoftSkill .
+:Negotiation rdf:type :SoftSkill .
+:OperationAndControl rdf:type :SoftSkill .
+:OperationMonitoring rdf:type :SoftSkill .
+:OperationsAnalysis rdf:type :SoftSkill .
+:Persuasion rdf:type :SoftSkill .
+:Programming rdf:type :SoftSkill .
+:QualityControlAnalysis rdf:type :SoftSkill .
+:ReadingComprehension rdf:type :SoftSkill .
+:Repairing rdf:type :SoftSkill .
+:Science rdf:type :SoftSkill .
+:ServiceOrientation rdf:type :SoftSkill .
+:SocialPerceptiveness rdf:type :SoftSkill .
+:Speaking rdf:type :SoftSkill .
+:SystemsAnalysis rdf:type :SoftSkill .
+:SystemsEvaluation rdf:type :SoftSkill .
+:TimeManagement rdf:type :SoftSkill .
+:Troubleshooting rdf:type :SoftSkill .
+
+
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App01_Minie_SE
+
+:App01_Minie_SE a owl:NamedIndividual , :Application ;
+	:forJob :SoftwareEngineer ;
+	:hasApplicant :Candidate01_Minie .
+
+:Candidate01_Minie a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App02_Budi_DS
+
+:App02_Budi_DS a owl:NamedIndividual , :Application ;
+	:forJob :DataScientist ;
+	:hasApplicant :Candidate02_Budi .
+
+:Candidate02_Budi a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App02_Budi_SE
+
+:App02_Budi_SE a owl:NamedIndividual , :Application ;
+	:forJob :SoftwareEngineer ;
+	:hasApplicant :Candidate02_Budi .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App03_Sari_DM
+
+:App03_Sari_DM a owl:NamedIndividual , :Application ;
+	:forJob :DigitalMarketerJob .
+
+:DigitalMarketerJob a owl:NamedIndividual .
+
+:App03_Sari_DM :hasApplicant :Candidate03_Sari .
+
+:Candidate03_Sari a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App03_Sari_SE
+
+:App03_Sari_SE a owl:NamedIndividual , :Application ;
+	:forJob :SoftwareEngineer ;
+	:hasApplicant :Candidate03_Sari .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App04_Andi_DevOps
+
+:App04_Andi_DevOps a owl:NamedIndividual , :Application ;
+	:forJob :DevOpsEngineer .
+
+:DevOpsEngineer a owl:NamedIndividual .
+
+:App04_Andi_DevOps :hasApplicant :Candidate04_Andi .
+
+:Candidate04_Andi a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App05_Rina_PM
+
+:App05_Rina_PM a owl:NamedIndividual , :Application ;
+	:forJob :ProductManager .
+
+:ProductManager a owl:NamedIndividual .
+
+:App05_Rina_PM :hasApplicant :Candidate05_Rina .
+
+:Candidate05_Rina a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App06_Dimas_FA
+
+:App06_Dimas_FA a owl:NamedIndividual , :Application ;
+	:forJob :FinanceAnalystJob .
+
+:FinanceAnalystJob a owl:NamedIndividual .
+
+:App06_Dimas_FA :hasApplicant :Candidate06_Dimas .
+
+:Candidate06_Dimas a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App07_Lala_HR
+
+:App07_Lala_HR a owl:NamedIndividual , :Application ;
+	:forJob :HRGeneralistJob .
+
+:HRGeneralistJob a owl:NamedIndividual .
+
+:App07_Lala_HR :hasApplicant :Candidate07_Lala .
+
+:Candidate07_Lala a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App08_Yoga_SELL
+
+:App08_Yoga_SELL a owl:NamedIndividual , :Application ;
+	:forJob :SalesExecutiveJob .
+
+:SalesExecutiveJob a owl:NamedIndividual .
+
+:App08_Yoga_SELL :hasApplicant :Candidate08_Yoga .
+
+:Candidate08_Yoga a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App09_Nia_CS
+
+:App09_Nia_CS a owl:NamedIndividual , :Application ;
+	:forJob :CustomerSupportRepJob .
+
+:CustomerSupportRepJob a owl:NamedIndividual .
+
+:App09_Nia_CS :hasApplicant :Candidate09_Nia .
+
+:Candidate09_Nia a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App10_Arif_QA
+
+:App10_Arif_QA a owl:NamedIndividual , :Application ;
+	:forJob :QAEngineer .
+
+:QAEngineer a owl:NamedIndividual .
+
+:App10_Arif_QA :hasApplicant :Candidate10_Arif .
+
+:Candidate10_Arif a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AttentionToDetailSkill
+
+:AttentionToDetailSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AzureSkill
+
+:AzureSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BudgetingSkill
+
+:BudgetingSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessAnalysisSkill
+
+:BusinessAnalysisSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CI_CD_Skill
+
+:CI_CD_Skill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CRMToolSkill
+
+:CRMToolSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CSharpSkill
+
+:CSharpSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#C_AchievementStriving
+
+:C_AchievementStriving a owl:NamedIndividual , :PersonalityFacet ;
+	:facetOfTrait :ConscientiousnessTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#C_Orderliness
+
+:C_Orderliness a owl:NamedIndividual , :PersonalityFacet ;
+	:facetOfTrait :ConscientiousnessTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#C_SelfDiscipline
+
+:C_SelfDiscipline a owl:NamedIndividual , :PersonalityFacet ;
+	:facetOfTrait :ConscientiousnessTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate01_Minie
 
 :Candidate01_Minie a :Candidate ;
-    :hasPersonalityTrait :OpennessTrait , :ConscientiousnessTrait ;
-    :hasFacet :O_Creativity , :C_SelfDiscipline , :C_AchievementStriving ;
-    :hasSoftSkill :ProblemSolvingSkill , :TeamworkSkill , :CommunicationSkill , :AttentionToDetailSkill ;
-    :hasHardSkill :ProgrammingSkill , :JavaSkill , :TestingQASkill , :GitSkill , :HTMLCSSSkill ;
-    :hasExperience :Exp01_Minie ;
-    :hasApplication :App01_Minie_SE .
+	:hasApplication :App01_Minie_SE ;
+	:hasExperience :Exp01_Minie .
 
-:Exp01_Minie a :Experience ;
-    :experienceInField :Technology_Field ;
-    :yearsOfExperience "3"^^xsd:int ;
-    :hasTitle "Junior Software Engineer" ;
-    :hasDescription "Developed features, debugged complex bugs, created new modules." ;
-    :mentionsWord :word_debugged_complex_bug , :word_created_new_feature .
+:Exp01_Minie a owl:NamedIndividual .
 
-:App01_Minie_SE a :Application ;
-    :hasApplicant :Candidate01_Minie ;
-    :forJob :SoftwareEngineer .
+:Candidate01_Minie :hasFacet :C_AchievementStriving , :C_SelfDiscipline , :O_Creativity .
+
+:O_Creativity a owl:NamedIndividual .
+
+:Candidate01_Minie :hasHardSkill :GitSkill , :HTMLCSSSkill .
+
+:HTMLCSSSkill a owl:NamedIndividual .
+
+:Candidate01_Minie :hasHardSkill :JavaSkill , :ProgrammingSkill , :TestingQASkill ;
+	:hasPersonalityTrait :ConscientiousnessTrait , :OpennessTrait ;
+	:hasSoftSkill :AttentionToDetailSkill , :CommunicationSkill .
+
+:CommunicationSkill a owl:NamedIndividual .
+
+:Candidate01_Minie :hasSoftSkill :ProblemSolvingSkill , :TeamworkSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate02_Budi
 
 :Candidate02_Budi a :Candidate ;
-    :hasPersonalityTrait :OpennessTrait ;
-    :hasFacet :O_Curiosity , :O_Creativity ;
-    :hasSoftSkill :AnalyticalThinkingSkill , :ProblemSolvingSkill , :TeamworkSkill ;
-    :hasHardSkill :PythonSkill , :DataAnalysisSkill , :MachineLearningSkill , :StatisticsSkill , :SQLSkill ;
-    :hasExperience :Exp02_Budi ;
-    :hasApplication :App02_Budi_DS , :App02_Budi_SE .
+	:hasApplication :App02_Budi_DS , :App02_Budi_SE ;
+	:hasExperience :Exp02_Budi .
 
-:Exp02_Budi a :Experience ;
-    :experienceInField :Data_Field ;
-    :yearsOfExperience "2"^^xsd:int ;
-    :hasTitle "Data Analyst" ;
-    :hasDescription "Analyzed customer behavioral data and built basic ML models." ;
-    :mentionsWord :word_analyzed_data .
+:Exp02_Budi a owl:NamedIndividual .
 
-:App02_Budi_DS a :Application ;
-    :hasApplicant :Candidate02_Budi ;
-    :forJob :DataScientist .
+:Candidate02_Budi :hasFacet :O_Creativity , :O_Curiosity .
 
-:App02_Budi_SE a :Application ;
-    :hasApplicant :Candidate02_Budi ;
-    :forJob :SoftwareEngineer .
+:O_Curiosity a owl:NamedIndividual .
+
+:Candidate02_Budi :hasHardSkill :DataAnalysisSkill , :MachineLearningSkill , :PythonSkill , :SQLSkill .
+
+:SQLSkill a owl:NamedIndividual .
+
+:Candidate02_Budi :hasHardSkill :StatisticsSkill ;
+	:hasPersonalityTrait :OpennessTrait ;
+	:hasSoftSkill :AnalyticalThinkingSkill , :ProblemSolvingSkill , :TeamworkSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate03_Sari
 
 :Candidate03_Sari a :Candidate ;
-    :hasPersonalityTrait :AgreeablenessTrait ;
-    :hasFacet :A_Altruism , :A_Trust ;
-    :hasSoftSkill :CommunicationSkill , :CreativitySoftSkill , :ContentWritingSkill , :EmpathySkill ;
-    :hasHardSkill :DigitalMarketingSkill , :ContentWritingSkill , :SEO_Skill , :SocialMediaMarketingSkill ;
-    :hasExperience :Exp03_Sari ;
-    :hasApplication :App03_Sari_DM , :App03_Sari_SE .
+	:hasApplication :App03_Sari_DM , :App03_Sari_SE ;
+	:hasExperience :Exp03_Sari .
 
-:Exp03_Sari a :Experience ;
-    :experienceInField :Marketing_Field ;
-    :yearsOfExperience "1"^^xsd:int ;
-    :hasTitle "Content Writer Intern" ;
-    :hasDescription "Wrote articles and managed multiple content calendars." ;
-    :mentionsWord :word_supported_customers .
+:Exp03_Sari a owl:NamedIndividual .
 
-:App03_Sari_DM a :Application ;
-    :hasApplicant :Candidate03_Sari ;
-    :forJob :DigitalMarketerJob .
+:Candidate03_Sari :hasFacet :A_Altruism , :A_Trust ;
+	:hasHardSkill :ContentWritingSkill .
 
-:App03_Sari_SE a :Application ;
-    :hasApplicant :Candidate03_Sari ;
-    :forJob :SoftwareEngineer .
+:ContentWritingSkill a owl:NamedIndividual .
+
+:Candidate03_Sari :hasHardSkill :DigitalMarketingSkill .
+
+:DigitalMarketingSkill a owl:NamedIndividual .
+
+:Candidate03_Sari :hasHardSkill :SEO_Skill .
+
+:SEO_Skill a owl:NamedIndividual .
+
+:Candidate03_Sari :hasHardSkill :SocialMediaMarketingSkill .
+
+:SocialMediaMarketingSkill a owl:NamedIndividual .
+
+:Candidate03_Sari :hasPersonalityTrait :AgreeablenessTrait ;
+	:hasSoftSkill :CommunicationSkill , :ContentWritingSkill , :CreativitySoftSkill .
+
+:CreativitySoftSkill a owl:NamedIndividual .
+
+:Candidate03_Sari :hasSoftSkill :EmpathySkill .
+
+:EmpathySkill a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate04_Andi
 
 :Candidate04_Andi a :Candidate ;
-    :hasPersonalityTrait :ConscientiousnessTrait ;
-    :hasFacet :C_Orderliness , :C_SelfDiscipline ;
-    :hasSoftSkill :ProblemSolvingSkill , :TimeManagementSkill , :TeamworkSkill ;
-    :hasHardSkill :LinuxSkill , :DockerSkill , :KubernetesSkill , :DevOpsSkill , :CI_CD_Skill , :ProgrammingSkill ;
-    :hasExperience :Exp04_Andi ;
-    :hasApplication :App04_Andi_DevOps .
+	:hasApplication :App04_Andi_DevOps ;
+	:hasExperience :Exp04_Andi .
 
-:Exp04_Andi a :Experience ;
-    :experienceInField :Technology_Field ;
-    :yearsOfExperience "4"^^xsd:int ;
-    :hasTitle "DevOps Engineer" ;
-    :hasDescription "Managed CI/CD pipelines and optimized Kubernetes clusters." .
+:Exp04_Andi a owl:NamedIndividual .
 
-:App04_Andi_DevOps a :Application ;
-    :hasApplicant :Candidate04_Andi ;
-    :forJob :DevOpsEngineer .
+:Candidate04_Andi :hasFacet :C_Orderliness , :C_SelfDiscipline ;
+	:hasHardSkill :CI_CD_Skill , :DevOpsSkill .
+
+:DevOpsSkill a owl:NamedIndividual .
+
+:Candidate04_Andi :hasHardSkill :DockerSkill .
+
+:DockerSkill a owl:NamedIndividual .
+
+:Candidate04_Andi :hasHardSkill :KubernetesSkill .
+
+:KubernetesSkill a owl:NamedIndividual .
+
+:Candidate04_Andi :hasHardSkill :LinuxSkill .
+
+:LinuxSkill a owl:NamedIndividual .
+
+:Candidate04_Andi :hasHardSkill :ProgrammingSkill ;
+	:hasPersonalityTrait :ConscientiousnessTrait ;
+	:hasSoftSkill :ProblemSolvingSkill , :TeamworkSkill , :TimeManagementSkill .
+
+:TimeManagementSkill a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate05_Rina
 
 :Candidate05_Rina a :Candidate ;
-    :hasPersonalityTrait :OpennessTrait , :ExtraversionTrait ;
-    :hasFacet :O_Curiosity , :E_Assertiveness ;
-    :hasSoftSkill :CommunicationSkill , :LeadershipSkill , :StakeholderManagementSkill , :DecisionMakingSkill , :AnalyticalThinkingSkill ;
-    :hasHardSkill :ProjectManagementSkill , :BusinessAnalysisSkill , :RequirementGatheringSkill , :UIUXDesignSkill ;
-    :hasExperience :Exp05_Rina ;
-    :hasApplication :App05_Rina_PM .
+	:hasApplication :App05_Rina_PM ;
+	:hasExperience :Exp05_Rina .
 
-:Exp05_Rina a :Experience ;
-    :experienceInField :Product_Field ;
-    :yearsOfExperience "5"^^xsd:int ;
-    :hasTitle "Product Manager" ;
-    :hasDescription "Led product roadmap, worked with UI/UX teams and engineers." ;
-    :mentionsWord :word_led_team .
+:Exp05_Rina a owl:NamedIndividual .
 
-:App05_Rina_PM a :Application ;
-    :hasApplicant :Candidate05_Rina ;
-    :forJob :ProductManager .
+:Candidate05_Rina :hasFacet :E_Assertiveness .
+
+:E_Assertiveness a owl:NamedIndividual .
+
+:Candidate05_Rina :hasFacet :O_Curiosity ;
+	:hasHardSkill :BusinessAnalysisSkill , :ProjectManagementSkill .
+
+:ProjectManagementSkill a owl:NamedIndividual .
+
+:Candidate05_Rina :hasHardSkill :RequirementGatheringSkill .
+
+:RequirementGatheringSkill a owl:NamedIndividual .
+
+:Candidate05_Rina :hasHardSkill :UIUXDesignSkill .
+
+:UIUXDesignSkill a owl:NamedIndividual .
+
+:Candidate05_Rina :hasPersonalityTrait :ExtraversionTrait .
+
+:ExtraversionTrait a owl:NamedIndividual .
+
+:Candidate05_Rina :hasPersonalityTrait :OpennessTrait ;
+	:hasSoftSkill :AnalyticalThinkingSkill , :CommunicationSkill , :DecisionMakingSkill .
+
+:DecisionMakingSkill a owl:NamedIndividual .
+
+:Candidate05_Rina :hasSoftSkill :LeadershipSkill .
+
+:LeadershipSkill a owl:NamedIndividual .
+
+:Candidate05_Rina :hasSoftSkill :StakeholderManagementSkill .
+
+:StakeholderManagementSkill a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate06_Dimas
 
 :Candidate06_Dimas a :Candidate ;
-    :hasPersonalityTrait :ConscientiousnessTrait ;
-    :hasFacet :C_AchievementStriving ;
-    :hasSoftSkill :AnalyticalThinkingSkill , :AttentionToDetailSkill , :TimeManagementSkill ;
-    :hasHardSkill :FinanceAnalysisSkill , :AccountingSkill , :ExcelAdvancedSkill , :ForecastingSkill , :BudgetingSkill ;
-    :hasExperience :Exp06_Dimas ;
-    :hasApplication :App06_Dimas_FA .
+	:hasApplication :App06_Dimas_FA ;
+	:hasExperience :Exp06_Dimas .
 
-:Exp06_Dimas a :Experience ;
-    :experienceInField :Finance_Field ;
-    :yearsOfExperience "3"^^xsd:int ;
-    :hasTitle "Finance Analyst" ;
-    :hasDescription "Prepared monthly reports, forecasting, and variance analysis." .
+:Exp06_Dimas a owl:NamedIndividual .
 
-:App06_Dimas_FA a :Application ;
-    :hasApplicant :Candidate06_Dimas ;
-    :forJob :FinanceAnalystJob .
+:Candidate06_Dimas :hasFacet :C_AchievementStriving ;
+	:hasHardSkill :AccountingSkill , :BudgetingSkill , :ExcelAdvancedSkill .
+
+:ExcelAdvancedSkill a owl:NamedIndividual .
+
+:Candidate06_Dimas :hasHardSkill :FinanceAnalysisSkill .
+
+:FinanceAnalysisSkill a owl:NamedIndividual .
+
+:Candidate06_Dimas :hasHardSkill :ForecastingSkill .
+
+:ForecastingSkill a owl:NamedIndividual .
+
+:Candidate06_Dimas :hasPersonalityTrait :ConscientiousnessTrait ;
+	:hasSoftSkill :AnalyticalThinkingSkill , :AttentionToDetailSkill , :TimeManagementSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate07_Lala
 
 :Candidate07_Lala a :Candidate ;
-    :hasPersonalityTrait :AgreeablenessTrait ;
-    :hasFacet :A_Altruism , :A_Compliance ;
-    :hasSoftSkill :EmpathySkill , :CommunicationSkill , :ConflictResolutionSkill , :ActiveListeningSkill ;
-    :hasHardSkill :HRISSkill , :RecruitmentSkill , :InterviewSkill , :PayrollSkill ;
-    :hasExperience :Exp07_Lala ;
-    :hasApplication :App07_Lala_HR .
+	:hasApplication :App07_Lala_HR ;
+	:hasExperience :Exp07_Lala .
 
-:Exp07_Lala a :Experience ;
-    :experienceInField :HR_Field ;
-    :yearsOfExperience "4"^^xsd:int ;
-    :hasTitle "HR Generalist" ;
-    :hasDescription "Handled recruitment, payroll, and employee well-being." .
+:Exp07_Lala a owl:NamedIndividual .
 
-:App07_Lala_HR a :Application ;
-    :hasApplicant :Candidate07_Lala ;
-    :forJob :HRGeneralistJob .
+:Candidate07_Lala :hasFacet :A_Altruism , :A_Compliance ;
+	:hasHardSkill :HRISSkill .
+
+:HRISSkill a owl:NamedIndividual .
+
+:Candidate07_Lala :hasHardSkill :InterviewSkill .
+
+:InterviewSkill a owl:NamedIndividual .
+
+:Candidate07_Lala :hasHardSkill :PayrollSkill .
+
+:PayrollSkill a owl:NamedIndividual .
+
+:Candidate07_Lala :hasHardSkill :RecruitmentSkill .
+
+:RecruitmentSkill a owl:NamedIndividual .
+
+:Candidate07_Lala :hasPersonalityTrait :AgreeablenessTrait ;
+	:hasSoftSkill :ActiveListeningSkill , :CommunicationSkill , :ConflictResolutionSkill .
+
+:ConflictResolutionSkill a owl:NamedIndividual .
+
+:Candidate07_Lala :hasSoftSkill :EmpathySkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate08_Yoga
 
 :Candidate08_Yoga a :Candidate ;
-    :hasPersonalityTrait :ExtraversionTrait ;
-    :hasFacet :E_Assertiveness , :E_Gregariousness ;
-    :hasSoftSkill :NegotiationSkill , :PersuasionSkill , :CommunicationSkill , :NetworkingSoftSkill ;
-    :hasHardSkill :SalesOperationsSkill , :ColdCallingSkill , :SalesPresentationSkill , :CRMToolSkill ;
-    :hasExperience :Exp08_Yoga ;
-    :hasApplication :App08_Yoga_SELL .
+	:hasApplication :App08_Yoga_SELL ;
+	:hasExperience :Exp08_Yoga .
 
-:Exp08_Yoga a :Experience ;
-    :experienceInField :Sales_Field ;
-    :yearsOfExperience "3"^^xsd:int ;
-    :hasTitle "Sales Executive" ;
-    :hasDescription "Closed B2B deals, managed CRM pipeline for 50+ accounts." .
+:Exp08_Yoga a owl:NamedIndividual .
 
-:App08_Yoga_SELL a :Application ;
-    :hasApplicant :Candidate08_Yoga ;
-    :forJob :SalesExecutiveJob .
+:Candidate08_Yoga :hasFacet :E_Assertiveness , :E_Gregariousness .
+
+:E_Gregariousness a owl:NamedIndividual .
+
+:Candidate08_Yoga :hasHardSkill :CRMToolSkill , :ColdCallingSkill .
+
+:ColdCallingSkill a owl:NamedIndividual .
+
+:Candidate08_Yoga :hasHardSkill :SalesOperationsSkill .
+
+:SalesOperationsSkill a owl:NamedIndividual .
+
+:Candidate08_Yoga :hasHardSkill :SalesPresentationSkill .
+
+:SalesPresentationSkill a owl:NamedIndividual .
+
+:Candidate08_Yoga :hasPersonalityTrait :ExtraversionTrait ;
+	:hasSoftSkill :CommunicationSkill , :NegotiationSkill .
+
+:NegotiationSkill a owl:NamedIndividual .
+
+:Candidate08_Yoga :hasSoftSkill :NetworkingSoftSkill .
+
+:NetworkingSoftSkill a owl:NamedIndividual .
+
+:Candidate08_Yoga :hasSoftSkill :PersuasionSkill .
+
+:PersuasionSkill a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate09_Nia
 
 :Candidate09_Nia a :Candidate ;
-    :hasPersonalityTrait :AgreeablenessTrait ;
-    :hasFacet :A_Trust , :A_Altruism ;
-    :hasSoftSkill :CustomerOrientationSkill , :CommunicationSkill , :StressManagementSkill , :ConflictManagementSkill ;
-    :hasHardSkill :CustomerSupportToolSkill , :TicketingSystemSkill ;
-    :hasExperience :Exp09_Nia ;
-    :hasApplication :App09_Nia_CS .
+	:hasApplication :App09_Nia_CS ;
+	:hasExperience :Exp09_Nia .
 
-:Exp09_Nia a :Experience ;
-    :experienceInField :CustomerService_Field ;
-    :yearsOfExperience "2"^^xsd:int ;
-    :hasTitle "Customer Support Rep" ;
-    :hasDescription "Handled tickets, solved user issues, carried out live chat." .
+:Exp09_Nia a owl:NamedIndividual .
 
-:App09_Nia_CS a :Application ;
-    :hasApplicant :Candidate09_Nia ;
-    :forJob :CustomerSupportRepJob .
+:Candidate09_Nia :hasFacet :A_Altruism , :A_Trust ;
+	:hasHardSkill :CustomerSupportToolSkill .
+
+:CustomerSupportToolSkill a owl:NamedIndividual .
+
+:Candidate09_Nia :hasHardSkill :TicketingSystemSkill .
+
+:TicketingSystemSkill a owl:NamedIndividual .
+
+:Candidate09_Nia :hasPersonalityTrait :AgreeablenessTrait ;
+	:hasSoftSkill :CommunicationSkill , :ConflictManagementSkill .
+
+:ConflictManagementSkill a owl:NamedIndividual .
+
+:Candidate09_Nia :hasSoftSkill :CustomerOrientationSkill .
+
+:CustomerOrientationSkill a owl:NamedIndividual .
+
+:Candidate09_Nia :hasSoftSkill :StressManagementSkill .
+
+:StressManagementSkill a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate10_Arif
 
 :Candidate10_Arif a :Candidate ;
-    :hasPersonalityTrait :ConscientiousnessTrait ;
-    :hasFacet :C_Orderliness , :C_SelfDiscipline ;
-    :hasSoftSkill :AttentionToDetailSkill , :ProblemSolvingSkill ;
-    :hasHardSkill :TestingQASkill , :UnitTestingSkill , :IntegrationTestingSkill , :ProgrammingSkill ;
-    :hasExperience :Exp10_Arif ;
-    :hasApplication :App10_Arif_QA .
+	:hasApplication :App10_Arif_QA ;
+	:hasExperience :Exp10_Arif .
+
+:Exp10_Arif a owl:NamedIndividual .
+
+:Candidate10_Arif :hasFacet :C_Orderliness , :C_SelfDiscipline ;
+	:hasHardSkill :IntegrationTestingSkill .
+
+:IntegrationTestingSkill a owl:NamedIndividual .
+
+:Candidate10_Arif :hasHardSkill :ProgrammingSkill , :TestingQASkill , :UnitTestingSkill .
+
+:UnitTestingSkill a owl:NamedIndividual .
+
+:Candidate10_Arif :hasPersonalityTrait :ConscientiousnessTrait ;
+	:hasSoftSkill :AttentionToDetailSkill , :ProblemSolvingSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CloudComputingSkill
+
+:CloudComputingSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CoachingSkill
+
+:CoachingSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ColdCallingSkill
+
+:ColdCallingSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CollaborationRemoteSkill
+
+:CollaborationRemoteSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CollaborationSkill
+
+:CollaborationSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CommunicationSkill
+
+:CommunicationSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CompensationBenefitSkill
+
+:CompensationBenefitSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ConflictManagementSkill
+
+:ConflictManagementSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ConflictResolutionSkill
+
+:ConflictResolutionSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ConscientiousnessTrait
+
+:ConscientiousnessTrait a :PersonalityTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ContentWritingSkill
+
+:ContentWritingSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CopywritingSkill
+
+:CopywritingSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CreativeThinkingSkill
+
+:CreativeThinkingSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CreativitySoftSkill
+
+:CreativitySoftSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerOrientationSkill
+
+:CustomerOrientationSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerService_Field
+
+:CustomerService_Field a :JobField .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSupportRepJob
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSupportToolSkill
+
+:CustomerSupportToolSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataAnalysisSkill
+
+:DataAnalysisSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataScientist
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Data_Field
+
+:Data_Field a :JobField ;
+	:hasSubField :Technology_Field .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DecisionMakingSkill
+
+:DecisionMakingSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DeepLearningSkill
+
+:DeepLearningSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DetailOrientedSkill
+
+:DetailOrientedSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DevOpsEngineer
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DevOpsSkill
+
+:DevOpsSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketerJob
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketingSkill
+
+:DigitalMarketingSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DockerSkill
+
+:DockerSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ERPManagementSkill
+
+:ERPManagementSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#E_Activity
+
+:E_Activity a owl:NamedIndividual , :PersonalityFacet ;
+	:facetOfTrait :ExtraversionTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#E_Assertiveness
+
+:E_Assertiveness a :PersonalityFacet ;
+	:facetOfTrait :ExtraversionTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#E_Gregariousness
+
+:E_Gregariousness a :PersonalityFacet ;
+	:facetOfTrait :ExtraversionTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EmailMarketingSkill
+
+:EmailMarketingSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EmpathySkill
+
+:EmpathySkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ExcelAdvancedSkill
+
+:ExcelAdvancedSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp01_Minie
+
+:Exp01_Minie a :Experience ;
+	:experienceInField :Technology_Field ;
+	:mentionsWord :word_created_new_feature .
+
+:word_created_new_feature a owl:NamedIndividual .
+
+:Exp01_Minie :mentionsWord :word_debugged_complex_bug .
+
+:word_debugged_complex_bug a owl:NamedIndividual .
+
+:Exp01_Minie :hasDescription "Developed features, debugged complex bugs, created new modules." ;
+	:hasTitle "Junior Software Engineer" ;
+	:yearsOfExperience "3"^^xsd:int .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp02_Budi
+
+:Exp02_Budi a :Experience ;
+	:experienceInField :Data_Field ;
+	:mentionsWord :word_analyzed_data .
+
+:word_analyzed_data a owl:NamedIndividual .
+
+:Exp02_Budi :hasDescription "Analyzed customer behavioral data and built basic ML models." ;
+	:hasTitle "Data Analyst" ;
+	:yearsOfExperience "2"^^xsd:int .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp03_Sari
+
+:Exp03_Sari a :Experience ;
+	:experienceInField :Marketing_Field ;
+	:mentionsWord :word_supported_customers .
+
+:word_supported_customers a owl:NamedIndividual .
+
+:Exp03_Sari :hasDescription "Wrote articles and managed multiple content calendars." ;
+	:hasTitle "Content Writer Intern" ;
+	:yearsOfExperience "1"^^xsd:int .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp04_Andi
+
+:Exp04_Andi a :Experience ;
+	:experienceInField :Technology_Field ;
+	:hasDescription "Managed CI/CD pipelines and optimized Kubernetes clusters." ;
+	:hasTitle "DevOps Engineer" ;
+	:yearsOfExperience "4"^^xsd:int .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp05_Rina
+
+:Exp05_Rina a :Experience ;
+	:experienceInField :Product_Field ;
+	:mentionsWord :word_led_team .
+
+:word_led_team a owl:NamedIndividual .
+
+:Exp05_Rina :hasDescription "Led product roadmap, worked with UI/UX teams and engineers." ;
+	:hasTitle "Product Manager" ;
+	:yearsOfExperience "5"^^xsd:int .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp06_Dimas
+
+:Exp06_Dimas a :Experience ;
+	:experienceInField :Finance_Field ;
+	:hasDescription "Prepared monthly reports, forecasting, and variance analysis." ;
+	:hasTitle "Finance Analyst" ;
+	:yearsOfExperience "3"^^xsd:int .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp07_Lala
+
+:Exp07_Lala a :Experience ;
+	:experienceInField :HR_Field ;
+	:hasDescription "Handled recruitment, payroll, and employee well-being." ;
+	:hasTitle "HR Generalist" ;
+	:yearsOfExperience "4"^^xsd:int .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp08_Yoga
+
+:Exp08_Yoga a :Experience ;
+	:experienceInField :Sales_Field ;
+	:hasDescription "Closed B2B deals, managed CRM pipeline for 50+ accounts." ;
+	:hasTitle "Sales Executive" ;
+	:yearsOfExperience "3"^^xsd:int .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp09_Nia
+
+:Exp09_Nia a :Experience ;
+	:experienceInField :CustomerService_Field ;
+	:hasDescription "Handled tickets, solved user issues, carried out live chat." ;
+	:hasTitle "Customer Support Rep" ;
+	:yearsOfExperience "2"^^xsd:int .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp10_Arif
 
 :Exp10_Arif a :Experience ;
-    :experienceInField :Technology_Field ;
-    :yearsOfExperience "2"^^xsd:int ;
-    :hasTitle "QA Engineer" ;
-    :hasDescription "Designed test plans, automated regression tests." .
+	:experienceInField :Technology_Field ;
+	:hasDescription "Designed test plans, automated regression tests." ;
+	:hasTitle "QA Engineer" ;
+	:yearsOfExperience "2"^^xsd:int .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ExtraversionTrait
 
-:App10_Arif_QA a :Application ;
-    :hasApplicant :Candidate10_Arif ;
-    :forJob :QAEngineer .
+:ExtraversionTrait a :PersonalityTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FigmaSkill
 
-#################################################################
-# END
-#################################################################
+:FigmaSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinanceAnalysisSkill
+
+:FinanceAnalysisSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinanceAnalystJob
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Finance_Field
+
+:Finance_Field a :JobField .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ForecastingSkill
+
+:ForecastingSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#GCPCloudSkill
+
+:GCPCloudSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#GitSkill
+
+:GitSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#GoogleAnalyticsSkill
+
+:GoogleAnalyticsSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRGeneralistJob
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRISSkill
+
+:HRISSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HR_Field
+
+:HR_Field a :JobField .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HTMLCSSSkill
+
+:HTMLCSSSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HighMatch_DataScientist
+
+:HighMatch_DataScientist a owl:NamedIndividual , :MatchCategory .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HighMatch_SoftwareEngineer
+
+:HighMatch_SoftwareEngineer a owl:NamedIndividual , :MatchCategory .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HubspotSkill
+
+:HubspotSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#InitiativeSkill
+
+:InitiativeSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#IntegrationTestingSkill
+
+:IntegrationTestingSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#InterpersonalSkill
+
+:InterpersonalSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#InterviewSkill
+
+:InterviewSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#InventoryManagementSkill
+
+:InventoryManagementSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#JavaScriptSkill
+
+:JavaScriptSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#JavaSkill
+
+:JavaSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#KubernetesSkill
+
+:KubernetesSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LeadershipSkill
+
+:LeadershipSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LegalComplianceSkill
+
+:LegalComplianceSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LinuxSkill
+
+:LinuxSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LogicalThinkingSkill
+
+:LogicalThinkingSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LowMatch_DataScientist
+
+:LowMatch_DataScientist a owl:NamedIndividual , :MatchCategory .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LowMatch_SoftwareEngineer
+
+:LowMatch_SoftwareEngineer a owl:NamedIndividual , :MatchCategory .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MachineLearningSkill
+
+:MachineLearningSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Marketing_Field
+
+:Marketing_Field a :JobField .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MediumMatch_DataScientist
+
+:MediumMatch_DataScientist a owl:NamedIndividual , :MatchCategory .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MediumMatch_SoftwareEngineer
+
+:MediumMatch_SoftwareEngineer a owl:NamedIndividual , :MatchCategory .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MentoringSkill
+
+:MentoringSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#N_Anxiety
+
+:N_Anxiety a owl:NamedIndividual , :PersonalityFacet ;
+	:facetOfTrait :NeuroticismTrait .
+
+:NeuroticismTrait a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#N_Depression
+
+:N_Depression a owl:NamedIndividual , :PersonalityFacet ;
+	:facetOfTrait :NeuroticismTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#N_SelfConsciousness
+
+:N_SelfConsciousness a owl:NamedIndividual , :PersonalityFacet ;
+	:facetOfTrait :NeuroticismTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NegotiationSkill
+
+:NegotiationSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NetworkingSoftSkill
+
+:NetworkingSoftSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NeuroticismTrait
+
+:NeuroticismTrait a :PersonalityTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NodeJSSkill
+
+:NodeJSSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#O_Aesthetic
+
+:O_Aesthetic a owl:NamedIndividual , :PersonalityFacet ;
+	:facetOfTrait :OpennessTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#O_Creativity
+
+:O_Creativity a :PersonalityFacet ;
+	:facetOfTrait :OpennessTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#O_Curiosity
+
+:O_Curiosity a :PersonalityFacet ;
+	:facetOfTrait :OpennessTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#OpennessTrait
+
+:OpennessTrait a :PersonalityTrait .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#OperationsManagementSkill
+
+:OperationsManagementSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Operations_Field
+
+:Operations_Field a :JobField .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#OrganizingSkill
+
+:OrganizingSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PHPSkill
+
+:PHPSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PayrollSkill
+
+:PayrollSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PersuasionSkill
+
+:PersuasionSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PipedriveSkill
+
+:PipedriveSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PlanningSkill
+
+:PlanningSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PowerBISkill
+
+:PowerBISkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PresentationSkill
+
+:PresentationSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProblemIdentificationSkill
+
+:ProblemIdentificationSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProblemSolvingSkill
+
+:ProblemSolvingSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProcessModelingSkill
+
+:ProcessModelingSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductManager
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Product_Field
+
+:Product_Field a :JobField ;
+	:hasSubField :Technology_Field .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProgrammingSkill
+
+:ProgrammingSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProjectManagementSkill
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PrototypingSkill
+
+:PrototypingSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PublicSpeakingSkill
+
+:PublicSpeakingSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PythonSkill
+
+:PythonSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q1
+
+:Q1 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :O_Creativity .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q10
+
+:Q10 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :E_Gregariousness .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q11
+
+:Q11 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :E_Activity .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q12
+
+:Q12 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :A_Trust .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q13
+
+:Q13 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :A_Altruism .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q14
+
+:Q14 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :A_Compliance .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q15
+
+:Q15 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :N_Anxiety .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q16
+
+:Q16 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :N_Anxiety .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q17
+
+:Q17 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :N_Depression .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q18
+
+:Q18 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :N_SelfConsciousness .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q19
+
+:Q19 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :O_Creativity .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q2
+
+:Q2 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :O_Creativity .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q20
+
+:Q20 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :C_SelfDiscipline .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q21
+
+:Q21 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :E_Assertiveness .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q22
+
+:Q22 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :A_Trust .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q23
+
+:Q23 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :A_Altruism .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q24
+
+:Q24 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :O_Curiosity .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q25
+
+:Q25 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :C_AchievementStriving .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q26
+
+:Q26 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :E_Gregariousness .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q27
+
+:Q27 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :N_Anxiety .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q28
+
+:Q28 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :N_SelfConsciousness .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q29
+
+:Q29 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :O_Aesthetic .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q3
+
+:Q3 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :O_Curiosity .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q30
+
+:Q30 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :C_Orderliness .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q4
+
+:Q4 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :O_Aesthetic .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q5
+
+:Q5 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :C_Orderliness .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q6
+
+:Q6 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :C_Orderliness .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q7
+
+:Q7 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :C_SelfDiscipline .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q8
+
+:Q8 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :C_AchievementStriving .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q9
+
+:Q9 a owl:NamedIndividual , :PersonalityQuestion ;
+	:measuresFacet :E_Assertiveness .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#QAEngineer
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#RSkill
+
+:RSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ReactSkill
+
+:ReactSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#RecruitmentSkill
+
+:RecruitmentSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#RequirementGatheringSkill
+
+:RequirementGatheringSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ResilienceSkill
+
+:ResilienceSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ResultOrientedSkill
+
+:ResultOrientedSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#RiskManagementSkill
+
+:RiskManagementSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SAPSkill
+
+:SAPSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SEM_Skill
+
+:SEM_Skill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SEO_Skill
+
+:SEO_Skill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SQLSkill
+
+:SQLSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesExecutiveJob
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesOperationsSkill
+
+:SalesOperationsSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesPresentationSkill
+
+:SalesPresentationSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Sales_Field
+
+:Sales_Field a :JobField .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SelfMotivationSkill
+
+:SelfMotivationSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SocialMediaMarketingSkill
+
+:SocialMediaMarketingSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SoftwareEngineer
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SpringBootSkill
+
+:SpringBootSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#StakeholderManagementSkill
+
+:StakeholderManagementSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#StatisticsSkill
+
+:StatisticsSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#StrategicThinkingSkill
+
+:StrategicThinkingSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#StressManagementSkill
+
+:StressManagementSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SuggestedForDataScientist
+
+:SuggestedForDataScientist a owl:NamedIndividual , :SuggestionClass .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SuggestedForSoftwareEngineer
+
+:SuggestedForSoftwareEngineer a owl:NamedIndividual , :SuggestionClass .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SupplyChainSkill
+
+:SupplyChainSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TableauSkill
+
+:TableauSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TeamCoordinationSkill
+
+:TeamCoordinationSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TeamworkSkill
+
+:TeamworkSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Technology_Field
+
+:Technology_Field a :JobField .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TestingQASkill
+
+:TestingQASkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TicketingSystemSkill
+
+:TicketingSystemSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TimeManagementSkill
+
+:TimeManagementSkill a :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#UIUXDesignSkill
+
+:UIUXDesignSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#UnitTestingSkill
+
+:UnitTestingSkill a :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#UserResearchSkill
+
+:UserResearchSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#WireframingSkill
+
+:WireframingSkill a owl:NamedIndividual , :HardSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#WorkEthicSkill
+
+:WorkEthicSkill a owl:NamedIndividual , :SoftSkill .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#word_analyzed_data
+
+:word_analyzed_data a :WordExpression ;
+	:representsFacet :O_Curiosity .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#word_created_new_feature
+
+:word_created_new_feature a :WordExpression ;
+	:representsFacet :O_Creativity .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#word_debugged_complex_bug
+
+:word_debugged_complex_bug a :WordExpression ;
+	:representsFacet :C_SelfDiscipline .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#word_led_team
+
+:word_led_team a :WordExpression ;
+	:representsFacet :E_Assertiveness .
+# 
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#word_supported_customers
+
+:word_supported_customers a :WordExpression ;
+	:representsFacet :A_Altruism .
+# 
+# Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi
