@@ -15,6 +15,10 @@
 # #################################################################
 # 
 # 
+# http://www.co-ode.org/ontologies/ont.owl#measuresTrait
+
+<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> a owl:ObjectProperty .
+# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#answeredBy
 
 :answeredBy a owl:ObjectProperty .
@@ -303,72 +307,18 @@ _:genid19 a owl:Restriction ;
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ApplicationWithHighMatch_DS
 
-:ApplicationWithHighMatch_DS a owl:Class ;
-	owl:equivalentClass _:genid20 .
-
-_:genid20 owl:intersectionOf _:genid25 .
-
-_:genid25 a rdf:List ;
-	rdf:first :Application ;
-	rdf:rest _:genid23 .
-
-_:genid23 a rdf:List ;
-	rdf:first _:genid24 .
-
-_:genid24 a owl:Restriction ;
-	owl:onProperty :hasApplicant ;
-	owl:someValuesFrom :HighMatch_DataScientist .
-
-_:genid23 rdf:rest _:genid21 .
-
-_:genid21 a rdf:List ;
-	rdf:first _:genid22 .
-
-_:genid22 a owl:Restriction ;
-	owl:onProperty :forJob ;
-	owl:hasValue :DataScientist .
-
-_:genid21 rdf:rest rdf:nil .
-
-_:genid20 a owl:Class .
+:ApplicationWithHighMatch_DS a owl:Class .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ApplicationWithHighMatch_SE
 
-:ApplicationWithHighMatch_SE a owl:Class ;
-	owl:equivalentClass _:genid26 .
-
-_:genid26 owl:intersectionOf _:genid31 .
-
-_:genid31 a rdf:List ;
-	rdf:first :Application ;
-	rdf:rest _:genid29 .
-
-_:genid29 a rdf:List ;
-	rdf:first _:genid30 .
-
-_:genid30 a owl:Restriction ;
-	owl:onProperty :hasApplicant ;
-	owl:someValuesFrom :HighMatch_SoftwareEngineer .
-
-_:genid29 rdf:rest _:genid27 .
-
-_:genid27 a rdf:List ;
-	rdf:first _:genid28 .
-
-_:genid28 a owl:Restriction ;
-	owl:onProperty :forJob ;
-	owl:hasValue :SoftwareEngineer .
-
-_:genid27 rdf:rest rdf:nil .
-
-_:genid26 a owl:Class .
+:ApplicationWithHighMatch_SE a owl:Class .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AuditAndReportingAnalystJob
 
 :AuditAndReportingAnalystJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid32 .
+	rdfs:subClassOf :JobOccupation , _:genid20 .
 
-_:genid32 a owl:Restriction ;
+_:genid20 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -377,45 +327,45 @@ _:genid32 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Auditor
 
 :Auditor a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid33 .
+	rdfs:subClassOf :JobOccupation , _:genid21 .
 
-_:genid33 a owl:Restriction ;
+_:genid21 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BackendDeveloper
 
 :BackendDeveloper a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid34 .
+	rdfs:subClassOf :JobOccupation , _:genid22 .
 
-_:genid34 a owl:Restriction ;
+_:genid22 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BrandManager
 
 :BrandManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid35 .
+	rdfs:subClassOf :JobOccupation , _:genid23 .
 
-_:genid35 a owl:Restriction ;
+_:genid23 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessAnalyst
 
 :BusinessAnalyst a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid36 .
+	rdfs:subClassOf :JobOccupation , _:genid24 .
 
-_:genid36 a owl:Restriction ;
+_:genid24 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Product_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessDevelopmentJob
 
 :BusinessDevelopmentJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid37 .
+	rdfs:subClassOf :JobOccupation , _:genid25 .
 
-_:genid37 a owl:Restriction ;
+_:genid25 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 
@@ -424,27 +374,27 @@ _:genid37 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessDevelopmentManager
 
 :BusinessDevelopmentManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid38 .
+	rdfs:subClassOf :JobOccupation , _:genid26 .
 
-_:genid38 a owl:Restriction ;
+_:genid26 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessIntelligenceAnalyst
 
 :BusinessIntelligenceAnalyst a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid39 .
+	rdfs:subClassOf :JobOccupation , _:genid27 .
 
-_:genid39 a owl:Restriction ;
+_:genid27 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Data_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessIntelligenceJob
 
 :BusinessIntelligenceJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid40 .
+	rdfs:subClassOf :JobOccupation , _:genid28 .
 
-_:genid40 a owl:Restriction ;
+_:genid28 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Data_Field .
 
@@ -453,9 +403,9 @@ _:genid40 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessOperationSupportJob
 
 :BusinessOperationSupportJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid41 .
+	rdfs:subClassOf :JobOccupation , _:genid29 .
 
-_:genid41 a owl:Restriction ;
+_:genid29 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -469,9 +419,9 @@ _:genid41 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CRMAndEmailMarketingJob
 
 :CRMAndEmailMarketingJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid42 .
+	rdfs:subClassOf :JobOccupation , _:genid30 .
 
-_:genid42 a owl:Restriction ;
+_:genid30 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -480,9 +430,9 @@ _:genid42 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CRMSpecialistJob
 
 :CRMSpecialistJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid43 .
+	rdfs:subClassOf :JobOccupation , _:genid31 .
 
-_:genid43 a owl:Restriction ;
+_:genid31 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -491,9 +441,9 @@ _:genid43 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CSOperationsJob
 
 :CSOperationsJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid44 .
+	rdfs:subClassOf :JobOccupation , _:genid32 .
 
-_:genid44 a owl:Restriction ;
+_:genid32 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -502,35 +452,18 @@ _:genid44 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CallCenterAgent
 
 :CallCenterAgent a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid45 .
+	rdfs:subClassOf :JobOccupation , _:genid33 .
 
-_:genid45 a owl:Restriction ;
+_:genid33 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate
-
-:Candidate a owl:Class ;
-	rdfs:subClassOf :Person , _:genid46 .
-
-_:genid46 a owl:Restriction ;
-	owl:onProperty :hasPersonalityTrait ;
-	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-	owl:onClass :PersonalityTrait .
-
-:Candidate rdfs:subClassOf _:genid47 .
-
-_:genid47 a owl:Restriction ;
-	owl:onProperty :hasSoftSkill ;
-	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-	owl:onClass :SoftSkill .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CenterOfExcellenceJob
 
 :CenterOfExcellenceJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid48 .
+	rdfs:subClassOf :JobOccupation , _:genid34 .
 
-_:genid48 a owl:Restriction ;
+_:genid34 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 
@@ -539,9 +472,9 @@ _:genid48 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CommunityMarketingJob
 
 :CommunityMarketingJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid49 .
+	rdfs:subClassOf :JobOccupation , _:genid35 .
 
-_:genid49 a owl:Restriction ;
+_:genid35 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -555,9 +488,9 @@ _:genid49 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ContentMarketingJob
 
 :ContentMarketingJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid50 .
+	rdfs:subClassOf :JobOccupation , _:genid36 .
 
-_:genid50 a owl:Restriction ;
+_:genid36 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -566,9 +499,9 @@ _:genid50 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ContentStrategistJob
 
 :ContentStrategistJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid51 .
+	rdfs:subClassOf :JobOccupation , _:genid37 .
 
-_:genid51 a owl:Restriction ;
+_:genid37 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -577,18 +510,18 @@ _:genid51 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ContentWriter
 
 :ContentWriter a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid52 .
+	rdfs:subClassOf :JobOccupation , _:genid38 .
 
-_:genid52 a owl:Restriction ;
+_:genid38 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CopywriterJob
 
 :CopywriterJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid53 .
+	rdfs:subClassOf :JobOccupation , _:genid39 .
 
-_:genid53 a owl:Restriction ;
+_:genid39 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -597,9 +530,9 @@ _:genid53 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CreditAnalystAndDataMonitoringJob
 
 :CreditAnalystAndDataMonitoringJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid54 .
+	rdfs:subClassOf :JobOccupation , _:genid40 .
 
-_:genid54 a owl:Restriction ;
+_:genid40 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -608,9 +541,9 @@ _:genid54 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CreditFinanceOperationJob
 
 :CreditFinanceOperationJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid55 .
+	rdfs:subClassOf :JobOccupation , _:genid41 .
 
-_:genid55 a owl:Restriction ;
+_:genid41 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -619,9 +552,9 @@ _:genid55 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CreditManagerJob
 
 :CreditManagerJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid56 .
+	rdfs:subClassOf :JobOccupation , _:genid42 .
 
-_:genid56 a owl:Restriction ;
+_:genid42 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -630,9 +563,9 @@ _:genid56 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerEngagementJob
 
 :CustomerEngagementJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid57 .
+	rdfs:subClassOf :JobOccupation , _:genid43 .
 
-_:genid57 a owl:Restriction ;
+_:genid43 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -641,9 +574,9 @@ _:genid57 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerExperienceJob
 
 :CustomerExperienceJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid58 .
+	rdfs:subClassOf :JobOccupation , _:genid44 .
 
-_:genid58 a owl:Restriction ;
+_:genid44 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -657,18 +590,18 @@ _:genid58 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerServiceManager
 
 :CustomerServiceManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid59 .
+	rdfs:subClassOf :JobOccupation , _:genid45 .
 
-_:genid59 a owl:Restriction ;
+_:genid45 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSuccessAdminJob
 
 :CustomerSuccessAdminJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid60 .
+	rdfs:subClassOf :JobOccupation , _:genid46 .
 
-_:genid60 a owl:Restriction ;
+_:genid46 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -677,9 +610,9 @@ _:genid60 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSuccessJob
 
 :CustomerSuccessJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid61 .
+	rdfs:subClassOf :JobOccupation , _:genid47 .
 
-_:genid61 a owl:Restriction ;
+_:genid47 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -688,9 +621,9 @@ _:genid61 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSuccessManager
 
 :CustomerSuccessManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid62 .
+	rdfs:subClassOf :JobOccupation , _:genid48 .
 
-_:genid62 a owl:Restriction ;
+_:genid48 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 # 
@@ -702,9 +635,9 @@ _:genid62 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSupportJob
 
 :CustomerSupportJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid63 .
+	rdfs:subClassOf :JobOccupation , _:genid49 .
 
-_:genid63 a owl:Restriction ;
+_:genid49 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -713,27 +646,27 @@ _:genid63 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSupportRepJob
 
 :CustomerSupportRepJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid64 .
+	rdfs:subClassOf :JobOccupation , _:genid50 .
 
-_:genid64 a owl:Restriction ;
+_:genid50 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSupportSpecialist
 
 :CustomerSupportSpecialist a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid65 .
+	rdfs:subClassOf :JobOccupation , _:genid51 .
 
-_:genid65 a owl:Restriction ;
+_:genid51 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataAnalyst
 
 :DataAnalyst a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid66 .
+	rdfs:subClassOf :JobOccupation , _:genid52 .
 
-_:genid66 a owl:Restriction ;
+_:genid52 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Data_Field .
 # 
@@ -745,18 +678,18 @@ _:genid66 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataEngineer
 
 :DataEngineer a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid67 .
+	rdfs:subClassOf :JobOccupation , _:genid53 .
 
-_:genid67 a owl:Restriction ;
+_:genid53 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Data_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataEngineerJob
 
 :DataEngineerJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid68 .
+	rdfs:subClassOf :JobOccupation , _:genid54 .
 
-_:genid68 a owl:Restriction ;
+_:genid54 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Data_Field .
 
@@ -780,22 +713,22 @@ _:genid68 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataScientist
 
 :DataScientist a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid69 .
+	rdfs:subClassOf :JobOccupation , _:genid55 .
 
-_:genid69 a owl:Restriction ;
+_:genid55 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Data_Field .
 
-:DataScientist rdfs:subClassOf _:genid70 .
+:DataScientist rdfs:subClassOf _:genid56 .
 
-_:genid70 a owl:Restriction ;
+_:genid56 a owl:Restriction ;
 	owl:onProperty :requiresHardSkill ;
 	owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
 	owl:onClass :HardSkill .
 
-:DataScientist rdfs:subClassOf _:genid71 .
+:DataScientist rdfs:subClassOf _:genid57 .
 
-_:genid71 a owl:Restriction ;
+_:genid57 a owl:Restriction ;
 	owl:onProperty :requiresSoftSkill ;
 	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 	owl:onClass :SoftSkill .
@@ -808,18 +741,18 @@ _:genid71 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DevOpsEngineer
 
 :DevOpsEngineer a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid72 .
+	rdfs:subClassOf :JobOccupation , _:genid58 .
 
-_:genid72 a owl:Restriction ;
+_:genid58 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DevOpsJob
 
 :DevOpsJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid73 .
+	rdfs:subClassOf :JobOccupation , _:genid59 .
 
-_:genid73 a owl:Restriction ;
+_:genid59 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
@@ -828,18 +761,18 @@ _:genid73 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketer
 
 :DigitalMarketer a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid74 .
+	rdfs:subClassOf :JobOccupation , _:genid60 .
 
-_:genid74 a owl:Restriction ;
+_:genid60 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketingJob
 
 :DigitalMarketingJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid75 .
+	rdfs:subClassOf :JobOccupation , _:genid61 .
 
-_:genid75 a owl:Restriction ;
+_:genid61 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -853,9 +786,9 @@ _:genid75 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EmployerBrandActivationJob
 
 :EmployerBrandActivationJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid76 .
+	rdfs:subClassOf :JobOccupation , _:genid62 .
 
-_:genid76 a owl:Restriction ;
+_:genid62 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
@@ -864,9 +797,9 @@ _:genid76 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EmployerBrandingJob
 
 :EmployerBrandingJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid77 .
+	rdfs:subClassOf :JobOccupation , _:genid63 .
 
-_:genid77 a owl:Restriction ;
+_:genid63 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
@@ -875,9 +808,9 @@ _:genid77 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EventActivationJob
 
 :EventActivationJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid78 .
+	rdfs:subClassOf :JobOccupation , _:genid64 .
 
-_:genid78 a owl:Restriction ;
+_:genid64 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -886,9 +819,9 @@ _:genid78 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EventMarketingJob
 
 :EventMarketingJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid79 .
+	rdfs:subClassOf :JobOccupation , _:genid65 .
 
-_:genid79 a owl:Restriction ;
+_:genid65 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -902,18 +835,18 @@ _:genid79 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinanceAnalystJob
 
 :FinanceAnalystJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid80 .
+	rdfs:subClassOf :JobOccupation , _:genid66 .
 
-_:genid80 a owl:Restriction ;
+_:genid66 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinanceAndAccountingStaffJob
 
 :FinanceAndAccountingStaffJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid81 .
+	rdfs:subClassOf :JobOccupation , _:genid67 .
 
-_:genid81 a owl:Restriction ;
+_:genid67 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -927,27 +860,27 @@ _:genid81 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinanceManager
 
 :FinanceManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid82 .
+	rdfs:subClassOf :JobOccupation , _:genid68 .
 
-_:genid82 a owl:Restriction ;
+_:genid68 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinancialAnalyst
 
 :FinancialAnalyst a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid83 .
+	rdfs:subClassOf :JobOccupation , _:genid69 .
 
-_:genid83 a owl:Restriction ;
+_:genid69 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinancialReportingJob
 
 :FinancialReportingJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid84 .
+	rdfs:subClassOf :JobOccupation , _:genid70 .
 
-_:genid84 a owl:Restriction ;
+_:genid70 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -956,9 +889,9 @@ _:genid84 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinancialServiceJob
 
 :FinancialServiceJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid85 .
+	rdfs:subClassOf :JobOccupation , _:genid71 .
 
-_:genid85 a owl:Restriction ;
+_:genid71 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -967,27 +900,27 @@ _:genid85 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FrontendDeveloper
 
 :FrontendDeveloper a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid86 .
+	rdfs:subClassOf :JobOccupation , _:genid72 .
 
-_:genid86 a owl:Restriction ;
+_:genid72 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FullStackDeveloper
 
 :FullStackDeveloper a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid87 .
+	rdfs:subClassOf :JobOccupation , _:genid73 .
 
-_:genid87 a owl:Restriction ;
+_:genid73 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#GAAndITSupportJob
 
 :GAAndITSupportJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid88 .
+	rdfs:subClassOf :JobOccupation , _:genid74 .
 
-_:genid88 a owl:Restriction ;
+_:genid74 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
@@ -996,9 +929,9 @@ _:genid88 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#GraphicDesignerJob
 
 :GraphicDesignerJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid89 .
+	rdfs:subClassOf :JobOccupation , _:genid75 .
 
-_:genid89 a owl:Restriction ;
+_:genid75 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -1007,9 +940,9 @@ _:genid89 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#GrowthMarketingJob
 
 :GrowthMarketingJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid90 .
+	rdfs:subClassOf :JobOccupation , _:genid76 .
 
-_:genid90 a owl:Restriction ;
+_:genid76 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -1018,9 +951,9 @@ _:genid90 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRAndGAOfficerJob
 
 :HRAndGAOfficerJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid91 .
+	rdfs:subClassOf :JobOccupation , _:genid77 .
 
-_:genid91 a owl:Restriction ;
+_:genid77 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
@@ -1029,18 +962,18 @@ _:genid91 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRAssistant
 
 :HRAssistant a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid92 .
+	rdfs:subClassOf :JobOccupation , _:genid78 .
 
-_:genid92 a owl:Restriction ;
+_:genid78 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :HR_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRGeneralist
 
 :HRGeneralist a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid93 .
+	rdfs:subClassOf :JobOccupation , _:genid79 .
 
-_:genid93 a owl:Restriction ;
+_:genid79 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :HR_Field .
 # 
@@ -1052,18 +985,18 @@ _:genid93 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRManager
 
 :HRManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid94 .
+	rdfs:subClassOf :JobOccupation , _:genid80 .
 
-_:genid94 a owl:Restriction ;
+_:genid80 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :HR_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRPeopleDevelopmentJob
 
 :HRPeopleDevelopmentJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid95 .
+	rdfs:subClassOf :JobOccupation , _:genid81 .
 
-_:genid95 a owl:Restriction ;
+_:genid81 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :HR_Field .
 
@@ -1072,9 +1005,9 @@ _:genid95 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRPeopleEngagementJob
 
 :HRPeopleEngagementJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid96 .
+	rdfs:subClassOf :JobOccupation , _:genid82 .
 
-_:genid96 a owl:Restriction ;
+_:genid82 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :HR_Field .
 
@@ -1085,173 +1018,30 @@ _:genid96 a owl:Restriction ;
 :HardSkill a owl:Class ;
 	rdfs:subClassOf :Skill .
 # 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HighMatch_DataScientist
-
-:HighMatch_DataScientist a owl:Class ;
-	owl:equivalentClass _:genid97 .
-
-_:genid97 owl:intersectionOf _:genid108 .
-
-_:genid108 a rdf:List ;
-	rdf:first :Candidate ;
-	rdf:rest _:genid106 .
-
-_:genid106 a rdf:List ;
-	rdf:first _:genid107 .
-
-_:genid107 a owl:Restriction ;
-	owl:onProperty :hasHardSkill ;
-	owl:hasValue :DataAnalysisSkill .
-
-_:genid106 rdf:rest _:genid104 .
-
-_:genid104 a rdf:List ;
-	rdf:first _:genid105 .
-
-_:genid105 a owl:Restriction ;
-	owl:onProperty :hasHardSkill ;
-	owl:hasValue :MachineLearningSkill .
-
-_:genid104 rdf:rest _:genid102 .
-
-_:genid102 a rdf:List ;
-	rdf:first _:genid103 .
-
-_:genid103 a owl:Restriction ;
-	owl:onProperty :hasHardSkill ;
-	owl:hasValue :StatisticsSkill .
-
-_:genid102 rdf:rest _:genid100 .
-
-_:genid100 a rdf:List ;
-	rdf:first _:genid101 .
-
-_:genid101 a owl:Restriction ;
-	owl:onProperty :hasPersonalityTrait ;
-	owl:hasValue :OpennessTrait .
-
-_:genid100 rdf:rest _:genid98 .
-
-_:genid98 a rdf:List ;
-	rdf:first _:genid99 .
-
-_:genid99 a owl:Restriction ;
-	owl:onProperty :hasSoftSkill ;
-	owl:hasValue :AnalyticalThinkingSkill .
-
-_:genid98 rdf:rest rdf:nil .
-
-_:genid97 a owl:Class .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HighMatch_SoftwareEngineer
-
-:HighMatch_SoftwareEngineer a owl:Class ;
-	owl:equivalentClass _:genid109 .
-
-_:genid109 owl:intersectionOf _:genid126 .
-
-_:genid126 a rdf:List ;
-	rdf:first :Candidate ;
-	rdf:rest _:genid124 .
-
-_:genid124 a rdf:List ;
-	rdf:first _:genid125 .
-
-_:genid125 a owl:Restriction ;
-	owl:onProperty :hasHardSkill ;
-	owl:hasValue :GitSkill .
-
-_:genid124 rdf:rest _:genid122 .
-
-_:genid122 a rdf:List ;
-	rdf:first _:genid123 .
-
-_:genid123 a owl:Restriction ;
-	owl:onProperty :hasHardSkill ;
-	owl:hasValue :JavaSkill .
-
-_:genid122 rdf:rest _:genid120 .
-
-_:genid120 a rdf:List ;
-	rdf:first _:genid121 .
-
-_:genid121 a owl:Restriction ;
-	owl:onProperty :hasHardSkill ;
-	owl:hasValue :ProgrammingSkill .
-
-_:genid120 rdf:rest _:genid118 .
-
-_:genid118 a rdf:List ;
-	rdf:first _:genid119 .
-
-_:genid119 a owl:Restriction ;
-	owl:onProperty :hasHardSkill ;
-	owl:hasValue :TestingQASkill .
-
-_:genid118 rdf:rest _:genid116 .
-
-_:genid116 a rdf:List ;
-	rdf:first _:genid117 .
-
-_:genid117 a owl:Restriction ;
-	owl:onProperty :hasPersonalityTrait ;
-	owl:hasValue :ConscientiousnessTrait .
-
-_:genid116 rdf:rest _:genid114 .
-
-_:genid114 a rdf:List ;
-	rdf:first _:genid115 .
-
-_:genid115 a owl:Restriction ;
-	owl:onProperty :hasPersonalityTrait ;
-	owl:hasValue :OpennessTrait .
-
-_:genid114 rdf:rest _:genid112 .
-
-_:genid112 a rdf:List ;
-	rdf:first _:genid113 .
-
-_:genid113 a owl:Restriction ;
-	owl:onProperty :hasSoftSkill ;
-	owl:hasValue :ProblemSolvingSkill .
-
-_:genid112 rdf:rest _:genid110 .
-
-_:genid110 a rdf:List ;
-	rdf:first _:genid111 .
-
-_:genid111 a owl:Restriction ;
-	owl:onProperty :hasSoftSkill ;
-	owl:hasValue :TeamworkSkill .
-
-_:genid110 rdf:rest rdf:nil .
-
-_:genid109 a owl:Class .
-# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ITManager
 
 :ITManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid127 .
+	rdfs:subClassOf :JobOccupation , _:genid83 .
 
-_:genid127 a owl:Restriction ;
+_:genid83 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ITSupportSpecialist
 
 :ITSupportSpecialist a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid128 .
+	rdfs:subClassOf :JobOccupation , _:genid84 .
 
-_:genid128 a owl:Restriction ;
+_:genid84 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#IllustratorJob
 
 :IllustratorJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid129 .
+	rdfs:subClassOf :JobOccupation , _:genid85 .
 
-_:genid129 a owl:Restriction ;
+_:genid85 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Product_Field .
 
@@ -1260,9 +1050,9 @@ _:genid129 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ImplementationSpecialistJob
 
 :ImplementationSpecialistJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid130 .
+	rdfs:subClassOf :JobOccupation , _:genid86 .
 
-_:genid130 a owl:Restriction ;
+_:genid86 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -1271,9 +1061,9 @@ _:genid130 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#InformationSecurityJob
 
 :InformationSecurityJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid131 .
+	rdfs:subClassOf :JobOccupation , _:genid87 .
 
-_:genid131 a owl:Restriction ;
+_:genid87 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
@@ -1287,9 +1077,9 @@ _:genid131 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#JobOccupation
 
 :JobOccupation a owl:Class ;
-	rdfs:subClassOf _:genid132 .
+	rdfs:subClassOf _:genid88 .
 
-_:genid132 a owl:Restriction ;
+_:genid88 a owl:Restriction ;
 	owl:onProperty :requiresHardSkill ;
 	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 	owl:onClass :HardSkill .
@@ -1299,9 +1089,9 @@ _:genid132 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#KeyAccountManagementJob
 
 :KeyAccountManagementJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid133 .
+	rdfs:subClassOf :JobOccupation , _:genid89 .
 
-_:genid133 a owl:Restriction ;
+_:genid89 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -1310,9 +1100,9 @@ _:genid133 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LeadGenerationJob
 
 :LeadGenerationJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid134 .
+	rdfs:subClassOf :JobOccupation , _:genid90 .
 
-_:genid134 a owl:Restriction ;
+_:genid90 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 
@@ -1321,9 +1111,9 @@ _:genid134 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LeadsManagementJob
 
 :LeadsManagementJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid135 .
+	rdfs:subClassOf :JobOccupation , _:genid91 .
 
-_:genid135 a owl:Restriction ;
+_:genid91 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 
@@ -1332,9 +1122,9 @@ _:genid135 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LegalOfficerJob
 
 :LegalOfficerJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid136 .
+	rdfs:subClassOf :JobOccupation , _:genid92 .
 
-_:genid136 a owl:Restriction ;
+_:genid92 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -1343,71 +1133,27 @@ _:genid136 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LogisticsCoordinator
 
 :LogisticsCoordinator a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid137 .
+	rdfs:subClassOf :JobOccupation , _:genid93 .
 
-_:genid137 a owl:Restriction ;
+_:genid93 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LowMatch_DataScientist
-
-:LowMatch_DataScientist a owl:Class ;
-	owl:equivalentClass _:genid138 .
-
-_:genid138 owl:intersectionOf _:genid141 .
-
-_:genid141 a rdf:List ;
-	rdf:first :Candidate ;
-	rdf:rest _:genid139 .
-
-_:genid139 a rdf:List ;
-	rdf:first _:genid140 .
-
-_:genid140 a owl:Restriction ;
-	owl:onProperty :hasHardSkill ;
-	owl:hasValue :DataAnalysisSkill .
-
-_:genid139 rdf:rest rdf:nil .
-
-_:genid138 a owl:Class .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LowMatch_SoftwareEngineer
-
-:LowMatch_SoftwareEngineer a owl:Class ;
-	owl:equivalentClass _:genid142 .
-
-_:genid142 owl:intersectionOf _:genid145 .
-
-_:genid145 a rdf:List ;
-	rdf:first :Candidate ;
-	rdf:rest _:genid143 .
-
-_:genid143 a rdf:List ;
-	rdf:first _:genid144 .
-
-_:genid144 a owl:Restriction ;
-	owl:onProperty :hasHardSkill ;
-	owl:hasValue :ProgrammingSkill .
-
-_:genid143 rdf:rest rdf:nil .
-
-_:genid142 a owl:Class .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ManagementConsultant
 
 :ManagementConsultant a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid146 .
+	rdfs:subClassOf :JobOccupation , _:genid94 .
 
-_:genid146 a owl:Restriction ;
+_:genid94 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MarketingAnalyticsJob
 
 :MarketingAnalyticsJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid147 .
+	rdfs:subClassOf :JobOccupation , _:genid95 .
 
-_:genid147 a owl:Restriction ;
+_:genid95 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -1416,9 +1162,9 @@ _:genid147 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MarketingAndCreativesJob
 
 :MarketingAndCreativesJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid148 .
+	rdfs:subClassOf :JobOccupation , _:genid96 .
 
-_:genid148 a owl:Restriction ;
+_:genid96 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -1432,9 +1178,9 @@ _:genid148 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MarketingManager
 
 :MarketingManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid149 .
+	rdfs:subClassOf :JobOccupation , _:genid97 .
 
-_:genid149 a owl:Restriction ;
+_:genid97 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 # 
@@ -1443,74 +1189,12 @@ _:genid149 a owl:Restriction ;
 :MatchCategory a owl:Class ;
 	owl:disjointWith :Person .
 # 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MediumMatch_DataScientist
-
-:MediumMatch_DataScientist a owl:Class ;
-	owl:equivalentClass _:genid150 .
-
-_:genid150 owl:intersectionOf _:genid155 .
-
-_:genid155 a rdf:List ;
-	rdf:first :Candidate ;
-	rdf:rest _:genid153 .
-
-_:genid153 a rdf:List ;
-	rdf:first _:genid154 .
-
-_:genid154 a owl:Restriction ;
-	owl:onProperty :hasHardSkill ;
-	owl:hasValue :DataAnalysisSkill .
-
-_:genid153 rdf:rest _:genid151 .
-
-_:genid151 a rdf:List ;
-	rdf:first _:genid152 .
-
-_:genid152 a owl:Restriction ;
-	owl:onProperty :hasSoftSkill ;
-	owl:hasValue :AnalyticalThinkingSkill .
-
-_:genid151 rdf:rest rdf:nil .
-
-_:genid150 a owl:Class .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MediumMatch_SoftwareEngineer
-
-:MediumMatch_SoftwareEngineer a owl:Class ;
-	owl:equivalentClass _:genid156 .
-
-_:genid156 owl:intersectionOf _:genid161 .
-
-_:genid161 a rdf:List ;
-	rdf:first :Candidate ;
-	rdf:rest _:genid159 .
-
-_:genid159 a rdf:List ;
-	rdf:first _:genid160 .
-
-_:genid160 a owl:Restriction ;
-	owl:onProperty :hasHardSkill ;
-	owl:hasValue :ProgrammingSkill .
-
-_:genid159 rdf:rest _:genid157 .
-
-_:genid157 a rdf:List ;
-	rdf:first _:genid158 .
-
-_:genid158 a owl:Restriction ;
-	owl:onProperty :hasSoftSkill ;
-	owl:hasValue :ProblemSolvingSkill .
-
-_:genid157 rdf:rest rdf:nil .
-
-_:genid156 a owl:Class .
-# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MerchantBusinessFinancialServiceJob
 
 :MerchantBusinessFinancialServiceJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid162 .
+	rdfs:subClassOf :JobOccupation , _:genid98 .
 
-_:genid162 a owl:Restriction ;
+_:genid98 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -1519,18 +1203,18 @@ _:genid162 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MobileDeveloper
 
 :MobileDeveloper a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid163 .
+	rdfs:subClassOf :JobOccupation , _:genid99 .
 
-_:genid163 a owl:Restriction ;
+_:genid99 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MobileDeveloperAndroidJob
 
 :MobileDeveloperAndroidJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid164 .
+	rdfs:subClassOf :JobOccupation , _:genid100 .
 
-_:genid164 a owl:Restriction ;
+_:genid100 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
@@ -1539,9 +1223,9 @@ _:genid164 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MobileDeveloperFlutterInternJob
 
 :MobileDeveloperFlutterInternJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid165 .
+	rdfs:subClassOf :JobOccupation , _:genid101 .
 
-_:genid165 a owl:Restriction ;
+_:genid101 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
@@ -1550,9 +1234,9 @@ _:genid165 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MobileDeveloperIOSJob
 
 :MobileDeveloperIOSJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid166 .
+	rdfs:subClassOf :JobOccupation , _:genid102 .
 
-_:genid166 a owl:Restriction ;
+_:genid102 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
@@ -1561,9 +1245,9 @@ _:genid166 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MotionGraphicDesignerJob
 
 :MotionGraphicDesignerJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid167 .
+	rdfs:subClassOf :JobOccupation , _:genid103 .
 
-_:genid167 a owl:Restriction ;
+_:genid103 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -1572,18 +1256,18 @@ _:genid167 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NetworkArchitect
 
 :NetworkArchitect a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid168 .
+	rdfs:subClassOf :JobOccupation , _:genid104 .
 
-_:genid168 a owl:Restriction ;
+_:genid104 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#OfficeManager
 
 :OfficeManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid169 .
+	rdfs:subClassOf :JobOccupation , _:genid105 .
 
-_:genid169 a owl:Restriction ;
+_:genid105 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 # 
@@ -1595,27 +1279,27 @@ _:genid169 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#OperationsManager
 
 :OperationsManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid170 .
+	rdfs:subClassOf :JobOccupation , _:genid106 .
 
-_:genid170 a owl:Restriction ;
+_:genid106 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#OperationsManagerJob
 
 :OperationsManagerJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid171 .
+	rdfs:subClassOf :JobOccupation , _:genid107 .
 
-_:genid171 a owl:Restriction ;
+_:genid107 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PRAndActivationJob
 
 :PRAndActivationJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid172 .
+	rdfs:subClassOf :JobOccupation , _:genid108 .
 
-_:genid172 a owl:Restriction ;
+_:genid108 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -1624,9 +1308,9 @@ _:genid172 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PartnerAccountExecutiveJob
 
 :PartnerAccountExecutiveJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid173 .
+	rdfs:subClassOf :JobOccupation , _:genid109 .
 
-_:genid173 a owl:Restriction ;
+_:genid109 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 
@@ -1635,9 +1319,9 @@ _:genid173 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PartnerAcquisitionJob
 
 :PartnerAcquisitionJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid174 .
+	rdfs:subClassOf :JobOccupation , _:genid110 .
 
-_:genid174 a owl:Restriction ;
+_:genid110 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 
@@ -1646,9 +1330,9 @@ _:genid174 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PartnerSuccessActivationJob
 
 :PartnerSuccessActivationJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid175 .
+	rdfs:subClassOf :JobOccupation , _:genid111 .
 
-_:genid175 a owl:Restriction ;
+_:genid111 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -1657,9 +1341,9 @@ _:genid175 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PartnerSuccessJob
 
 :PartnerSuccessJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid176 .
+	rdfs:subClassOf :JobOccupation , _:genid112 .
 
-_:genid176 a owl:Restriction ;
+_:genid112 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -1668,9 +1352,9 @@ _:genid176 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PartnershipStrategistJob
 
 :PartnershipStrategistJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid177 .
+	rdfs:subClassOf :JobOccupation , _:genid113 .
 
-_:genid177 a owl:Restriction ;
+_:genid113 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
@@ -1679,9 +1363,9 @@ _:genid177 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PayrollAndTaxComplianceJob
 
 :PayrollAndTaxComplianceJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid178 .
+	rdfs:subClassOf :JobOccupation , _:genid114 .
 
-_:genid178 a owl:Restriction ;
+_:genid114 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -1690,9 +1374,9 @@ _:genid178 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PeopleAnalyticsJob
 
 :PeopleAnalyticsJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid179 .
+	rdfs:subClassOf :JobOccupation , _:genid115 .
 
-_:genid179 a owl:Restriction ;
+_:genid115 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
@@ -1701,9 +1385,9 @@ _:genid179 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PeopleAndCultureJob
 
 :PeopleAndCultureJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid180 .
+	rdfs:subClassOf :JobOccupation , _:genid116 .
 
-_:genid180 a owl:Restriction ;
+_:genid116 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
@@ -1712,9 +1396,9 @@ _:genid180 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PeopleDevelopmentJob
 
 :PeopleDevelopmentJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid181 .
+	rdfs:subClassOf :JobOccupation , _:genid117 .
 
-_:genid181 a owl:Restriction ;
+_:genid117 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
@@ -1723,9 +1407,9 @@ _:genid181 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PeopleEngagementJob
 
 :PeopleEngagementJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid182 .
+	rdfs:subClassOf :JobOccupation , _:genid118 .
 
-_:genid182 a owl:Restriction ;
+_:genid118 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
@@ -1734,9 +1418,9 @@ _:genid182 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PeopleStrategyJob
 
 :PeopleStrategyJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid183 .
+	rdfs:subClassOf :JobOccupation , _:genid119 .
 
-_:genid183 a owl:Restriction ;
+_:genid119 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
@@ -1745,9 +1429,9 @@ _:genid183 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PerformanceMarketingJob
 
 :PerformanceMarketingJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid184 .
+	rdfs:subClassOf :JobOccupation , _:genid120 .
 
-_:genid184 a owl:Restriction ;
+_:genid120 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -1775,9 +1459,9 @@ _:genid184 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductDesignJob
 
 :ProductDesignJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid185 .
+	rdfs:subClassOf :JobOccupation , _:genid121 .
 
-_:genid185 a owl:Restriction ;
+_:genid121 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Product_Field .
 
@@ -1791,9 +1475,9 @@ _:genid185 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductManagementJob
 
 :ProductManagementJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid186 .
+	rdfs:subClassOf :JobOccupation , _:genid122 .
 
-_:genid186 a owl:Restriction ;
+_:genid122 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Product_Field .
 
@@ -1807,18 +1491,18 @@ _:genid186 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductManager
 
 :ProductManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid187 .
+	rdfs:subClassOf :JobOccupation , _:genid123 .
 
-_:genid187 a owl:Restriction ;
+_:genid123 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Product_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductMarketingAndCampaignSpecialistJob
 
 :ProductMarketingAndCampaignSpecialistJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid188 .
+	rdfs:subClassOf :JobOccupation , _:genid124 .
 
-_:genid188 a owl:Restriction ;
+_:genid124 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -1827,9 +1511,9 @@ _:genid188 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductMarketingJob
 
 :ProductMarketingJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid189 .
+	rdfs:subClassOf :JobOccupation , _:genid125 .
 
-_:genid189 a owl:Restriction ;
+_:genid125 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -1838,18 +1522,18 @@ _:genid189 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductOwner
 
 :ProductOwner a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid190 .
+	rdfs:subClassOf :JobOccupation , _:genid126 .
 
-_:genid190 a owl:Restriction ;
+_:genid126 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Product_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductOwnerJob
 
 :ProductOwnerJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid191 .
+	rdfs:subClassOf :JobOccupation , _:genid127 .
 
-_:genid191 a owl:Restriction ;
+_:genid127 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Product_Field .
 
@@ -1858,9 +1542,9 @@ _:genid191 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProjectManagementOfficeJob
 
 :ProjectManagementOfficeJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid192 .
+	rdfs:subClassOf :JobOccupation , _:genid128 .
 
-_:genid192 a owl:Restriction ;
+_:genid128 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
@@ -1869,9 +1553,9 @@ _:genid192 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProjectManagementTechJob
 
 :ProjectManagementTechJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid193 .
+	rdfs:subClassOf :JobOccupation , _:genid129 .
 
-_:genid193 a owl:Restriction ;
+_:genid129 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
@@ -1880,27 +1564,27 @@ _:genid193 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProjectManager
 
 :ProjectManager a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid194 .
+	rdfs:subClassOf :JobOccupation , _:genid130 .
 
-_:genid194 a owl:Restriction ;
+_:genid130 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProjectManagerJob
 
 :ProjectManagerJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid195 .
+	rdfs:subClassOf :JobOccupation , _:genid131 .
 
-_:genid195 a owl:Restriction ;
+_:genid131 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PublicRelationsSpecialist
 
 :PublicRelationsSpecialist a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid196 .
+	rdfs:subClassOf :JobOccupation , _:genid132 .
 
-_:genid196 a owl:Restriction ;
+_:genid132 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 # 
@@ -1912,38 +1596,29 @@ _:genid196 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#QAEngineer
 
 :QAEngineer a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid197 .
+	rdfs:subClassOf :JobOccupation , _:genid133 .
 
-_:genid197 a owl:Restriction ;
+_:genid133 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#QualityAssuranceJob
 
 :QualityAssuranceJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid198 .
+	rdfs:subClassOf :JobOccupation , _:genid134 .
 
-_:genid198 a owl:Restriction ;
+_:genid134 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
 :QualityAssuranceJob rdfs:label "Quality Assurance" .
 # 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Recruiter
-
-:Recruiter a owl:Class ;
-	rdfs:subClassOf :JobOccupation , :Person , _:genid199 .
-
-_:genid199 a owl:Restriction ;
-	owl:onProperty :inJobField ;
-	owl:hasValue :HR_Field .
-# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ReportingSpecialistJob
 
 :ReportingSpecialistJob a owl:Class ;
-	rdfs:subClassOf :JobOccupation , _:genid200 .
+	rdfs:subClassOf :JobOccupation , _:genid135 .
 
-_:genid200 a owl:Restriction ;
+_:genid135 a owl:Restriction ;
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -1952,18 +1627,30 @@ _:genid200 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ResearchScientistJob
 
 :ResearchScientistJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid201 .
 
 _:genid201 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid136 .
+
+_:genid136 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Data_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#RiskManagementJob
 
 :RiskManagementJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid202 .
 
 _:genid202 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid137 .
+
+_:genid137 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
@@ -1972,9 +1659,15 @@ _:genid202 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SDETJob
 
 :SDETJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid203 .
 
 _:genid203 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid138 .
+
+_:genid138 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
@@ -1983,9 +1676,15 @@ _:genid203 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SEOSpecialistJob
 
 :SEOSpecialistJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid204 .
 
 _:genid204 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid139 .
+
+_:genid139 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -1994,9 +1693,15 @@ _:genid204 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SEO_Specialist
 
 :SEO_Specialist a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid205 .
 
 _:genid205 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid140 .
+
+_:genid140 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 # 
@@ -2008,9 +1713,15 @@ _:genid205 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesDevelopmentRepresentativeJob
 
 :SalesDevelopmentRepresentativeJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid206 .
 
 _:genid206 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid141 .
+
+_:genid141 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 
@@ -2019,18 +1730,30 @@ _:genid206 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesEngineer
 
 :SalesEngineer a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid207 .
 
 _:genid207 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid142 .
+
+_:genid142 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesExecutiveJob
 
 :SalesExecutiveJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid208 .
 
 _:genid208 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid143 .
+
+_:genid143 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 # 
@@ -2042,18 +1765,30 @@ _:genid208 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesManager
 
 :SalesManager a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid209 .
 
 _:genid209 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid144 .
+
+_:genid144 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesOperationJob
 
 :SalesOperationJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid210 .
 
 _:genid210 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid145 .
+
+_:genid145 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 
@@ -2062,9 +1797,15 @@ _:genid210 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesOperationRenewalJob
 
 :SalesOperationRenewalJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid211 .
 
 _:genid211 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid146 .
+
+_:genid146 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -2073,27 +1814,45 @@ _:genid211 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesRepresentative
 
 :SalesRepresentative a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid212 .
 
 _:genid212 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid147 .
+
+_:genid147 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ScrumMaster
 
 :ScrumMaster a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid213 .
 
 _:genid213 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid148 .
+
+_:genid148 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Product_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SecurityAnalyst
 
 :SecurityAnalyst a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid214 .
 
 _:genid214 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid149 .
+
+_:genid149 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
@@ -2104,9 +1863,15 @@ _:genid214 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SocialMediaJob
 
 :SocialMediaJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid215 .
 
 _:genid215 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid150 .
+
+_:genid150 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -2115,9 +1880,15 @@ _:genid215 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SocialMediaSpecialist
 
 :SocialMediaSpecialist a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid216 .
 
 _:genid216 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid151 .
+
+_:genid151 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 # 
@@ -2129,6 +1900,7 @@ _:genid216 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SoftwareEngineer
 
 :SoftwareEngineer a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid217 .
 
 _:genid217 a owl:Restriction ;
@@ -2138,13 +1910,30 @@ _:genid217 a owl:Restriction ;
 :SoftwareEngineer rdfs:subClassOf _:genid218 .
 
 _:genid218 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid152 .
+
+_:genid152 a owl:Restriction ;
+	owl:onProperty :inJobField ;
+	owl:hasValue :Technology_Field .
+
+:SoftwareEngineer rdfs:subClassOf _:genid153 .
+
+_:genid153 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :requiresHardSkill ;
 	owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
 	owl:onClass :HardSkill .
 
+<<<<<<< HEAD
 :SoftwareEngineer rdfs:subClassOf _:genid219 .
 
 _:genid219 a owl:Restriction ;
+=======
+:SoftwareEngineer rdfs:subClassOf _:genid154 .
+
+_:genid154 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :requiresSoftSkill ;
 	owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
 	owl:onClass :SoftSkill .
@@ -2152,9 +1941,15 @@ _:genid219 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SoftwareEngineerFrontendJob
 
 :SoftwareEngineerFrontendJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid220 .
 
 _:genid220 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid155 .
+
+_:genid155 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
@@ -2168,23 +1963,36 @@ _:genid220 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Statistician
 
 :Statistician a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid221 .
 
 _:genid221 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid156 .
+
+_:genid156 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Data_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#StrategicPartnershipAndGovernmentRelationAssociateJob
 
 :StrategicPartnershipAndGovernmentRelationAssociateJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid222 .
 
 _:genid222 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid157 .
+
+_:genid157 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 
 :StrategicPartnershipAndGovernmentRelationAssociateJob rdfs:label "Strategic Partnership & Government Relation Associate" .
 # 
+<<<<<<< HEAD
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SuggestedForDataScientist
 
 :SuggestedForDataScientist a owl:Class ;
@@ -2229,42 +2037,74 @@ _:genid226 a owl:Class .
 	rdfs:subClassOf :JobOccupation , _:genid229 .
 
 _:genid229 a owl:Restriction ;
+=======
+# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SupplyChainManager
+
+:SupplyChainManager a owl:Class ;
+	rdfs:subClassOf :JobOccupation , _:genid158 .
+
+_:genid158 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Operations_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SystemAdministrator
 
 :SystemAdministrator a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid230 .
 
 _:genid230 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid159 .
+
+_:genid159 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TalentAcquisitionJob
 
 :TalentAcquisitionJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid231 .
 
 _:genid231 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid160 .
+
+_:genid160 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :HR_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TalentAcquisitionSpecialist
 
 :TalentAcquisitionSpecialist a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid232 .
 
 _:genid232 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid161 .
+
+_:genid161 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :HR_Field .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TalentAcquisitionSpecialistJob
 
 :TalentAcquisitionSpecialistJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid233 .
 
 _:genid233 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid162 .
+
+_:genid162 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :HR_Field .
 
@@ -2273,9 +2113,15 @@ _:genid233 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TaxOfficerJob
 
 :TaxOfficerJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid234 .
 
 _:genid234 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid163 .
+
+_:genid163 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 
@@ -2284,9 +2130,15 @@ _:genid234 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TaxSpecialist
 
 :TaxSpecialist a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid235 .
 
 _:genid235 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid164 .
+
+_:genid164 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Finance_Field .
 # 
@@ -2298,9 +2150,15 @@ _:genid235 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TechnicalProgramManagerJob
 
 :TechnicalProgramManagerJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid236 .
 
 _:genid236 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid165 .
+
+_:genid165 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
@@ -2309,9 +2167,15 @@ _:genid236 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TechnicalSupportJob
 
 :TechnicalSupportJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid237 .
 
 _:genid237 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid166 .
+
+_:genid166 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :CustomerService_Field .
 
@@ -2320,9 +2184,15 @@ _:genid237 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TechnologyJob
 
 :TechnologyJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid238 .
 
 _:genid238 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid167 .
+
+_:genid167 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 
@@ -2331,9 +2201,15 @@ _:genid238 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TelesalesJob
 
 :TelesalesJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid239 .
 
 _:genid239 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid168 .
+
+_:genid168 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Sales_Field .
 
@@ -2342,9 +2218,15 @@ _:genid239 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TrainingSpecialist
 
 :TrainingSpecialist a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid240 .
 
 _:genid240 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid169 .
+
+_:genid169 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :HR_Field .
 # 
@@ -2356,9 +2238,15 @@ _:genid240 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#UIUXDesigner
 
 :UIUXDesigner a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid241 .
 
 _:genid241 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid170 .
+
+_:genid170 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Technology_Field .
 # 
@@ -2370,9 +2258,15 @@ _:genid241 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#UXResearcherJob
 
 :UXResearcherJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid242 .
 
 _:genid242 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid171 .
+
+_:genid171 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Product_Field .
 
@@ -2381,9 +2275,15 @@ _:genid242 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#UXWriterJob
 
 :UXWriterJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid243 .
 
 _:genid243 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid172 .
+
+_:genid172 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Product_Field .
 
@@ -2401,9 +2301,15 @@ _:genid243 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#WordPressDeveloperJob
 
 :WordPressDeveloperJob a owl:Class ;
+<<<<<<< HEAD
 	rdfs:subClassOf :JobOccupation , _:genid244 .
 
 _:genid244 a owl:Restriction ;
+=======
+	rdfs:subClassOf :JobOccupation , _:genid173 .
+
+_:genid173 a owl:Restriction ;
+>>>>>>> 0fd20b7ed626a655560bc12ed4a31e1feaf184d3
 	owl:onProperty :inJobField ;
 	owl:hasValue :Marketing_Field .
 
@@ -2480,78 +2386,6 @@ _:genid244 a owl:Restriction ;
 
 :AnalyticalThinkingSkill a owl:NamedIndividual , :SoftSkill .
 # 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App01_Minie_SE
-
-:App01_Minie_SE a owl:NamedIndividual , :Application ;
-	:forJob :SoftwareEngineer ;
-	:hasApplicant :Candidate01_Minie .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App02_Budi_DS
-
-:App02_Budi_DS a owl:NamedIndividual , :Application ;
-	:forJob :DataScientist ;
-	:hasApplicant :Candidate02_Budi .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App02_Budi_SE
-
-:App02_Budi_SE a owl:NamedIndividual , :Application ;
-	:forJob :SoftwareEngineer ;
-	:hasApplicant :Candidate02_Budi .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App03_Sari_DM
-
-:App03_Sari_DM a owl:NamedIndividual , :Application ;
-	:forJob :DigitalMarketerJob ;
-	:hasApplicant :Candidate03_Sari .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App03_Sari_SE
-
-:App03_Sari_SE a owl:NamedIndividual , :Application ;
-	:forJob :SoftwareEngineer ;
-	:hasApplicant :Candidate03_Sari .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App04_Andi_DevOps
-
-:App04_Andi_DevOps a owl:NamedIndividual , :Application ;
-	:forJob :DevOpsEngineer ;
-	:hasApplicant :Candidate04_Andi .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App05_Rina_PM
-
-:App05_Rina_PM a owl:NamedIndividual , :Application ;
-	:forJob :ProductManager ;
-	:hasApplicant :Candidate05_Rina .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App06_Dimas_FA
-
-:App06_Dimas_FA a owl:NamedIndividual , :Application ;
-	:forJob :FinanceAnalystJob ;
-	:hasApplicant :Candidate06_Dimas .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App07_Lala_HR
-
-:App07_Lala_HR a owl:NamedIndividual , :Application ;
-	:forJob :HRGeneralistJob ;
-	:hasApplicant :Candidate07_Lala .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App08_Yoga_SELL
-
-:App08_Yoga_SELL a owl:NamedIndividual , :Application ;
-	:forJob :SalesExecutiveJob ;
-	:hasApplicant :Candidate08_Yoga .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App09_Nia_CS
-
-:App09_Nia_CS a owl:NamedIndividual , :Application ;
-	:forJob :CustomerSupportRepJob ;
-	:hasApplicant :Candidate09_Nia .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#App10_Arif_QA
-
-:App10_Arif_QA a owl:NamedIndividual , :Application ;
-	:forJob :QAEngineer ;
-	:hasApplicant :Candidate10_Arif .
-# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AttentionToDetailSkill
 
 :AttentionToDetailSkill a owl:NamedIndividual , :SoftSkill .
@@ -2609,106 +2443,6 @@ _:genid244 a owl:Restriction ;
 
 :C_SelfDiscipline a owl:NamedIndividual , :PersonalityFacet ;
 	:facetOfTrait :ConscientiousnessTrait .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate01_Minie
-
-:Candidate01_Minie a owl:NamedIndividual , :Candidate ;
-	:hasApplication :App01_Minie_SE ;
-	:hasExperience :Exp01_Minie ;
-	:hasFacet :C_AchievementStriving , :C_SelfDiscipline , :O_Creativity ;
-	:hasHardSkill :GitSkill , :HTMLCSSSkill , :JavaSkill , :ProgrammingSkill , :TestingQASkill ;
-	:hasPersonalityTrait :ConscientiousnessTrait , :OpennessTrait ;
-	:hasSoftSkill :AttentionToDetailSkill , :CommunicationSkill , :ProblemSolvingSkill , :TeamworkSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate02_Budi
-
-:Candidate02_Budi a owl:NamedIndividual , :Candidate ;
-	:hasApplication :App02_Budi_DS , :App02_Budi_SE ;
-	:hasExperience :Exp02_Budi ;
-	:hasFacet :O_Creativity , :O_Curiosity ;
-	:hasHardSkill :DataAnalysisSkill , :MachineLearningSkill , :PythonSkill , :SQLSkill , :StatisticsSkill ;
-	:hasPersonalityTrait :OpennessTrait ;
-	:hasSoftSkill :AnalyticalThinkingSkill , :ProblemSolvingSkill , :TeamworkSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate03_Sari
-
-:Candidate03_Sari a owl:NamedIndividual , :Candidate ;
-	:hasApplication :App03_Sari_DM , :App03_Sari_SE ;
-	:hasExperience :Exp03_Sari ;
-	:hasFacet :A_Altruism , :A_Trust ;
-	:hasHardSkill :ContentWritingSkill , :DigitalMarketingSkill , :SEO_Skill , :SocialMediaMarketingSkill ;
-	:hasPersonalityTrait :AgreeablenessTrait ;
-	:hasSoftSkill :CommunicationSkill , :ContentWritingSkill , :CreativitySoftSkill , :EmpathySkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate04_Andi
-
-:Candidate04_Andi a owl:NamedIndividual , :Candidate ;
-	:hasApplication :App04_Andi_DevOps ;
-	:hasExperience :Exp04_Andi ;
-	:hasFacet :C_Orderliness , :C_SelfDiscipline ;
-	:hasHardSkill :CI_CD_Skill , :DevOpsSkill , :DockerSkill , :KubernetesSkill , :LinuxSkill , :ProgrammingSkill ;
-	:hasPersonalityTrait :ConscientiousnessTrait ;
-	:hasSoftSkill :ProblemSolvingSkill , :TeamworkSkill , :TimeManagementSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate05_Rina
-
-:Candidate05_Rina a owl:NamedIndividual , :Candidate ;
-	:hasApplication :App05_Rina_PM ;
-	:hasExperience :Exp05_Rina ;
-	:hasFacet :E_Assertiveness , :O_Curiosity ;
-	:hasHardSkill :BusinessAnalysisSkill , :ProjectManagementSkill , :RequirementGatheringSkill , :UIUXDesignSkill ;
-	:hasPersonalityTrait :ExtraversionTrait , :OpennessTrait ;
-	:hasSoftSkill :AnalyticalThinkingSkill , :CommunicationSkill , :DecisionMakingSkill , :LeadershipSkill , :StakeholderManagementSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate06_Dimas
-
-:Candidate06_Dimas a owl:NamedIndividual , :Candidate ;
-	:hasApplication :App06_Dimas_FA ;
-	:hasExperience :Exp06_Dimas ;
-	:hasFacet :C_AchievementStriving ;
-	:hasHardSkill :AccountingSkill , :BudgetingSkill , :ExcelAdvancedSkill , :FinanceAnalysisSkill , :ForecastingSkill ;
-	:hasPersonalityTrait :ConscientiousnessTrait ;
-	:hasSoftSkill :AnalyticalThinkingSkill , :AttentionToDetailSkill , :TimeManagementSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate07_Lala
-
-:Candidate07_Lala a owl:NamedIndividual , :Candidate ;
-	:hasApplication :App07_Lala_HR ;
-	:hasExperience :Exp07_Lala ;
-	:hasFacet :A_Altruism , :A_Compliance ;
-	:hasHardSkill :HRISSkill , :InterviewSkill , :PayrollSkill , :RecruitmentSkill ;
-	:hasPersonalityTrait :AgreeablenessTrait ;
-	:hasSoftSkill :ActiveListeningSkill , :CommunicationSkill , :ConflictResolutionSkill , :EmpathySkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate08_Yoga
-
-:Candidate08_Yoga a owl:NamedIndividual , :Candidate ;
-	:hasApplication :App08_Yoga_SELL ;
-	:hasExperience :Exp08_Yoga ;
-	:hasFacet :E_Assertiveness , :E_Gregariousness ;
-	:hasHardSkill :CRMToolSkill , :ColdCallingSkill , :SalesOperationsSkill , :SalesPresentationSkill ;
-	:hasPersonalityTrait :ExtraversionTrait ;
-	:hasSoftSkill :CommunicationSkill , :NegotiationSkill , :NetworkingSoftSkill , :PersuasionSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate09_Nia
-
-:Candidate09_Nia a owl:NamedIndividual , :Candidate ;
-	:hasApplication :App09_Nia_CS ;
-	:hasExperience :Exp09_Nia ;
-	:hasFacet :A_Altruism , :A_Trust ;
-	:hasHardSkill :CustomerSupportToolSkill , :TicketingSystemSkill ;
-	:hasPersonalityTrait :AgreeablenessTrait ;
-	:hasSoftSkill :CommunicationSkill , :ConflictManagementSkill , :CustomerOrientationSkill , :StressManagementSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Candidate10_Arif
-
-:Candidate10_Arif a owl:NamedIndividual , :Candidate ;
-	:hasApplication :App10_Arif_QA ;
-	:hasExperience :Exp10_Arif ;
-	:hasFacet :C_Orderliness , :C_SelfDiscipline ;
-	:hasHardSkill :IntegrationTestingSkill , :ProgrammingSkill , :TestingQASkill , :UnitTestingSkill ;
-	:hasPersonalityTrait :ConscientiousnessTrait ;
-	:hasSoftSkill :AttentionToDetailSkill , :ProblemSolvingSkill .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CloudComputingSkill
 
@@ -2786,10 +2520,6 @@ _:genid244 a owl:Restriction ;
 
 :CustomerService_Field a owl:NamedIndividual , :JobField .
 # 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSupportRepJob
-
-:CustomerSupportRepJob a owl:NamedIndividual .
-# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSupportToolSkill
 
 :CustomerSupportToolSkill a owl:NamedIndividual , :HardSkill .
@@ -2797,10 +2527,6 @@ _:genid244 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataAnalysisSkill
 
 :DataAnalysisSkill a owl:NamedIndividual , :HardSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataScientist
-
-:DataScientist a owl:NamedIndividual .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Data_Field
 
@@ -2819,17 +2545,9 @@ _:genid244 a owl:Restriction ;
 
 :DetailOrientedSkill a owl:NamedIndividual , :SoftSkill .
 # 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DevOpsEngineer
-
-:DevOpsEngineer a owl:NamedIndividual .
-# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DevOpsSkill
 
 :DevOpsSkill a owl:NamedIndividual , :HardSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketerJob
-
-:DigitalMarketerJob a owl:NamedIndividual .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketingSkill
 
@@ -2893,90 +2611,6 @@ _:genid244 a owl:Restriction ;
 
 :ExcelAdvancedSkill a owl:NamedIndividual , :HardSkill .
 # 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp01_Minie
-
-:Exp01_Minie a owl:NamedIndividual , :Experience ;
-	:experienceInField :Technology_Field ;
-	:mentionsWord :word_created_new_feature , :word_debugged_complex_bug ;
-	:hasDescription "Developed features, debugged complex bugs, created new modules." ;
-	:hasTitle "Junior Software Engineer" ;
-	:yearsOfExperience "3"^^xsd:int .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp02_Budi
-
-:Exp02_Budi a owl:NamedIndividual , :Experience ;
-	:experienceInField :Data_Field ;
-	:mentionsWord :word_analyzed_data ;
-	:hasDescription "Analyzed customer behavioral data and built basic ML models." ;
-	:hasTitle "Data Analyst" ;
-	:yearsOfExperience "2"^^xsd:int .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp03_Sari
-
-:Exp03_Sari a owl:NamedIndividual , :Experience ;
-	:experienceInField :Marketing_Field ;
-	:mentionsWord :word_supported_customers ;
-	:hasDescription "Wrote articles and managed multiple content calendars." ;
-	:hasTitle "Content Writer Intern" ;
-	:yearsOfExperience "1"^^xsd:int .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp04_Andi
-
-:Exp04_Andi a owl:NamedIndividual , :Experience ;
-	:experienceInField :Technology_Field ;
-	:hasDescription "Managed CI/CD pipelines and optimized Kubernetes clusters." ;
-	:hasTitle "DevOps Engineer" ;
-	:yearsOfExperience "4"^^xsd:int .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp05_Rina
-
-:Exp05_Rina a owl:NamedIndividual , :Experience ;
-	:experienceInField :Product_Field ;
-	:mentionsWord :word_led_team ;
-	:hasDescription "Led product roadmap, worked with UI/UX teams and engineers." ;
-	:hasTitle "Product Manager" ;
-	:yearsOfExperience "5"^^xsd:int .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp06_Dimas
-
-:Exp06_Dimas a owl:NamedIndividual , :Experience ;
-	:experienceInField :Finance_Field ;
-	:hasDescription "Prepared monthly reports, forecasting, and variance analysis." ;
-	:hasTitle "Finance Analyst" ;
-	:yearsOfExperience "3"^^xsd:int .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp07_Lala
-
-:Exp07_Lala a owl:NamedIndividual , :Experience ;
-	:experienceInField :HR_Field ;
-	:hasDescription "Handled recruitment, payroll, and employee well-being." ;
-	:hasTitle "HR Generalist" ;
-	:yearsOfExperience "4"^^xsd:int .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp08_Yoga
-
-:Exp08_Yoga a owl:NamedIndividual , :Experience ;
-	:experienceInField :Sales_Field ;
-	:hasDescription "Closed B2B deals, managed CRM pipeline for 50+ accounts." ;
-	:hasTitle "Sales Executive" ;
-	:yearsOfExperience "3"^^xsd:int .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp09_Nia
-
-:Exp09_Nia a owl:NamedIndividual , :Experience ;
-	:experienceInField :CustomerService_Field ;
-	:hasDescription "Handled tickets, solved user issues, carried out live chat." ;
-	:hasTitle "Customer Support Rep" ;
-	:yearsOfExperience "2"^^xsd:int .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Exp10_Arif
-
-:Exp10_Arif a owl:NamedIndividual , :Experience ;
-	:experienceInField :Technology_Field ;
-	:hasDescription "Designed test plans, automated regression tests." ;
-	:hasTitle "QA Engineer" ;
-	:yearsOfExperience "2"^^xsd:int .
-# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ExtraversionTrait
 
 :ExtraversionTrait a owl:NamedIndividual , :PersonalityTrait .
@@ -2988,10 +2622,6 @@ _:genid244 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinanceAnalysisSkill
 
 :FinanceAnalysisSkill a owl:NamedIndividual , :HardSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinanceAnalystJob
-
-:FinanceAnalystJob a owl:NamedIndividual .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Finance_Field
 
@@ -3012,10 +2642,6 @@ _:genid244 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#GoogleAnalyticsSkill
 
 :GoogleAnalyticsSkill a owl:NamedIndividual , :HardSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRGeneralistJob
-
-:HRGeneralistJob a owl:NamedIndividual .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRISSkill
 
@@ -3311,10 +2937,6 @@ _:genid244 a owl:Restriction ;
 
 :ProcessModelingSkill a owl:NamedIndividual , :HardSkill .
 # 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductManager
-
-:ProductManager a owl:NamedIndividual .
-# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Product_Field
 
 :Product_Field a owl:NamedIndividual , :JobField ;
@@ -3327,10 +2949,6 @@ _:genid244 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProgrammingSkill
 
 :ProgrammingSkill a owl:NamedIndividual , :HardSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProjectManagementSkill
-
-:ProjectManagementSkill a owl:NamedIndividual .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PrototypingSkill
 
@@ -3347,52 +2965,62 @@ _:genid244 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q1
 
 :Q1 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :O_Creativity .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya tertarik mencoba hal-hal baru meskipun belum pernah ada yang saya kenal mencobanya"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q10
 
 :Q10 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :E_Gregariousness .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya jarang menunda pekerjaan penting hingga mendekati batas waktu"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q11
 
 :Q11 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :E_Activity .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya merasa terganggu jika pekerjaan dilakukan dengan asal-asalan"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q12
 
 :Q12 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :A_Trust .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya menjaga barang-barang dan lingkungan saya tetap rapi dan tertata"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q13
 
 :Q13 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :A_Altruism .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Saya merasa bersemangat ketika bertemu dan berinteraksi dengan banyak orang"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q14
 
 :Q14 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :A_Compliance .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Dalam suatu kelompok, saya cenderung aktif berbicara daripada hanya mendengarkan"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q15
 
 :Q15 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :N_Anxiety .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Saya menikmati menjadi pusat perhatian dalam situasi sosial tertentu."^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q16
 
 :Q16 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :N_Anxiety .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Saya mudah memulai obrolan dengan orang yang baru saya kenal"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q17
 
 :Q17 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :N_Depression .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Saya lebih merasa berenergi setelah berkumpul dengan orang lain daripada sendirian"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q18
 
 :Q18 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :N_SelfConsciousness .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ExtraversionTrait ;
+	:hasQuestion "Saya suka terlibat dalam kegiatan atau acara yang ramai dan penuh orang"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q19
 
@@ -3403,7 +3031,8 @@ _:genid244 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q2
 
 :Q2 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :O_Creativity .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya menikmati membaca atau menonton hal-hal yang membuat saya banyak berpikir"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q20
 
@@ -3468,7 +3097,8 @@ _:genid244 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q3
 
 :Q3 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :O_Curiosity .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya sering membayangkan berbagai kemungkinan dan ide kreatif dalam hidup saya"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q30
 
@@ -3479,36 +3109,38 @@ _:genid244 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q4
 
 :Q4 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :O_Aesthetic .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya merasa bosan jika harus melakukan hal yang itu-itu saja terus-menerus"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q5
 
 :Q5 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :C_Orderliness .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya tertarik dengan seni, musik, atau karya kreatif lainnya"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q6
 
 :Q6 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :C_Orderliness .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :OpennessTrait ;
+	:hasQuestion "Saya senang mempelajari sudut pandang atau budaya yang berbeda dari yang biasa saya temui"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q7
 
 :Q7 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :C_SelfDiscipline .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya biasanya menyelesaikan tugas sampai tuntas sebelum beralih ke hal lain"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q8
 
 :Q8 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :C_AchievementStriving .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya merencanakan kegiatan saya terlebih dahulu, bukan menjalani hari secara asal"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Q9
 
 :Q9 a owl:NamedIndividual , :PersonalityQuestion ;
-	:measuresFacet :E_Assertiveness .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#QAEngineer
-
-:QAEngineer a owl:NamedIndividual .
+	<http://www.co-ode.org/ontologies/ont.owl#measuresTrait> :ConscientiousnessTrait ;
+	:hasQuestion "Saya berusaha tepat waktu dalam janji atau tenggat (deadline)"^^xsd:string .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#QualityControlAnalysis
 
@@ -3566,10 +3198,6 @@ _:genid244 a owl:Restriction ;
 
 :SQLSkill a owl:NamedIndividual , :HardSkill .
 # 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesExecutiveJob
-
-:SalesExecutiveJob a owl:NamedIndividual .
-# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesOperationsSkill
 
 :SalesOperationsSkill a owl:NamedIndividual , :HardSkill .
@@ -3602,10 +3230,6 @@ _:genid244 a owl:Restriction ;
 
 :SocialPerceptiveness a owl:NamedIndividual , :SoftSkill .
 # 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SoftwareEngineer
-
-:SoftwareEngineer a owl:NamedIndividual .
-# 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Speaking
 
 :Speaking a owl:NamedIndividual , :SoftSkill .
@@ -3629,14 +3253,6 @@ _:genid244 a owl:Restriction ;
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#StressManagementSkill
 
 :StressManagementSkill a owl:NamedIndividual , :SoftSkill .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SuggestedForDataScientist
-
-:SuggestedForDataScientist a owl:NamedIndividual , :SuggestionClass .
-# 
-# http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SuggestedForSoftwareEngineer
-
-:SuggestedForSoftwareEngineer a owl:NamedIndividual , :SuggestionClass .
 # 
 # http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SupplyChainSkill
 
@@ -3727,4 +3343,4 @@ _:genid244 a owl:Restriction ;
 :word_supported_customers a owl:NamedIndividual , :WordExpression ;
 	:representsFacet :A_Altruism .
 # 
-# Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi
