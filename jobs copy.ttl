@@ -4,9 +4,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
-@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
-@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
 @base <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#> .
 
 <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology> rdf:type owl:Ontology .
@@ -29,18 +26,6 @@
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#answeredBy
 :answeredBy rdf:type owl:ObjectProperty .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#forQuestion
-:forQuestion rdf:type owl:ObjectProperty ;
-             rdfs:domain :Answer ;
-             rdfs:range :PersonalityQuestion .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasAnswer
-:hasAnswer rdf:type owl:ObjectProperty ;
-           rdfs:domain :Person ;
-           rdfs:range :Answer .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#experienceInField
@@ -181,13 +166,13 @@
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasAgreeablenessScore
 :hasAgreeablenessScore rdf:type owl:DatatypeProperty ;
                        rdfs:domain :Person ;
-                       rdfs:range xsd:decimal .
+                       rdfs:range xsd:double .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasConscientiousnessScore
 :hasConscientiousnessScore rdf:type owl:DatatypeProperty ;
                            rdfs:domain :Person ;
-                           rdfs:range xsd:decimal .
+                           rdfs:range xsd:double .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasDescription
@@ -198,19 +183,19 @@
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasExtraversionScore
 :hasExtraversionScore rdf:type owl:DatatypeProperty ;
                       rdfs:domain :Person ;
-                      rdfs:range xsd:decimal .
+                      rdfs:range xsd:double .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasNeuroticismScore
 :hasNeuroticismScore rdf:type owl:DatatypeProperty ;
                      rdfs:domain :Person ;
-                     rdfs:range xsd:decimal .
+                     rdfs:range xsd:double .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasOpennessScore
 :hasOpennessScore rdf:type owl:DatatypeProperty ;
                   rdfs:domain :Person ;
-                  rdfs:range xsd:decimal .
+                  rdfs:range xsd:double .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasQuestion
@@ -225,12 +210,6 @@
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#questionScore
 :questionScore rdf:type owl:DatatypeProperty ;
                rdfs:range xsd:int .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#answerScore
-:answerScore rdf:type owl:DatatypeProperty ;
-             rdfs:domain :Answer ;
-             rdfs:range xsd:int .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#yearsOfExperience
@@ -283,6 +262,365 @@
                                      owl:onClass :FinanceHardSkill
                                    ] ;
                    rdfs:label "Account Payable" .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AccountReceivableAnalystJob
+:AccountReceivableAnalystJob rdf:type owl:Class ;
+                             rdfs:subClassOf :JobOccupation ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :inJobField ;
+                                               owl:hasValue :Finance_Field
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :FinanceHardSkill
+                                             ] ;
+                             rdfs:label "Account Receivable Analyst" .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AccountReceivableStaffJob
+:AccountReceivableStaffJob rdf:type owl:Class ;
+                           rdfs:subClassOf :JobOccupation ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :inJobField ;
+                                             owl:hasValue :Finance_Field
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :requiresHardSkill ;
+                                             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :FinanceHardSkill
+                                           ] ;
+                           rdfs:label "Account Receivable Staff" .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Accountant
+:Accountant rdf:type owl:Class ;
+            rdfs:subClassOf :JobOccupation ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :inJobField ;
+                              owl:hasValue :Finance_Field
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :requiresHardSkill ;
+                              owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                              owl:onClass :FinanceHardSkill
+                            ] .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AccountingClerk
+:AccountingClerk rdf:type owl:Class ;
+                 rdfs:subClassOf :JobOccupation ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :inJobField ;
+                                   owl:hasValue :Finance_Field
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :requiresHardSkill ;
+                                   owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :SalesHardSkill
+                                 ] .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Application
+:Application rdf:type owl:Class ;
+             owl:disjointWith :Person .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ApplicationWithHighMatch_DS
+:ApplicationWithHighMatch_DS rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ApplicationWithHighMatch_SE
+:ApplicationWithHighMatch_SE rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AuditAndReportingAnalystJob
+:AuditAndReportingAnalystJob rdf:type owl:Class ;
+                             rdfs:subClassOf :JobOccupation ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :inJobField ;
+                                               owl:hasValue :Finance_Field
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :FinanceHardSkill
+                                             ] ;
+                             rdfs:label "Audit & Reporting Analyst" .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Auditor
+:Auditor rdf:type owl:Class ;
+         rdfs:subClassOf :JobOccupation ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :inJobField ;
+                           owl:hasValue :Finance_Field
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :requiresHardSkill ;
+                           owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                           owl:onClass :FinanceHardSkill
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :requiresHardSkill ;
+                           owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                           owl:onClass :SalesAndBusinessDevelopmentSkill
+                         ] .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BackendDeveloper
+:BackendDeveloper rdf:type owl:Class ;
+                  rdfs:subClassOf :JobOccupation ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :inJobField ;
+                                    owl:hasValue :Technology_Field
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :TechHardSkill
+                                  ] .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BrandManager
+:BrandManager rdf:type owl:Class ;
+              rdfs:subClassOf :JobOccupation ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :inJobField ;
+                                owl:hasValue :Marketing_Field
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                owl:onClass :MarketingHardSkill
+                              ] .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessAnalyst
+:BusinessAnalyst rdf:type owl:Class ;
+                 rdfs:subClassOf :JobOccupation ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :inJobField ;
+                                   owl:hasValue :Product_Field
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :requiresHardSkill ;
+                                   owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :DataAnalyticsSkill
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :requiresHardSkill ;
+                                   owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :DataHardSkill
+                                 ] .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessDevelopmentJob
+:BusinessDevelopmentJob rdf:type owl:Class ;
+                        rdfs:subClassOf :JobOccupation ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :inJobField ;
+                                          owl:hasValue :Sales_Field
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :requiresHardSkill ;
+                                          owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :SalesAndBusinessDevelopmentSkill
+                                        ] ;
+                        rdfs:label "Business Development" .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessDevelopmentManager
+:BusinessDevelopmentManager rdf:type owl:Class ;
+                            rdfs:subClassOf :JobOccupation ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :inJobField ;
+                                              owl:hasValue :Sales_Field
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :requiresHardSkill ;
+                                              owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                              owl:onClass :DataAnalyticsSkill
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :requiresHardSkill ;
+                                              owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                              owl:onClass :SalesAndBusinessDevelopmentSkill
+                                            ] .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessIntelligenceAnalyst
+:BusinessIntelligenceAnalyst rdf:type owl:Class ;
+                             rdfs:subClassOf :JobOccupation ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :inJobField ;
+                                               owl:hasValue :Data_Field
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :DataAnalyticsSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :DataHardSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :SalesAndBusinessDevelopmentSkill
+                                             ] .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessIntelligenceJob
+:BusinessIntelligenceJob rdf:type owl:Class ;
+                         rdfs:subClassOf :JobOccupation ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :inJobField ;
+                                           owl:hasValue :Data_Field
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :requiresHardSkill ;
+                                           owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :DataAnalyticsSkill
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :requiresHardSkill ;
+                                           owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :DataHardSkill
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :requiresHardSkill ;
+                                           owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :SalesAndBusinessDevelopmentSkill
+                                         ] ;
+                         rdfs:label "Business Intelligence" .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessOperationSupportJob
+:BusinessOperationSupportJob rdf:type owl:Class ;
+                             rdfs:subClassOf :JobOccupation ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :inJobField ;
+                                               owl:hasValue :Finance_Field
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :FinanceHardSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :SalesAndBusinessDevelopmentSkill
+                                             ] ;
+                             rdfs:label "Business Operation Support" .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#BusinessOperationsSkill
+:BusinessOperationsSkill rdf:type owl:Class ;
+                         rdfs:subClassOf :HardSkill .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CRMAndEmailMarketingJob
+:CRMAndEmailMarketingJob rdf:type owl:Class ;
+                         rdfs:subClassOf :JobOccupation ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :inJobField ;
+                                           owl:hasValue :Marketing_Field
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :requiresHardSkill ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :CustomerSupportAndSuccessSkill
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :requiresHardSkill ;
+                                           owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :MarketingHardSkill
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :requiresHardSkill ;
+                                           owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :SalesAndBusinessDevelopmentSkill
+                                         ] ;
+                         rdfs:label "CRM & Email Marketing" .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CRMSpecialistJob
+:CRMSpecialistJob rdf:type owl:Class ;
+                  rdfs:subClassOf :JobOccupation ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :inJobField ;
+                                    owl:hasValue :CustomerService_Field
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :MarketingHardSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :CustomerSupportAndSuccessSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :SalesAndBusinessDevelopmentSkill
+                                  ] ;
+                  rdfs:label "CRM Specialist" .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CSOperationsJob
+:CSOperationsJob rdf:type owl:Class ;
+                 rdfs:subClassOf :JobOccupation ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :inJobField ;
+                                   owl:hasValue :CustomerService_Field
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :requiresHardSkill ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :CustomerSupportAndSuccessSkill
+                                 ] ;
+                 rdfs:label "CS Operations" .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CallCenterAgent
+:CallCenterAgent rdf:type owl:Class ;
+                 rdfs:subClassOf :JobOccupation ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :inJobField ;
+                                   owl:hasValue :CustomerService_Field
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :requiresHardSkill ;
+                                   owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :CustomerSupportAndSuccessSkill
+                                 ] .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CenterOfExcellenceJob
+:CenterOfExcellenceJob rdf:type owl:Class ;
+                       rdfs:subClassOf :JobOccupation ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :inJobField ;
+                                         owl:hasValue :Sales_Field
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :requiresHardSkill ;
+                                         owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :CustomerSupportAndSuccessSkill
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :requiresHardSkill ;
+                                         owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :SalesHardSkill
+                                       ] ;
+                       rdfs:label "Center of Excellence" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CommunityMarketingJob
@@ -1258,14 +1596,6 @@
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PersonalityQuestion
 :PersonalityQuestion rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Answer
-:Answer rdf:type owl:Class ;
-  owl:disjointWith :Person ,
-       :PersonalityQuestion ,
-       :Skill ,
-       :Experience .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PersonalityTrait
@@ -43194,7 +43524,7 @@
                                                                                                                                                                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                                                                                                                                                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
                                                                                                                                                                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#add> ;
-                                                                                                                                                                                                                                                  <http://www.w3.org/2003/11/swrl#arguments> ( :sumA
+                                                                                                                                                                                                                                                  <http://www.w3.org/2003/11/swrl#arguments> ( :sumO
                                                                                                                                                                                                                                                                                                :t3
                                                                                                                                                                                                                                                                                                :t4
                                                                                                                                                                                                                                                                                              )
@@ -43203,9 +43533,9 @@
                                                                                                                                                                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
                                                                                                                                                                                                                                                              <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#divide> ;
                                                                                                                                                                                                                                                              <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
-                                                                                                                                                                                                                                                                                                          rdf:first :avgA ;
+                                                                                                                                                                                                                                                                                                          rdf:first :avgO ;
                                                                                                                                                                                                                                                                                                           rdf:rest [ rdf:type rdf:List ;
-                                                                                                                                                                                                                                                                                                                     rdf:first :sumA ;
+                                                                                                                                                                                                                                                                                                                     rdf:first :sumO ;
                                                                                                                                                                                                                                                                                                                      rdf:rest [ rdf:type rdf:List ;
                                                                                                                                                                                                                                                                                                                                 rdf:first 6 ;
                                                                                                                                                                                                                                                                                                                                 rdf:rest rdf:nil
@@ -43237,7 +43567,7 @@
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasAgreeablenessScore ;
                                                        <http://www.w3.org/2003/11/swrl#argument1> :p ;
-                                                       <http://www.w3.org/2003/11/swrl#argument2> :avgA
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :avgO
                                                      ] ;
                                            rdf:rest rdf:nil
                                          ]
@@ -43689,7 +44019,7 @@
                                                                                                                                                                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                                                                                                                                                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
                                                                                                                                                                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#add> ;
-                                                                                                                                                                                                                                                  <http://www.w3.org/2003/11/swrl#arguments> ( :sumN
+                                                                                                                                                                                                                                                  <http://www.w3.org/2003/11/swrl#arguments> ( :sumA
                                                                                                                                                                                                                                                                                                :a3
                                                                                                                                                                                                                                                                                                :a4
                                                                                                                                                                                                                                                                                              )
@@ -43698,9 +44028,9 @@
                                                                                                                                                                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
                                                                                                                                                                                                                                                              <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#divide> ;
                                                                                                                                                                                                                                                              <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
-                                                                                                                                                                                                                                                                                                          rdf:first :avgN ;
+                                                                                                                                                                                                                                                                                                          rdf:first :avgA ;
                                                                                                                                                                                                                                                                                                           rdf:rest [ rdf:type rdf:List ;
-                                                                                                                                                                                                                                                                                                                     rdf:first :sumN ;
+                                                                                                                                                                                                                                                                                                                     rdf:first :sumA ;
                                                                                                                                                                                                                                                                                                                      rdf:rest [ rdf:type rdf:List ;
                                                                                                                                                                                                                                                                                                                                 rdf:first 6 ;
                                                                                                                                                                                                                                                                                                                                 rdf:rest rdf:nil
@@ -43732,7 +44062,7 @@
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasNeuroticismScore ;
                                                        <http://www.w3.org/2003/11/swrl#argument1> :p ;
-                                                       <http://www.w3.org/2003/11/swrl#argument2> :avgN
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :avgA
                                                      ] ;
                                            rdf:rest rdf:nil
                                          ]
@@ -43854,7 +44184,7 @@
                                                                                                                                                                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                                                                                                                                                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
                                                                                                                                                                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#add> ;
-                                                                                                                                                                                                                                                  <http://www.w3.org/2003/11/swrl#arguments> ( :sumO
+                                                                                                                                                                                                                                                  <http://www.w3.org/2003/11/swrl#arguments> ( :sumN
                                                                                                                                                                                                                                                                                                :n3
                                                                                                                                                                                                                                                                                                :n4
                                                                                                                                                                                                                                                                                              )
@@ -43863,9 +44193,9 @@
                                                                                                                                                                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
                                                                                                                                                                                                                                                              <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#divide> ;
                                                                                                                                                                                                                                                              <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
-                                                                                                                                                                                                                                                                                                          rdf:first :avgO ;
+                                                                                                                                                                                                                                                                                                          rdf:first :avgN ;
                                                                                                                                                                                                                                                                                                           rdf:rest [ rdf:type rdf:List ;
-                                                                                                                                                                                                                                                                                                                     rdf:first :sumO ;
+                                                                                                                                                                                                                                                                                                                     rdf:first :sumN ;
                                                                                                                                                                                                                                                                                                                      rdf:rest [ rdf:type rdf:List ;
                                                                                                                                                                                                                                                                                                                                 rdf:first 6 ;
                                                                                                                                                                                                                                                                                                                                 rdf:rest rdf:nil
@@ -43897,334 +44227,10 @@
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasOpennessScore ;
                                                        <http://www.w3.org/2003/11/swrl#argument1> :p ;
-                                                       <http://www.w3.org/2003/11/swrl#argument2> :avgO
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :avgN
                                                      ] ;
                                            rdf:rest rdf:nil
                                          ]
  ] .
 
-#################################################################
-#    Rules (Answer-based scoring)
-#################################################################
-
-:pAns rdf:type swrl:Variable .
-:ans1 rdf:type swrl:Variable .
-:ans2 rdf:type swrl:Variable .
-:ans3 rdf:type swrl:Variable .
-:ans4 rdf:type swrl:Variable .
-:ans5 rdf:type swrl:Variable .
-:ans6 rdf:type swrl:Variable .
-:s1Ans rdf:type swrl:Variable .
-:s2Ans rdf:type swrl:Variable .
-:s3Ans rdf:type swrl:Variable .
-:s4Ans rdf:type swrl:Variable .
-:s5Ans rdf:type swrl:Variable .
-:s6Ans rdf:type swrl:Variable .
-:t1Ans rdf:type swrl:Variable .
-:t2Ans rdf:type swrl:Variable .
-:t3Ans rdf:type swrl:Variable .
-:t4Ans rdf:type swrl:Variable .
-:sumAns rdf:type swrl:Variable .
-:avgAns rdf:type swrl:Variable .
-
-:ComputeAScore_FromAnswers rdf:type swrl:Imp ;
-  swrla:isRuleEnabled "true"^^xsd:boolean ;
-  rdfs:label "ComputeAScore_FromAnswers" ;
-  swrl:body (
-    [ rdf:type swrl:ClassAtom ; swrl:classPredicate :Person ; swrl:argument1 :pAns ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans1 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans1 ; swrl:argument2 :Q1 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans1 ; swrl:argument2 :s1Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans2 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans2 ; swrl:argument2 :Q2 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans2 ; swrl:argument2 :s2Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans3 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans3 ; swrl:argument2 :Q3 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans3 ; swrl:argument2 :s3Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans4 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans4 ; swrl:argument2 :Q4 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans4 ; swrl:argument2 :s4Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans5 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans5 ; swrl:argument2 :Q5 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans5 ; swrl:argument2 :s5Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans6 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans6 ; swrl:argument2 :Q6 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans6 ; swrl:argument2 :s6Ans ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t1Ans :s1Ans :s2Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t2Ans :s3Ans :s4Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t3Ans :s5Ans :s6Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t4Ans :t1Ans :t2Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :sumAns :t3Ans :t4Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:divide ; swrl:arguments ( :avgAns :sumAns "6"^^xsd:decimal ) ]
-  ) ;
-  swrl:head (
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :hasAgreeablenessScore ; swrl:argument1 :pAns ; swrl:argument2 :avgAns ]
-  ) .
-
-:ComputeCScore_FromAnswers rdf:type swrl:Imp ;
-  swrla:isRuleEnabled "true"^^xsd:boolean ;
-  rdfs:label "ComputeCScore_FromAnswers" ;
-  swrl:body (
-    [ rdf:type swrl:ClassAtom ; swrl:classPredicate :Person ; swrl:argument1 :pAns ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans1 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans1 ; swrl:argument2 :Q7 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans1 ; swrl:argument2 :s1Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans2 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans2 ; swrl:argument2 :Q8 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans2 ; swrl:argument2 :s2Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans3 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans3 ; swrl:argument2 :Q9 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans3 ; swrl:argument2 :s3Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans4 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans4 ; swrl:argument2 :Q10 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans4 ; swrl:argument2 :s4Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans5 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans5 ; swrl:argument2 :Q11 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans5 ; swrl:argument2 :s5Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans6 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans6 ; swrl:argument2 :Q12 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans6 ; swrl:argument2 :s6Ans ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t1Ans :s1Ans :s2Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t2Ans :s3Ans :s4Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t3Ans :s5Ans :s6Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t4Ans :t1Ans :t2Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :sumAns :t3Ans :t4Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:divide ; swrl:arguments ( :avgAns :sumAns "6"^^xsd:decimal ) ]
-  ) ;
-  swrl:head (
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :hasConscientiousnessScore ; swrl:argument1 :pAns ; swrl:argument2 :avgAns ]
-  ) .
-
-:ComputeEScore_FromAnswers rdf:type swrl:Imp ;
-  swrla:isRuleEnabled "true"^^xsd:boolean ;
-  rdfs:label "ComputeEScore_FromAnswers" ;
-  swrl:body (
-    [ rdf:type swrl:ClassAtom ; swrl:classPredicate :Person ; swrl:argument1 :pAns ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans1 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans1 ; swrl:argument2 :Q13 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans1 ; swrl:argument2 :s1Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans2 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans2 ; swrl:argument2 :Q14 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans2 ; swrl:argument2 :s2Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans3 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans3 ; swrl:argument2 :Q15 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans3 ; swrl:argument2 :s3Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans4 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans4 ; swrl:argument2 :Q16 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans4 ; swrl:argument2 :s4Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans5 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans5 ; swrl:argument2 :Q17 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans5 ; swrl:argument2 :s5Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans6 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans6 ; swrl:argument2 :Q18 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans6 ; swrl:argument2 :s6Ans ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t1Ans :s1Ans :s2Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t2Ans :s3Ans :s4Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t3Ans :s5Ans :s6Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t4Ans :t1Ans :t2Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :sumAns :t3Ans :t4Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:divide ; swrl:arguments ( :avgAns :sumAns "6"^^xsd:decimal ) ]
-  ) ;
-  swrl:head (
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :hasExtraversionScore ; swrl:argument1 :pAns ; swrl:argument2 :avgAns ]
-  ) .
-
-:ComputeNScore_FromAnswers rdf:type swrl:Imp ;
-  swrla:isRuleEnabled "true"^^xsd:boolean ;
-  rdfs:label "ComputeNScore_FromAnswers" ;
-  swrl:body (
-    [ rdf:type swrl:ClassAtom ; swrl:classPredicate :Person ; swrl:argument1 :pAns ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans1 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans1 ; swrl:argument2 :Q19 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans1 ; swrl:argument2 :s1Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans2 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans2 ; swrl:argument2 :Q20 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans2 ; swrl:argument2 :s2Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans3 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans3 ; swrl:argument2 :Q21 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans3 ; swrl:argument2 :s3Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans4 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans4 ; swrl:argument2 :Q22 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans4 ; swrl:argument2 :s4Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans5 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans5 ; swrl:argument2 :Q23 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans5 ; swrl:argument2 :s5Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans6 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans6 ; swrl:argument2 :Q24 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans6 ; swrl:argument2 :s6Ans ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t1Ans :s1Ans :s2Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t2Ans :s3Ans :s4Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t3Ans :s5Ans :s6Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t4Ans :t1Ans :t2Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :sumAns :t3Ans :t4Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:divide ; swrl:arguments ( :avgAns :sumAns "6"^^xsd:decimal ) ]
-  ) ;
-  swrl:head (
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :hasNeuroticismScore ; swrl:argument1 :pAns ; swrl:argument2 :avgAns ]
-  ) .
-
-:ComputeOScore_FromAnswers rdf:type swrl:Imp ;
-  swrla:isRuleEnabled "true"^^xsd:boolean ;
-  rdfs:label "ComputeOScore_FromAnswers" ;
-  swrl:body (
-    [ rdf:type swrl:ClassAtom ; swrl:classPredicate :Person ; swrl:argument1 :pAns ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans1 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans1 ; swrl:argument2 :Q25 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans1 ; swrl:argument2 :s1Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans2 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans2 ; swrl:argument2 :Q26 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans2 ; swrl:argument2 :s2Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans3 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans3 ; swrl:argument2 :Q27 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans3 ; swrl:argument2 :s3Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans4 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans4 ; swrl:argument2 :Q28 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans4 ; swrl:argument2 :s4Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans5 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans5 ; swrl:argument2 :Q29 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans5 ; swrl:argument2 :s5Ans ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :hasAnswer ; swrl:argument1 :pAns ; swrl:argument2 :ans6 ]
-    [ rdf:type swrl:IndividualPropertyAtom ; swrl:propertyPredicate :forQuestion ; swrl:argument1 :ans6 ; swrl:argument2 :Q30 ]
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :answerScore ; swrl:argument1 :ans6 ; swrl:argument2 :s6Ans ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t1Ans :s1Ans :s2Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t2Ans :s3Ans :s4Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t3Ans :s5Ans :s6Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :t4Ans :t1Ans :t2Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:add ; swrl:arguments ( :sumAns :t3Ans :t4Ans ) ]
-    [ rdf:type swrl:BuiltinAtom ; swrl:builtin swrlb:divide ; swrl:arguments ( :avgAns :sumAns "6"^^xsd:decimal ) ]
-  ) ;
-  swrl:head (
-    [ rdf:type swrl:DatavaluedPropertyAtom ; swrl:propertyPredicate :hasOpennessScore ; swrl:argument1 :pAns ; swrl:argument2 :avgAns ]
-  ) .
-
-#################################################################
-#    Sample data (for ranking pipeline demo)
-#################################################################
-
-#################################################################
-#    Demo data (Minnie)
-#################################################################
-
-:Minnie rdf:type owl:NamedIndividual ,
-                 :Person .
-
-# Answers (1..5) - per person, per question
-:MinnieAns_Q1 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q1 ; :answerScore 4 .
-:MinnieAns_Q2 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q2 ; :answerScore 5 .
-:MinnieAns_Q3 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q3 ; :answerScore 4 .
-:MinnieAns_Q4 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q4 ; :answerScore 3 .
-:MinnieAns_Q5 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q5 ; :answerScore 5 .
-:MinnieAns_Q6 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q6 ; :answerScore 4 .
-:MinnieAns_Q7 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q7 ; :answerScore 4 .
-:MinnieAns_Q8 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q8 ; :answerScore 4 .
-:MinnieAns_Q9 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q9 ; :answerScore 5 .
-:MinnieAns_Q10 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q10 ; :answerScore 4 .
-:MinnieAns_Q11 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q11 ; :answerScore 3 .
-:MinnieAns_Q12 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q12 ; :answerScore 4 .
-:MinnieAns_Q13 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q13 ; :answerScore 3 .
-:MinnieAns_Q14 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q14 ; :answerScore 4 .
-:MinnieAns_Q15 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q15 ; :answerScore 3 .
-:MinnieAns_Q16 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q16 ; :answerScore 2 .
-:MinnieAns_Q17 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q17 ; :answerScore 3 .
-:MinnieAns_Q18 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q18 ; :answerScore 3 .
-:MinnieAns_Q19 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q19 ; :answerScore 2 .
-:MinnieAns_Q20 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q20 ; :answerScore 2 .
-:MinnieAns_Q21 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q21 ; :answerScore 1 .
-:MinnieAns_Q22 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q22 ; :answerScore 2 .
-:MinnieAns_Q23 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q23 ; :answerScore 1 .
-:MinnieAns_Q24 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q24 ; :answerScore 2 .
-:MinnieAns_Q25 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q25 ; :answerScore 5 .
-:MinnieAns_Q26 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q26 ; :answerScore 4 .
-:MinnieAns_Q27 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q27 ; :answerScore 5 .
-:MinnieAns_Q28 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q28 ; :answerScore 4 .
-:MinnieAns_Q29 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q29 ; :answerScore 5 .
-:MinnieAns_Q30 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q30 ; :answerScore 4 .
-
-:Minnie
-  :hasAnswer :MinnieAns_Q1, :MinnieAns_Q2, :MinnieAns_Q3, :MinnieAns_Q4, :MinnieAns_Q5, :MinnieAns_Q6,
-             :MinnieAns_Q7, :MinnieAns_Q8, :MinnieAns_Q9, :MinnieAns_Q10, :MinnieAns_Q11, :MinnieAns_Q12,
-             :MinnieAns_Q13, :MinnieAns_Q14, :MinnieAns_Q15, :MinnieAns_Q16, :MinnieAns_Q17, :MinnieAns_Q18,
-             :MinnieAns_Q19, :MinnieAns_Q20, :MinnieAns_Q21, :MinnieAns_Q22, :MinnieAns_Q23, :MinnieAns_Q24,
-             :MinnieAns_Q25, :MinnieAns_Q26, :MinnieAns_Q27, :MinnieAns_Q28, :MinnieAns_Q29, :MinnieAns_Q30 .
-
-:MinnieExperience_Data rdf:type owl:NamedIndividual ,
-                                :Experience ;
-  :experienceInField :Data_Field ;
-  :yearsOfExperience 3 .
-
-:Minnie
-  :hasExperience :MinnieExperience_Data ;
-  :hasHardSkill :PythonSkill ,
-               :SQLSkill ,
-               :MachineLearningSkill ,
-               :StatisticsSkill ,
-               :DataVisualizationSkill ;
-  :hasSoftSkill :AnalyticalThinkingSkill ,
-               :CommunicationSkill .
-
-:MinnieApplication rdf:type owl:NamedIndividual ,
-                            :Application ;
-  :hasApplicant :Minnie ;
-  :forJob :DataScientist .
-
-# Comparator applicant for top-10% ranking demo
-:Ace rdf:type owl:NamedIndividual ,
-               :Person .
-
-:AceAns_Q1 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q1 ; :answerScore 5 .
-:AceAns_Q2 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q2 ; :answerScore 5 .
-:AceAns_Q3 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q3 ; :answerScore 5 .
-:AceAns_Q4 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q4 ; :answerScore 4 .
-:AceAns_Q5 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q5 ; :answerScore 5 .
-:AceAns_Q6 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q6 ; :answerScore 5 .
-:AceAns_Q7 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q7 ; :answerScore 5 .
-:AceAns_Q8 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q8 ; :answerScore 5 .
-:AceAns_Q9 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q9 ; :answerScore 5 .
-:AceAns_Q10 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q10 ; :answerScore 5 .
-:AceAns_Q11 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q11 ; :answerScore 5 .
-:AceAns_Q12 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q12 ; :answerScore 5 .
-:AceAns_Q13 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q13 ; :answerScore 4 .
-:AceAns_Q14 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q14 ; :answerScore 4 .
-:AceAns_Q15 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q15 ; :answerScore 3 .
-:AceAns_Q16 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q16 ; :answerScore 4 .
-:AceAns_Q17 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q17 ; :answerScore 4 .
-:AceAns_Q18 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q18 ; :answerScore 4 .
-:AceAns_Q19 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q19 ; :answerScore 1 .
-:AceAns_Q20 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q20 ; :answerScore 1 .
-:AceAns_Q21 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q21 ; :answerScore 1 .
-:AceAns_Q22 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q22 ; :answerScore 1 .
-:AceAns_Q23 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q23 ; :answerScore 1 .
-:AceAns_Q24 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q24 ; :answerScore 1 .
-:AceAns_Q25 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q25 ; :answerScore 5 .
-:AceAns_Q26 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q26 ; :answerScore 5 .
-:AceAns_Q27 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q27 ; :answerScore 5 .
-:AceAns_Q28 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q28 ; :answerScore 5 .
-:AceAns_Q29 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q29 ; :answerScore 5 .
-:AceAns_Q30 rdf:type owl:NamedIndividual , :Answer ; :forQuestion :Q30 ; :answerScore 5 .
-
-:Ace
-  :hasAnswer :AceAns_Q1, :AceAns_Q2, :AceAns_Q3, :AceAns_Q4, :AceAns_Q5, :AceAns_Q6,
-             :AceAns_Q7, :AceAns_Q8, :AceAns_Q9, :AceAns_Q10, :AceAns_Q11, :AceAns_Q12,
-             :AceAns_Q13, :AceAns_Q14, :AceAns_Q15, :AceAns_Q16, :AceAns_Q17, :AceAns_Q18,
-             :AceAns_Q19, :AceAns_Q20, :AceAns_Q21, :AceAns_Q22, :AceAns_Q23, :AceAns_Q24,
-             :AceAns_Q25, :AceAns_Q26, :AceAns_Q27, :AceAns_Q28, :AceAns_Q29, :AceAns_Q30 .
-
-:AceExperience_Data rdf:type owl:NamedIndividual ,
-                             :Experience ;
-  :experienceInField :Data_Field ;
-  :yearsOfExperience 5 .
-
-:Ace
-  :hasExperience :AceExperience_Data ;
-  :hasHardSkill :PythonSkill ,
-               :SQLSkill ,
-               :MachineLearningSkill ,
-               :StatisticsSkill ,
-               :DataVisualizationSkill ;
-  :hasSoftSkill :AnalyticalThinkingSkill ,
-               :CommunicationSkill .
-
-:AceApplication rdf:type owl:NamedIndividual ,
-                         :Application ;
-  :hasApplicant :Ace ;
-  :forJob :DataScientist .
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

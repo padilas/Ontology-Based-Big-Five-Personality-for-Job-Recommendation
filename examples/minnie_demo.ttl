@@ -1,0 +1,58 @@
+@prefix : <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology-minnie-demo> rdf:type owl:Ontology ;
+  owl:imports <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology> .
+
+#################################################################
+# Minnie (demo applicant) + Big Five answers
+#
+# IMPORTANT:
+# - The SWRL rules in jobs.ttl are hard-coded to individuals :Q1 .. :Q30.
+# - This demo therefore assigns :answeredBy and :questionScore on those Q-individuals.
+# - With this modeling, only ONE person can be represented correctly at a time.
+#################################################################
+
+:Minnie rdf:type owl:NamedIndividual , :Person .
+
+# Agreeableness (Q1..Q6)  => avg = (4+5+4+3+5+4)/6 = 4.1667
+:Q1  :answeredBy :Minnie ; :questionScore 4 .
+:Q2  :answeredBy :Minnie ; :questionScore 5 .
+:Q3  :answeredBy :Minnie ; :questionScore 4 .
+:Q4  :answeredBy :Minnie ; :questionScore 3 .
+:Q5  :answeredBy :Minnie ; :questionScore 5 .
+:Q6  :answeredBy :Minnie ; :questionScore 4 .
+
+# Conscientiousness (Q7..Q12) => avg = (4+4+5+4+3+4)/6 = 4.0000
+:Q7  :answeredBy :Minnie ; :questionScore 4 .
+:Q8  :answeredBy :Minnie ; :questionScore 4 .
+:Q9  :answeredBy :Minnie ; :questionScore 5 .
+:Q10 :answeredBy :Minnie ; :questionScore 4 .
+:Q11 :answeredBy :Minnie ; :questionScore 3 .
+:Q12 :answeredBy :Minnie ; :questionScore 4 .
+
+# Extraversion (Q13..Q18) => avg = (3+4+3+2+3+3)/6 = 3.0000
+:Q13 :answeredBy :Minnie ; :questionScore 3 .
+:Q14 :answeredBy :Minnie ; :questionScore 4 .
+:Q15 :answeredBy :Minnie ; :questionScore 3 .
+:Q16 :answeredBy :Minnie ; :questionScore 2 .
+:Q17 :answeredBy :Minnie ; :questionScore 3 .
+:Q18 :answeredBy :Minnie ; :questionScore 3 .
+
+# Neuroticism (Q19..Q24) => avg = (2+2+1+2+1+2)/6 = 1.6667
+:Q19 :answeredBy :Minnie ; :questionScore 2 .
+:Q20 :answeredBy :Minnie ; :questionScore 2 .
+:Q21 :answeredBy :Minnie ; :questionScore 1 .
+:Q22 :answeredBy :Minnie ; :questionScore 2 .
+:Q23 :answeredBy :Minnie ; :questionScore 1 .
+:Q24 :answeredBy :Minnie ; :questionScore 2 .
+
+# Openness (Q25..Q30) => avg = (5+4+5+4+5+4)/6 = 4.5000
+:Q25 :answeredBy :Minnie ; :questionScore 5 .
+:Q26 :answeredBy :Minnie ; :questionScore 4 .
+:Q27 :answeredBy :Minnie ; :questionScore 5 .
+:Q28 :answeredBy :Minnie ; :questionScore 4 .
+:Q29 :answeredBy :Minnie ; :questionScore 5 .
+:Q30 :answeredBy :Minnie ; :questionScore 4 .

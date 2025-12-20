@@ -1,0 +1,74 @@
+PREFIX : <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# Template query untuk ranking aplikasi.
+# Asumsi data:
+# - ?app a :Application ; :hasApplicant ?person ; :forJob ?job .
+# - ?person :hasHardSkill ?hs ; :hasSoftSkill ?ss ; :hasExperience ?exp .
+# - ?job biasanya direpresentasikan sebagai *class* (mis. :DataScientist).
+#   Requirements ada di restriction (rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :requiresHardSkill ; owl:hasValue :PythonSkill ]).
+# - ?exp :yearsOfExperience ?yoe .
+# - skor Big Five ada di :has*Score pada ?person.
+#
+# Catatan:
+# - OWL reasoner dipakai untuk inferensi (mis. skill/trait via property chain).
+# - Ranking/top 10% dilakukan di SPARQL (ORDER BY + LIMIT) atau skrip.
+
+SELECT
+  ?app
+  ?person
+  ?job
+  (COUNT(DISTINCT ?rhsMatch) AS ?hardSkillMatchCount)
+  (COUNT(DISTINCT ?rssMatch) AS ?softSkillMatchCount)
+  (MAX(?yoe) AS ?yearsOfExperience)
+  (MAX(?a) AS ?agreeableness)
+  (MAX(?c) AS ?conscientiousness)
+  (MAX(?e) AS ?extraversion)
+  (MAX(?n) AS ?neuroticism)
+  (MAX(?o) AS ?openness)
+  ((2.0 * COUNT(DISTINCT ?rhsMatch)) +
+   (1.0 * COUNT(DISTINCT ?rssMatch)) +
+   (0.5 * COALESCE(MAX(?yoe), 0)) +
+   (1.0 * COALESCE(MAX(?c), 0.0)) +
+   (0.5 * COALESCE(MAX(?o), 0.0)) +
+   (0.5 * COALESCE(MAX(?e), 0.0)) +
+   (0.5 * COALESCE(MAX(?a), 0.0)) -
+   (0.25 * COALESCE(MAX(?n), 0.0)) AS ?totalScore)
+WHERE {
+  ?app a :Application ;
+       :hasApplicant ?person ;
+       :forJob ?job .
+
+  OPTIONAL { ?person :hasAgreeablenessScore ?a . }
+  OPTIONAL { ?person :hasConscientiousnessScore ?c . }
+  OPTIONAL { ?person :hasExtraversionScore ?e . }
+  OPTIONAL { ?person :hasNeuroticismScore ?n . }
+  OPTIONAL { ?person :hasOpennessScore ?o . }
+
+  OPTIONAL {
+    ?person :hasExperience ?exp .
+    ?exp :yearsOfExperience ?yoe .
+  }
+
+  OPTIONAL {
+    ?job rdfs:subClassOf ?hsRestr .
+    ?hsRestr a owl:Restriction ;
+            owl:onProperty :requiresHardSkill ;
+            owl:hasValue ?rhs .
+    ?person :hasHardSkill ?rhsMatch .
+    FILTER(?rhsMatch = ?rhs)
+  }
+
+  OPTIONAL {
+    ?job rdfs:subClassOf ?ssRestr .
+    ?ssRestr a owl:Restriction ;
+            owl:onProperty :requiresSoftSkill ;
+            owl:hasValue ?rss .
+    ?person :hasSoftSkill ?rssMatch .
+    FILTER(?rssMatch = ?rss)
+  }
+}
+GROUP BY ?app ?person ?job
+ORDER BY DESC(?totalScore)
