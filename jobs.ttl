@@ -87,7 +87,9 @@
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasMatchCategory
-:hasMatchCategory rdf:type owl:ObjectProperty .
+:hasMatchCategory rdf:type owl:ObjectProperty ;
+              rdfs:domain :JobOccupation ;
+              rdfs:range :PersonalityTrait .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasPersonalityTrait
@@ -1861,6 +1863,84 @@
                                          owl:onClass :DigitalMarketingSkillGroup
                                        ] ;
                        rdfs:label "WordPress Developer" .
+
+#################################################################
+#    Personality to Job Mapping (LENGKAP)
+#################################################################
+
+### 1. OPENNESS TRAIT 
+:DataScientist rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:DataAnalyst rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:UIUXDesigner rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:UXResearcherJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:UXWriterJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:ContentStrategistJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:ContentWriter rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:CopywriterJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:DigitalMarketer rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:MarketingManager rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:MarketingAnalyticsJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:MarketingAndCreativesJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:SEOSpecialistJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:WordPressDeveloperJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:ProductManager rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+:ProductManagementJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :OpennessTrait ] .
+
+### 2. CONSCIENTIOUSNESS TRAIT 
+:SoftwareEngineer rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:SoftwareEngineerFrontendJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:FrontendDeveloper rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:FullStackDeveloper rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:DataEngineer rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:DevOpsEngineer rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:QAEngineer rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:SystemAdministrator rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:SecurityAnalyst rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:AccountPayableJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:CreditManagerJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:CreditFinanceOperationJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:FinanceAnalystJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:FinanceAndAccountingStaffJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:TaxOfficerJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:PayrollAndTaxComplianceJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:ProjectManager rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:SupplyChainManager rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+:ITManager rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ConscientiousnessTrait ] .
+
+### 3. EXTRAVERSION TRAIT 
+:AccountExecutive rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+:AccountManagerJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+:SalesDevelopmentRepresentativeJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+:LeadsManagementJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+:PartnerAcquisitionJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+:PartnershipStrategistJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+:PublicRelationsSpecialist rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+:EventActivationJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+:EventMarketingJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+:CommunityMarketingJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+:HRPeopleEngagementJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+:TrainingSpecialist rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :ExtraversionTrait ] .
+
+### 4. AGREEABLENESS TRAIT 
+:CustomerSupportJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+:CustomerSuccessJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+:CustomerExperienceJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+:CustomerEngagementJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+:TechnicalSupportJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+:ITSupportSpecialist rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+:PartnerSuccessActivationJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+:HRManager rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+:HRAssistant rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+:HRPeopleDevelopmentJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+:PeopleAndCultureJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+:TalentAcquisitionSpecialistJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :AgreeablenessTrait ] .
+
+### 5. NEUROTICISM TRAIT 
+:SoftwareEngineer rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :NeuroticismTrait ] .
+:DataEngineer rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :NeuroticismTrait ] .
+:SalesOperationJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :NeuroticismTrait ] .
+:CreditFinanceOperationJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :NeuroticismTrait ] .
+:TechnicalSupportJob rdfs:subClassOf [ rdf:type owl:Restriction ; owl:onProperty :hasMatchCategory ; owl:hasValue :NeuroticismTrait ] .
 
 
 #################################################################
