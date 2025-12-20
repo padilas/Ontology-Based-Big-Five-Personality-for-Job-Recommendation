@@ -7,10 +7,10 @@
 
 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> a owl:AnnotationProperty .
 
-ont.:C_Minie a :Person,
+ont:C_Minie a :Person,
         owl:NamedIndividual .
 
-ont.:measuresTrait a owl:ObjectProperty .
+ont:measuresTrait a owl:ObjectProperty .
 
 <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology> a owl:Ontology .
 
@@ -29229,52 +29229,52 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :Q1 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :OpennessTrait ;
+    ont:measuresTrait :OpennessTrait ;
     :hasQuestion "Saya tertarik mencoba hal-hal baru meskipun belum pernah ada yang saya kenal mencobanya"^^xsd:string .
 
 :Q10 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ConscientiousnessTrait ;
+    ont:measuresTrait :ConscientiousnessTrait ;
     :hasQuestion "Saya jarang menunda pekerjaan penting hingga mendekati batas waktu"^^xsd:string .
 
 :Q11 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ConscientiousnessTrait ;
+    ont:measuresTrait :ConscientiousnessTrait ;
     :hasQuestion "Saya merasa terganggu jika pekerjaan dilakukan dengan asal-asalan"^^xsd:string .
 
 :Q12 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ConscientiousnessTrait ;
+    ont:measuresTrait :ConscientiousnessTrait ;
     :hasQuestion "Saya menjaga barang-barang dan lingkungan saya tetap rapi dan tertata"^^xsd:string .
 
 :Q13 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ExtraversionTrait ;
+    ont:measuresTrait :ExtraversionTrait ;
     :hasQuestion "Saya merasa bersemangat ketika bertemu dan berinteraksi dengan banyak orang"^^xsd:string .
 
 :Q14 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ExtraversionTrait ;
+    ont:measuresTrait :ExtraversionTrait ;
     :hasQuestion "Dalam suatu kelompok, saya cenderung aktif berbicara daripada hanya mendengarkan"^^xsd:string .
 
 :Q15 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ExtraversionTrait ;
+    ont:measuresTrait :ExtraversionTrait ;
     :hasQuestion "Saya menikmati menjadi pusat perhatian dalam situasi sosial tertentu."^^xsd:string .
 
 :Q16 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ExtraversionTrait ;
+    ont:measuresTrait :ExtraversionTrait ;
     :hasQuestion "Saya mudah memulai obrolan dengan orang yang baru saya kenal"^^xsd:string .
 
 :Q17 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ExtraversionTrait ;
+    ont:measuresTrait :ExtraversionTrait ;
     :hasQuestion "Saya lebih merasa berenergi setelah berkumpul dengan orang lain daripada sendirian"^^xsd:string .
 
 :Q18 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ExtraversionTrait ;
+    ont:measuresTrait :ExtraversionTrait ;
     :hasQuestion "Saya suka terlibat dalam kegiatan atau acara yang ramai dan penuh orang"^^xsd:string .
 
 :Q19 a :PersonalityQuestion,
@@ -29284,7 +29284,7 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :Q2 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :OpennessTrait ;
+    ont:measuresTrait :OpennessTrait ;
     :hasQuestion "Saya menikmati membaca atau menonton hal-hal yang membuat saya banyak berpikir"^^xsd:string .
 
 :Q20 a :PersonalityQuestion,
@@ -29339,7 +29339,7 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :Q3 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :OpennessTrait ;
+    ont:measuresTrait :OpennessTrait ;
     :hasQuestion "Saya sering membayangkan berbagai kemungkinan dan ide kreatif dalam hidup saya"^^xsd:string .
 
 :Q30 a :PersonalityQuestion,
@@ -29349,32 +29349,32 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :Q4 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :OpennessTrait ;
+    ont:measuresTrait :OpennessTrait ;
     :hasQuestion "Saya merasa bosan jika harus melakukan hal yang itu-itu saja terus-menerus"^^xsd:string .
 
 :Q5 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :OpennessTrait ;
+    ont:measuresTrait :OpennessTrait ;
     :hasQuestion "Saya tertarik dengan seni, musik, atau karya kreatif lainnya"^^xsd:string .
 
 :Q6 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :OpennessTrait ;
+    ont:measuresTrait :OpennessTrait ;
     :hasQuestion "Saya senang mempelajari sudut pandang atau budaya yang berbeda dari yang biasa saya temui"^^xsd:string .
 
 :Q7 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ConscientiousnessTrait ;
+    ont:measuresTrait :ConscientiousnessTrait ;
     :hasQuestion "Saya biasanya menyelesaikan tugas sampai tuntas sebelum beralih ke hal lain"^^xsd:string .
 
 :Q8 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ConscientiousnessTrait ;
+    ont:measuresTrait :ConscientiousnessTrait ;
     :hasQuestion "Saya merencanakan kegiatan saya terlebih dahulu, bukan menjalani hari secara asal"^^xsd:string .
 
 :Q9 a :PersonalityQuestion,
         owl:NamedIndividual ;
-    ont.:measuresTrait :ConscientiousnessTrait ;
+    ont:measuresTrait :ConscientiousnessTrait ;
     :hasQuestion "Saya berusaha tepat waktu dalam janji atau tenggat (deadline)"^^xsd:string .
 
 :hasAgreeablenessScore a owl:DatatypeProperty ;
