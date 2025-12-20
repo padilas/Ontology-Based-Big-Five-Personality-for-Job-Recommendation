@@ -530,6 +530,21 @@
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty :inJobField ;
                                            owl:hasValue :Marketing_Field
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :requiresHardSkill ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :CustomerSupportAndSuccessSkill
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :requiresHardSkill ;
+                                           owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :MarketingHardSkill
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :requiresHardSkill ;
+                                           owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :SalesAndBusinessDevelopmentSkill
                                          ] ;
                          rdfs:label "CRM & Email Marketing" .
 
@@ -540,6 +555,21 @@
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :inJobField ;
                                     owl:hasValue :CustomerService_Field
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :MarketingHardSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :CustomerSupportAndSuccessSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :SalesAndBusinessDevelopmentSkill
                                   ] ;
                   rdfs:label "CRM Specialist" .
 
@@ -550,6 +580,11 @@
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :inJobField ;
                                    owl:hasValue :CustomerService_Field
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :requiresHardSkill ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :CustomerSupportAndSuccessSkill
                                  ] ;
                  rdfs:label "CS Operations" .
 
@@ -615,7 +650,8 @@
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ContentAndCreativeSkill
 :ContentAndCreativeSkill rdf:type owl:Class ;
-                         rdfs:subClassOf :HardSkill .
+                         rdfs:subClassOf :HardSkill ,
+                                         :MarketingHardSkill .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ContentMarketingJob
@@ -707,22 +743,17 @@
                rdfs:label "Copywriter" .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CreditAnalystAndDataMonitoringJob
-:CreditAnalystAndDataMonitoringJob rdf:type owl:Class ;
-                                   rdfs:subClassOf :JobOccupation ,
-                                                   [ rdf:type owl:Restriction ;
-                                                     owl:onProperty :inJobField ;
-                                                     owl:hasValue :Finance_Field
-                                                   ] ;
-                                   rdfs:label "Credit Analyst and Data Monitoring" .
-
-
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CreditFinanceOperationJob
 :CreditFinanceOperationJob rdf:type owl:Class ;
                            rdfs:subClassOf :JobOccupation ,
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty :inJobField ;
                                              owl:hasValue :Finance_Field
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :requiresHardSkill ;
+                                             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :FinanceHardSkill
                                            ] ;
                            rdfs:label "Credit Finance Operation" .
 
@@ -733,6 +764,11 @@
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :inJobField ;
                                     owl:hasValue :Finance_Field
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :FinanceHardSkill
                                   ] ;
                   rdfs:label "Credit Manager" .
 
@@ -743,6 +779,16 @@
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :inJobField ;
                                          owl:hasValue :CustomerService_Field
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :requiresHardSkill ;
+                                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :SalesAndBusinessDevelopmentSkill
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :requiresHardSkill ;
+                                         owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :CustomerSupportAndSuccessSkill
                                        ] ;
                        rdfs:label "Customer Engagement" .
 
@@ -753,27 +799,13 @@
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :inJobField ;
                                          owl:hasValue :CustomerService_Field
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :requiresHardSkill ;
+                                         owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :CustomerSupportAndSuccessSkill
                                        ] ;
                        rdfs:label "Customer Experience" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerServiceManager
-:CustomerServiceManager rdf:type owl:Class ;
-                        rdfs:subClassOf :JobOccupation ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :inJobField ;
-                                          owl:hasValue :CustomerService_Field
-                                        ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSuccessAdminJob
-:CustomerSuccessAdminJob rdf:type owl:Class ;
-                         rdfs:subClassOf :JobOccupation ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :inJobField ;
-                                           owl:hasValue :CustomerService_Field
-                                         ] ;
-                         rdfs:label "Customer Success Admin" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSuccessJob
@@ -782,17 +814,13 @@
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :inJobField ;
                                       owl:hasValue :CustomerService_Field
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :requiresHardSkill ;
+                                      owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :CustomerSupportAndSuccessSkill
                                     ] ;
                     rdfs:label "Customer Success" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSuccessManager
-:CustomerSuccessManager rdf:type owl:Class ;
-                        rdfs:subClassOf :JobOccupation ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :inJobField ;
-                                          owl:hasValue :CustomerService_Field
-                                        ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSupportAndSuccessSkill
@@ -806,26 +834,13 @@
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :inJobField ;
                                       owl:hasValue :CustomerService_Field
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :requiresHardSkill ;
+                                      owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :CustomerSupportAndSuccessSkill
                                     ] ;
                     rdfs:label "Customer Support" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSupportRepJob
-:CustomerSupportRepJob rdf:type owl:Class ;
-                       rdfs:subClassOf :JobOccupation ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :inJobField ;
-                                         owl:hasValue :CustomerService_Field
-                                       ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSupportSpecialist
-:CustomerSupportSpecialist rdf:type owl:Class ;
-                           rdfs:subClassOf :JobOccupation ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :inJobField ;
-                                             owl:hasValue :CustomerService_Field
-                                           ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataAnalyst
@@ -834,12 +849,46 @@
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :inJobField ;
                                owl:hasValue :Data_Field
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :requiresHardSkill ;
+                               owl:hasValue :BusinessIntelligenceToolSkill
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :requiresHardSkill ;
+                               owl:hasValue :DataVisualizationSkill
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :requiresHardSkill ;
+                               owl:hasValue :ExcelAdvancedSkill
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :requiresHardSkill ;
+                               owl:hasValue :SQLSkill
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :requiresSoftSkill ;
+                               owl:hasValue :AnalyticalThinkingSkill
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :requiresSoftSkill ;
+                               owl:hasValue :AttentionToDetailSkill
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :requiresSoftSkill ;
+                               owl:hasValue :CommunicationSkill
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :requiresHardSkill ;
+                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                               owl:onClass :DataAnalyticsSkill
                              ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataAnalyticsSkill
 :DataAnalyticsSkill rdf:type owl:Class ;
-                    rdfs:subClassOf :HardSkill .
+                    rdfs:subClassOf :DataHardSkill ,
+                                    :HardSkill .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataEngineer
@@ -848,22 +897,50 @@
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :inJobField ;
                                 owl:hasValue :Data_Field
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:hasValue :AirflowSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:hasValue :CloudComputingSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:hasValue :DataWarehouseSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:hasValue :PythonSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:hasValue :SQLSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresSoftSkill ;
+                                owl:hasValue :AttentionToDetailSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresSoftSkill ;
+                                owl:hasValue :CollaborationSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresSoftSkill ;
+                                owl:hasValue :ProblemSolvingSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                owl:onClass :DataEngineeringSkill
                               ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataEngineerJob
-:DataEngineerJob rdf:type owl:Class ;
-                 rdfs:subClassOf :JobOccupation ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :inJobField ;
-                                   owl:hasValue :Data_Field
-                                 ] ;
-                 rdfs:label "Data Engineer" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataEngineeringSkill
 :DataEngineeringSkill rdf:type owl:Class ;
-                      rdfs:subClassOf :HardSkill .
+                      rdfs:subClassOf :DataHardSkill ,
+                                      :HardSkill .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataHardSkill
@@ -873,7 +950,8 @@
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataScienceSkill
 :DataScienceSkill rdf:type owl:Class ;
-                  rdfs:subClassOf :HardSkill .
+                  rdfs:subClassOf :DataHardSkill ,
+                                  :HardSkill .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DataScientist
@@ -882,6 +960,39 @@
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :inJobField ;
                                  owl:hasValue :Data_Field
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :requiresHardSkill ;
+                                 owl:hasValue :DataVisualizationSkill
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :requiresHardSkill ;
+                                 owl:hasValue :MachineLearningSkill
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :requiresHardSkill ;
+                                 owl:hasValue :PythonSkill
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :requiresHardSkill ;
+                                 owl:hasValue :SQLSkill
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :requiresHardSkill ;
+                                 owl:hasValue :StatisticsSkill
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :requiresSoftSkill ;
+                                 owl:hasValue :AnalyticalThinkingSkill
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :requiresSoftSkill ;
+                                 owl:hasValue :CommunicationSkill
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :requiresHardSkill ;
+                                 owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :DataScienceSkill
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :requiresHardSkill ;
@@ -897,7 +1008,8 @@
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DevOpsAndInfrastructureSkill
 :DevOpsAndInfrastructureSkill rdf:type owl:Class ;
-                              rdfs:subClassOf :HardSkill .
+                              rdfs:subClassOf :HardSkill ,
+                                              :TechHardSkill .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DevOpsEngineer
@@ -906,17 +1018,49 @@
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :inJobField ;
                                   owl:hasValue :Technology_Field
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:hasValue :CI_CD_Skill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:hasValue :CloudComputingSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:hasValue :DockerSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:hasValue :KubernetesSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:hasValue :LinuxSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresSoftSkill ;
+                                  owl:hasValue :AttentionToDetailSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresSoftSkill ;
+                                  owl:hasValue :CollaborationSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresSoftSkill ;
+                                  owl:hasValue :ProblemSolvingSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :SoftwareEngineeringSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :DevOpsAndInfrastructureSkill
                                 ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DevOpsJob
-:DevOpsJob rdf:type owl:Class ;
-           rdfs:subClassOf :JobOccupation ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :inJobField ;
-                             owl:hasValue :Technology_Field
-                           ] ;
-           rdfs:label "DevOps" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketer
@@ -925,42 +1069,22 @@
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :inJobField ;
                                    owl:hasValue :Marketing_Field
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :requiresHardSkill ;
+                                   owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :ContentAndCreativeSkill
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :requiresHardSkill ;
+                                   owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :DigitalMarketingSkillGroup
                                  ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketingJob
-:DigitalMarketingJob rdf:type owl:Class ;
-                     rdfs:subClassOf :JobOccupation ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :inJobField ;
-                                       owl:hasValue :Marketing_Field
-                                     ] ;
-                     rdfs:label "Digital Marketing" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketingSkillGroup
 :DigitalMarketingSkillGroup rdf:type owl:Class ;
                             rdfs:subClassOf :HardSkill .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EmployerBrandActivationJob
-:EmployerBrandActivationJob rdf:type owl:Class ;
-                            rdfs:subClassOf :JobOccupation ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty :inJobField ;
-                                              owl:hasValue :Operations_Field
-                                            ] ;
-                            rdfs:label "Employer Brand Activation" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EmployerBrandingJob
-:EmployerBrandingJob rdf:type owl:Class ;
-                     rdfs:subClassOf :JobOccupation ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :inJobField ;
-                                       owl:hasValue :Operations_Field
-                                     ] ;
-                     rdfs:label "Employer Branding" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EventActivationJob
@@ -969,6 +1093,21 @@
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :inJobField ;
                                       owl:hasValue :Marketing_Field
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :requiresHardSkill ;
+                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :DigitalMarketingSkillGroup
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :requiresHardSkill ;
+                                      owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :BusinessOperationsSkill
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :requiresHardSkill ;
+                                      owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :ContentAndCreativeSkill
                                     ] ;
                     rdfs:label "Event Activation" .
 
@@ -979,6 +1118,16 @@
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty :inJobField ;
                                      owl:hasValue :Marketing_Field
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :requiresHardSkill ;
+                                     owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :ContentAndCreativeSkill
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :requiresHardSkill ;
+                                     owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :DigitalMarketingSkillGroup
                                    ] ;
                    rdfs:label "Event Marketing" .
 
@@ -995,6 +1144,11 @@
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty :inJobField ;
                                      owl:hasValue :Finance_Field
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :requiresHardSkill ;
+                                     owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :FinanceHardSkill
                                    ] .
 
 
@@ -1004,6 +1158,11 @@
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty :inJobField ;
                                                 owl:hasValue :Finance_Field
+                                              ] ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :requiresHardSkill ;
+                                                owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                                owl:onClass :FinanceHardSkill
                                               ] ;
                               rdfs:label "Finance & Accounting Staff" .
 
@@ -1013,50 +1172,17 @@
                   rdfs:subClassOf :HardSkill .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinanceManager
-:FinanceManager rdf:type owl:Class ;
-                rdfs:subClassOf :JobOccupation ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :inJobField ;
-                                  owl:hasValue :Finance_Field
-                                ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinancialAnalyst
-:FinancialAnalyst rdf:type owl:Class ;
-                  rdfs:subClassOf :JobOccupation ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :inJobField ;
-                                    owl:hasValue :Finance_Field
-                                  ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinancialReportingJob
-:FinancialReportingJob rdf:type owl:Class ;
-                       rdfs:subClassOf :JobOccupation ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :inJobField ;
-                                         owl:hasValue :Finance_Field
-                                       ] ;
-                       rdfs:label "Financial Reporting" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FinancialServiceJob
-:FinancialServiceJob rdf:type owl:Class ;
-                     rdfs:subClassOf :JobOccupation ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :inJobField ;
-                                       owl:hasValue :Finance_Field
-                                     ] ;
-                     rdfs:label "Financial Service" .
-
-
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#FrontendDeveloper
 :FrontendDeveloper rdf:type owl:Class ;
                    rdfs:subClassOf :JobOccupation ,
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty :inJobField ;
                                      owl:hasValue :Technology_Field
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :requiresHardSkill ;
+                                     owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :UIUXDesignSkillGroup
                                    ] .
 
 
@@ -1066,47 +1192,17 @@
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :inJobField ;
                                       owl:hasValue :Technology_Field
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :requiresHardSkill ;
+                                      owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :SoftwareEngineeringSkill
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :requiresHardSkill ;
+                                      owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :UIUXDesignSkillGroup
                                     ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#GAAndITSupportJob
-:GAAndITSupportJob rdf:type owl:Class ;
-                   rdfs:subClassOf :JobOccupation ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :inJobField ;
-                                     owl:hasValue :Operations_Field
-                                   ] ;
-                   rdfs:label "GA & IT Support" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#GraphicDesignerJob
-:GraphicDesignerJob rdf:type owl:Class ;
-                    rdfs:subClassOf :JobOccupation ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :inJobField ;
-                                      owl:hasValue :Marketing_Field
-                                    ] ;
-                    rdfs:label "Graphic Designer" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#GrowthMarketingJob
-:GrowthMarketingJob rdf:type owl:Class ;
-                    rdfs:subClassOf :JobOccupation ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :inJobField ;
-                                      owl:hasValue :Marketing_Field
-                                    ] ;
-                    rdfs:label "Growth Marketing" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRAndGAOfficerJob
-:HRAndGAOfficerJob rdf:type owl:Class ;
-                   rdfs:subClassOf :JobOccupation ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :inJobField ;
-                                     owl:hasValue :Operations_Field
-                                   ] ;
-                   rdfs:label "HR & GA Officer" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRAssistant
@@ -1115,16 +1211,12 @@
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :inJobField ;
                                owl:hasValue :HR_Field
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :requiresHardSkill ;
+                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                               owl:onClass :HRHardSkill
                              ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRGeneralist
-:HRGeneralist rdf:type owl:Class ;
-              rdfs:subClassOf :JobOccupation ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :inJobField ;
-                                owl:hasValue :HR_Field
-                              ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRHardSkill
@@ -1138,6 +1230,39 @@
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :inJobField ;
                              owl:hasValue :HR_Field
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresHardSkill ;
+                             owl:hasValue :HRComplianceSkill
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresHardSkill ;
+                             owl:hasValue :HRISSkill
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresHardSkill ;
+                             owl:hasValue :RecruitmentSkill
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresHardSkill ;
+                             owl:hasValue :TrainingAndDevelopmentSkill
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresSoftSkill ;
+                             owl:hasValue :CommunicationSkill
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresSoftSkill ;
+                             owl:hasValue :ConflictResolutionSkill
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresSoftSkill ;
+                             owl:hasValue :LeadershipSkill
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresHardSkill ;
+                             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                             owl:onClass :HRHardSkill
                            ] .
 
 
@@ -1147,6 +1272,11 @@
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty :inJobField ;
                                           owl:hasValue :HR_Field
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :requiresHardSkill ;
+                                          owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :HRHardSkill
                                         ] ;
                         rdfs:label "People Development (HR)" .
 
@@ -1157,6 +1287,11 @@
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :inJobField ;
                                          owl:hasValue :HR_Field
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :requiresHardSkill ;
+                                         owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :HRHardSkill
                                        ] ;
                        rdfs:label "People Engagement (HR)" .
 
@@ -1172,6 +1307,31 @@
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :inJobField ;
                              owl:hasValue :Technology_Field
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresHardSkill ;
+                             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :SoftwareEngineeringSkill
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresHardSkill ;
+                             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                             owl:onClass :DataAnalyticsSkill
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresHardSkill ;
+                             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                             owl:onClass :DataEngineeringSkill
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresHardSkill ;
+                             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                             owl:onClass :DevOpsAndInfrastructureSkill
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :requiresHardSkill ;
+                             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                             owl:onClass :QAAndTestingSkill
                            ] .
 
 
@@ -1181,37 +1341,22 @@
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :inJobField ;
                                        owl:hasValue :Technology_Field
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :requiresHardSkill ;
+                                       owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :DevOpsAndInfrastructureSkill
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :requiresHardSkill ;
+                                       owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :SoftwareEngineeringSkill
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :requiresHardSkill ;
+                                       owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :QAAndTestingSkill
                                      ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#IllustratorJob
-:IllustratorJob rdf:type owl:Class ;
-                rdfs:subClassOf :JobOccupation ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :inJobField ;
-                                  owl:hasValue :Product_Field
-                                ] ;
-                rdfs:label "Illustrator" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ImplementationSpecialistJob
-:ImplementationSpecialistJob rdf:type owl:Class ;
-                             rdfs:subClassOf :JobOccupation ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty :inJobField ;
-                                               owl:hasValue :CustomerService_Field
-                                             ] ;
-                             rdfs:label "Implementation Specialist" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#InformationSecurityJob
-:InformationSecurityJob rdf:type owl:Class ;
-                        rdfs:subClassOf :JobOccupation ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :inJobField ;
-                                          owl:hasValue :Technology_Field
-                                        ] ;
-                        rdfs:label "Information Security" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#JobField
@@ -1223,28 +1368,18 @@
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#JobOccupation
 :JobOccupation rdf:type owl:Class ;
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty :requiresHardSkill ;
+                                 owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :HardSkill
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :requiresSoftSkill ;
+                                 owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :SoftSkill
+                               ] ;
                owl:disjointWith :Person ,
                                 :Skill .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#KeyAccountManagementJob
-:KeyAccountManagementJob rdf:type owl:Class ;
-                         rdfs:subClassOf :JobOccupation ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :inJobField ;
-                                           owl:hasValue :CustomerService_Field
-                                         ] ;
-                         rdfs:label "Key Account Management" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LeadGenerationJob
-:LeadGenerationJob rdf:type owl:Class ;
-                   rdfs:subClassOf :JobOccupation ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :inJobField ;
-                                     owl:hasValue :Sales_Field
-                                   ] ;
-                   rdfs:label "Lead Generation" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LeadsManagementJob
@@ -1253,36 +1388,13 @@
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :inJobField ;
                                       owl:hasValue :Sales_Field
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :requiresHardSkill ;
+                                      owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :SalesAndBusinessDevelopmentSkill
                                     ] ;
                     rdfs:label "Leads Management" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LegalOfficerJob
-:LegalOfficerJob rdf:type owl:Class ;
-                 rdfs:subClassOf :JobOccupation ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :inJobField ;
-                                   owl:hasValue :Finance_Field
-                                 ] ;
-                 rdfs:label "Legal Officer" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#LogisticsCoordinator
-:LogisticsCoordinator rdf:type owl:Class ;
-                      rdfs:subClassOf :JobOccupation ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :inJobField ;
-                                        owl:hasValue :Operations_Field
-                                      ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ManagementConsultant
-:ManagementConsultant rdf:type owl:Class ;
-                      rdfs:subClassOf :JobOccupation ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :inJobField ;
-                                        owl:hasValue :Operations_Field
-                                      ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MarketingAnalyticsJob
@@ -1291,6 +1403,16 @@
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :inJobField ;
                                          owl:hasValue :Marketing_Field
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :requiresHardSkill ;
+                                         owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :DataAnalyticsSkill
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :requiresHardSkill ;
+                                         owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :DigitalMarketingSkillGroup
                                        ] ;
                        rdfs:label "Marketing Analytics" .
 
@@ -1301,6 +1423,16 @@
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty :inJobField ;
                                             owl:hasValue :Marketing_Field
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :requiresHardSkill ;
+                                            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                            owl:onClass :ContentAndCreativeSkill
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :requiresHardSkill ;
+                                            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                            owl:onClass :DigitalMarketingSkillGroup
                                           ] ;
                           rdfs:label "Marketing & Creatives" .
 
@@ -1316,6 +1448,48 @@
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :inJobField ;
                                     owl:hasValue :Marketing_Field
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:hasValue :CampaignManagementSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:hasValue :ContentStrategySkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:hasValue :GoogleAnalyticsSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:hasValue :MarketingAutomationSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:hasValue :SEO_Skill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresSoftSkill ;
+                                    owl:hasValue :AnalyticalThinkingSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresSoftSkill ;
+                                    owl:hasValue :CommunicationSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresSoftSkill ;
+                                    owl:hasValue :LeadershipSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :ContentAndCreativeSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :DigitalMarketingSkillGroup
                                   ] .
 
 
@@ -1324,124 +1498,9 @@
                owl:disjointWith :Person .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MerchantBusinessFinancialServiceJob
-:MerchantBusinessFinancialServiceJob rdf:type owl:Class ;
-                                     rdfs:subClassOf :JobOccupation ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :inJobField ;
-                                                       owl:hasValue :Finance_Field
-                                                     ] ;
-                                     rdfs:label "Merchant Business (Financial Service)" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MobileDeveloper
-:MobileDeveloper rdf:type owl:Class ;
-                 rdfs:subClassOf :JobOccupation ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :inJobField ;
-                                   owl:hasValue :Technology_Field
-                                 ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MobileDeveloperAndroidJob
-:MobileDeveloperAndroidJob rdf:type owl:Class ;
-                           rdfs:subClassOf :JobOccupation ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :inJobField ;
-                                             owl:hasValue :Technology_Field
-                                           ] ;
-                           rdfs:label "Mobile Developer - Android" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MobileDeveloperFlutterInternJob
-:MobileDeveloperFlutterInternJob rdf:type owl:Class ;
-                                 rdfs:subClassOf :JobOccupation ,
-                                                 [ rdf:type owl:Restriction ;
-                                                   owl:onProperty :inJobField ;
-                                                   owl:hasValue :Technology_Field
-                                                 ] ;
-                                 rdfs:label "Mobile Developer - Flutter Intern" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MobileDeveloperIOSJob
-:MobileDeveloperIOSJob rdf:type owl:Class ;
-                       rdfs:subClassOf :JobOccupation ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :inJobField ;
-                                         owl:hasValue :Technology_Field
-                                       ] ;
-                       rdfs:label "Mobile Developer - iOS" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MotionGraphicDesignerJob
-:MotionGraphicDesignerJob rdf:type owl:Class ;
-                          rdfs:subClassOf :JobOccupation ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :inJobField ;
-                                            owl:hasValue :Marketing_Field
-                                          ] ;
-                          rdfs:label "Motion Graphic Designer" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NetworkArchitect
-:NetworkArchitect rdf:type owl:Class ;
-                  rdfs:subClassOf :JobOccupation ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :inJobField ;
-                                    owl:hasValue :Technology_Field
-                                  ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#OfficeManager
-:OfficeManager rdf:type owl:Class ;
-               rdfs:subClassOf :JobOccupation ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :inJobField ;
-                                 owl:hasValue :Operations_Field
-                               ] .
-
-
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#OperationsHardSkill
 :OperationsHardSkill rdf:type owl:Class ;
                      rdfs:subClassOf :HardSkill .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#OperationsManager
-:OperationsManager rdf:type owl:Class ;
-                   rdfs:subClassOf :JobOccupation ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :inJobField ;
-                                     owl:hasValue :Operations_Field
-                                   ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#OperationsManagerJob
-:OperationsManagerJob rdf:type owl:Class ;
-                      rdfs:subClassOf :JobOccupation ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :inJobField ;
-                                        owl:hasValue :Operations_Field
-                                      ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PRAndActivationJob
-:PRAndActivationJob rdf:type owl:Class ;
-                    rdfs:subClassOf :JobOccupation ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :inJobField ;
-                                      owl:hasValue :Marketing_Field
-                                    ] ;
-                    rdfs:label "PR & Activation" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PartnerAccountExecutiveJob
-:PartnerAccountExecutiveJob rdf:type owl:Class ;
-                            rdfs:subClassOf :JobOccupation ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty :inJobField ;
-                                              owl:hasValue :Sales_Field
-                                            ] ;
-                            rdfs:label "Partner Account Executive" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PartnerAcquisitionJob
@@ -1450,6 +1509,11 @@
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :inJobField ;
                                          owl:hasValue :Sales_Field
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :requiresHardSkill ;
+                                         owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :SalesAndBusinessDevelopmentSkill
                                        ] ;
                        rdfs:label "Partners Acquisition" .
 
@@ -1460,18 +1524,18 @@
                                              [ rdf:type owl:Restriction ;
                                                owl:onProperty :inJobField ;
                                                owl:hasValue :CustomerService_Field
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :SalesAndBusinessDevelopmentSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :CustomerSupportAndSuccessSkill
                                              ] ;
                              rdfs:label "Partner Success Activation" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PartnerSuccessJob
-:PartnerSuccessJob rdf:type owl:Class ;
-                   rdfs:subClassOf :JobOccupation ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :inJobField ;
-                                     owl:hasValue :CustomerService_Field
-                                   ] ;
-                   rdfs:label "Partner Success" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PartnershipStrategistJob
@@ -1480,6 +1544,11 @@
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty :inJobField ;
                                             owl:hasValue :Operations_Field
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :requiresHardSkill ;
+                                            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                            owl:onClass :SalesAndBusinessDevelopmentSkill
                                           ] ;
                           rdfs:label "Partnership Strategist" .
 
@@ -1490,18 +1559,13 @@
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty :inJobField ;
                                               owl:hasValue :Finance_Field
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :requiresHardSkill ;
+                                              owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                              owl:onClass :FinanceHardSkill
                                             ] ;
                             rdfs:label "Payroll & Tax Compliance" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PeopleAnalyticsJob
-:PeopleAnalyticsJob rdf:type owl:Class ;
-                    rdfs:subClassOf :JobOccupation ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :inJobField ;
-                                      owl:hasValue :Operations_Field
-                                    ] ;
-                    rdfs:label "People Analytics" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PeopleAndCultureJob
@@ -1510,48 +1574,13 @@
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :inJobField ;
                                        owl:hasValue :Operations_Field
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :requiresHardSkill ;
+                                       owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :HRHardSkill
                                      ] ;
                      rdfs:label "People & Culture" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PeopleDevelopmentJob
-:PeopleDevelopmentJob rdf:type owl:Class ;
-                      rdfs:subClassOf :JobOccupation ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :inJobField ;
-                                        owl:hasValue :Operations_Field
-                                      ] ;
-                      rdfs:label "People Development" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PeopleEngagementJob
-:PeopleEngagementJob rdf:type owl:Class ;
-                     rdfs:subClassOf :JobOccupation ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :inJobField ;
-                                       owl:hasValue :Operations_Field
-                                     ] ;
-                     rdfs:label "People Engagement" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PeopleStrategyJob
-:PeopleStrategyJob rdf:type owl:Class ;
-                   rdfs:subClassOf :JobOccupation ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :inJobField ;
-                                     owl:hasValue :Operations_Field
-                                   ] ;
-                   rdfs:label "People Strategy" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PerformanceMarketingJob
-:PerformanceMarketingJob rdf:type owl:Class ;
-                         rdfs:subClassOf :JobOccupation ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :inJobField ;
-                                           owl:hasValue :Marketing_Field
-                                         ] ;
-                         rdfs:label "Performance Marketing" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Person
@@ -1574,22 +1603,17 @@
                   owl:disjointWith :Skill .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductDesignJob
-:ProductDesignJob rdf:type owl:Class ;
-                  rdfs:subClassOf :JobOccupation ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :inJobField ;
-                                    owl:hasValue :Product_Field
-                                  ] ;
-                  rdfs:label "Product Design" .
-
-
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductManagementJob
 :ProductManagementJob rdf:type owl:Class ;
                       rdfs:subClassOf :JobOccupation ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty :inJobField ;
                                         owl:hasValue :Product_Field
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :requiresHardSkill ;
+                                        owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                        owl:onClass :ProductManagementSkill
                                       ] ;
                       rdfs:label "Product Management" .
 
@@ -1605,17 +1629,48 @@
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :inJobField ;
                                   owl:hasValue :Product_Field
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:hasValue :A_B_TestingSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:hasValue :AgileMethodologySkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:hasValue :BacklogManagementSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:hasValue :BusinessAnalysisSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:hasValue :RoadmapPlanningSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresSoftSkill ;
+                                  owl:hasValue :CommunicationSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresSoftSkill ;
+                                  owl:hasValue :DecisionMakingSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresSoftSkill ;
+                                  owl:hasValue :LeadershipSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresSoftSkill ;
+                                  owl:hasValue :StakeholderManagementSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :ProductManagementSkill
                                 ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductMarketingAndCampaignSpecialistJob
-:ProductMarketingAndCampaignSpecialistJob rdf:type owl:Class ;
-                                          rdfs:subClassOf :JobOccupation ,
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :inJobField ;
-                                                            owl:hasValue :CustomerService_Field
-                                                          ] ;
-                                          rdfs:label "Product Marketing & Campaign Specialist" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductMarketingJob
@@ -1624,48 +1679,18 @@
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :inJobField ;
                                        owl:hasValue :Marketing_Field
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :requiresHardSkill ;
+                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :BusinessOperationsSkill
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :requiresHardSkill ;
+                                       owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :DigitalMarketingSkillGroup
                                      ] ;
                      rdfs:label "Product Marketing" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductOwner
-:ProductOwner rdf:type owl:Class ;
-              rdfs:subClassOf :JobOccupation ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :inJobField ;
-                                owl:hasValue :Product_Field
-                              ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProductOwnerJob
-:ProductOwnerJob rdf:type owl:Class ;
-                 rdfs:subClassOf :JobOccupation ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :inJobField ;
-                                   owl:hasValue :Product_Field
-                                 ] ;
-                 rdfs:label "Product Owner" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProjectManagementOfficeJob
-:ProjectManagementOfficeJob rdf:type owl:Class ;
-                            rdfs:subClassOf :JobOccupation ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty :inJobField ;
-                                              owl:hasValue :Operations_Field
-                                            ] ;
-                            rdfs:label "Project Management Office" ,
-                                       "Project Management Office (PMO)" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProjectManagementTechJob
-:ProjectManagementTechJob rdf:type owl:Class ;
-                          rdfs:subClassOf :JobOccupation ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :inJobField ;
-                                            owl:hasValue :Technology_Field
-                                          ] ;
-                          rdfs:label "Project Management (Information Security & Compliance)" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProjectManager
@@ -1674,16 +1699,17 @@
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :inJobField ;
                                   owl:hasValue :Operations_Field
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :BusinessOperationsSkill
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :requiresHardSkill ;
+                                  owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :ProductManagementSkill
                                 ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ProjectManagerJob
-:ProjectManagerJob rdf:type owl:Class ;
-                   rdfs:subClassOf :JobOccupation ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :inJobField ;
-                                     owl:hasValue :Operations_Field
-                                   ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PublicRelationsSpecialist
@@ -1692,12 +1718,28 @@
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty :inJobField ;
                                              owl:hasValue :Marketing_Field
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :requiresHardSkill ;
+                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :DigitalMarketingSkillGroup
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :requiresHardSkill ;
+                                             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :CustomerSupportAndSuccessSkill
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :requiresHardSkill ;
+                                             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :SalesAndBusinessDevelopmentSkill
                                            ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#QAAndTestingSkill
 :QAAndTestingSkill rdf:type owl:Class ;
-                   rdfs:subClassOf :HardSkill .
+                   rdfs:subClassOf :HardSkill ,
+                                   :TechHardSkill .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#QAEngineer
@@ -1706,56 +1748,12 @@
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :inJobField ;
                               owl:hasValue :Technology_Field
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :requiresHardSkill ;
+                              owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                              owl:onClass :QAAndTestingSkill
                             ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#QualityAssuranceJob
-:QualityAssuranceJob rdf:type owl:Class ;
-                     rdfs:subClassOf :JobOccupation ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :inJobField ;
-                                       owl:hasValue :Technology_Field
-                                     ] ;
-                     rdfs:label "Quality Assurance" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ReportingSpecialistJob
-:ReportingSpecialistJob rdf:type owl:Class ;
-                        rdfs:subClassOf :JobOccupation ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :inJobField ;
-                                          owl:hasValue :Finance_Field
-                                        ] ;
-                        rdfs:label "Reporting Specialist" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ResearchScientistJob
-:ResearchScientistJob rdf:type owl:Class ;
-                      rdfs:subClassOf :JobOccupation ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :inJobField ;
-                                        owl:hasValue :Data_Field
-                                      ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#RiskManagementJob
-:RiskManagementJob rdf:type owl:Class ;
-                   rdfs:subClassOf :JobOccupation ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :inJobField ;
-                                     owl:hasValue :Technology_Field
-                                   ] ;
-                   rdfs:label "Risk Management" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SDETJob
-:SDETJob rdf:type owl:Class ;
-         rdfs:subClassOf :JobOccupation ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :inJobField ;
-                           owl:hasValue :Technology_Field
-                         ] ;
-         rdfs:label "SDET" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SEOSpecialistJob
@@ -1764,22 +1762,29 @@
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :inJobField ;
                                     owl:hasValue :Marketing_Field
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :ContentAndCreativeSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :DigitalMarketingSkillGroup
                                   ] ;
                   rdfs:label "SEO Specialist" .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SEO_Specialist
-:SEO_Specialist rdf:type owl:Class ;
-                rdfs:subClassOf :JobOccupation ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :inJobField ;
-                                  owl:hasValue :Marketing_Field
-                                ] .
-
-
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesAndBusinessDevelopmentSkill
 :SalesAndBusinessDevelopmentSkill rdf:type owl:Class ;
-                                  rdfs:subClassOf :HardSkill .
+                                  rdfs:subClassOf :HardSkill ,
+                                                  :SalesHardSkill ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :requiresHardSkill ;
+                                                    owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                                    owl:onClass :FinanceHardSkill
+                                                  ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesDevelopmentRepresentativeJob
@@ -1788,40 +1793,51 @@
                                                    [ rdf:type owl:Restriction ;
                                                      owl:onProperty :inJobField ;
                                                      owl:hasValue :Sales_Field
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :requiresHardSkill ;
+                                                     owl:hasValue :B2BSalesSkill
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :requiresHardSkill ;
+                                                     owl:hasValue :ColdCallingSkill
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :requiresHardSkill ;
+                                                     owl:hasValue :LeadQualificationSkill
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :requiresHardSkill ;
+                                                     owl:hasValue :SalesCRMSoftwareSkill
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :requiresSoftSkill ;
+                                                     owl:hasValue :CommunicationSkill
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :requiresSoftSkill ;
+                                                     owl:hasValue :PersuasionSkill
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :requiresSoftSkill ;
+                                                     owl:hasValue :ResilienceSkill
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :requiresHardSkill ;
+                                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                     owl:onClass :BusinessOperationsSkill
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :requiresHardSkill ;
+                                                     owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                     owl:onClass :SalesAndBusinessDevelopmentSkill
                                                    ] ;
                                    rdfs:label "Sales Development Representative" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesEngineer
-:SalesEngineer rdf:type owl:Class ;
-               rdfs:subClassOf :JobOccupation ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :inJobField ;
-                                 owl:hasValue :Sales_Field
-                               ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesExecutiveJob
-:SalesExecutiveJob rdf:type owl:Class ;
-                   rdfs:subClassOf :JobOccupation ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :inJobField ;
-                                     owl:hasValue :Sales_Field
-                                   ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesHardSkill
 :SalesHardSkill rdf:type owl:Class ;
                 rdfs:subClassOf :HardSkill .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesManager
-:SalesManager rdf:type owl:Class ;
-              rdfs:subClassOf :JobOccupation ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :inJobField ;
-                                owl:hasValue :Sales_Field
-                              ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesOperationJob
@@ -1832,34 +1848,6 @@
                                      owl:hasValue :Sales_Field
                                    ] ;
                    rdfs:label "Sales Operation" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesOperationRenewalJob
-:SalesOperationRenewalJob rdf:type owl:Class ;
-                          rdfs:subClassOf :JobOccupation ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :inJobField ;
-                                            owl:hasValue :CustomerService_Field
-                                          ] ;
-                          rdfs:label "Sales Operation - Renewal" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesRepresentative
-:SalesRepresentative rdf:type owl:Class ;
-                     rdfs:subClassOf :JobOccupation ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :inJobField ;
-                                       owl:hasValue :Sales_Field
-                                     ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ScrumMaster
-:ScrumMaster rdf:type owl:Class ;
-             rdfs:subClassOf :JobOccupation ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :inJobField ;
-                               owl:hasValue :Product_Field
-                             ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SecurityAnalyst
@@ -1875,25 +1863,6 @@
 :Skill rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SocialMediaJob
-:SocialMediaJob rdf:type owl:Class ;
-                rdfs:subClassOf :JobOccupation ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :inJobField ;
-                                  owl:hasValue :Marketing_Field
-                                ] ;
-                rdfs:label "Social Media" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SocialMediaSpecialist
-:SocialMediaSpecialist rdf:type owl:Class ;
-                       rdfs:subClassOf :JobOccupation ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :inJobField ;
-                                         owl:hasValue :Marketing_Field
-                                       ] .
-
-
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SoftSkill
 :SoftSkill rdf:type owl:Class ;
            rdfs:subClassOf :Skill .
@@ -1905,6 +1874,38 @@
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :inJobField ;
                                     owl:hasValue :Technology_Field
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:hasValue :APIIntegrationSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:hasValue :CI_CD_Skill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:hasValue :GitSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:hasValue :JavaSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresHardSkill ;
+                                    owl:hasValue :SQLSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresSoftSkill ;
+                                    owl:hasValue :CollaborationSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresSoftSkill ;
+                                    owl:hasValue :CommunicationSkill
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :requiresSoftSkill ;
+                                    owl:hasValue :ProblemSolvingSkill
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :requiresHardSkill ;
@@ -1924,32 +1925,55 @@
                                              [ rdf:type owl:Restriction ;
                                                owl:onProperty :inJobField ;
                                                owl:hasValue :Technology_Field
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:hasValue :APIIntegrationSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:hasValue :GitSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:hasValue :JavaScriptSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:hasValue :NodeJSSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:hasValue :ReactSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:hasValue :TypeScriptSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresSoftSkill ;
+                                               owl:hasValue :AttentionToDetailSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresSoftSkill ;
+                                               owl:hasValue :CollaborationSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresSoftSkill ;
+                                               owl:hasValue :CommunicationSkill
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :requiresHardSkill ;
+                                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :UIUXDesignSkillGroup
                                              ] ;
                              rdfs:label "Software Engineer - Frontend" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SoftwareEngineeringSkill
 :SoftwareEngineeringSkill rdf:type owl:Class ;
-                          rdfs:subClassOf :HardSkill .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Statistician
-:Statistician rdf:type owl:Class ;
-              rdfs:subClassOf :JobOccupation ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :inJobField ;
-                                owl:hasValue :Data_Field
-                              ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#StrategicPartnershipAndGovernmentRelationAssociateJob
-:StrategicPartnershipAndGovernmentRelationAssociateJob rdf:type owl:Class ;
-                                                       rdfs:subClassOf :JobOccupation ,
-                                                                       [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :inJobField ;
-                                                                         owl:hasValue :Operations_Field
-                                                                       ] ;
-                                                       rdfs:label "Strategic Partnership & Government Relation Associate" .
+                          rdfs:subClassOf :HardSkill ,
+                                          :TechHardSkill .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SupplyChainManager
@@ -1958,6 +1982,11 @@
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :inJobField ;
                                       owl:hasValue :Operations_Field
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :requiresHardSkill ;
+                                      owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :BusinessOperationsSkill
                                     ] .
 
 
@@ -1967,25 +1996,17 @@
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :inJobField ;
                                        owl:hasValue :Technology_Field
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :requiresHardSkill ;
+                                       owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :DataAnalyticsSkill
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :requiresHardSkill ;
+                                       owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :DataEngineeringSkill
                                      ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TalentAcquisitionJob
-:TalentAcquisitionJob rdf:type owl:Class ;
-                      rdfs:subClassOf :JobOccupation ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :inJobField ;
-                                        owl:hasValue :HR_Field
-                                      ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TalentAcquisitionSpecialist
-:TalentAcquisitionSpecialist rdf:type owl:Class ;
-                             rdfs:subClassOf :JobOccupation ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty :inJobField ;
-                                               owl:hasValue :HR_Field
-                                             ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TalentAcquisitionSpecialistJob
@@ -1994,6 +2015,11 @@
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty :inJobField ;
                                                   owl:hasValue :HR_Field
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :requiresHardSkill ;
+                                                  owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                                  owl:onClass :HRHardSkill
                                                 ] ;
                                 rdfs:label "Talent Acquisition" .
 
@@ -2004,32 +2030,18 @@
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :inJobField ;
                                  owl:hasValue :Finance_Field
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :requiresHardSkill ;
+                                 owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :FinanceHardSkill
                                ] ;
                rdfs:label "Tax Officer" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TaxSpecialist
-:TaxSpecialist rdf:type owl:Class ;
-               rdfs:subClassOf :JobOccupation ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :inJobField ;
-                                 owl:hasValue :Finance_Field
-                               ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TechHardSkill
 :TechHardSkill rdf:type owl:Class ;
                rdfs:subClassOf :HardSkill .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TechnicalProgramManagerJob
-:TechnicalProgramManagerJob rdf:type owl:Class ;
-                            rdfs:subClassOf :JobOccupation ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty :inJobField ;
-                                              owl:hasValue :Technology_Field
-                                            ] ;
-                            rdfs:label "Technical Program Manager" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TechnicalSupportJob
@@ -2038,28 +2050,13 @@
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :inJobField ;
                                        owl:hasValue :CustomerService_Field
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :requiresHardSkill ;
+                                       owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :TechHardSkill
                                      ] ;
                      rdfs:label "Technical Support" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TechnologyJob
-:TechnologyJob rdf:type owl:Class ;
-               rdfs:subClassOf :JobOccupation ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :inJobField ;
-                                 owl:hasValue :Technology_Field
-                               ] ;
-               rdfs:label "Technology" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TelesalesJob
-:TelesalesJob rdf:type owl:Class ;
-              rdfs:subClassOf :JobOccupation ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :inJobField ;
-                                owl:hasValue :Sales_Field
-                              ] ;
-              rdfs:label "Telesales" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#TrainingSpecialist
@@ -2068,12 +2065,18 @@
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :inJobField ;
                                       owl:hasValue :HR_Field
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :requiresHardSkill ;
+                                      owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :HRHardSkill
                                     ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#UIUXDesignSkillGroup
 :UIUXDesignSkillGroup rdf:type owl:Class ;
-                      rdfs:subClassOf :HardSkill .
+                      rdfs:subClassOf :HardSkill ,
+                                      :TechHardSkill .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#UIUXDesigner
@@ -2082,12 +2085,48 @@
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :inJobField ;
                                 owl:hasValue :Technology_Field
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:hasValue :AdobeXDSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:hasValue :DesignSystemSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:hasValue :FigmaSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:hasValue :PrototypingSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:hasValue :UserResearchSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:hasValue :WireframingSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresSoftSkill ;
+                                owl:hasValue :CollaborationSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresSoftSkill ;
+                                owl:hasValue :CommunicationSkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresSoftSkill ;
+                                owl:hasValue :EmpathySkill
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :requiresHardSkill ;
+                                owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                owl:onClass :UIUXDesignSkillGroup
                               ] .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#UIUXHardSkill
-:UIUXHardSkill rdf:type owl:Class ;
-               rdfs:subClassOf :HardSkill .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#UXResearcherJob
@@ -2096,6 +2135,11 @@
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :inJobField ;
                                    owl:hasValue :Product_Field
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :requiresHardSkill ;
+                                   owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :UIUXDesignSkillGroup
                                  ] ;
                  rdfs:label "UX Researcher" .
 
@@ -2106,6 +2150,16 @@
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :inJobField ;
                                owl:hasValue :Product_Field
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :requiresHardSkill ;
+                               owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                               owl:onClass :ContentAndCreativeSkill
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :requiresHardSkill ;
+                               owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                               owl:onClass :UIUXDesignSkillGroup
                              ] ;
              rdfs:label "UX Writer" .
 
@@ -2125,6 +2179,16 @@
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :inJobField ;
                                          owl:hasValue :Marketing_Field
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :requiresHardSkill ;
+                                         owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :ContentAndCreativeSkill
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :requiresHardSkill ;
+                                         owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :DigitalMarketingSkillGroup
                                        ] ;
                        rdfs:label "WordPress Developer" .
 
