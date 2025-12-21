@@ -299,11 +299,8 @@ def create_radar_chart(scores):
 def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None, years_experience=None, soft_skills=None, hard_skills=None):
     """Add new applicant with answers and job details to ontology"""
     try:
-        # Load ontology from jobs_with_scores.owl (main working file)
-        onto_path = os.path.abspath("jobs_with_scores.owl")
-        if not os.path.exists(onto_path):
-            # Fallback to jobs.owl if jobs_with_scores doesn't exist yet
-            onto_path = os.path.abspath("jobs.owl")
+        # Load ontology from OWL (owlready2 works best with OWL format)
+        onto_path = os.path.abspath("jobs.owl")
         onto = get_ontology(f"file://{onto_path}").load()
         
         with onto:
@@ -359,8 +356,8 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
                             new_person.hasHardSkill = []
                         new_person.hasHardSkill.append(onto[skill])
         
-        # Save to jobs_with_scores.owl (main working file)
-        onto.save(file="jobs_with_scores.owl", format="rdfxml")
+        # Save to OWL (working format)
+        onto.save(file="jobs.owl", format="rdfxml")
         
         # Auto-sync to TTL (output format for viewing)
         try:
@@ -368,7 +365,7 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
             from rdflib.namespace import RDF, RDFS, OWL
             
             g = Graph()
-            g.parse("jobs_with_scores.owl", format="xml")
+            g.parse("jobs.owl", format="xml")
             
             # Bind namespaces
             g.bind("owl", OWL)
@@ -377,12 +374,12 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
             g.bind("", Namespace("http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#"))
             
             # Save to TTL for viewing
-            g.serialize(destination="jobs_with_scores.ttl", format="turtle", encoding="utf-8")
-            print("✓ Saved to jobs_with_scores.owl and synced to jobs_with_scores.ttl")
+            g.serialize(destination="jobs_clean.ttl", format="turtle", encoding="utf-8")
+            print("✓ Saved to jobs.owl and synced to jobs_clean.ttl")
         except Exception as e:
             print(f"Warning: Could not sync to TTL: {e}")
         
-        return True, "Applicant added! Data in jobs_with_scores.owl, viewable in jobs_with_scores.ttl"
+        return True, "Applicant added! Data in jobs.owl, viewable in jobs_clean.ttl"
         
     except Exception as e:
         return False, f"Error: {str(e)}"
@@ -390,11 +387,8 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
 def run_complete_workflow():
     """Run complete workflow: calculate scores + reasoning"""
     try:
-        # Load ontology from jobs_with_scores.owl (main working file)
-        onto_path = os.path.abspath("jobs_with_scores.owl")
-        if not os.path.exists(onto_path):
-            # Fallback to jobs.owl if jobs_with_scores doesn't exist yet
-            onto_path = os.path.abspath("jobs.owl")
+        # Load ontology from OWL (owlready2 works best with OWL format)
+        onto_path = os.path.abspath("jobs.owl")
         onto = get_ontology(f"file://{onto_path}").load()
         
         # Calculate Big Five scores
@@ -447,8 +441,9 @@ def run_complete_workflow():
                         if applicant_data['years_experience'] is not None:
                             person.hasYearsOfExperience = [int(applicant_data['years_experience'])]
         
-        # Save to jobs_with_scores.owl (main working file)
+        # Save to OWL with scores (working format)
         onto.save(file="jobs_with_scores.owl", format="rdfxml")
+        onto.save(file="jobs.owl", format="rdfxml")  # Keep main file updated
         
         # Auto-sync to TTL (output format for viewing)
         try:
@@ -465,8 +460,8 @@ def run_complete_workflow():
             g.bind("", Namespace("http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#"))
             
             # Save to TTL for viewing
-            g.serialize(destination="jobs_with_scores.ttl", format="turtle", encoding="utf-8")
-            print("✓ Saved to jobs_with_scores.owl and synced to jobs_with_scores.ttl")
+            g.serialize(destination="jobs_clean.ttl", format="turtle", encoding="utf-8")
+            print("✓ Saved to jobs_with_scores.owl and synced to jobs_clean.ttl")
         except ImportError:
             print("rdflib not available, TTL sync skipped")
         except Exception as e:
@@ -474,7 +469,7 @@ def run_complete_workflow():
         
         print("Reasoning skipped due to technical issues with Java/Pellet")
         
-        return True, "Analysis complete! Results in jobs_with_scores.owl, viewable in jobs_with_scores.ttl"
+        return True, "Analysis complete! Results in jobs_with_scores.owl, viewable in jobs_clean.ttl"
         
     except Exception as e:
         return False, f"Error: {str(e)}"

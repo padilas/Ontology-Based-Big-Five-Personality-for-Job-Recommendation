@@ -4031,466 +4031,241 @@
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Nina">
+<owl:NamedIndividual rdf:about="#Asa">
   <rdf:type rdf:resource="#Person"/>
-  <hasAnswer rdf:resource="#NinaAns_Q1"/>
-  <hasAnswer rdf:resource="#NinaAns_Q2"/>
-  <hasAnswer rdf:resource="#NinaAns_Q3"/>
-  <hasAnswer rdf:resource="#NinaAns_Q4"/>
-  <hasAnswer rdf:resource="#NinaAns_Q5"/>
-  <hasAnswer rdf:resource="#NinaAns_Q6"/>
-  <hasAnswer rdf:resource="#NinaAns_Q7"/>
-  <hasAnswer rdf:resource="#NinaAns_Q8"/>
-  <hasAnswer rdf:resource="#NinaAns_Q9"/>
-  <hasAnswer rdf:resource="#NinaAns_Q10"/>
-  <hasAnswer rdf:resource="#NinaAns_Q11"/>
-  <hasAnswer rdf:resource="#NinaAns_Q12"/>
-  <hasAnswer rdf:resource="#NinaAns_Q13"/>
-  <hasAnswer rdf:resource="#NinaAns_Q14"/>
-  <hasAnswer rdf:resource="#NinaAns_Q15"/>
-  <hasAnswer rdf:resource="#NinaAns_Q16"/>
-  <hasAnswer rdf:resource="#NinaAns_Q17"/>
-  <hasAnswer rdf:resource="#NinaAns_Q18"/>
-  <hasAnswer rdf:resource="#NinaAns_Q19"/>
-  <hasAnswer rdf:resource="#NinaAns_Q20"/>
-  <hasAnswer rdf:resource="#NinaAns_Q21"/>
-  <hasAnswer rdf:resource="#NinaAns_Q22"/>
-  <hasAnswer rdf:resource="#NinaAns_Q23"/>
-  <hasAnswer rdf:resource="#NinaAns_Q24"/>
-  <hasAnswer rdf:resource="#NinaAns_Q25"/>
-  <hasAnswer rdf:resource="#NinaAns_Q26"/>
-  <hasAnswer rdf:resource="#NinaAns_Q27"/>
-  <hasAnswer rdf:resource="#NinaAns_Q28"/>
-  <hasAnswer rdf:resource="#NinaAns_Q29"/>
-  <hasAnswer rdf:resource="#NinaAns_Q30"/>
+  <hasAnswer rdf:resource="#AsaAns_Q1"/>
+  <hasAnswer rdf:resource="#AsaAns_Q2"/>
+  <hasAnswer rdf:resource="#AsaAns_Q3"/>
+  <hasAnswer rdf:resource="#AsaAns_Q4"/>
+  <hasAnswer rdf:resource="#AsaAns_Q5"/>
+  <hasAnswer rdf:resource="#AsaAns_Q6"/>
+  <hasAnswer rdf:resource="#AsaAns_Q7"/>
+  <hasAnswer rdf:resource="#AsaAns_Q8"/>
+  <hasAnswer rdf:resource="#AsaAns_Q9"/>
+  <hasAnswer rdf:resource="#AsaAns_Q10"/>
+  <hasAnswer rdf:resource="#AsaAns_Q11"/>
+  <hasAnswer rdf:resource="#AsaAns_Q12"/>
+  <hasAnswer rdf:resource="#AsaAns_Q13"/>
+  <hasAnswer rdf:resource="#AsaAns_Q14"/>
+  <hasAnswer rdf:resource="#AsaAns_Q15"/>
+  <hasAnswer rdf:resource="#AsaAns_Q16"/>
+  <hasAnswer rdf:resource="#AsaAns_Q17"/>
+  <hasAnswer rdf:resource="#AsaAns_Q18"/>
+  <hasAnswer rdf:resource="#AsaAns_Q19"/>
+  <hasAnswer rdf:resource="#AsaAns_Q20"/>
+  <hasAnswer rdf:resource="#AsaAns_Q21"/>
+  <hasAnswer rdf:resource="#AsaAns_Q22"/>
+  <hasAnswer rdf:resource="#AsaAns_Q23"/>
+  <hasAnswer rdf:resource="#AsaAns_Q24"/>
+  <hasAnswer rdf:resource="#AsaAns_Q25"/>
+  <hasAnswer rdf:resource="#AsaAns_Q26"/>
+  <hasAnswer rdf:resource="#AsaAns_Q27"/>
+  <hasAnswer rdf:resource="#AsaAns_Q28"/>
+  <hasAnswer rdf:resource="#AsaAns_Q29"/>
+  <hasAnswer rdf:resource="#AsaAns_Q30"/>
   <inJobField rdf:resource="#Technology_Field"/>
-  <hasSoftSkill rdf:resource="#AdaptableCommunicationSkill"/>
-  <hasSoftSkill rdf:resource="#AttentionToDetailSkill"/>
-  <hasSoftSkill rdf:resource="#CoachingSkill"/>
-  <hasSoftSkill rdf:resource="#CollaborationRemoteSkill"/>
-  <hasSoftSkill rdf:resource="#CollaborationSkill"/>
-  <hasSoftSkill rdf:resource="#CommunicationSkill"/>
-  <hasSoftSkill rdf:resource="#ConflictResolutionSkill"/>
-  <hasHardSkill rdf:resource="#AccountingSkill"/>
-  <hasHardSkill rdf:resource="#AirflowSkill"/>
-  <hasHardSkill rdf:resource="#AutomationTestingSkill"/>
-  <hasHardSkill rdf:resource="#AzureSkill"/>
-  <hasHardSkill rdf:resource="#AngularSkill"/>
-  <hasHardSkill rdf:resource="#B2BSalesSkill"/>
-  <hasHardSkill rdf:resource="#BacklogManagementSkill"/>
-  <hasAgreeablenessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.83</hasAgreeablenessScore>
-  <hasConscientiousnessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.5</hasConscientiousnessScore>
-  <hasExtraversionScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.83</hasExtraversionScore>
-  <hasNeuroticismScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.33</hasNeuroticismScore>
-  <hasOpennessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.0</hasOpennessScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q1">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q1"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q2">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q2"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q3">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q3"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q4">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q4"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q5">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q5"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q6">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q6"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q7">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q7"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q8">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q8"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q9">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q9"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q10">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q10"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q11">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q11"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q12">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q12"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q13">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q13"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q14">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q14"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q15">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q15"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q16">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q16"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q17">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q17"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q18">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q18"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q19">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q19"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q20">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q20"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q21">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q21"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q22">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q22"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q23">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q23"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q24">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q24"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q25">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q25"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q26">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q26"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q27">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q27"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q28">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q28"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q29">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q29"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NinaAns_Q30">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q30"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Jim">
-  <rdf:type rdf:resource="#Person"/>
-  <hasAnswer rdf:resource="#JimAns_Q1"/>
-  <hasAnswer rdf:resource="#JimAns_Q2"/>
-  <hasAnswer rdf:resource="#JimAns_Q3"/>
-  <hasAnswer rdf:resource="#JimAns_Q4"/>
-  <hasAnswer rdf:resource="#JimAns_Q5"/>
-  <hasAnswer rdf:resource="#JimAns_Q6"/>
-  <hasAnswer rdf:resource="#JimAns_Q7"/>
-  <hasAnswer rdf:resource="#JimAns_Q8"/>
-  <hasAnswer rdf:resource="#JimAns_Q9"/>
-  <hasAnswer rdf:resource="#JimAns_Q10"/>
-  <hasAnswer rdf:resource="#JimAns_Q11"/>
-  <hasAnswer rdf:resource="#JimAns_Q12"/>
-  <hasAnswer rdf:resource="#JimAns_Q13"/>
-  <hasAnswer rdf:resource="#JimAns_Q14"/>
-  <hasAnswer rdf:resource="#JimAns_Q15"/>
-  <hasAnswer rdf:resource="#JimAns_Q16"/>
-  <hasAnswer rdf:resource="#JimAns_Q17"/>
-  <hasAnswer rdf:resource="#JimAns_Q18"/>
-  <hasAnswer rdf:resource="#JimAns_Q19"/>
-  <hasAnswer rdf:resource="#JimAns_Q20"/>
-  <hasAnswer rdf:resource="#JimAns_Q21"/>
-  <hasAnswer rdf:resource="#JimAns_Q22"/>
-  <hasAnswer rdf:resource="#JimAns_Q23"/>
-  <hasAnswer rdf:resource="#JimAns_Q24"/>
-  <hasAnswer rdf:resource="#JimAns_Q25"/>
-  <hasAnswer rdf:resource="#JimAns_Q26"/>
-  <hasAnswer rdf:resource="#JimAns_Q27"/>
-  <hasAnswer rdf:resource="#JimAns_Q28"/>
-  <hasAnswer rdf:resource="#JimAns_Q29"/>
-  <hasAnswer rdf:resource="#JimAns_Q30"/>
-  <inJobField rdf:resource="#Data_Field"/>
   <hasSoftSkill rdf:resource="#AdaptabilitySkill"/>
-  <hasSoftSkill rdf:resource="#AttentionToDetailSkill"/>
-  <hasSoftSkill rdf:resource="#CoachingSkill"/>
-  <hasSoftSkill rdf:resource="#CollaborationSkill"/>
+  <hasSoftSkill rdf:resource="#ActiveListeningSkill"/>
+  <hasSoftSkill rdf:resource="#AdaptableCommunicationSkill"/>
   <hasSoftSkill rdf:resource="#CommunicationSkill"/>
-  <hasSoftSkill rdf:resource="#ComplexProblemSolving"/>
-  <hasSoftSkill rdf:resource="#ConflictManagementSkill"/>
-  <hasHardSkill rdf:resource="#AgileMethodologySkill"/>
-  <hasHardSkill rdf:resource="#AirflowSkill"/>
-  <hasHardSkill rdf:resource="#AngularSkill"/>
-  <hasHardSkill rdf:resource="#AutomationTestingSkill"/>
-  <hasAgreeablenessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.33</hasAgreeablenessScore>
-  <hasConscientiousnessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.67</hasConscientiousnessScore>
-  <hasExtraversionScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</hasExtraversionScore>
+  <hasSoftSkill rdf:resource="#CollaborationSkill"/>
+  <hasSoftSkill rdf:resource="#CreativeThinkingSkill"/>
+  <hasSoftSkill rdf:resource="#ConflictResolutionSkill"/>
+  <hasSoftSkill rdf:resource="#EquipmentMaintenance"/>
+  <hasSoftSkill rdf:resource="#DetailOrientedSkill"/>
+  <hasSoftSkill rdf:resource="#LeadershipSkill"/>
+  <hasSoftSkill rdf:resource="#LogicalThinkingSkill"/>
+  <hasSoftSkill rdf:resource="#LearningStrategies"/>
+  <hasHardSkill rdf:resource="#CI_CD_PipelineSkill"/>
+  <hasHardSkill rdf:resource="#CloudComputingSkill"/>
+  <hasHardSkill rdf:resource="#CloudSecuritySkill"/>
+  <hasHardSkill rdf:resource="#CashFlowManagementSkill"/>
+  <hasHardSkill rdf:resource="#CybersecuritySkill"/>
+  <hasHardSkill rdf:resource="#DataWarehouseSkill"/>
+  <hasHardSkill rdf:resource="#DesignOpsSkill"/>
+  <hasHardSkill rdf:resource="#DevOpsSkill"/>
+  <hasAgreeablenessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.5</hasAgreeablenessScore>
+  <hasConscientiousnessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.5</hasConscientiousnessScore>
+  <hasExtraversionScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.5</hasExtraversionScore>
   <hasNeuroticismScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</hasNeuroticismScore>
-  <hasOpennessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.83</hasOpennessScore>
+  <hasOpennessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.33</hasOpennessScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q1">
+<owl:NamedIndividual rdf:about="#AsaAns_Q1">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q1"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q2">
+<owl:NamedIndividual rdf:about="#AsaAns_Q2">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q2"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q3">
+<owl:NamedIndividual rdf:about="#AsaAns_Q3">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q3"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#JimAns_Q4">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q4"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#JimAns_Q5">
-  <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q5"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q6">
+<owl:NamedIndividual rdf:about="#AsaAns_Q4">
   <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q6"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
+  <forQuestion rdf:resource="#Q4"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q7">
+<owl:NamedIndividual rdf:about="#AsaAns_Q5">
   <rdf:type rdf:resource="#Answer"/>
-  <forQuestion rdf:resource="#Q7"/>
+  <forQuestion rdf:resource="#Q5"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q8">
+<owl:NamedIndividual rdf:about="#AsaAns_Q6">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q6"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AsaAns_Q7">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q7"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AsaAns_Q8">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q8"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q9">
+<owl:NamedIndividual rdf:about="#AsaAns_Q9">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q9"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q10">
+<owl:NamedIndividual rdf:about="#AsaAns_Q10">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q10"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q11">
+<owl:NamedIndividual rdf:about="#AsaAns_Q11">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q11"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q12">
+<owl:NamedIndividual rdf:about="#AsaAns_Q12">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q12"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q13">
+<owl:NamedIndividual rdf:about="#AsaAns_Q13">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q13"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q14">
+<owl:NamedIndividual rdf:about="#AsaAns_Q14">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q14"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q15">
+<owl:NamedIndividual rdf:about="#AsaAns_Q15">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q15"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q16">
+<owl:NamedIndividual rdf:about="#AsaAns_Q16">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q16"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q17">
+<owl:NamedIndividual rdf:about="#AsaAns_Q17">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q17"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q18">
+<owl:NamedIndividual rdf:about="#AsaAns_Q18">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q18"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q19">
+<owl:NamedIndividual rdf:about="#AsaAns_Q19">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q19"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q20">
+<owl:NamedIndividual rdf:about="#AsaAns_Q20">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q20"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q21">
+<owl:NamedIndividual rdf:about="#AsaAns_Q21">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q21"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q22">
+<owl:NamedIndividual rdf:about="#AsaAns_Q22">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q22"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q23">
+<owl:NamedIndividual rdf:about="#AsaAns_Q23">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q23"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q24">
+<owl:NamedIndividual rdf:about="#AsaAns_Q24">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q24"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q25">
+<owl:NamedIndividual rdf:about="#AsaAns_Q25">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q25"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q26">
+<owl:NamedIndividual rdf:about="#AsaAns_Q26">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q26"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q27">
+<owl:NamedIndividual rdf:about="#AsaAns_Q27">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q27"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q28">
+<owl:NamedIndividual rdf:about="#AsaAns_Q28">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q28"/>
-  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q29">
+<owl:NamedIndividual rdf:about="#AsaAns_Q29">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q29"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JimAns_Q30">
+<owl:NamedIndividual rdf:about="#AsaAns_Q30">
   <rdf:type rdf:resource="#Answer"/>
   <forQuestion rdf:resource="#Q30"/>
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
