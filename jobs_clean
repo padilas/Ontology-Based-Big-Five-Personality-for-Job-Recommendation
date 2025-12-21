@@ -20,25 +20,25 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :AccountExecutive a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :ExtraversionTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :SalesHardSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :Sales_Field ;
             owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
+            owl:hasValue :ExtraversionTrait ;
+            owl:onProperty :hasMatchCategory ],
         :JobOccupation .
 
 :AccountManagerJob a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :ExtraversionTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :SalesAndBusinessDevelopmentSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :ExtraversionTrait ;
-            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:hasValue :Sales_Field ;
             owl:onProperty :inJobField ],
@@ -47,21 +47,30 @@ ont.:measuresTrait a owl:ObjectProperty .
 :AccountPayableJob a owl:Class ;
     rdfs:label "Account Payable"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :Finance_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
             owl:hasValue :ConscientiousnessTrait ;
             owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :Finance_Field ;
+            owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :FinanceHardSkill ;
             owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
+:AccountingSkill a :BusinessOperationsSkill,
+        :FinanceHardSkill,
+        :HardSkill,
+        owl:NamedIndividual .
+
 :AceApplication a :Application,
         owl:NamedIndividual ;
     :forJob :DataScientist ;
     :hasApplicant :Ace .
+
+:AngularSkill a :HardSkill,
+        :SoftwareEngineeringSkill,
+        owl:NamedIndividual .
 
 :Atun a :Person,
         owl:NamedIndividual ;
@@ -115,6 +124,14 @@ ont.:measuresTrait a owl:ObjectProperty .
         :CreativitySoftSkill ;
     :inJobField :Marketing_Field .
 
+:AutomationTestingSkill a :HardSkill,
+        :QAAndTestingSkill,
+        owl:NamedIndividual .
+
+:AzureSkill a :DevOpsAndInfrastructureSkill,
+        :HardSkill,
+        owl:NamedIndividual .
+
 :BigDataSkill a :DataEngineeringSkill,
         :HardSkill,
         owl:NamedIndividual .
@@ -150,6 +167,9 @@ ont.:measuresTrait a owl:ObjectProperty .
         :HardSkill,
         owl:NamedIndividual .
 
+:CoachingSkill a :SoftSkill,
+        owl:NamedIndividual .
+
 :CommunityManagementSkill a :ContentAndCreativeSkill,
         :HardSkill,
         :MarketingHardSkill,
@@ -158,22 +178,22 @@ ont.:measuresTrait a owl:ObjectProperty .
 :CommunityMarketingJob a owl:Class ;
     rdfs:label "Community Marketing"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :CustomerSupportAndSuccessSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
             owl:hasValue :ExtraversionTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :DigitalMarketingSkillGroup ;
+            owl:onClass :CustomerSupportAndSuccessSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :MarketingHardSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :Marketing_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :MarketingHardSkill ;
+            owl:onClass :DigitalMarketingSkillGroup ;
             owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
@@ -203,19 +223,26 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:onClass :ContentAndCreativeSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :Marketing_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :DigitalMarketingSkillGroup ;
             owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :Marketing_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :ContentStrategistJob a owl:Class ;
     rdfs:label "Content Strategist"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :Marketing_Field ;
+            owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
             owl:hasValue :OpennessTrait ;
             owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :DigitalMarketingSkillGroup ;
+            owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :ContentAndCreativeSkill ;
@@ -224,29 +251,22 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :MarketingHardSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :DigitalMarketingSkillGroup ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :Marketing_Field ;
-            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :ContentWriter a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :OpennessTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :DigitalMarketingSkillGroup ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
             owl:hasValue :Marketing_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :ContentAndCreativeSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :OpennessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :DigitalMarketingSkillGroup ;
             owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
@@ -260,15 +280,15 @@ ont.:measuresTrait a owl:ObjectProperty .
 :CopywriterJob a owl:Class ;
     rdfs:label "Copywriter"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :Marketing_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
             owl:hasValue :OpennessTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :ContentAndCreativeSkill ;
             owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :Marketing_Field ;
+            owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :MarketingHardSkill ;
@@ -287,8 +307,8 @@ ont.:measuresTrait a owl:ObjectProperty .
 :CreditFinanceOperationJob a owl:Class ;
     rdfs:label "Credit Finance Operation"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :Finance_Field ;
-            owl:onProperty :inJobField ],
+            owl:hasValue :NeuroticismTrait ;
+            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:hasValue :ConscientiousnessTrait ;
             owl:onProperty :hasMatchCategory ],
@@ -297,19 +317,19 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:onClass :FinanceHardSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :NeuroticismTrait ;
-            owl:onProperty :hasMatchCategory ],
+            owl:hasValue :Finance_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :CreditManagerJob a owl:Class ;
     rdfs:label "Credit Manager"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :ConscientiousnessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :FinanceHardSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :ConscientiousnessTrait ;
-            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:hasValue :Finance_Field ;
             owl:onProperty :inJobField ],
@@ -321,10 +341,6 @@ ont.:measuresTrait a owl:ObjectProperty .
 :CustomerEngagementJob a owl:Class ;
     rdfs:label "Customer Engagement"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass :SalesAndBusinessDevelopmentSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :CustomerSupportAndSuccessSkill ;
             owl:onProperty :requiresHardSkill ],
@@ -334,20 +350,24 @@ ont.:measuresTrait a owl:ObjectProperty .
         [ a owl:Restriction ;
             owl:hasValue :AgreeablenessTrait ;
             owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass :SalesAndBusinessDevelopmentSkill ;
+            owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :CustomerExperienceJob a owl:Class ;
     rdfs:label "Customer Experience"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :AgreeablenessTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
             owl:hasValue :CustomerService_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :CustomerSupportAndSuccessSkill ;
             owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :AgreeablenessTrait ;
+            owl:onProperty :hasMatchCategory ],
         :JobOccupation .
 
 :CustomerSuccessJob a owl:Class ;
@@ -357,25 +377,25 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:onClass :CustomerSupportAndSuccessSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :CustomerService_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
             owl:hasValue :AgreeablenessTrait ;
             owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :CustomerService_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :CustomerSupportJob a owl:Class ;
     rdfs:label "Customer Support"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :CustomerService_Field ;
-            owl:onProperty :inJobField ],
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :CustomerSupportAndSuccessSkill ;
+            owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :AgreeablenessTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :CustomerSupportAndSuccessSkill ;
-            owl:onProperty :requiresHardSkill ],
+            owl:hasValue :CustomerService_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :CybersecuritySkill a :HardSkill,
@@ -388,7 +408,16 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :DataAnalyst a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :AnalyticalThinkingSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
             owl:hasValue :DataVisualizationSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :AttentionToDetailSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :BusinessIntelligenceToolSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :CommunicationSkill ;
@@ -397,13 +426,7 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:hasValue :Data_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
-            owl:hasValue :SQLSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
             owl:hasValue :ExcelAdvancedSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :BusinessIntelligenceToolSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
@@ -413,11 +436,8 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:hasValue :OpennessTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
-            owl:hasValue :AttentionToDetailSkill ;
-            owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :AnalyticalThinkingSkill ;
-            owl:onProperty :requiresSoftSkill ],
+            owl:hasValue :SQLSkill ;
+            owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :DataEngineer a owl:Class ;
@@ -425,8 +445,8 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:hasValue :ConscientiousnessTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
-            owl:hasValue :SQLSkill ;
-            owl:onProperty :requiresHardSkill ],
+            owl:hasValue :NeuroticismTrait ;
+            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:hasValue :AirflowSkill ;
             owl:onProperty :requiresHardSkill ],
@@ -434,30 +454,30 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:hasValue :ProblemSolvingSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
+            owl:hasValue :PythonSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
             owl:hasValue :Data_Field ;
             owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
+            owl:hasValue :AttentionToDetailSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :DataWarehouseSkill ;
+            owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :CloudComputingSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :PythonSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :DataWarehouseSkill ;
+            owl:hasValue :SQLSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :CollaborationSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :AttentionToDetailSkill ;
-            owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :DataEngineeringSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :NeuroticismTrait ;
-            owl:onProperty :hasMatchCategory ],
         :JobOccupation .
 
 :DataMiningSkill a :DataEngineeringSkill,
@@ -478,42 +498,42 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :DevOpsEngineer a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :CollaborationSkill ;
+            owl:hasValue :LinuxSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :Technology_Field ;
+            owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass :SoftwareEngineeringSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :ConscientiousnessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :AttentionToDetailSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :DevOpsAndInfrastructureSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :DockerSkill ;
+            owl:hasValue :KubernetesSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :Technology_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
-            owl:hasValue :ConscientiousnessTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
-            owl:hasValue :CI_CD_Skill ;
-            owl:onProperty :requiresHardSkill ],
+            owl:hasValue :CollaborationSkill ;
+            owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
             owl:hasValue :ProblemSolvingSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :AttentionToDetailSkill ;
-            owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :LinuxSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :KubernetesSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :SoftwareEngineeringSkill ;
+            owl:hasValue :DockerSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :CloudComputingSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :CI_CD_Skill ;
             owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
@@ -522,6 +542,12 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :DigitalMarketer a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :OpennessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :Marketing_Field ;
+            owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass :ContentAndCreativeSkill ;
             owl:onProperty :requiresHardSkill ],
@@ -529,12 +555,6 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :DigitalMarketingSkillGroup ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :Marketing_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
-            owl:hasValue :OpennessTrait ;
-            owl:onProperty :hasMatchCategory ],
         :JobOccupation .
 
 :Dila a :Person,
@@ -681,6 +701,13 @@ ont.:measuresTrait a owl:ObjectProperty .
 :EventActivationJob a owl:Class ;
     rdfs:label "Event Activation"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass :ContentAndCreativeSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :ExtraversionTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass :DigitalMarketingSkillGroup ;
             owl:onProperty :requiresHardSkill ],
@@ -691,18 +718,14 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass :BusinessOperationsSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :ContentAndCreativeSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :ExtraversionTrait ;
-            owl:onProperty :hasMatchCategory ],
         :JobOccupation .
 
 :EventMarketingJob a owl:Class ;
     rdfs:label "Event Marketing"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :ExtraversionTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
             owl:hasValue :Marketing_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
@@ -713,9 +736,6 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :DigitalMarketingSkillGroup ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :ExtraversionTrait ;
-            owl:onProperty :hasMatchCategory ],
         :JobOccupation .
 
 :FastAPISkill a :HardSkill,
@@ -737,29 +757,29 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :FinanceAnalystJob a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :Finance_Field ;
+            owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :FinanceHardSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :ConscientiousnessTrait ;
             owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
-            owl:hasValue :Finance_Field ;
-            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :FinanceAndAccountingStaffJob a owl:Class ;
     rdfs:label "Finance & Accounting Staff"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :FinanceHardSkill ;
-            owl:onProperty :requiresHardSkill ],
+            owl:hasValue :ConscientiousnessTrait ;
+            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:hasValue :Finance_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
-            owl:hasValue :ConscientiousnessTrait ;
-            owl:onProperty :hasMatchCategory ],
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :FinanceHardSkill ;
+            owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :FinancialModelingSkill a :BusinessOperationsSkill,
@@ -804,19 +824,19 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :FullStackDeveloper a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :ConscientiousnessTrait ;
-            owl:onProperty :hasMatchCategory ],
+            owl:hasValue :Technology_Field ;
+            owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :UIUXDesignSkillGroup ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
+            owl:hasValue :ConscientiousnessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :SoftwareEngineeringSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :Technology_Field ;
-            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :GCPCloudSkill a :DevOpsAndInfrastructureSkill,
@@ -841,12 +861,12 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:hasValue :HR_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
+            owl:hasValue :AgreeablenessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :HRHardSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :AgreeablenessTrait ;
-            owl:onProperty :hasMatchCategory ],
         :JobOccupation .
 
 :HRDataAnalysisSkill a :HRHardSkill,
@@ -855,64 +875,64 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :HRManager a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :HRComplianceSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :CommunicationSkill ;
-            owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :ConflictResolutionSkill ;
-            owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :HRISSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :HRHardSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :AgreeablenessTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
             owl:hasValue :HR_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:hasValue :TrainingAndDevelopmentSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
+            owl:hasValue :LeadershipSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :CommunicationSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :HRHardSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :HRISSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
             owl:hasValue :RecruitmentSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :LeadershipSkill ;
+            owl:hasValue :HRComplianceSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :ConflictResolutionSkill ;
             owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :AgreeablenessTrait ;
+            owl:onProperty :hasMatchCategory ],
         :JobOccupation .
 
 :HRPeopleDevelopmentJob a owl:Class ;
     rdfs:label "People Development (HR)"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :HRHardSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
             owl:hasValue :AgreeablenessTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:hasValue :HR_Field ;
             owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :HRHardSkill ;
-            owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :HRPeopleEngagementJob a owl:Class ;
     rdfs:label "People Engagement (HR)"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :ExtraversionTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
             owl:hasValue :HR_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :HRHardSkill ;
             owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :ExtraversionTrait ;
+            owl:onProperty :hasMatchCategory ],
         :JobOccupation .
 
 :HTMLCSSSkill a :HardSkill,
@@ -945,11 +965,18 @@ ont.:measuresTrait a owl:ObjectProperty .
 :ITManager a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :QAAndTestingSkill ;
+            owl:onClass :DevOpsAndInfrastructureSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :DataEngineeringSkill ;
+            owl:onClass :QAAndTestingSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :Technology_Field ;
+            owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :DataAnalyticsSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :ConscientiousnessTrait ;
@@ -959,37 +986,30 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:onClass :SoftwareEngineeringSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :Technology_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :DevOpsAndInfrastructureSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :DataAnalyticsSkill ;
+            owl:onClass :DataEngineeringSkill ;
             owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :ITSupportSpecialist a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :Technology_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :DevOpsAndInfrastructureSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
             owl:hasValue :AgreeablenessTrait ;
             owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass :SoftwareEngineeringSkill ;
+            owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :QAAndTestingSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :SoftwareEngineeringSkill ;
+            owl:onClass :DevOpsAndInfrastructureSkill ;
             owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :Technology_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :InboundSalesSkill a :HardSkill,
@@ -1028,56 +1048,6 @@ ont.:measuresTrait a owl:ObjectProperty .
         :HardSkill,
         owl:NamedIndividual .
 
-:Jim a :Person,
-        owl:NamedIndividual ;
-    :hasAgreeablenessScore 3.33 ;
-    :hasAnswer :JimAns_Q1,
-        :JimAns_Q10,
-        :JimAns_Q11,
-        :JimAns_Q12,
-        :JimAns_Q13,
-        :JimAns_Q14,
-        :JimAns_Q15,
-        :JimAns_Q16,
-        :JimAns_Q17,
-        :JimAns_Q18,
-        :JimAns_Q19,
-        :JimAns_Q2,
-        :JimAns_Q20,
-        :JimAns_Q21,
-        :JimAns_Q22,
-        :JimAns_Q23,
-        :JimAns_Q24,
-        :JimAns_Q25,
-        :JimAns_Q26,
-        :JimAns_Q27,
-        :JimAns_Q28,
-        :JimAns_Q29,
-        :JimAns_Q3,
-        :JimAns_Q30,
-        :JimAns_Q4,
-        :JimAns_Q5,
-        :JimAns_Q6,
-        :JimAns_Q7,
-        :JimAns_Q8,
-        :JimAns_Q9 ;
-    :hasConscientiousnessScore 2.67 ;
-    :hasExtraversionScore 3.0 ;
-    :hasHardSkill :AgileMethodologySkill,
-        :AirflowSkill,
-        :AngularSkill,
-        :AutomationTestingSkill ;
-    :hasNeuroticismScore 3.0 ;
-    :hasOpennessScore 3.83 ;
-    :hasSoftSkill :AdaptabilitySkill,
-        :AttentionToDetailSkill,
-        :CoachingSkill,
-        :CollaborationSkill,
-        :CommunicationSkill,
-        :ComplexProblemSolving,
-        :ConflictManagementSkill ;
-    :inJobField :Data_Field .
-
 :JudgmentAndDecisionMaking a :SoftSkill,
         owl:NamedIndividual .
 
@@ -1097,12 +1067,12 @@ ont.:measuresTrait a owl:ObjectProperty .
 :LeadsManagementJob a owl:Class ;
     rdfs:label "Leads Management"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :ExtraversionTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :SalesAndBusinessDevelopmentSkill ;
             owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :ExtraversionTrait ;
+            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:hasValue :Sales_Field ;
             owl:onProperty :inJobField ],
@@ -1158,77 +1128,77 @@ ont.:measuresTrait a owl:ObjectProperty .
 :MarketingAnalyticsJob a owl:Class ;
     rdfs:label "Marketing Analytics"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :OpennessTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :DigitalMarketingSkillGroup ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :Marketing_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :DataAnalyticsSkill ;
             owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :OpennessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :Marketing_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :MarketingAndCreativesJob a owl:Class ;
     rdfs:label "Marketing & Creatives"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :OpennessTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
-            owl:hasValue :Marketing_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :DigitalMarketingSkillGroup ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
+            owl:hasValue :OpennessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass :ContentAndCreativeSkill ;
             owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :Marketing_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :MarketingManager a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :MarketingAutomationSkill ;
+            owl:hasValue :OpennessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :ContentStrategySkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :DigitalMarketingSkillGroup ;
+            owl:hasValue :Marketing_Field ;
+            owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
+            owl:hasValue :CampaignManagementSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :ContentAndCreativeSkill ;
+            owl:hasValue :GoogleAnalyticsSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :SEO_Skill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :AnalyticalThinkingSkill ;
-            owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :OpennessTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
-            owl:hasValue :CampaignManagementSkill ;
+            owl:hasValue :MarketingAutomationSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :ContentStrategySkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :CommunicationSkill ;
-            owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :Marketing_Field ;
-            owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:hasValue :LeadershipSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :GoogleAnalyticsSkill ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :DigitalMarketingSkillGroup ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :AnalyticalThinkingSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :CommunicationSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass :ContentAndCreativeSkill ;
             owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
@@ -1301,59 +1271,6 @@ ont.:measuresTrait a owl:ObjectProperty .
         :SoftwareEngineeringSkill,
         owl:NamedIndividual .
 
-:Nina a :Person,
-        owl:NamedIndividual ;
-    :hasAgreeablenessScore 2.83 ;
-    :hasAnswer :NinaAns_Q1,
-        :NinaAns_Q10,
-        :NinaAns_Q11,
-        :NinaAns_Q12,
-        :NinaAns_Q13,
-        :NinaAns_Q14,
-        :NinaAns_Q15,
-        :NinaAns_Q16,
-        :NinaAns_Q17,
-        :NinaAns_Q18,
-        :NinaAns_Q19,
-        :NinaAns_Q2,
-        :NinaAns_Q20,
-        :NinaAns_Q21,
-        :NinaAns_Q22,
-        :NinaAns_Q23,
-        :NinaAns_Q24,
-        :NinaAns_Q25,
-        :NinaAns_Q26,
-        :NinaAns_Q27,
-        :NinaAns_Q28,
-        :NinaAns_Q29,
-        :NinaAns_Q3,
-        :NinaAns_Q30,
-        :NinaAns_Q4,
-        :NinaAns_Q5,
-        :NinaAns_Q6,
-        :NinaAns_Q7,
-        :NinaAns_Q8,
-        :NinaAns_Q9 ;
-    :hasConscientiousnessScore 3.5 ;
-    :hasExtraversionScore 2.83 ;
-    :hasHardSkill :AccountingSkill,
-        :AirflowSkill,
-        :AngularSkill,
-        :AutomationTestingSkill,
-        :AzureSkill,
-        :B2BSalesSkill,
-        :BacklogManagementSkill ;
-    :hasNeuroticismScore 3.33 ;
-    :hasOpennessScore 4.0 ;
-    :hasSoftSkill :AdaptableCommunicationSkill,
-        :AttentionToDetailSkill,
-        :CoachingSkill,
-        :CollaborationRemoteSkill,
-        :CollaborationSkill,
-        :CommunicationSkill,
-        :ConflictResolutionSkill ;
-    :inJobField :Technology_Field .
-
 :O_Aesthetic a :PersonalityFacet,
         owl:NamedIndividual ;
     :facetOfTrait :OpennessTrait .
@@ -1405,33 +1322,33 @@ ont.:measuresTrait a owl:ObjectProperty .
 :PartnerAcquisitionJob a owl:Class ;
     rdfs:label "Partners Acquisition"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :SalesAndBusinessDevelopmentSkill ;
-            owl:onProperty :requiresHardSkill ],
+            owl:hasValue :ExtraversionTrait ;
+            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:hasValue :Sales_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
-            owl:hasValue :ExtraversionTrait ;
-            owl:onProperty :hasMatchCategory ],
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :SalesAndBusinessDevelopmentSkill ;
+            owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :PartnerSuccessActivationJob a owl:Class ;
     rdfs:label "Partner Success Activation"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :CustomerService_Field ;
+            owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :CustomerSupportAndSuccessSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :CustomerService_Field ;
-            owl:onProperty :inJobField ],
+            owl:hasValue :AgreeablenessTrait ;
+            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass :SalesAndBusinessDevelopmentSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :AgreeablenessTrait ;
-            owl:onProperty :hasMatchCategory ],
         :JobOccupation .
 
 :PartnershipStrategistJob a owl:Class ;
@@ -1451,11 +1368,11 @@ ont.:measuresTrait a owl:ObjectProperty .
 :PayrollAndTaxComplianceJob a owl:Class ;
     rdfs:label "Payroll & Tax Compliance"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :ConscientiousnessTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
             owl:hasValue :Finance_Field ;
             owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
+            owl:hasValue :ConscientiousnessTrait ;
+            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :FinanceHardSkill ;
@@ -1474,15 +1391,15 @@ ont.:measuresTrait a owl:ObjectProperty .
 :PeopleAndCultureJob a owl:Class ;
     rdfs:label "People & Culture"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :Operations_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :HRHardSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :AgreeablenessTrait ;
             owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :Operations_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :PerformanceAnalysisSkill a :DigitalMarketingSkillGroup,
@@ -1533,14 +1450,14 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :ProductManager a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :RoadmapPlanningSkill ;
+            owl:hasValue :OpennessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :CommunicationSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :BacklogManagementSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :StakeholderManagementSkill ;
-            owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :DecisionMakingSkill ;
-            owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :ProductManagementSkill ;
@@ -1549,17 +1466,8 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:hasValue :AgileMethodologySkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :A_B_TestingSkill ;
+            owl:hasValue :RoadmapPlanningSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :BusinessAnalysisSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :OpennessTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
-            owl:hasValue :CommunicationSkill ;
-            owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
             owl:hasValue :Product_Field ;
             owl:onProperty :inJobField ],
@@ -1567,7 +1475,16 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:hasValue :LeadershipSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :BacklogManagementSkill ;
+            owl:hasValue :DecisionMakingSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :StakeholderManagementSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :BusinessAnalysisSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :A_B_TestingSkill ;
             owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
@@ -1596,18 +1513,18 @@ ont.:measuresTrait a owl:ObjectProperty .
 :ProjectManager a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :ProductManagementSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :ConscientiousnessTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :BusinessOperationsSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :Operations_Field ;
             owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
+            owl:hasValue :ConscientiousnessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :ProductManagementSkill ;
+            owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :ProjectPlanningSkill a :BusinessOperationsSkill,
@@ -1617,23 +1534,23 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :PublicRelationsSpecialist a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :Marketing_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass :DigitalMarketingSkillGroup ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :CustomerSupportAndSuccessSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass :SalesAndBusinessDevelopmentSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :ExtraversionTrait ;
             owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :Marketing_Field ;
+            owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass :CustomerSupportAndSuccessSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass :DigitalMarketingSkillGroup ;
+            owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :PublicSpeakingSkill a :SoftSkill,
@@ -1641,11 +1558,11 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :QAEngineer a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :Technology_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
             owl:hasValue :ConscientiousnessTrait ;
             owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :Technology_Field ;
+            owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :QAAndTestingSkill ;
@@ -1718,58 +1635,58 @@ ont.:measuresTrait a owl:ObjectProperty .
 :SEOSpecialistJob a owl:Class ;
     rdfs:label "SEO Specialist"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :DigitalMarketingSkillGroup ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :ContentAndCreativeSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
             owl:hasValue :OpennessTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:hasValue :Marketing_Field ;
             owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass :ContentAndCreativeSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass :DigitalMarketingSkillGroup ;
+            owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :SalesDevelopmentRepresentativeJob a owl:Class ;
     rdfs:label "Sales Development Representative"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :SalesAndBusinessDevelopmentSkill ;
+            owl:hasValue :SalesCRMSoftwareSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :CommunicationSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :LeadQualificationSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :B2BSalesSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass :BusinessOperationsSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :ExtraversionTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
-            owl:hasValue :ColdCallingSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :B2BSalesSkill ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass :SalesAndBusinessDevelopmentSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :Sales_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
-            owl:hasValue :SalesCRMSoftwareSkill ;
-            owl:onProperty :requiresHardSkill ],
+            owl:hasValue :ExtraversionTrait ;
+            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:hasValue :ResilienceSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :CommunicationSkill ;
-            owl:onProperty :requiresSoftSkill ],
+            owl:hasValue :ColdCallingSkill ;
+            owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :PersuasionSkill ;
             owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :LeadQualificationSkill ;
-            owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :SalesForecastingSkill a :HardSkill,
@@ -1800,11 +1717,11 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :SecurityAnalyst a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :Technology_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
             owl:hasValue :ConscientiousnessTrait ;
             owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :Technology_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :SelfMotivationSkill a :SoftSkill,
@@ -1837,17 +1754,36 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :SoftwareEngineer a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :SQLSkill ;
+            owl:hasValue :JavaSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :APIIntegrationSkill ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass :SoftSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :GitSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :NeuroticismTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
+            owl:hasValue :CommunicationSkill ;
+            owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :Technology_Field ;
+            owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
+            owl:hasValue :APIIntegrationSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :SQLSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
             owl:hasValue :CI_CD_Skill ;
             owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :ConscientiousnessTrait ;
+            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :HardSkill ;
@@ -1858,66 +1794,47 @@ ont.:measuresTrait a owl:ObjectProperty .
         [ a owl:Restriction ;
             owl:hasValue :ProblemSolvingSkill ;
             owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :JavaSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :SoftSkill ;
-            owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :Technology_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
-            owl:hasValue :ConscientiousnessTrait ;
-            owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
-            owl:hasValue :GitSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :CommunicationSkill ;
-            owl:onProperty :requiresSoftSkill ],
         :JobOccupation .
 
 :SoftwareEngineerFrontendJob a owl:Class ;
     rdfs:label "Software Engineer - Frontend"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :JavaScriptSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
             owl:hasValue :CollaborationSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :CommunicationSkill ;
-            owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :APIIntegrationSkill ;
+            owl:hasValue :ReactSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :GitSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :NodeJSSkill ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :UIUXDesignSkillGroup ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :JavaScriptSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :AttentionToDetailSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :ConscientiousnessTrait ;
-            owl:onProperty :hasMatchCategory ],
+            owl:hasValue :CommunicationSkill ;
+            owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
             owl:hasValue :TypeScriptSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
+            owl:hasValue :NodeJSSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :ConscientiousnessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :APIIntegrationSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
             owl:hasValue :Technology_Field ;
             owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :UIUXDesignSkillGroup ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :ReactSkill ;
-            owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :SparkSkill a :DataEngineeringSkill,
@@ -1943,15 +1860,15 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :SupplyChainManager a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :Operations_Field ;
+            owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :BusinessOperationsSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :ConscientiousnessTrait ;
             owl:onProperty :hasMatchCategory ],
-        [ a owl:Restriction ;
-            owl:hasValue :Operations_Field ;
-            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :SupplyChainSkill a :HardSkill,
@@ -1960,6 +1877,9 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :SystemAdministrator a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :ConscientiousnessTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
             owl:hasValue :Technology_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
@@ -1970,9 +1890,6 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass :DataAnalyticsSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :ConscientiousnessTrait ;
-            owl:onProperty :hasMatchCategory ],
         :JobOccupation .
 
 :SystemDesignSkill a :HardSkill,
@@ -2011,11 +1928,11 @@ ont.:measuresTrait a owl:ObjectProperty .
 :TaxOfficerJob a owl:Class ;
     rdfs:label "Tax Officer"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :Finance_Field ;
-            owl:onProperty :inJobField ],
-        [ a owl:Restriction ;
             owl:hasValue :ConscientiousnessTrait ;
             owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
+            owl:hasValue :Finance_Field ;
+            owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :FinanceHardSkill ;
@@ -2034,15 +1951,15 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:hasValue :AgreeablenessTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
-            owl:hasValue :CustomerService_Field ;
-            owl:onProperty :inJobField ],
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :TechHardSkill ;
+            owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :NeuroticismTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :TechHardSkill ;
-            owl:onProperty :requiresHardSkill ],
+            owl:hasValue :CustomerService_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :TechnicalTroubleshootingSkill a :CustomerSupportAndSuccessSkill,
@@ -2067,12 +1984,12 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :TrainingSpecialist a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :ExtraversionTrait ;
+            owl:onProperty :hasMatchCategory ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :HRHardSkill ;
             owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :ExtraversionTrait ;
-            owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:hasValue :HR_Field ;
             owl:onProperty :inJobField ],
@@ -2087,56 +2004,56 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :UIUXDesigner a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue :Technology_Field ;
+            owl:onProperty :inJobField ],
+        [ a owl:Restriction ;
             owl:hasValue :EmpathySkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :UserResearchSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :AdobeXDSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :WireframingSkill ;
+            owl:hasValue :PrototypingSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :OpennessTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :UIUXDesignSkillGroup ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :FigmaSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :PrototypingSkill ;
+            owl:hasValue :DesignSystemSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :CollaborationSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :DesignSystemSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
             owl:hasValue :CommunicationSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :Technology_Field ;
-            owl:onProperty :inJobField ],
+            owl:hasValue :UserResearchSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :WireframingSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :AdobeXDSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :FigmaSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :UIUXDesignSkillGroup ;
+            owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
 :UXResearcherJob a owl:Class ;
     rdfs:label "UX Researcher"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :Product_Field ;
-            owl:onProperty :inJobField ],
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :UIUXDesignSkillGroup ;
+            owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :OpennessTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :UIUXDesignSkillGroup ;
-            owl:onProperty :requiresHardSkill ],
+            owl:hasValue :Product_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation .
 
 :UXWriterJob a owl:Class ;
@@ -2149,11 +2066,11 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :ContentAndCreativeSkill ;
+            owl:onClass :UIUXDesignSkillGroup ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :UIUXDesignSkillGroup ;
+            owl:onClass :ContentAndCreativeSkill ;
             owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
@@ -2190,15 +2107,15 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:hasValue :Marketing_Field ;
             owl:onProperty :inJobField ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass :DigitalMarketingSkillGroup ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
             owl:hasValue :OpennessTrait ;
             owl:onProperty :hasMatchCategory ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass :ContentAndCreativeSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass :DigitalMarketingSkillGroup ;
             owl:onProperty :requiresHardSkill ],
         :JobOccupation .
 
@@ -28417,11 +28334,6 @@ ont.:measuresTrait a owl:ObjectProperty .
         :ProductManagementSkill,
         owl:NamedIndividual .
 
-:AccountingSkill a :BusinessOperationsSkill,
-        :FinanceHardSkill,
-        :HardSkill,
-        owl:NamedIndividual .
-
 :Ace a :Person,
         owl:NamedIndividual ;
     :hasAgreeablenessScore 1.0 ;
@@ -28634,6 +28546,14 @@ ont.:measuresTrait a owl:ObjectProperty .
         :UIUXDesignSkillGroup,
         owl:NamedIndividual .
 
+:AgileMethodologySkill a :HardSkill,
+        :ProductManagementSkill,
+        owl:NamedIndividual .
+
+:AirflowSkill a :DataEngineeringSkill,
+        :HardSkill,
+        owl:NamedIndividual .
+
 :AtunAns_Q1 a :Answer,
         owl:NamedIndividual ;
     :answerScore 5 ;
@@ -28784,8 +28704,12 @@ ont.:measuresTrait a owl:ObjectProperty .
     :answerScore 5 ;
     :forQuestion :Q9 .
 
-:AzureSkill a :DevOpsAndInfrastructureSkill,
-        :HardSkill,
+:B2BSalesSkill a :HardSkill,
+        :SalesAndBusinessDevelopmentSkill,
+        owl:NamedIndividual .
+
+:BacklogManagementSkill a :HardSkill,
+        :ProductManagementSkill,
         owl:NamedIndividual .
 
 :BusinessAnalysisSkill a :HardSkill,
@@ -28806,6 +28730,12 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :ColdCallingSkill a :HardSkill,
         :SalesAndBusinessDevelopmentSkill,
+        owl:NamedIndividual .
+
+:CollaborationRemoteSkill a :SoftSkill,
+        owl:NamedIndividual .
+
+:ComplexProblemSolving a :SoftSkill,
         owl:NamedIndividual .
 
 :ContentManagementSystemSkill a :ContentAndCreativeSkill,
@@ -29230,156 +29160,6 @@ ont.:measuresTrait a owl:ObjectProperty .
         :SoftwareEngineeringSkill,
         owl:NamedIndividual .
 
-:JimAns_Q1 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 5 ;
-    :forQuestion :Q1 .
-
-:JimAns_Q10 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q10 .
-
-:JimAns_Q11 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q11 .
-
-:JimAns_Q12 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q12 .
-
-:JimAns_Q13 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 5 ;
-    :forQuestion :Q13 .
-
-:JimAns_Q14 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q14 .
-
-:JimAns_Q15 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q15 .
-
-:JimAns_Q16 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q16 .
-
-:JimAns_Q17 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q17 .
-
-:JimAns_Q18 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q18 .
-
-:JimAns_Q19 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q19 .
-
-:JimAns_Q2 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 5 ;
-    :forQuestion :Q2 .
-
-:JimAns_Q20 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q20 .
-
-:JimAns_Q21 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q21 .
-
-:JimAns_Q22 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q22 .
-
-:JimAns_Q23 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q23 .
-
-:JimAns_Q24 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q24 .
-
-:JimAns_Q25 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q25 .
-
-:JimAns_Q26 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q26 .
-
-:JimAns_Q27 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q27 .
-
-:JimAns_Q28 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q28 .
-
-:JimAns_Q29 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q29 .
-
-:JimAns_Q3 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q3 .
-
-:JimAns_Q30 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q30 .
-
-:JimAns_Q4 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q4 .
-
-:JimAns_Q5 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 5 ;
-    :forQuestion :Q5 .
-
-:JimAns_Q6 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q6 .
-
-:JimAns_Q7 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q7 .
-
-:JimAns_Q8 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 5 ;
-    :forQuestion :Q8 .
-
-:JimAns_Q9 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q9 .
-
 :JourneyMappingSkill a :HardSkill,
         :UIUXDesignSkillGroup,
         owl:NamedIndividual .
@@ -29630,156 +29410,6 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :NetworkingSoftSkill a :SoftSkill,
         owl:NamedIndividual .
-
-:NinaAns_Q1 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 5 ;
-    :forQuestion :Q1 .
-
-:NinaAns_Q10 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q10 .
-
-:NinaAns_Q11 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q11 .
-
-:NinaAns_Q12 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q12 .
-
-:NinaAns_Q13 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q13 .
-
-:NinaAns_Q14 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q14 .
-
-:NinaAns_Q15 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q15 .
-
-:NinaAns_Q16 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q16 .
-
-:NinaAns_Q17 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q17 .
-
-:NinaAns_Q18 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 5 ;
-    :forQuestion :Q18 .
-
-:NinaAns_Q19 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q19 .
-
-:NinaAns_Q2 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 5 ;
-    :forQuestion :Q2 .
-
-:NinaAns_Q20 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q20 .
-
-:NinaAns_Q21 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q21 .
-
-:NinaAns_Q22 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q22 .
-
-:NinaAns_Q23 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q23 .
-
-:NinaAns_Q24 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q24 .
-
-:NinaAns_Q25 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q25 .
-
-:NinaAns_Q26 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q26 .
-
-:NinaAns_Q27 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q27 .
-
-:NinaAns_Q28 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q28 .
-
-:NinaAns_Q29 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 3 ;
-    :forQuestion :Q29 .
-
-:NinaAns_Q3 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 2 ;
-    :forQuestion :Q3 .
-
-:NinaAns_Q30 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q30 .
-
-:NinaAns_Q4 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q4 .
-
-:NinaAns_Q5 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q5 .
-
-:NinaAns_Q6 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q6 .
-
-:NinaAns_Q7 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q7 .
-
-:NinaAns_Q8 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q8 .
-
-:NinaAns_Q9 a :Answer,
-        owl:NamedIndividual ;
-    :answerScore 4 ;
-    :forQuestion :Q9 .
 
 :NodeJSSkill a :HardSkill,
         :SoftwareEngineeringSkill,
@@ -30116,24 +29746,10 @@ ont.:measuresTrait a owl:ObjectProperty .
 :ActiveListeningSkill a :SoftSkill,
         owl:NamedIndividual .
 
-:AgileMethodologySkill a :HardSkill,
-        :ProductManagementSkill,
+:AdaptabilitySkill a :SoftSkill,
         owl:NamedIndividual .
 
-:AngularSkill a :HardSkill,
-        :SoftwareEngineeringSkill,
-        owl:NamedIndividual .
-
-:AutomationTestingSkill a :HardSkill,
-        :QAAndTestingSkill,
-        owl:NamedIndividual .
-
-:B2BSalesSkill a :HardSkill,
-        :SalesAndBusinessDevelopmentSkill,
-        owl:NamedIndividual .
-
-:BacklogManagementSkill a :HardSkill,
-        :ProductManagementSkill,
+:AdaptableCommunicationSkill a :SoftSkill,
         owl:NamedIndividual .
 
 :CI_CD_Skill a :DevOpsAndInfrastructureSkill,
@@ -30144,13 +29760,10 @@ ont.:measuresTrait a owl:ObjectProperty .
         :HardSkill,
         owl:NamedIndividual .
 
-:CoachingSkill a :SoftSkill,
+:ConflictManagementSkill a :SoftSkill,
         owl:NamedIndividual .
 
-:CollaborationRemoteSkill a :SoftSkill,
-        owl:NamedIndividual .
-
-:ComplexProblemSolving a :SoftSkill,
+:ConflictResolutionSkill a :SoftSkill,
         owl:NamedIndividual .
 
 :ContentStrategySkill a :ContentAndCreativeSkill,
@@ -30193,54 +29806,35 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :requiresSkill a owl:ObjectProperty .
 
-:AdaptabilitySkill a :SoftSkill,
-        owl:NamedIndividual .
-
-:AdaptableCommunicationSkill a :SoftSkill,
-        owl:NamedIndividual .
-
-:AirflowSkill a :DataEngineeringSkill,
-        :HardSkill,
-        owl:NamedIndividual .
-
-:ConflictManagementSkill a :SoftSkill,
-        owl:NamedIndividual .
-
-:ConflictResolutionSkill a :SoftSkill,
-        owl:NamedIndividual .
-
 :DataHardSkill a owl:Class ;
     rdfs:subClassOf :HardSkill .
 
 :DataScientist a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue :DataVisualizationSkill ;
+            owl:hasValue :SQLSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :PythonSkill ;
+            owl:hasValue :DataVisualizationSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
             owl:onClass :DataScienceSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :CommunicationSkill ;
+            owl:hasValue :AnalyticalThinkingSkill ;
             owl:onProperty :requiresSoftSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :MachineLearningSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-            owl:onClass :HardSkill ;
-            owl:onProperty :requiresHardSkill ],
-        [ a owl:Restriction ;
-            owl:hasValue :Data_Field ;
-            owl:onProperty :inJobField ],
         [ a owl:Restriction ;
             owl:hasValue :StatisticsSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :SQLSkill ;
+            owl:hasValue :MachineLearningSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :PythonSkill ;
+            owl:onProperty :requiresHardSkill ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass :HardSkill ;
             owl:onProperty :requiresHardSkill ],
         [ a owl:Restriction ;
             owl:hasValue :OpennessTrait ;
@@ -30250,8 +29844,11 @@ ont.:measuresTrait a owl:ObjectProperty .
             owl:onClass :SoftSkill ;
             owl:onProperty :requiresSoftSkill ],
         [ a owl:Restriction ;
-            owl:hasValue :AnalyticalThinkingSkill ;
+            owl:hasValue :CommunicationSkill ;
             owl:onProperty :requiresSoftSkill ],
+        [ a owl:Restriction ;
+            owl:hasValue :Data_Field ;
+            owl:onProperty :inJobField ],
         :JobOccupation,
         owl:Thing .
 
@@ -30316,6 +29913,16 @@ ont.:measuresTrait a owl:ObjectProperty .
         owl:NamedIndividual ;
     :hasSubField :Technology_Field .
 
+:AttentionToDetailSkill a :SoftSkill,
+        owl:NamedIndividual .
+
+:CollaborationSkill a :SoftSkill,
+        owl:NamedIndividual .
+
+:Data_Field a :JobField,
+        owl:NamedIndividual ;
+    :hasSubField :Technology_Field .
+
 :Operations_Field a :JobField,
         owl:NamedIndividual .
 
@@ -30331,10 +29938,6 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :CustomerService_Field a :JobField,
         owl:NamedIndividual .
-
-:Data_Field a :JobField,
-        owl:NamedIndividual ;
-    :hasSubField :Technology_Field .
 
 :HR_Field a :JobField,
         owl:NamedIndividual .
@@ -30395,49 +29998,6 @@ ont.:measuresTrait a owl:ObjectProperty .
 
 :MatchCategory a owl:Class ;
     owl:disjointWith :Person .
-
-:Sales_Field a :JobField,
-        owl:NamedIndividual .
-
-:hasOpennessScore a owl:DatatypeProperty ;
-    rdfs:domain :Person ;
-    rdfs:range xsd:decimal .
-
-:AttentionToDetailSkill a :SoftSkill,
-        owl:NamedIndividual .
-
-:CollaborationSkill a :SoftSkill,
-        owl:NamedIndividual .
-
-:Finance_Field a :JobField,
-        owl:NamedIndividual .
-
-:MachineLearningSkill a :DataScienceSkill,
-        :HardSkill,
-        owl:NamedIndividual .
-
-:PersonalityTrait a owl:Class ;
-    owl:disjointWith :Skill .
-
-:StatisticsSkill a :DataScienceSkill,
-        :HardSkill,
-        owl:NamedIndividual .
-
-:hasConscientiousnessScore a owl:DatatypeProperty ;
-    rdfs:domain :Person ;
-    rdfs:range xsd:decimal .
-
-:DataAnalyticsSkill a owl:Class ;
-    rdfs:subClassOf :DataHardSkill,
-        :HardSkill .
-
-:DataVisualizationSkill a :DataAnalyticsSkill,
-        :HardSkill,
-        owl:NamedIndividual .
-
-:PythonSkill a :HardSkill,
-        :SoftwareEngineeringSkill,
-        owl:NamedIndividual .
 
 :Q1 a :PersonalityQuestion,
         owl:NamedIndividual ;
@@ -30588,6 +30148,43 @@ ont.:measuresTrait a owl:ObjectProperty .
         owl:NamedIndividual ;
     ont.:measuresTrait :ConscientiousnessTrait ;
     :hasQuestion "Saya berusaha tepat waktu dalam janji atau tenggat (deadline)"^^xsd:string .
+
+:Sales_Field a :JobField,
+        owl:NamedIndividual .
+
+:hasOpennessScore a owl:DatatypeProperty ;
+    rdfs:domain :Person ;
+    rdfs:range xsd:decimal .
+
+:Finance_Field a :JobField,
+        owl:NamedIndividual .
+
+:MachineLearningSkill a :DataScienceSkill,
+        :HardSkill,
+        owl:NamedIndividual .
+
+:PersonalityTrait a owl:Class ;
+    owl:disjointWith :Skill .
+
+:StatisticsSkill a :DataScienceSkill,
+        :HardSkill,
+        owl:NamedIndividual .
+
+:hasConscientiousnessScore a owl:DatatypeProperty ;
+    rdfs:domain :Person ;
+    rdfs:range xsd:decimal .
+
+:DataAnalyticsSkill a owl:Class ;
+    rdfs:subClassOf :DataHardSkill,
+        :HardSkill .
+
+:DataVisualizationSkill a :DataAnalyticsSkill,
+        :HardSkill,
+        owl:NamedIndividual .
+
+:PythonSkill a :HardSkill,
+        :SoftwareEngineeringSkill,
+        owl:NamedIndividual .
 
 :JobField a owl:Class ;
     owl:disjointWith :JobOccupation,
@@ -30851,6 +30448,9 @@ ont.:measuresTrait a owl:ObjectProperty .
         :HighFitForTechnicalRoles,
         :HighFitForUIUXDesigner .
 
+:Technology_Field a :JobField,
+        owl:NamedIndividual .
+
 :HighFitForDataAnalyst a owl:Class ;
     rdfs:label "High Fit for Data Analyst"^^xsd:string ;
     rdfs:comment "Ideal for data analysis: analytical, organized, detail-focused"^^xsd:string ;
@@ -30962,9 +30562,6 @@ ont.:measuresTrait a owl:ObjectProperty .
         :HighFitForUIUXDesigner,
         :HighFitForUXResearcherJob .
 
-:Technology_Field a :JobField,
-        owl:NamedIndividual .
-
 :DataScienceSkill a owl:Class ;
     rdfs:subClassOf :DataHardSkill,
         :HardSkill .
@@ -30972,6 +30569,9 @@ ont.:measuresTrait a owl:ObjectProperty .
 :C_Dutifulness a :PersonalityFacet,
         owl:NamedIndividual ;
     :facetOfTrait :ConscientiousnessTrait .
+
+:CommunicationSkill a :SoftSkill,
+        owl:NamedIndividual .
 
 :CustomerSupportAndSuccessSkill a owl:Class ;
     rdfs:subClassOf :HardSkill .
@@ -31032,9 +30632,6 @@ ont.:measuresTrait a owl:ObjectProperty .
     rdfs:subClassOf :HardSkill .
 
 :AgreeablenessTrait a :PersonalityTrait,
-        owl:NamedIndividual .
-
-:CommunicationSkill a :SoftSkill,
         owl:NamedIndividual .
 
 :FinanceHardSkill a owl:Class ;
@@ -31136,6 +30733,12 @@ ont.:measuresTrait a owl:ObjectProperty .
         owl:NamedIndividual ;
     :facetOfTrait :AgreeablenessTrait .
 
+:Answer a owl:Class ;
+    owl:disjointWith :Experience,
+        :Person,
+        :PersonalityQuestion,
+        :Skill .
+
 :O_Fantasy a :PersonalityFacet,
         owl:NamedIndividual ;
     :facetOfTrait :OpennessTrait .
@@ -31158,12 +30761,6 @@ ont.:measuresTrait a owl:ObjectProperty .
 :N_Vulnerability a :PersonalityFacet,
         owl:NamedIndividual ;
     :facetOfTrait :NeuroticismTrait .
-
-:Answer a owl:Class ;
-    owl:disjointWith :Experience,
-        :Person,
-        :PersonalityQuestion,
-        :Skill .
 
 :E_Warmth a :PersonalityFacet,
         owl:NamedIndividual ;
