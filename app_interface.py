@@ -18,6 +18,33 @@ try:
 except:
     pass
 
+from rdflib import Graph
+
+def sync_owl_to_ttl(owl_path, ttl_path):
+    """
+    Tambahkan triple baru dari OWL ke TTL secara manual (append), tanpa parse TTL dengan rdflib.
+    """
+    from rdflib import Graph
+    g_owl = Graph()
+    g_owl.parse(owl_path, format='xml')
+    # Baca triple yang sudah ada di TTL secara manual
+    existing_triples = set()
+    with open(ttl_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith('@') and not line.startswith('#'):
+                existing_triples.add(line)
+    # Format triple baru ke Turtle
+    def triple_to_ttl(s, p, o):
+        return f"{s.n3()} {p.n3()} {o.n3()} ."
+    ttl_lines = []
+    for triple in g_owl:
+        ttl_str = triple_to_ttl(*triple)
+        if ttl_str not in existing_triples:
+            ttl_lines.append(ttl_str + '\n')
+    if ttl_lines:
+        with open(ttl_path, 'a', encoding='utf-8') as f:
+            f.writelines(ttl_lines)
 FUSEKI_BASE_URL = "http://localhost:3030/recruitment-ontology"
 FUSEKI_QUERY_URL = f"{FUSEKI_BASE_URL}/query" 
 FUSEKI_UPLOAD_URL = f"{FUSEKI_BASE_URL}/data"
@@ -317,13 +344,13 @@ def create_radar_chart(scores):
     
     return fig
 
-def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None, years_experience=None, soft_skills=None, hard_skills=None):
+def add_applicant_to_ontology(name, answers, job_field=None, JobOccupation=None, years_experience=None, soft_skills=None, hard_skills=None):
     """Add new applicant with answers and job details to ontology"""
     try:
         print(f"\n{'='*60}")
         print(f"Adding applicant: {name}")
         print(f"  Job Field: {job_field}")
-        print(f"  Job Occupation: {job_occupation}")
+        print(f"  Job Occupation: {JobOccupation}")
         print(f"  Years Experience: {years_experience}")
         print(f"  Soft Skills: {soft_skills}")
         print(f"  Hard Skills: {hard_skills}")
@@ -370,9 +397,9 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
                 print(f"✓ Added job field: {job_field}")
             
             # Add job occupation
-            if job_occupation and hasattr(onto, job_occupation):
-                new_person.hasJobOccupation = [onto[job_occupation]]
-                print(f"✓ Added job occupation: {job_occupation}")
+            if JobOccupation and hasattr(onto, JobOccupation):
+                new_person.hasJobOccupation = [onto[JobOccupation]]
+                print(f"✓ Added job occupation: {JobOccupation}")
             
             # Add years of experience
             if years_experience is not None:
@@ -440,7 +467,7 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
         applicant_data_for_score = {
             'scores': trait_scores,
             'categories': [],
-            'job_occupation': job_occupation,
+            'JobOccupation': JobOccupation if JobOccupation else None,
             'hard_skills': hard_skills if hard_skills else [],
             'soft_skills': soft_skills if soft_skills else [],
             'years_experience': years_experience if years_experience else 0,
@@ -466,23 +493,22 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
         # Save to jobs_with_scores.owl (working file)
         onto.save(file="jobs_with_scores.owl", format="rdfxml")
         print("✓ Saved to jobs_with_scores.owl")
-        
-        # Sync to jobs_with_scores.ttl for viewing only (DON'T touch jobs_clean.ttl)
+        # Append new triples from OWL to TTL
+        try:
+            sync_owl_to_ttl("jobs_with_scores.owl", "jobs_with_scores.ttl")
+            print("✓ Appended new triples to jobs_with_scores.ttl (for viewing)")
+        except Exception as e:
+            print(f"Warning: Could not append to TTL: {e}")
+
         try:
             from rdflib import Graph, Namespace
             from rdflib.namespace import RDF, RDFS, OWL
-            
             g = Graph()
             g.parse("jobs_with_scores.owl", format="xml")
-            
-            # Bind namespaces
             g.bind("owl", OWL)
             g.bind("rdf", RDF)
             g.bind("rdfs", RDFS)
             g.bind("", Namespace("http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#"))
-            
-            # Save to TTL for viewing
-            g.serialize(destination="jobs_with_scores.ttl", format="turtle", encoding="utf-8")
             print("✓ Synced to jobs_with_scores.ttl (for viewing)")
         except Exception as e:
             print(f"Warning: Could not sync to TTL: {e}")
@@ -570,6 +596,39 @@ def get_applicants_from_fuseki():
         st.error(f"Gagal mengambil data dari Fuseki. Pastikan server nyala. Error: {e}")
         return []
 
+    def get_fit_applicant_counts_from_fuseki():
+        """Query Fuseki for counts of HighFitApplicant, MediumFitApplicant, LowFitApplicant"""
+        sparql = SPARQLWrapper(FUSEKI_QUERY_URL)
+        sparql.setReturnFormat(JSON)
+        query = """
+        PREFIX : <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        SELECT ?fitClass (COUNT(?p) AS ?count)
+        WHERE {
+          ?p rdf:type ?fitClass .
+          FILTER (?fitClass IN (:HighFitApplicant, :MediumFitApplicant, :LowFitApplicant))
+        }
+        GROUP BY ?fitClass
+        """
+        sparql.setQuery(query)
+        try:
+            results = sparql.query().convert()
+            bindings = results['results']['bindings']
+            counts = {'HighFitApplicant': 0, 'MediumFitApplicant': 0, 'LowFitApplicant': 0}
+            for item in bindings:
+                fit_class_uri = item['fitClass']['value']
+                count = int(item['count']['value'])
+                if fit_class_uri.endswith('HighFitApplicant'):
+                    counts['HighFitApplicant'] = count
+                elif fit_class_uri.endswith('MediumFitApplicant'):
+                    counts['MediumFitApplicant'] = count
+                elif fit_class_uri.endswith('LowFitApplicant'):
+                    counts['LowFitApplicant'] = count
+            return counts
+        except Exception as e:
+            st.error(f"Gagal mengambil jumlah applicant dari Fuseki: {e}")
+            return {'HighFitApplicant': 0, 'MediumFitApplicant': 0, 'LowFitApplicant': 0}
+
 def run_complete_workflow():
     """Run complete workflow: calculate scores + reasoning"""
     try:
@@ -585,14 +644,26 @@ def run_complete_workflow():
             Person = onto.Person
             persons = list(Person.instances())
             
+            # Only run analysis if there is at least one applicant with no score
+            new_applicants = []
             for person in persons:
+                need_analysis = True
+                for prop in ['hasWeightedScore', 'hasCategoryFitScore', 'hasSkillMatchScore', 'hasExperienceScore']:
+                    if hasattr(person, prop) and getattr(person, prop) and getattr(person, prop)[0] > 0:
+                        need_analysis = False
+                        break
+                if need_analysis:
+                    new_applicants.append(person)
+            if not new_applicants:
+                pass
+            # Only process new applicants
+            for person in new_applicants:
                 if hasattr(person, 'hasAnswer'):
                     answers = {}
                     for answer in person.hasAnswer:
                         if hasattr(answer, 'forQuestion') and hasattr(answer, 'answerScore'):
                             q_name = answer.forQuestion[0].name if answer.forQuestion else None
                             score = answer.answerScore[0] if answer.answerScore else None
-                            
                             if q_name and q_name.startswith('Q'):
                                 q_num = int(q_name[1:])
                                 answers[q_num] = score
@@ -616,7 +687,7 @@ def run_complete_workflow():
                         applicant_data = {
                             'scores': trait_scores,
                             'categories': [],
-                            'job_occupation': person.hasJobOccupation[0].name if hasattr(person, 'hasJobOccupation') and person.hasJobOccupation else None,
+                            'JobOccupation': person.hasJobOccupation[0].name if hasattr(person, 'hasJobOccupation') and person.hasJobOccupation else None,
                             'hard_skills': [s.name for s in person.hasHardSkill] if hasattr(person, 'hasHardSkill') else [],
                             'soft_skills': [s.name for s in person.hasSoftSkill] if hasattr(person, 'hasSoftSkill') else [],
                             'years_experience': person.hasYearsOfExperience[0] if hasattr(person, 'hasYearsOfExperience') and person.hasYearsOfExperience else 0,
@@ -624,17 +695,24 @@ def run_complete_workflow():
                         }
                         
                         overall_score = calculate_overall_fit_score(applicant_data)
-                        person.hasWeightedScore = [float(overall_score)]
-                        
-                        # Save component scores to ontology
+                        # Only overwrite scores if missing or zero
+                        def preserve_or_update(prop, new_val):
+                            old_val = getattr(person, prop)[0] if hasattr(person, prop) and getattr(person, prop) else 0.0
+                            # Only update if new_val > 0 or property not set
+                            if new_val > 0:
+                                setattr(person, prop, [float(new_val)])
+                            elif old_val > 0:
+                                setattr(person, prop, [float(old_val)])
+                            # else: do not set property (remains empty or zero)
+
+                        preserve_or_update('hasWeightedScore', overall_score)
                         score_breakdown = applicant_data.get('score_breakdown', {})
                         if 'category_fit' in score_breakdown:
-                            person.hasCategoryFitScore = [float(score_breakdown['category_fit'])]
+                            preserve_or_update('hasCategoryFitScore', score_breakdown['category_fit'])
                         if 'skill_match' in score_breakdown:
-                            person.hasSkillMatchScore = [float(score_breakdown['skill_match'])]
+                            preserve_or_update('hasSkillMatchScore', score_breakdown['skill_match'])
                         if 'experience' in score_breakdown:
-                            person.hasExperienceScore = [float(score_breakdown['experience'])]
-                        
+                            preserve_or_update('hasExperienceScore', score_breakdown['experience'])
                         # Save years of experience
                         if applicant_data['years_experience'] is not None:
                             person.hasYearsOfExperience = [int(applicant_data['years_experience'])]
@@ -642,6 +720,12 @@ def run_complete_workflow():
         # Save to jobs_with_scores.owl (working file)
         onto.save(file="jobs_with_scores.owl", format="rdfxml")
         print("✓ Saved to jobs_with_scores.owl")
+        # Append new triples from OWL to TTL
+        try:
+            sync_owl_to_ttl("jobs_with_scores.owl", "jobs_with_scores.ttl")
+            print("✓ Appended new triples to jobs_with_scores.ttl (for viewing)")
+        except Exception as e:
+            print(f"Warning: Could not append to TTL: {e}")
         
         # Sync to jobs_with_scores.ttl for viewing
         try:
@@ -656,10 +740,6 @@ def run_complete_workflow():
             g.bind("rdf", RDF)
             g.bind("rdfs", RDFS)
             g.bind("", Namespace("http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#"))
-            
-            # Save to TTL for viewing
-            g.serialize(destination="jobs_with_scores.ttl", format="turtle", encoding="utf-8")
-            print("✓ Synced to jobs_with_scores.ttl (for viewing)")
         except ImportError:
             print("rdflib not available, TTL sync skipped")
         except Exception as e:
@@ -702,6 +782,7 @@ def get_all_applicants():
                     'categories': [],
                     'job_field': None,
                     'job_occupation': None,
+                    'JobOccupation': None,
                     'years_experience': None,
                     'soft_skills': [],
                     'hard_skills': []
@@ -725,7 +806,9 @@ def get_all_applicants():
                 
                 # Get job occupation
                 if hasattr(person, 'hasJobOccupation') and person.hasJobOccupation:
-                    applicant_data['job_occupation'] = person.hasJobOccupation[0].name
+                    occ_name = person.hasJobOccupation[0].name
+                    applicant_data['JobOccupation'] = occ_name
+                    applicant_data['job_occupation'] = occ_name
                 
                 # Get years of experience
                 if hasattr(person, 'hasYearsOfExperience') and person.hasYearsOfExperience:
@@ -764,11 +847,11 @@ def get_all_applicants():
                     applicant_data['score_breakdown'] = breakdown
                 
                 # Calculate skill match if job occupation exists
-                if applicant_data['job_occupation']:
+                if applicant_data['JobOccupation']:
                     match_pct, _ = calculate_skill_match(
                         applicant_data['hard_skills'],
                         applicant_data['soft_skills'],
-                        applicant_data['job_occupation']
+                        applicant_data['JobOccupation']
                     )
                     applicant_data['skill_match_percentage'] = match_pct
                 else:
@@ -820,8 +903,8 @@ def calculate_overall_fit_score(applicant):
     """Calculate overall fit score with weighted components for job-relevant skills and experience"""
     score = 0
     breakdown = {}
-    job_occupation = applicant.get('job_occupation')
-    normalized_job = job_occupation.replace(" ", "").replace("_", "").lower() if job_occupation else ""
+    JobOccupation = applicant.get('JobOccupation')
+    normalized_job = JobOccupation.replace(" ", "").replace("_", "").lower() if JobOccupation else ""
 
     analytical_roles = {
         "dataanalyst", "datascientist", "productmanager", "uxresearcher", "securityanalyst",
@@ -879,9 +962,9 @@ def calculate_overall_fit_score(applicant):
     breakdown['category_fit'] = round(category_score, 2)
 
     # 3. Skill Match component (35% weight) - HIGHEST PRIORITY
-    job_occupation = applicant.get('job_occupation')
-    if job_occupation:
-        required_skills = get_job_required_skills(job_occupation)
+    JobOccupation = applicant.get('JobOccupation')
+    if JobOccupation:
+        required_skills = get_job_required_skills(JobOccupation)
         all_required = required_skills['hard_skills'] + required_skills['soft_skills']
         all_applicant = applicant.get('hard_skills', []) + applicant.get('soft_skills', [])
         
@@ -924,7 +1007,7 @@ def calculate_overall_fit_score(applicant):
     
     # Relevant experience bonus (10 points) - if has experience AND applying to same field
     relevant_bonus = 0
-    if years_exp >= 1 and job_field and job_occupation:
+    if years_exp >= 1 and job_field and JobOccupation:
         # Bonus if has at least 1 year experience
         relevant_bonus = 10
     elif years_exp >= 2:
@@ -1037,7 +1120,7 @@ elif page == "Add Applicant":
             "Select Job Position:",
             options=occupation_options,
             format_func=lambda x: f"{x.replace('_', ' ').title()}" if x else "Select job position...",
-            key="job_occupation"
+            key="JobOccupation"
         )
         
         selected_field = occupations_with_fields.get(selected_occupation, "") if selected_occupation else ""
@@ -1086,7 +1169,6 @@ elif page == "Add Applicant":
                         st.success(f"✅ {message}")
                         st.success("✅ Big Five scores calculated and saved!")
                         st.success("✅ Overall fit score calculated and saved!")
-                        st.balloons()
                         st.info("**Next step:** Go to 'View Results' to see the analysis!")
                     else:
                         st.error(f"{message}")
@@ -1119,7 +1201,6 @@ elif page == "Run Analysis":
                 success, message = run_complete_workflow()
                 if success:
                     st.success(f"{message}")
-                    st.balloons()
                     st.info("""
                     **Results saved to:**
                     - `jobs_with_scores.owl` - OWL file with complete scores
@@ -1208,7 +1289,7 @@ elif page == "View Results":
         if selected_field != "All Fields":
             applicants = [app for app in applicants if app.get('job_field') == selected_field]
         if filter_job != "All Positions":
-            applicants = [app for app in applicants if app.get('job_occupation') == filter_job]
+            applicants = [app for app in applicants if app.get('JobOccupation') == filter_job]
         
         for app in applicants:
             # If ontology already has overall/component scores, keep them; otherwise compute fresh
@@ -1258,15 +1339,15 @@ elif page == "View Results":
                         st.subheader(f"{applicant['name']}")
                         
                         # Job Preferences
-                        if applicant['job_field'] or applicant['job_occupation']:
+                        if applicant['job_field'] or applicant['JobOccupation']:
                             st.markdown("**Job Preferences**")
                             col1, col2 = st.columns(2)
                             with col1:
                                 if applicant['job_field']:
                                     st.info(f"**Field:** {applicant['job_field'].replace('_', ' ').title()}")
                             with col2:
-                                if applicant['job_occupation']:
-                                    st.info(f"**Position:** {applicant['job_occupation'].replace('_', ' ').title()}")
+                                if applicant['JobOccupation']:
+                                    st.info(f"**Position:** {applicant['JobOccupation'].replace('_', ' ').title()}")
                         
                         # Total Score
                         st.markdown("**Overall Fit Score**")
@@ -1369,11 +1450,11 @@ elif page == "View Results":
                         st.subheader("Experience & Skills")
                         
                         # Show skill match details if job occupation is selected
-                        if applicant.get('job_occupation'):
+                        if applicant.get('JobOccupation'):
                             match_pct, match_details = calculate_skill_match(
                                 applicant.get('hard_skills', []),
                                 applicant.get('soft_skills', []),
-                                applicant['job_occupation']
+                                applicant['JobOccupation']
                             )
                             
                             if match_details['matched']:
@@ -1448,7 +1529,6 @@ elif page == "🔄 Run Analysis":
             
             if success:
                 st.success(f"✅ {message}")
-                st.balloons()
                 st.info("💡 Go to 'View Applicants' to see the results!")
             else:
                 st.error(f"❌ {message}")
