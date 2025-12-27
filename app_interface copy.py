@@ -297,7 +297,7 @@ def create_radar_chart(scores):
     return fig
 
 def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None, years_experience=None, soft_skills=None, hard_skills=None):
-    """Add new applicant with answers and job details to ontology"""
+    """Add new applicant with answers and job details to ontology and persist to jobs_with_scores.*"""
     try:
         # Load ontology from OWL (owlready2 works best with OWL format)
         onto_path = os.path.abspath("jobs.owl")
@@ -336,9 +336,21 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
             if job_occupation and hasattr(onto, job_occupation):
                 new_person.hasJobOccupation = [onto[job_occupation]]
             
-            # Add years of experience
-            if years_experience is not None:
-                new_person.hasYearsOfExperience = [years_experience]
+            # Create and link experience individual so TTL aligns with ontology usage
+            if years_experience is not None or job_field:
+                exp_name = f"{person_name}Experience"
+                Experience = onto.Experience
+                new_experience = Experience(exp_name)
+                if years_experience is not None:
+                    new_experience.yearsOfExperience = [int(years_experience)]
+                    new_person.hasYearsOfExperience = [int(years_experience)]
+                if job_field and hasattr(onto, job_field):
+                    if hasattr(new_experience, "experienceInField"):
+                        new_experience.experienceInField = [onto[job_field]]
+                if hasattr(new_person, "hasExperience"):
+                    new_person.hasExperience.append(new_experience)
+                else:
+                    new_person.hasExperience = [new_experience]
             
             # Add soft skills
             if soft_skills:
@@ -355,9 +367,18 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
                         if not hasattr(new_person, 'hasHardSkill'):
                             new_person.hasHardSkill = []
                         new_person.hasHardSkill.append(onto[skill])
+
+            # Create application individual linking applicant to selected occupation
+            if job_occupation and hasattr(onto, job_occupation):
+                app_name = f"{person_name}Application"
+                Application = onto.Application
+                new_application = Application(app_name)
+                new_application.hasApplicant = [new_person]
+                new_application.forJob = [onto[job_occupation]]
         
         # Save to OWL (working format)
         onto.save(file="jobs.owl", format="rdfxml")
+        onto.save(file="jobs_with_scores.owl", format="rdfxml")
         
         # Auto-sync to TTL (output format for viewing)
         try:
@@ -365,7 +386,7 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
             from rdflib.namespace import RDF, RDFS, OWL
             
             g = Graph()
-            g.parse("jobs.owl", format="xml")
+            g.parse("jobs_with_scores.owl", format="xml")
             
             # Bind namespaces
             g.bind("owl", OWL)
@@ -374,12 +395,13 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
             g.bind("", Namespace("http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#"))
             
             # Save to TTL for viewing
+            g.serialize(destination="jobs_with_scores.ttl", format="turtle", encoding="utf-8")
             g.serialize(destination="jobs_clean.ttl", format="turtle", encoding="utf-8")
-            print("✓ Saved to jobs.owl and synced to jobs_clean.ttl")
+            print("✓ Saved to jobs_with_scores.owl and synced to jobs_with_scores.ttl & jobs_clean.ttl")
         except Exception as e:
             print(f"Warning: Could not sync to TTL: {e}")
         
-        return True, "Applicant added! Data in jobs.owl, viewable in jobs_clean.ttl"
+        return True, "Applicant added! Data in jobs_with_scores.owl/ttl and jobs_clean.ttl"
         
     except Exception as e:
         return False, f"Error: {str(e)}"

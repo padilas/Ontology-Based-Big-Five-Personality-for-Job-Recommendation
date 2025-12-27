@@ -10,15 +10,18 @@ from datetime import datetime
 import tempfile
 import os
 import plotly.graph_objects as go
-
-# Clear owlready2 cache on startup to prevent stale data
+import requests
+from SPARQLWrapper import SPARQLWrapper, JSON
 try:
     from owlready2 import default_world
     default_world.graph.destroy()
 except:
     pass
 
-# Page config
+FUSEKI_BASE_URL = "http://localhost:3030/recruitment-ontology"
+FUSEKI_QUERY_URL = f"{FUSEKI_BASE_URL}/query" 
+FUSEKI_UPLOAD_URL = f"{FUSEKI_BASE_URL}/data"
+
 st.set_page_config(
     page_title="Job Recommendation System",
     page_icon="💼",
@@ -488,6 +491,84 @@ def add_applicant_to_ontology(name, answers, job_field=None, job_occupation=None
         
     except Exception as e:
         return False, f"Error: {str(e)}"
+
+def upload_ttl_to_fuseki(file_path):
+    """Upload file .ttl ke Fuseki (Replace data lama)"""
+    try:
+        print(f"Uploading {file_path} to Fuseki...")
+        
+        with open(file_path, 'rb') as f:
+            data = f.read()
+            
+        # Header wajib agar Fuseki tahu ini file Turtle
+        headers = {'Content-Type': 'text/turtle; charset=utf-8'}
+        
+        # POST request ke endpoint /data
+        response = requests.post(FUSEKI_UPLOAD_URL, data=data, headers=headers)
+        
+        if response.status_code in [200, 204]:
+            print("✅ Upload ke Fuseki Sukses!")
+            return True
+        else:
+            print(f"❌ Upload Gagal: {response.status_code} - {response.text}")
+            return False
+            
+    except Exception as e:
+        st.error(f"Error Koneksi ke Fuseki: {e}")
+        return False
+
+def get_applicants_from_fuseki():
+    """Ambil data pelamar & status klasifikasi dari Fuseki"""
+    sparql = SPARQLWrapper(FUSEKI_QUERY_URL)
+    sparql.setReturnFormat(JSON)
+    
+    # Query mengambil Nama, Skor, dan Tipe Klasifikasi (High/Medium/Low)
+    query = """
+    PREFIX : <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    
+    SELECT ?nama ?skor ?status
+    WHERE {
+      ?p rdf:type :Person ;
+         :hasWeightedScore ?skor .
+      
+      # Ambil klasifikasi (OPTIONAL agar data tidak hilang kalau belum ada klasifikasi)
+      OPTIONAL {
+        ?p rdf:type ?fitClass .
+        FILTER (?fitClass IN (:HighFitApplicant, :MediumFitApplicant, :LowFitApplicant))
+        BIND(STRAFTER(STR(?fitClass), "#") AS ?status)
+      }
+      
+      # Ambil nama bersih dari URI (setelah tanda #)
+      BIND(STRAFTER(STR(?p), "#") AS ?nama)
+    }
+    """
+    
+    sparql.setQuery(query)
+    
+    try:
+        results = sparql.query().convert()
+        bindings = results['results']['bindings']
+        
+        cleaned_data = []
+        for item in bindings:
+            nama = item['nama']['value'].replace('_', ' ')
+            skor = float(item['skor']['value'])
+            
+            # Default status jika belum ada
+            status = item['status']['value'] if 'status' in item else "Belum Diklasifikasi"
+            
+            cleaned_data.append({
+                'name': nama,
+                'overall_fit_score': skor,
+                'classification': status
+            })
+            
+        return cleaned_data
+        
+    except Exception as e:
+        st.error(f"Gagal mengambil data dari Fuseki. Pastikan server nyala. Error: {e}")
+        return []
 
 def run_complete_workflow():
     """Run complete workflow: calculate scores + reasoning"""
@@ -1048,6 +1129,37 @@ elif page == "Run Analysis":
 
 elif page == "View Results":
     st.header("Applicant Analysis Results")
+    st.subheader("Hasil Reasoner: Klasifikasi Fit Applicant")
+    try:
+        world = World()
+        onto_path = os.path.abspath("jobs_with_scores.owl")
+        if not os.path.exists(onto_path):
+            onto_path = os.path.abspath("jobs.owl")
+        onto = world.get_ontology(f"file://{onto_path}").load()
+        with onto:
+            fit_classes = ["HighFitApplicant", "MediumFitApplicant", "LowFitApplicant"]
+            fit_results = {}
+            for fit_class in fit_classes:
+                if hasattr(onto, fit_class):
+                    cls = getattr(onto, fit_class)
+                    fit_results[fit_class] = [ind.name for ind in cls.instances()]
+                else:
+                    fit_results[fit_class] = []
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.info(f"High Fit Applicants: {len(fit_results['HighFitApplicant'])}")
+            for name in fit_results['HighFitApplicant']:
+                st.write(f"- {name}")
+        with col2:
+            st.warning(f"Medium Fit Applicants: {len(fit_results['MediumFitApplicant'])}")
+            for name in fit_results['MediumFitApplicant']:
+                st.write(f"- {name}")
+        with col3:
+            st.error(f"Low Fit Applicants: {len(fit_results['LowFitApplicant'])}")
+            for name in fit_results['LowFitApplicant']:
+                st.write(f"- {name}")
+    except Exception as e:
+        st.error(f"Gagal memuat hasil reasoning: {str(e)}")
     
     # Load applicants once so filters and sorting stay in sync
     applicants = get_all_applicants()

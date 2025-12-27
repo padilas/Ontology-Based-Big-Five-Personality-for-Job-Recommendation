@@ -5,6 +5,9 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
 @base <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#> .
 
 <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology> rdf:type owl:Ontology .
@@ -14,7 +17,39 @@
 #################################################################
 
 ###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
-<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+swrla:isRuleEnabled rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/11/swrl#argument1
+swrl:argument1 rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/11/swrl#argument2
+swrl:argument2 rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/11/swrl#arguments
+swrl:arguments rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/11/swrl#body
+swrl:body rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/11/swrl#builtin
+swrl:builtin rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/11/swrl#classPredicate
+swrl:classPredicate rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/11/swrl#head
+swrl:head rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/11/swrl#propertyPredicate
+swrl:propertyPredicate rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -88,14 +123,6 @@ ont:measuresTrait rdf:type owl:ObjectProperty .
 :hasMatchCategory rdf:type owl:ObjectProperty ;
                   rdfs:domain :JobOccupation ;
                   rdfs:range :PersonalityTrait .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasMatchedSoftSkill
-:hasMatchedSoftSkill rdf:type owl:ObjectProperty ;
-                     rdfs:domain :Person ;
-                     rdfs:range :SoftSkill ;
-                     rdfs:comment "Marks soft skills that match with job requirements" ;
-                     rdfs:label "has matched soft skill" .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasPersonalityTrait
@@ -201,7 +228,7 @@ ont:measuresTrait rdf:type owl:ObjectProperty .
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasCategoryFitScore
 :hasCategoryFitScore rdf:type owl:DatatypeProperty ;
                      rdfs:domain :Person ;
-                     rdfs:range xsd:float .
+                     rdfs:range xsd:decimal .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasConscientiousnessScore
@@ -218,7 +245,7 @@ ont:measuresTrait rdf:type owl:ObjectProperty .
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasExperienceScore
 :hasExperienceScore rdf:type owl:DatatypeProperty ;
                     rdfs:domain :Person ;
-                    rdfs:range xsd:float .
+                    rdfs:range xsd:decimal .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasExtraversionScore
@@ -246,7 +273,7 @@ ont:measuresTrait rdf:type owl:ObjectProperty .
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasSkillMatchScore
 :hasSkillMatchScore rdf:type owl:DatatypeProperty ;
                     rdfs:domain :Person ;
-                    rdfs:range xsd:float .
+                    rdfs:range xsd:decimal .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasTitle
@@ -257,12 +284,7 @@ ont:measuresTrait rdf:type owl:ObjectProperty .
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasWeightedScore
 :hasWeightedScore rdf:type owl:DatatypeProperty ;
                   rdfs:domain :Person ;
-                  rdfs:range xsd:float .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#questionScore
-:questionScore rdf:type owl:DatatypeProperty ;
-               rdfs:range xsd:int .
+                  rdfs:range xsd:decimal .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#hasYearsOfExperience
@@ -270,6 +292,11 @@ ont:measuresTrait rdf:type owl:ObjectProperty .
                       rdfs:domain :Person ;
                       rdfs:range xsd:int ;
                       rdfs:comment "Years of work experience" .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#questionScore
+:questionScore rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:int .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#yearsOfExperience
@@ -332,8 +359,7 @@ ont:measuresTrait rdf:type owl:ObjectProperty .
                                      owl:onProperty :requiresHardSkill ;
                                      owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                      owl:onClass :FinanceHardSkill
-                                   ] ;
-                   rdfs:label "Account Payable" .
+                                   ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Answer
@@ -569,8 +595,7 @@ ont:measuresTrait rdf:type owl:ObjectProperty .
                                          owl:onProperty :requiresHardSkill ;
                                          owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                          owl:onClass :CustomerSupportAndSuccessSkill
-                                       ] ;
-                       rdfs:label "Customer Experience" .
+                                       ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerSuccessJob
@@ -2118,36 +2143,6 @@ ont:measuresTrait rdf:type owl:ObjectProperty .
         owl:disjointWith :Skill .
 
 
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HighScoringApplicant
-:HighScoringApplicant rdf:type owl:Class ;
-                      rdfs:subClassOf :Person ;
-                      owl:equivalentClass [ rdf:type owl:Restriction ;
-                                           owl:onProperty :hasWeightedScore ;
-                                           owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                               owl:onDatatype xsd:float ;
-                                                               owl:withRestrictions ( [ xsd:minInclusive "65.0"^^xsd:float ]
-                                                                                    )
-                                                             ]
-                                         ] ;
-                      rdfs:comment "Applicant with weighted score >= 65" ;
-                      rdfs:label "High Scoring Applicant" .
-
-
-###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ExcellentApplicant
-:ExcellentApplicant rdf:type owl:Class ;
-                    rdfs:subClassOf :HighScoringApplicant ;
-                    owl:equivalentClass [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasWeightedScore ;
-                                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                             owl:onDatatype xsd:float ;
-                                                             owl:withRestrictions ( [ xsd:minInclusive "80.0"^^xsd:float ]
-                                                                                  )
-                                                           ]
-                                       ] ;
-                    rdfs:comment "Applicant with weighted score >= 80" ;
-                    rdfs:label "Excellent Applicant" .
-
-
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#PersonalityFacet
 :PersonalityFacet rdf:type owl:Class ;
                   owl:disjointWith :PersonalityTrait ,
@@ -2419,8 +2414,7 @@ ont:measuresTrait rdf:type owl:ObjectProperty .
                                                      owl:onProperty :requiresHardSkill ;
                                                      owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
                                                      owl:onClass :SalesAndBusinessDevelopmentSkill
-                                                   ] ;
-                                   rdfs:label "Sales Development Representative" .
+                                                   ] .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesHardSkill
@@ -2850,8 +2844,7 @@ ont:measuresTrait rdf:type owl:ObjectProperty .
 #################################################################
 
 ###  http://www.co-ode.org/ontologies/ont.owl#C_Minie
-ont:C_Minie rdf:type owl:NamedIndividual ,
-                     :Person .
+ont:C_Minie rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#APIIntegrationSkill
@@ -2908,6 +2901,10 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
          :facetOfTrait :AgreeablenessTrait .
 
 
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AccountPayableJob
+:AccountPayableJob rdf:type owl:NamedIndividual .
+
+
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AccountingSkill
 :AccountingSkill rdf:type owl:NamedIndividual ,
                           :BusinessOperationsSkill ,
@@ -2962,7 +2959,17 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
                :SQLSkill ,
                :StatisticsSkill ;
      :hasSoftSkill :AnalyticalThinkingSkill ,
-                   :CommunicationSkill .
+                   :CommunicationSkill ;
+     :hasAgreeablenessScore 1.0 ;
+     :hasCategoryFitScore 0.0 ;
+     :hasConscientiousnessScore 5.0 ;
+     :hasExperienceScore 0.0 ;
+     :hasExtraversionScore 3.83 ;
+     :hasNeuroticismScore 5.0 ;
+     :hasOpennessScore 4.83 ;
+     :hasSkillMatchScore 0.0 ;
+     :hasWeightedScore 19.66 ;
+     :hasYearsOfExperience 0 .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AceAns_Q1
@@ -3238,9 +3245,584 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
                        :SoftwareEngineeringSkill .
 
 
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Asa
+:Asa rdf:type owl:NamedIndividual ,
+              :Person ;
+     :hasAnswer :AsaAns_Q1 ,
+                :AsaAns_Q10 ,
+                :AsaAns_Q11 ,
+                :AsaAns_Q12 ,
+                :AsaAns_Q13 ,
+                :AsaAns_Q14 ,
+                :AsaAns_Q15 ,
+                :AsaAns_Q16 ,
+                :AsaAns_Q17 ,
+                :AsaAns_Q18 ,
+                :AsaAns_Q19 ,
+                :AsaAns_Q2 ,
+                :AsaAns_Q20 ,
+                :AsaAns_Q21 ,
+                :AsaAns_Q22 ,
+                :AsaAns_Q23 ,
+                :AsaAns_Q24 ,
+                :AsaAns_Q25 ,
+                :AsaAns_Q26 ,
+                :AsaAns_Q27 ,
+                :AsaAns_Q28 ,
+                :AsaAns_Q29 ,
+                :AsaAns_Q3 ,
+                :AsaAns_Q30 ,
+                :AsaAns_Q4 ,
+                :AsaAns_Q5 ,
+                :AsaAns_Q6 ,
+                :AsaAns_Q7 ,
+                :AsaAns_Q8 ,
+                :AsaAns_Q9 ;
+     :hasExperience :AsaExperience ;
+     :hasHardSkill :CI_CD_PipelineSkill ,
+                   :CashFlowManagementSkill ,
+                   :CloudComputingSkill ,
+                   :CloudSecuritySkill ,
+                   :CybersecuritySkill ,
+                   :DataWarehouseSkill ,
+                   :DesignOpsSkill ,
+                   :DevOpsSkill ;
+     :hasSoftSkill :ActiveListeningSkill ,
+                   :AdaptabilitySkill ,
+                   :AdaptableCommunicationSkill ,
+                   :CollaborationSkill ,
+                   :CommunicationSkill ,
+                   :ConflictResolutionSkill ,
+                   :CreativeThinkingSkill ,
+                   :DetailOrientedSkill ,
+                   :EquipmentMaintenance ,
+                   :LeadershipSkill ,
+                   :LearningStrategies ,
+                   :LogicalThinkingSkill ;
+     :inJobField :Technology_Field ;
+     :hasAgreeablenessScore 3.5 ;
+     :hasCategoryFitScore 0.0 ;
+     :hasConscientiousnessScore 3.5 ;
+     :hasExperienceScore 0.0 ;
+     :hasExtraversionScore 3.5 ;
+     :hasNeuroticismScore 3.0 ;
+     :hasOpennessScore 4.33 ;
+     :hasSkillMatchScore 0.0 ;
+     :hasWeightedScore 17.83 ;
+     :hasYearsOfExperience 0 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q1
+:AsaAns_Q1 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q1 ;
+           :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q10
+:AsaAns_Q10 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q10 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q11
+:AsaAns_Q11 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q11 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q12
+:AsaAns_Q12 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q12 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q13
+:AsaAns_Q13 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q13 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q14
+:AsaAns_Q14 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q14 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q15
+:AsaAns_Q15 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q15 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q16
+:AsaAns_Q16 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q16 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q17
+:AsaAns_Q17 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q17 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q18
+:AsaAns_Q18 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q18 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q19
+:AsaAns_Q19 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q19 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q2
+:AsaAns_Q2 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q2 ;
+           :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q20
+:AsaAns_Q20 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q20 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q21
+:AsaAns_Q21 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q21 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q22
+:AsaAns_Q22 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q22 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q23
+:AsaAns_Q23 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q23 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q24
+:AsaAns_Q24 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q24 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q25
+:AsaAns_Q25 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q25 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q26
+:AsaAns_Q26 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q26 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q27
+:AsaAns_Q27 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q27 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q28
+:AsaAns_Q28 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q28 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q29
+:AsaAns_Q29 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q29 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q3
+:AsaAns_Q3 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q3 ;
+           :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q30
+:AsaAns_Q30 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q30 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q4
+:AsaAns_Q4 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q4 ;
+           :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q5
+:AsaAns_Q5 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q5 ;
+           :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q6
+:AsaAns_Q6 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q6 ;
+           :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q7
+:AsaAns_Q7 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q7 ;
+           :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q8
+:AsaAns_Q8 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q8 ;
+           :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaAns_Q9
+:AsaAns_Q9 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q9 ;
+           :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaApplication
+:AsaApplication rdf:type owl:NamedIndividual ,
+                         :Application ;
+                :forJob :DataScientist ;
+                :hasApplicant :Asa .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AsaExperience
+:AsaExperience rdf:type owl:NamedIndividual ,
+                        :Experience ;
+               :experienceInField :Technology_Field ;
+               :yearsOfExperience 0 .
+
+
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AttentionToDetailSkill
 :AttentionToDetailSkill rdf:type owl:NamedIndividual ,
                                  :SoftSkill .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Atun
+:Atun rdf:type owl:NamedIndividual ,
+               :Person ;
+      :hasAnswer :AtunAns_Q1 ,
+                 :AtunAns_Q10 ,
+                 :AtunAns_Q11 ,
+                 :AtunAns_Q12 ,
+                 :AtunAns_Q13 ,
+                 :AtunAns_Q14 ,
+                 :AtunAns_Q15 ,
+                 :AtunAns_Q16 ,
+                 :AtunAns_Q17 ,
+                 :AtunAns_Q18 ,
+                 :AtunAns_Q19 ,
+                 :AtunAns_Q2 ,
+                 :AtunAns_Q20 ,
+                 :AtunAns_Q21 ,
+                 :AtunAns_Q22 ,
+                 :AtunAns_Q23 ,
+                 :AtunAns_Q24 ,
+                 :AtunAns_Q25 ,
+                 :AtunAns_Q26 ,
+                 :AtunAns_Q27 ,
+                 :AtunAns_Q28 ,
+                 :AtunAns_Q29 ,
+                 :AtunAns_Q3 ,
+                 :AtunAns_Q30 ,
+                 :AtunAns_Q4 ,
+                 :AtunAns_Q5 ,
+                 :AtunAns_Q6 ,
+                 :AtunAns_Q7 ,
+                 :AtunAns_Q8 ,
+                 :AtunAns_Q9 ;
+      :hasExperience :AtunExperience ;
+      :hasHardSkill :CRMToolSkill ,
+                    :ContentManagementSystemSkill ,
+                    :ContentStrategySkill ;
+      :hasSoftSkill :ActiveListeningSkill ,
+                    :AdaptableCommunicationSkill ,
+                    :AnalyticalThinkingSkill ,
+                    :AttentionToDetailSkill ,
+                    :ComplexProblemSolving ,
+                    :ConflictManagementSkill ,
+                    :ConflictResolutionSkill ,
+                    :ContentWritingSkill ,
+                    :CreativeThinkingSkill ,
+                    :CreativitySoftSkill ;
+      :inJobField :Marketing_Field ;
+      :hasAgreeablenessScore 1.17 ;
+      :hasCategoryFitScore 0.0 ;
+      :hasConscientiousnessScore 5.0 ;
+      :hasExperienceScore 0.0 ;
+      :hasExtraversionScore 3.67 ;
+      :hasNeuroticismScore 4.33 ;
+      :hasOpennessScore 4.67 ;
+      :hasSkillMatchScore 0.0 ;
+      :hasWeightedScore 18.84 ;
+      :hasYearsOfExperience 0 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q1
+:AtunAns_Q1 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q1 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q10
+:AtunAns_Q10 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q10 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q11
+:AtunAns_Q11 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q11 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q12
+:AtunAns_Q12 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q12 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q13
+:AtunAns_Q13 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q13 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q14
+:AtunAns_Q14 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q14 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q15
+:AtunAns_Q15 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q15 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q16
+:AtunAns_Q16 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q16 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q17
+:AtunAns_Q17 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q17 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q18
+:AtunAns_Q18 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q18 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q19
+:AtunAns_Q19 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q19 ;
+             :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q2
+:AtunAns_Q2 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q2 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q20
+:AtunAns_Q20 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q20 ;
+             :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q21
+:AtunAns_Q21 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q21 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q22
+:AtunAns_Q22 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q22 ;
+             :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q23
+:AtunAns_Q23 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q23 ;
+             :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q24
+:AtunAns_Q24 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q24 ;
+             :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q25
+:AtunAns_Q25 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q25 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q26
+:AtunAns_Q26 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q26 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q27
+:AtunAns_Q27 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q27 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q28
+:AtunAns_Q28 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q28 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q29
+:AtunAns_Q29 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q29 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q3
+:AtunAns_Q3 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q3 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q30
+:AtunAns_Q30 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q30 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q4
+:AtunAns_Q4 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q4 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q5
+:AtunAns_Q5 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q5 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q6
+:AtunAns_Q6 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q6 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q7
+:AtunAns_Q7 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q7 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q8
+:AtunAns_Q8 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q8 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunAns_Q9
+:AtunAns_Q9 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q9 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunApplication
+:AtunApplication rdf:type owl:NamedIndividual ,
+                          :Application ;
+                 :forJob :DigitalMarketer ;
+                 :hasApplicant :Atun .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AtunExperience
+:AtunExperience rdf:type owl:NamedIndividual ,
+                         :Experience ;
+                :experienceInField :Marketing_Field ;
+                :yearsOfExperience 0 .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#AutomationTestingSkill
@@ -3346,6 +3928,13 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
                :facetOfTrait :ConscientiousnessTrait .
 
 
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#C_MinieApplication
+:C_MinieApplication rdf:type owl:NamedIndividual ,
+                             :Application ;
+                    :forJob :DataScientist ;
+                    :hasApplicant ont:C_Minie .
+
+
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#C_Orderliness
 :C_Orderliness rdf:type owl:NamedIndividual ,
                         :PersonalityFacet ;
@@ -3372,6 +3961,283 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
                                   :HardSkill .
 
 
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Ciella
+:Ciella rdf:type owl:NamedIndividual ,
+                 :Person ;
+        :hasAnswer :CiellaAns_Q1 ,
+                   :CiellaAns_Q10 ,
+                   :CiellaAns_Q11 ,
+                   :CiellaAns_Q12 ,
+                   :CiellaAns_Q13 ,
+                   :CiellaAns_Q14 ,
+                   :CiellaAns_Q15 ,
+                   :CiellaAns_Q16 ,
+                   :CiellaAns_Q17 ,
+                   :CiellaAns_Q18 ,
+                   :CiellaAns_Q19 ,
+                   :CiellaAns_Q2 ,
+                   :CiellaAns_Q20 ,
+                   :CiellaAns_Q21 ,
+                   :CiellaAns_Q22 ,
+                   :CiellaAns_Q23 ,
+                   :CiellaAns_Q24 ,
+                   :CiellaAns_Q25 ,
+                   :CiellaAns_Q26 ,
+                   :CiellaAns_Q27 ,
+                   :CiellaAns_Q28 ,
+                   :CiellaAns_Q29 ,
+                   :CiellaAns_Q3 ,
+                   :CiellaAns_Q30 ,
+                   :CiellaAns_Q4 ,
+                   :CiellaAns_Q5 ,
+                   :CiellaAns_Q6 ,
+                   :CiellaAns_Q7 ,
+                   :CiellaAns_Q8 ,
+                   :CiellaAns_Q9 ;
+        :hasExperience :CiellaExperience ;
+        :hasHardSkill :ComputerVisionSkill ,
+                      :HRDataAnalysisSkill ,
+                      :UIUXDesignSkill ;
+        :hasSoftSkill :CommunicationSkill ,
+                      :ConflictManagementSkill ,
+                      :Coordination ;
+        :inJobField :Technology_Field ;
+        :hasAgreeablenessScore 3.0 ;
+        :hasCategoryFitScore 11.86 ;
+        :hasConscientiousnessScore 3.33 ;
+        :hasExperienceScore 12.0 ;
+        :hasExtraversionScore 2.83 ;
+        :hasNeuroticismScore 3.17 ;
+        :hasOpennessScore 3.17 ;
+        :hasSkillMatchScore 9.0 ;
+        :hasWeightedScore 48.36 ;
+        :hasYearsOfExperience 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q1
+:CiellaAns_Q1 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q1 ;
+              :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q10
+:CiellaAns_Q10 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q10 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q11
+:CiellaAns_Q11 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q11 ;
+               :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q12
+:CiellaAns_Q12 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q12 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q13
+:CiellaAns_Q13 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q13 ;
+               :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q14
+:CiellaAns_Q14 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q14 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q15
+:CiellaAns_Q15 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q15 ;
+               :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q16
+:CiellaAns_Q16 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q16 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q17
+:CiellaAns_Q17 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q17 ;
+               :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q18
+:CiellaAns_Q18 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q18 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q19
+:CiellaAns_Q19 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q19 ;
+               :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q2
+:CiellaAns_Q2 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q2 ;
+              :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q20
+:CiellaAns_Q20 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q20 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q21
+:CiellaAns_Q21 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q21 ;
+               :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q22
+:CiellaAns_Q22 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q22 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q23
+:CiellaAns_Q23 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q23 ;
+               :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q24
+:CiellaAns_Q24 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q24 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q25
+:CiellaAns_Q25 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q25 ;
+               :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q26
+:CiellaAns_Q26 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q26 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q27
+:CiellaAns_Q27 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q27 ;
+               :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q28
+:CiellaAns_Q28 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q28 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q29
+:CiellaAns_Q29 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q29 ;
+               :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q3
+:CiellaAns_Q3 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q3 ;
+              :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q30
+:CiellaAns_Q30 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q30 ;
+               :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q4
+:CiellaAns_Q4 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q4 ;
+              :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q5
+:CiellaAns_Q5 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q5 ;
+              :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q6
+:CiellaAns_Q6 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q6 ;
+              :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q7
+:CiellaAns_Q7 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q7 ;
+              :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q8
+:CiellaAns_Q8 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q8 ;
+              :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaAns_Q9
+:CiellaAns_Q9 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q9 ;
+              :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaApplication
+:CiellaApplication rdf:type owl:NamedIndividual ,
+                            :Application ;
+                   :forJob :DataScientist ;
+                   :hasApplicant :Ciella .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CiellaExperience
+:CiellaExperience rdf:type owl:NamedIndividual ,
+                           :Experience ;
+                  :experienceInField :Technology_Field ;
+                  :yearsOfExperience 2 .
+
+
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CloudComputingSkill
 :CloudComputingSkill rdf:type owl:NamedIndividual ,
                               :DevOpsAndInfrastructureSkill ,
@@ -3387,6 +4253,572 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CoachingSkill
 :CoachingSkill rdf:type owl:NamedIndividual ,
                         :SoftSkill .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba
+:Coba rdf:type owl:NamedIndividual ,
+               :Person ;
+      :hasAnswer :CobaAns_Q1 ,
+                 :CobaAns_Q10 ,
+                 :CobaAns_Q11 ,
+                 :CobaAns_Q12 ,
+                 :CobaAns_Q13 ,
+                 :CobaAns_Q14 ,
+                 :CobaAns_Q15 ,
+                 :CobaAns_Q16 ,
+                 :CobaAns_Q17 ,
+                 :CobaAns_Q18 ,
+                 :CobaAns_Q19 ,
+                 :CobaAns_Q2 ,
+                 :CobaAns_Q20 ,
+                 :CobaAns_Q21 ,
+                 :CobaAns_Q22 ,
+                 :CobaAns_Q23 ,
+                 :CobaAns_Q24 ,
+                 :CobaAns_Q25 ,
+                 :CobaAns_Q26 ,
+                 :CobaAns_Q27 ,
+                 :CobaAns_Q28 ,
+                 :CobaAns_Q29 ,
+                 :CobaAns_Q3 ,
+                 :CobaAns_Q30 ,
+                 :CobaAns_Q4 ,
+                 :CobaAns_Q5 ,
+                 :CobaAns_Q6 ,
+                 :CobaAns_Q7 ,
+                 :CobaAns_Q8 ,
+                 :CobaAns_Q9 ;
+      :hasExperience :CobaExperience ;
+      :hasHardSkill :AWSkill ,
+                    :AccountingSkill ,
+                    :AdobeXDSkill ,
+                    :AgileMethodologySkill ,
+                    :AirflowSkill ,
+                    :AngularSkill ,
+                    :AutomationTestingSkill ;
+      :hasSoftSkill :AdaptabilitySkill ,
+                    :AdaptableCommunicationSkill ,
+                    :AnalyticalThinkingSkill ,
+                    :AttentionToDetailSkill ,
+                    :CoachingSkill ,
+                    :CollaborationRemoteSkill ;
+      :inJobField :Finance_Field ;
+      :hasAgreeablenessScore 2.83 ;
+      :hasCategoryFitScore 0.0 ;
+      :hasConscientiousnessScore 2.67 ;
+      :hasExperienceScore 0.0 ;
+      :hasExtraversionScore 3.5 ;
+      :hasNeuroticismScore 3.17 ;
+      :hasOpennessScore 3.83 ;
+      :hasSkillMatchScore 0.0 ;
+      :hasWeightedScore 16.0 ;
+      :hasYearsOfExperience 0 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba1Application
+:Coba1Application rdf:type owl:NamedIndividual ,
+                           :Application ;
+                  :forJob :AccountPayableJob ;
+                  :hasApplicant :Coba_1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba1Experience
+:Coba1Experience rdf:type owl:NamedIndividual ,
+                          :Experience ;
+                 :experienceInField :Finance_Field ;
+                 :yearsOfExperience 0 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q1
+:CobaAns_Q1 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q1 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q10
+:CobaAns_Q10 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q10 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q11
+:CobaAns_Q11 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q11 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q12
+:CobaAns_Q12 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q12 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q13
+:CobaAns_Q13 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q13 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q14
+:CobaAns_Q14 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q14 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q15
+:CobaAns_Q15 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q15 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q16
+:CobaAns_Q16 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q16 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q17
+:CobaAns_Q17 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q17 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q18
+:CobaAns_Q18 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q18 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q19
+:CobaAns_Q19 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q19 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q2
+:CobaAns_Q2 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q2 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q20
+:CobaAns_Q20 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q20 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q21
+:CobaAns_Q21 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q21 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q22
+:CobaAns_Q22 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q22 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q23
+:CobaAns_Q23 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q23 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q24
+:CobaAns_Q24 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q24 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q25
+:CobaAns_Q25 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q25 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q26
+:CobaAns_Q26 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q26 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q27
+:CobaAns_Q27 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q27 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q28
+:CobaAns_Q28 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q28 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q29
+:CobaAns_Q29 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q29 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q3
+:CobaAns_Q3 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q3 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q30
+:CobaAns_Q30 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q30 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q4
+:CobaAns_Q4 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q4 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q5
+:CobaAns_Q5 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q5 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q6
+:CobaAns_Q6 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q6 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q7
+:CobaAns_Q7 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q7 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q8
+:CobaAns_Q8 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q8 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaAns_Q9
+:CobaAns_Q9 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q9 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaApplication
+:CobaApplication rdf:type owl:NamedIndividual ,
+                          :Application ;
+                 :forJob :AccountPayableJob ;
+                 :hasApplicant :Coba .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CobaExperience
+:CobaExperience rdf:type owl:NamedIndividual ,
+                         :Experience ;
+                :experienceInField :Finance_Field ;
+                :yearsOfExperience 0 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1
+:Coba_1 rdf:type owl:NamedIndividual ,
+                 :Person ;
+        :hasAnswer :Coba_1Ans_Q1 ,
+                   :Coba_1Ans_Q10 ,
+                   :Coba_1Ans_Q11 ,
+                   :Coba_1Ans_Q12 ,
+                   :Coba_1Ans_Q13 ,
+                   :Coba_1Ans_Q14 ,
+                   :Coba_1Ans_Q15 ,
+                   :Coba_1Ans_Q16 ,
+                   :Coba_1Ans_Q17 ,
+                   :Coba_1Ans_Q18 ,
+                   :Coba_1Ans_Q19 ,
+                   :Coba_1Ans_Q2 ,
+                   :Coba_1Ans_Q20 ,
+                   :Coba_1Ans_Q21 ,
+                   :Coba_1Ans_Q22 ,
+                   :Coba_1Ans_Q23 ,
+                   :Coba_1Ans_Q24 ,
+                   :Coba_1Ans_Q25 ,
+                   :Coba_1Ans_Q26 ,
+                   :Coba_1Ans_Q27 ,
+                   :Coba_1Ans_Q28 ,
+                   :Coba_1Ans_Q29 ,
+                   :Coba_1Ans_Q3 ,
+                   :Coba_1Ans_Q30 ,
+                   :Coba_1Ans_Q4 ,
+                   :Coba_1Ans_Q5 ,
+                   :Coba_1Ans_Q6 ,
+                   :Coba_1Ans_Q7 ,
+                   :Coba_1Ans_Q8 ,
+                   :Coba_1Ans_Q9 ;
+        :hasExperience :Coba1Experience ;
+        :hasHardSkill :A_B_TestingSkill ,
+                      :AccountingSkill ,
+                      :AdobeXDSkill ,
+                      :AgileMethodologySkill ;
+        :hasSoftSkill :AttentionToDetailSkill ,
+                      :CoachingSkill ,
+                      :CollaborationRemoteSkill ,
+                      :CollaborationSkill ,
+                      :CommunicationSkill ,
+                      :ComplexProblemSolving ,
+                      :ConflictManagementSkill ;
+        :inJobField :Sales_Field ;
+        :hasAgreeablenessScore 3.0 ;
+        :hasCategoryFitScore 0.0 ;
+        :hasConscientiousnessScore 3.17 ;
+        :hasExperienceScore 0.0 ;
+        :hasExtraversionScore 3.5 ;
+        :hasNeuroticismScore 2.83 ;
+        :hasOpennessScore 3.5 ;
+        :hasSkillMatchScore 0.0 ;
+        :hasWeightedScore 16.0 ;
+        :hasYearsOfExperience 0 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q1
+:Coba_1Ans_Q1 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q1 ;
+              :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q10
+:Coba_1Ans_Q10 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q10 ;
+               :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q11
+:Coba_1Ans_Q11 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q11 ;
+               :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q12
+:Coba_1Ans_Q12 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q12 ;
+               :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q13
+:Coba_1Ans_Q13 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q13 ;
+               :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q14
+:Coba_1Ans_Q14 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q14 ;
+               :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q15
+:Coba_1Ans_Q15 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q15 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q16
+:Coba_1Ans_Q16 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q16 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q17
+:Coba_1Ans_Q17 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q17 ;
+               :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q18
+:Coba_1Ans_Q18 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q18 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q19
+:Coba_1Ans_Q19 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q19 ;
+               :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q2
+:Coba_1Ans_Q2 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q2 ;
+              :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q20
+:Coba_1Ans_Q20 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q20 ;
+               :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q21
+:Coba_1Ans_Q21 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q21 ;
+               :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q22
+:Coba_1Ans_Q22 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q22 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q23
+:Coba_1Ans_Q23 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q23 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q24
+:Coba_1Ans_Q24 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q24 ;
+               :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q25
+:Coba_1Ans_Q25 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q25 ;
+               :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q26
+:Coba_1Ans_Q26 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q26 ;
+               :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q27
+:Coba_1Ans_Q27 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q27 ;
+               :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q28
+:Coba_1Ans_Q28 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q28 ;
+               :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q29
+:Coba_1Ans_Q29 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q29 ;
+               :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q3
+:Coba_1Ans_Q3 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q3 ;
+              :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q30
+:Coba_1Ans_Q30 rdf:type owl:NamedIndividual ,
+                        :Answer ;
+               :forQuestion :Q30 ;
+               :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q4
+:Coba_1Ans_Q4 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q4 ;
+              :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q5
+:Coba_1Ans_Q5 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q5 ;
+              :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q6
+:Coba_1Ans_Q6 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q6 ;
+              :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q7
+:Coba_1Ans_Q7 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q7 ;
+              :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q8
+:Coba_1Ans_Q8 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q8 ;
+              :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Coba_1Ans_Q9
+:Coba_1Ans_Q9 rdf:type owl:NamedIndividual ,
+                       :Answer ;
+              :forQuestion :Q9 ;
+              :answerScore 4 .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ColdCallingSkill
@@ -3518,6 +4950,10 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
                            :SoftSkill .
 
 
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerExperienceJob
+:CustomerExperienceJob rdf:type owl:NamedIndividual .
+
+
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#CustomerJourneyMappingSkill
 :CustomerJourneyMappingSkill rdf:type owl:NamedIndividual ,
                                       :CustomerSupportAndSuccessSkill ,
@@ -3624,11 +5060,590 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
                       :HardSkill .
 
 
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketer
+:DigitalMarketer rdf:type owl:NamedIndividual .
+
+
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DigitalMarketingSkill
 :DigitalMarketingSkill rdf:type owl:NamedIndividual ,
                                 :DigitalMarketingSkillGroup ,
                                 :HardSkill ,
                                 :MarketingHardSkill .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Dila
+:Dila rdf:type owl:NamedIndividual ,
+               :Person ;
+      :hasAnswer :DilaAns_Q1 ,
+                 :DilaAns_Q10 ,
+                 :DilaAns_Q11 ,
+                 :DilaAns_Q12 ,
+                 :DilaAns_Q13 ,
+                 :DilaAns_Q14 ,
+                 :DilaAns_Q15 ,
+                 :DilaAns_Q16 ,
+                 :DilaAns_Q17 ,
+                 :DilaAns_Q18 ,
+                 :DilaAns_Q19 ,
+                 :DilaAns_Q2 ,
+                 :DilaAns_Q20 ,
+                 :DilaAns_Q21 ,
+                 :DilaAns_Q22 ,
+                 :DilaAns_Q23 ,
+                 :DilaAns_Q24 ,
+                 :DilaAns_Q25 ,
+                 :DilaAns_Q26 ,
+                 :DilaAns_Q27 ,
+                 :DilaAns_Q28 ,
+                 :DilaAns_Q29 ,
+                 :DilaAns_Q3 ,
+                 :DilaAns_Q30 ,
+                 :DilaAns_Q4 ,
+                 :DilaAns_Q5 ,
+                 :DilaAns_Q6 ,
+                 :DilaAns_Q7 ,
+                 :DilaAns_Q8 ,
+                 :DilaAns_Q9 ;
+      :hasExperience :DilaExperience ;
+      :hasHardSkill :CustomerJourneyMappingSkill ,
+                    :CustomerSupportToolSkill ,
+                    :DigitalMarketingSkill ,
+                    :DocumentationManagementSkill ,
+                    :IntercomSkill ,
+                    :InventoryManagementSkill ;
+      :hasSoftSkill :ActiveListeningSkill ,
+                    :AdaptabilitySkill ,
+                    :AdaptableCommunicationSkill ,
+                    :CollaborationRemoteSkill ,
+                    :CommunicationSkill ,
+                    :ConflictManagementSkill ,
+                    :ContentWritingSkill ,
+                    :CreativeThinkingSkill ,
+                    :DetailOrientedSkill ,
+                    :EquipmentMaintenance ,
+                    :LeadershipSkill ;
+      :inJobField :Operations_Field ;
+      :hasAgreeablenessScore 1.5 ;
+      :hasCategoryFitScore 0.0 ;
+      :hasConscientiousnessScore 4.33 ;
+      :hasExperienceScore 0.0 ;
+      :hasExtraversionScore 4.17 ;
+      :hasNeuroticismScore 3.17 ;
+      :hasOpennessScore 3.83 ;
+      :hasSkillMatchScore 0.0 ;
+      :hasWeightedScore 17.0 ;
+      :hasYearsOfExperience 0 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q1
+:DilaAns_Q1 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q1 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q10
+:DilaAns_Q10 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q10 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q11
+:DilaAns_Q11 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q11 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q12
+:DilaAns_Q12 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q12 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q13
+:DilaAns_Q13 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q13 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q14
+:DilaAns_Q14 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q14 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q15
+:DilaAns_Q15 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q15 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q16
+:DilaAns_Q16 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q16 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q17
+:DilaAns_Q17 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q17 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q18
+:DilaAns_Q18 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q18 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q19
+:DilaAns_Q19 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q19 ;
+             :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q2
+:DilaAns_Q2 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q2 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q20
+:DilaAns_Q20 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q20 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q21
+:DilaAns_Q21 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q21 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q22
+:DilaAns_Q22 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q22 ;
+             :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q23
+:DilaAns_Q23 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q23 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q24
+:DilaAns_Q24 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q24 ;
+             :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q25
+:DilaAns_Q25 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q25 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q26
+:DilaAns_Q26 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q26 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q27
+:DilaAns_Q27 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q27 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q28
+:DilaAns_Q28 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q28 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q29
+:DilaAns_Q29 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q29 ;
+             :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q3
+:DilaAns_Q3 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q3 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q30
+:DilaAns_Q30 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q30 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q4
+:DilaAns_Q4 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q4 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q5
+:DilaAns_Q5 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q5 ;
+            :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q6
+:DilaAns_Q6 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q6 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q7
+:DilaAns_Q7 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q7 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q8
+:DilaAns_Q8 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q8 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaAns_Q9
+:DilaAns_Q9 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q9 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaApplication
+:DilaApplication rdf:type owl:NamedIndividual ,
+                          :Application ;
+                 :forJob :CustomerExperienceJob ;
+                 :hasApplicant :Dila .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DilaExperience
+:DilaExperience rdf:type owl:NamedIndividual ,
+                         :Experience ;
+                :experienceInField :Operations_Field ;
+                :yearsOfExperience 0 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Dira
+:Dira rdf:type owl:NamedIndividual ,
+               :Person ;
+      :hasAnswer :DiraAns_Q1 ,
+                 :DiraAns_Q10 ,
+                 :DiraAns_Q11 ,
+                 :DiraAns_Q12 ,
+                 :DiraAns_Q13 ,
+                 :DiraAns_Q14 ,
+                 :DiraAns_Q15 ,
+                 :DiraAns_Q16 ,
+                 :DiraAns_Q17 ,
+                 :DiraAns_Q18 ,
+                 :DiraAns_Q19 ,
+                 :DiraAns_Q2 ,
+                 :DiraAns_Q20 ,
+                 :DiraAns_Q21 ,
+                 :DiraAns_Q22 ,
+                 :DiraAns_Q23 ,
+                 :DiraAns_Q24 ,
+                 :DiraAns_Q25 ,
+                 :DiraAns_Q26 ,
+                 :DiraAns_Q27 ,
+                 :DiraAns_Q28 ,
+                 :DiraAns_Q29 ,
+                 :DiraAns_Q3 ,
+                 :DiraAns_Q30 ,
+                 :DiraAns_Q4 ,
+                 :DiraAns_Q5 ,
+                 :DiraAns_Q6 ,
+                 :DiraAns_Q7 ,
+                 :DiraAns_Q8 ,
+                 :DiraAns_Q9 ;
+      :hasExperience :DiraExperience ;
+      :hasHardSkill :InfluencerMarketingSkill ,
+                    :JourneyMappingSkill ,
+                    :KeyAccountManagementSkill ,
+                    :ProcessImprovementSkill ,
+                    :ProjectSchedulingSkill ,
+                    :RiskManagementSkill ,
+                    :SEO_Skill ,
+                    :SalesOperationsSkill ,
+                    :SalesPresentationSkill ;
+      :hasSoftSkill :AdaptabilitySkill ,
+                    :CustomerOrientationSkill ,
+                    :NegotiationSkill ,
+                    :NetworkingSoftSkill ,
+                    :Persuasion ,
+                    :PresentationSkill ,
+                    :ProblemIdentificationSkill ;
+      :inJobField :Marketing_Field ;
+      :hasAgreeablenessScore 3.5 ;
+      :hasCategoryFitScore 0.0 ;
+      :hasConscientiousnessScore 4.0 ;
+      :hasExperienceScore 0.0 ;
+      :hasExtraversionScore 3.17 ;
+      :hasNeuroticismScore 2.83 ;
+      :hasOpennessScore 3.67 ;
+      :hasSkillMatchScore 0.0 ;
+      :hasWeightedScore 17.17 ;
+      :hasYearsOfExperience 0 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q1
+:DiraAns_Q1 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q1 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q10
+:DiraAns_Q10 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q10 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q11
+:DiraAns_Q11 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q11 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q12
+:DiraAns_Q12 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q12 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q13
+:DiraAns_Q13 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q13 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q14
+:DiraAns_Q14 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q14 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q15
+:DiraAns_Q15 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q15 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q16
+:DiraAns_Q16 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q16 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q17
+:DiraAns_Q17 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q17 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q18
+:DiraAns_Q18 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q18 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q19
+:DiraAns_Q19 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q19 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q2
+:DiraAns_Q2 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q2 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q20
+:DiraAns_Q20 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q20 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q21
+:DiraAns_Q21 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q21 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q22
+:DiraAns_Q22 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q22 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q23
+:DiraAns_Q23 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q23 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q24
+:DiraAns_Q24 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q24 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q25
+:DiraAns_Q25 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q25 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q26
+:DiraAns_Q26 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q26 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q27
+:DiraAns_Q27 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q27 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q28
+:DiraAns_Q28 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q28 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q29
+:DiraAns_Q29 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q29 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q3
+:DiraAns_Q3 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q3 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q30
+:DiraAns_Q30 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q30 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q4
+:DiraAns_Q4 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q4 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q5
+:DiraAns_Q5 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q5 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q6
+:DiraAns_Q6 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q6 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q7
+:DiraAns_Q7 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q7 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q8
+:DiraAns_Q8 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q8 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraAns_Q9
+:DiraAns_Q9 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q9 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraApplication
+:DiraApplication rdf:type owl:NamedIndividual ,
+                          :Application ;
+                 :forJob :DigitalMarketer ;
+                 :hasApplicant :Dira .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DiraExperience
+:DiraExperience rdf:type owl:NamedIndividual ,
+                         :Experience ;
+                :experienceInField :Marketing_Field ;
+                :yearsOfExperience 0 .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#DjangoSkill
@@ -3732,6 +5747,287 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EquipmentSelection
 :EquipmentSelection rdf:type owl:NamedIndividual ,
                              :SoftSkill .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Eva
+:Eva rdf:type owl:NamedIndividual ,
+              :Person ;
+     :hasAnswer :EvaAns_Q1 ,
+                :EvaAns_Q10 ,
+                :EvaAns_Q11 ,
+                :EvaAns_Q12 ,
+                :EvaAns_Q13 ,
+                :EvaAns_Q14 ,
+                :EvaAns_Q15 ,
+                :EvaAns_Q16 ,
+                :EvaAns_Q17 ,
+                :EvaAns_Q18 ,
+                :EvaAns_Q19 ,
+                :EvaAns_Q2 ,
+                :EvaAns_Q20 ,
+                :EvaAns_Q21 ,
+                :EvaAns_Q22 ,
+                :EvaAns_Q23 ,
+                :EvaAns_Q24 ,
+                :EvaAns_Q25 ,
+                :EvaAns_Q26 ,
+                :EvaAns_Q27 ,
+                :EvaAns_Q28 ,
+                :EvaAns_Q29 ,
+                :EvaAns_Q3 ,
+                :EvaAns_Q30 ,
+                :EvaAns_Q4 ,
+                :EvaAns_Q5 ,
+                :EvaAns_Q6 ,
+                :EvaAns_Q7 ,
+                :EvaAns_Q8 ,
+                :EvaAns_Q9 ;
+     :hasExperience :EvaExperience ;
+     :hasHardSkill :A_B_TestingSkill ,
+                   :AccountingSkill ,
+                   :AirflowSkill ,
+                   :AngularSkill ;
+     :hasSoftSkill :AdaptabilitySkill ,
+                   :AdaptableCommunicationSkill ,
+                   :AnalyticalThinkingSkill ,
+                   :AttentionToDetailSkill ,
+                   :CollaborationSkill ,
+                   :ComplexProblemSolving ;
+     :inJobField :Sales_Field ;
+     :hasAgreeablenessScore 3.33 ;
+     :hasCategoryFitScore 0.0 ;
+     :hasConscientiousnessScore 3.17 ;
+     :hasExperienceScore 7.0 ;
+     :hasExtraversionScore 2.67 ;
+     :hasNeuroticismScore 2.83 ;
+     :hasOpennessScore 3.0 ;
+     :hasSkillMatchScore 0.0 ;
+     :hasWeightedScore 22.0 ;
+     :hasYearsOfExperience 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q1
+:EvaAns_Q1 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q1 ;
+           :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q10
+:EvaAns_Q10 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q10 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q11
+:EvaAns_Q11 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q11 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q12
+:EvaAns_Q12 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q12 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q13
+:EvaAns_Q13 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q13 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q14
+:EvaAns_Q14 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q14 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q15
+:EvaAns_Q15 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q15 ;
+            :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q16
+:EvaAns_Q16 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q16 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q17
+:EvaAns_Q17 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q17 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q18
+:EvaAns_Q18 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q18 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q19
+:EvaAns_Q19 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q19 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q2
+:EvaAns_Q2 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q2 ;
+           :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q20
+:EvaAns_Q20 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q20 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q21
+:EvaAns_Q21 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q21 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q22
+:EvaAns_Q22 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q22 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q23
+:EvaAns_Q23 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q23 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q24
+:EvaAns_Q24 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q24 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q25
+:EvaAns_Q25 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q25 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q26
+:EvaAns_Q26 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q26 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q27
+:EvaAns_Q27 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q27 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q28
+:EvaAns_Q28 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q28 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q29
+:EvaAns_Q29 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q29 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q3
+:EvaAns_Q3 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q3 ;
+           :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q30
+:EvaAns_Q30 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q30 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q4
+:EvaAns_Q4 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q4 ;
+           :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q5
+:EvaAns_Q5 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q5 ;
+           :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q6
+:EvaAns_Q6 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q6 ;
+           :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q7
+:EvaAns_Q7 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q7 ;
+           :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q8
+:EvaAns_Q8 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q8 ;
+           :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaAns_Q9
+:EvaAns_Q9 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q9 ;
+           :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaApplication
+:EvaApplication rdf:type owl:NamedIndividual ,
+                         :Application ;
+                :forJob :SalesDevelopmentRepresentativeJob ;
+                :hasApplicant :Eva .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#EvaExperience
+:EvaExperience rdf:type owl:NamedIndividual ,
+                        :Experience ;
+               :experienceInField :Sales_Field ;
+               :yearsOfExperience 2 .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#ExcelAdvancedSkill
@@ -3873,6 +6169,10 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
 :HRISSkill rdf:type owl:NamedIndividual ,
                     :HRHardSkill ,
                     :HardSkill .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HRManager
+:HRManager rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#HR_Field
@@ -4231,7 +6531,17 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
                   :SQLSkill ,
                   :StatisticsSkill ;
         :hasSoftSkill :AnalyticalThinkingSkill ,
-                      :CommunicationSkill .
+                      :CommunicationSkill ;
+        :hasAgreeablenessScore 1.67 ;
+        :hasCategoryFitScore 0.0 ;
+        :hasConscientiousnessScore 4.0 ;
+        :hasExperienceScore 0.0 ;
+        :hasExtraversionScore 3.0 ;
+        :hasNeuroticismScore 4.5 ;
+        :hasOpennessScore 4.17 ;
+        :hasSkillMatchScore 0.0 ;
+        :hasWeightedScore 17.34 ;
+        :hasYearsOfExperience 0 .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#MinnieAns_Q1
@@ -4566,6 +6876,288 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
 :NextJSSkill rdf:type owl:NamedIndividual ,
                       :HardSkill ,
                       :SoftwareEngineeringSkill .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Nita
+:Nita rdf:type owl:NamedIndividual ,
+               :Person ;
+      :hasAnswer :NitaAns_Q1 ,
+                 :NitaAns_Q10 ,
+                 :NitaAns_Q11 ,
+                 :NitaAns_Q12 ,
+                 :NitaAns_Q13 ,
+                 :NitaAns_Q14 ,
+                 :NitaAns_Q15 ,
+                 :NitaAns_Q16 ,
+                 :NitaAns_Q17 ,
+                 :NitaAns_Q18 ,
+                 :NitaAns_Q19 ,
+                 :NitaAns_Q2 ,
+                 :NitaAns_Q20 ,
+                 :NitaAns_Q21 ,
+                 :NitaAns_Q22 ,
+                 :NitaAns_Q23 ,
+                 :NitaAns_Q24 ,
+                 :NitaAns_Q25 ,
+                 :NitaAns_Q26 ,
+                 :NitaAns_Q27 ,
+                 :NitaAns_Q28 ,
+                 :NitaAns_Q29 ,
+                 :NitaAns_Q3 ,
+                 :NitaAns_Q30 ,
+                 :NitaAns_Q4 ,
+                 :NitaAns_Q5 ,
+                 :NitaAns_Q6 ,
+                 :NitaAns_Q7 ,
+                 :NitaAns_Q8 ,
+                 :NitaAns_Q9 ;
+      :hasExperience :NitaExperience ;
+      :hasHardSkill :CustomerSupportToolSkill ,
+                    :DataAnalysisSkill ,
+                    :DataMiningSkill ,
+                    :DataVisualizationSkill ;
+      :hasSoftSkill :ActiveListeningSkill ,
+                    :AnalyticalThinkingSkill ,
+                    :AttentionToDetailSkill ,
+                    :CollaborationRemoteSkill ,
+                    :CollaborationSkill ,
+                    :CommunicationSkill ,
+                    :ConflictManagementSkill ;
+      :inJobField :HR_Field ;
+      :hasAgreeablenessScore 3.5 ;
+      :hasCategoryFitScore 0.0 ;
+      :hasConscientiousnessScore 2.33 ;
+      :hasExperienceScore 7.0 ;
+      :hasExtraversionScore 3.33 ;
+      :hasNeuroticismScore 3.83 ;
+      :hasOpennessScore 3.17 ;
+      :hasSkillMatchScore 0.0 ;
+      :hasWeightedScore 23.16 ;
+      :hasYearsOfExperience 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q1
+:NitaAns_Q1 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q1 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q10
+:NitaAns_Q10 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q10 ;
+             :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q11
+:NitaAns_Q11 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q11 ;
+             :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q12
+:NitaAns_Q12 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q12 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q13
+:NitaAns_Q13 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q13 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q14
+:NitaAns_Q14 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q14 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q15
+:NitaAns_Q15 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q15 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q16
+:NitaAns_Q16 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q16 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q17
+:NitaAns_Q17 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q17 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q18
+:NitaAns_Q18 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q18 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q19
+:NitaAns_Q19 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q19 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q2
+:NitaAns_Q2 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q2 ;
+            :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q20
+:NitaAns_Q20 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q20 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q21
+:NitaAns_Q21 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q21 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q22
+:NitaAns_Q22 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q22 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q23
+:NitaAns_Q23 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q23 ;
+             :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q24
+:NitaAns_Q24 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q24 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q25
+:NitaAns_Q25 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q25 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q26
+:NitaAns_Q26 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q26 ;
+             :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q27
+:NitaAns_Q27 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q27 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q28
+:NitaAns_Q28 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q28 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q29
+:NitaAns_Q29 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q29 ;
+             :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q3
+:NitaAns_Q3 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q3 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q30
+:NitaAns_Q30 rdf:type owl:NamedIndividual ,
+                      :Answer ;
+             :forQuestion :Q30 ;
+             :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q4
+:NitaAns_Q4 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q4 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q5
+:NitaAns_Q5 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q5 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q6
+:NitaAns_Q6 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q6 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q7
+:NitaAns_Q7 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q7 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q8
+:NitaAns_Q8 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q8 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaAns_Q9
+:NitaAns_Q9 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q9 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaApplication
+:NitaApplication rdf:type owl:NamedIndividual ,
+                          :Application ;
+                 :forJob :HRManager ;
+                 :hasApplicant :Nita .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NitaExperience
+:NitaExperience rdf:type owl:NamedIndividual ,
+                         :Experience ;
+                :experienceInField :HR_Field ;
+                :yearsOfExperience 2 .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#NodeJSSkill
@@ -5171,10 +7763,296 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
                    :HardSkill .
 
 
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#Sai
+:Sai rdf:type owl:NamedIndividual ,
+              :Person ;
+     :hasAnswer :SaiAns_Q1 ,
+                :SaiAns_Q10 ,
+                :SaiAns_Q11 ,
+                :SaiAns_Q12 ,
+                :SaiAns_Q13 ,
+                :SaiAns_Q14 ,
+                :SaiAns_Q15 ,
+                :SaiAns_Q16 ,
+                :SaiAns_Q17 ,
+                :SaiAns_Q18 ,
+                :SaiAns_Q19 ,
+                :SaiAns_Q2 ,
+                :SaiAns_Q20 ,
+                :SaiAns_Q21 ,
+                :SaiAns_Q22 ,
+                :SaiAns_Q23 ,
+                :SaiAns_Q24 ,
+                :SaiAns_Q25 ,
+                :SaiAns_Q26 ,
+                :SaiAns_Q27 ,
+                :SaiAns_Q28 ,
+                :SaiAns_Q29 ,
+                :SaiAns_Q3 ,
+                :SaiAns_Q30 ,
+                :SaiAns_Q4 ,
+                :SaiAns_Q5 ,
+                :SaiAns_Q6 ,
+                :SaiAns_Q7 ,
+                :SaiAns_Q8 ,
+                :SaiAns_Q9 ;
+     :hasExperience :SaiExperience ;
+     :hasHardSkill :AWSkill ,
+                   :A_B_TestingSkill ,
+                   :AdobeXDSkill ,
+                   :AirflowSkill ,
+                   :AngularSkill ;
+     :hasSoftSkill :AdaptabilitySkill ,
+                   :AdaptableCommunicationSkill ,
+                   :AnalyticalThinkingSkill ,
+                   :AttentionToDetailSkill ,
+                   :CollaborationRemoteSkill ,
+                   :ConflictManagementSkill ;
+     :inJobField :Technology_Field ;
+     :hasAgreeablenessScore 2.67 ;
+     :hasCategoryFitScore 0.0 ;
+     :hasConscientiousnessScore 3.17 ;
+     :hasExperienceScore 0.0 ;
+     :hasExtraversionScore 3.67 ;
+     :hasNeuroticismScore 3.0 ;
+     :hasOpennessScore 3.0 ;
+     :hasSkillMatchScore 0.0 ;
+     :hasWeightedScore 15.51 ;
+     :hasYearsOfExperience 0 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q1
+:SaiAns_Q1 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q1 ;
+           :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q10
+:SaiAns_Q10 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q10 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q11
+:SaiAns_Q11 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q11 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q12
+:SaiAns_Q12 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q12 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q13
+:SaiAns_Q13 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q13 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q14
+:SaiAns_Q14 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q14 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q15
+:SaiAns_Q15 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q15 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q16
+:SaiAns_Q16 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q16 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q17
+:SaiAns_Q17 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q17 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q18
+:SaiAns_Q18 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q18 ;
+            :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q19
+:SaiAns_Q19 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q19 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q2
+:SaiAns_Q2 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q2 ;
+           :answerScore 5 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q20
+:SaiAns_Q20 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q20 ;
+            :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q21
+:SaiAns_Q21 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q21 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q22
+:SaiAns_Q22 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q22 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q23
+:SaiAns_Q23 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q23 ;
+            :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q24
+:SaiAns_Q24 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q24 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q25
+:SaiAns_Q25 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q25 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q26
+:SaiAns_Q26 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q26 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q27
+:SaiAns_Q27 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q27 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q28
+:SaiAns_Q28 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q28 ;
+            :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q29
+:SaiAns_Q29 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q29 ;
+            :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q3
+:SaiAns_Q3 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q3 ;
+           :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q30
+:SaiAns_Q30 rdf:type owl:NamedIndividual ,
+                     :Answer ;
+            :forQuestion :Q30 ;
+            :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q4
+:SaiAns_Q4 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q4 ;
+           :answerScore 1 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q5
+:SaiAns_Q5 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q5 ;
+           :answerScore 2 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q6
+:SaiAns_Q6 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q6 ;
+           :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q7
+:SaiAns_Q7 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q7 ;
+           :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q8
+:SaiAns_Q8 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q8 ;
+           :answerScore 3 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiAns_Q9
+:SaiAns_Q9 rdf:type owl:NamedIndividual ,
+                    :Answer ;
+           :forQuestion :Q9 ;
+           :answerScore 4 .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiApplication
+:SaiApplication rdf:type owl:NamedIndividual ,
+                         :Application ;
+                :forJob :DataScientist ;
+                :hasApplicant :Sai .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SaiExperience
+:SaiExperience rdf:type owl:NamedIndividual ,
+                        :Experience ;
+               :experienceInField :Technology_Field ;
+               :yearsOfExperience 0 .
+
+
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesCRMSoftwareSkill
 :SalesCRMSoftwareSkill rdf:type owl:NamedIndividual ,
                                 :HardSkill ,
                                 :SalesAndBusinessDevelopmentSkill .
+
+
+###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesDevelopmentRepresentativeJob
+:SalesDevelopmentRepresentativeJob rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SalesForecastingSkill
@@ -5249,7 +8127,17 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
                  :StatisticsSkill ;
        :hasSoftSkill :AnalyticalThinkingSkill ,
                      :CommunicationSkill ,
-                     :ProblemSolvingSkill .
+                     :ProblemSolvingSkill ;
+       :hasAgreeablenessScore 1.5 ;
+       :hasCategoryFitScore 0.0 ;
+       :hasConscientiousnessScore 4.67 ;
+       :hasExperienceScore 0.0 ;
+       :hasExtraversionScore 3.33 ;
+       :hasNeuroticismScore 4.67 ;
+       :hasOpennessScore 4.5 ;
+       :hasSkillMatchScore 0.0 ;
+       :hasWeightedScore 18.67 ;
+       :hasYearsOfExperience 0 .
 
 
 ###  http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#SarahAns_Q1
@@ -44767,5 +47655,221 @@ ont:C_Minie rdf:type owl:NamedIndividual ,
            :representsFacet :N_Hostility .
 
 
-###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
+[ swrl:argument1 :var_p ;
+  swrl:classPredicate :LowFitApplicant
+] .
 
+[ swrl:arguments [ ] ;
+swrl:builtin swrlb:lessThan
+] .
+
+[ swrl:arguments [ ] ;
+swrl:builtin swrlb:greaterThanOrEqual
+] .
+
+[ swrl:argument1 :var_p ;
+   swrl:argument2 :var_s ;
+   swrl:propertyPredicate :hasWeightedScore
+ ] .
+
+[ swrl:argument1 :var_p ;
+   swrl:classPredicate :Person
+ ] .
+
+[ swrl:arguments [ ] ;
+swrl:builtin swrlb:lessThan
+] .
+
+[ swrl:argument1 :var_p ;
+   swrl:argument2 :var_s ;
+   swrl:propertyPredicate :hasWeightedScore
+ ] .
+
+[ swrl:argument1 :var_p ;
+   swrl:classPredicate :Person
+ ] .
+
+[ swrl:argument1 :var_p ;
+   swrl:classPredicate :MediumFitApplicant
+ ] .
+
+[ swrl:argument1 :var_p ;
+   swrl:classPredicate :HighFitApplicant
+ ] .
+
+[ swrl:arguments [ ] ;
+swrl:builtin swrlb:greaterThanOrEqual
+] .
+
+[ swrl:argument1 :var_p ;
+   swrl:argument2 :var_s ;
+   swrl:propertyPredicate :hasWeightedScore
+ ] .
+
+[ swrl:argument1 :var_p ;
+   swrl:classPredicate :Person
+ ] .
+
+#################################################################
+#    Annotations
+#################################################################
+
+:AccountPayableJob rdfs:label "Account Payable" .
+
+
+:CustomerExperienceJob rdfs:label "Customer Experience" .
+
+
+:Rule_HighFitByWeightedScore swrl:body [ ] ;
+swrl:head [ ] .
+
+
+:Rule_LowFitByWeightedScore swrl:body [ ] ;
+swrl:head [ ] .
+
+
+:Rule_MediumFitByWeightedScore swrl:body [ ] ;
+swrl:head [ ] .
+
+
+:SalesDevelopmentRepresentativeJob rdfs:label "Sales Development Representative" .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:p rdf:type swrl:Variable .
+
+:s rdf:type swrl:Variable .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "MediumFit" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Person ;
+                           swrl:argument1 :p
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :hasWeightedScore ;
+                                      swrl:argument1 :p ;
+                                      swrl:argument2 :s
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                 swrl:builtin swrlb:greaterThanOrEqual ;
+                                                 swrl:arguments [ rdf:type rdf:List ;
+                                                                  rdf:first :s ;
+                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                             rdf:first 30 ;
+                                                                             rdf:rest rdf:nil
+                                                                           ]
+                                                                ]
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                            swrl:builtin swrlb:lessThan ;
+                                                            swrl:arguments [ rdf:type rdf:List ;
+                                                                             rdf:first :s ;
+                                                                             rdf:rest [ rdf:type rdf:List ;
+                                                                                        rdf:first 45 ;
+                                                                                        rdf:rest rdf:nil
+                                                                                      ]
+                                                                           ]
+                                                          ] ;
+                                                rdf:rest rdf:nil
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :MediumFitApplicant ;
+                           swrl:argument1 :p
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "HighFit" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Person ;
+                           swrl:argument1 :p
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :hasWeightedScore ;
+                                      swrl:argument1 :p ;
+                                      swrl:argument2 :s
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                 swrl:builtin swrlb:greaterThanOrEqual ;
+                                                 swrl:arguments [ rdf:type rdf:List ;
+                                                                  rdf:first :s ;
+                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                             rdf:first 45 ;
+                                                                             rdf:rest rdf:nil
+                                                                           ]
+                                                                ]
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :HighFitApplicant ;
+                           swrl:argument1 :p
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "LowFit" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Person ;
+                           swrl:argument1 :p
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :hasWeightedScore ;
+                                      swrl:argument1 :p ;
+                                      swrl:argument2 :s
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                 swrl:builtin swrlb:lessThan ;
+                                                 swrl:arguments [ rdf:type rdf:List ;
+                                                                  rdf:first :s ;
+                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                             rdf:first 30 ;
+                                                                             rdf:rest rdf:nil
+                                                                           ]
+                                                                ]
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :LowFitApplicant ;
+                           swrl:argument1 :p
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

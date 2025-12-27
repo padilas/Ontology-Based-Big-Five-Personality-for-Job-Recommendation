@@ -3,8 +3,13 @@
     <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/occo/releases/2025-10-06/occo.owl" uri="file:/C:/Users/Asyifa%20Fadhilah/Downloads/occo.owl"/>
     <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/TEMP" uri="jobs_converted.ttl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1766304577834" name="duplicate:http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology" uri="jobs.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1766304577834" name="duplicate:http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology" uri="jobs_reasoned.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1766304577834" name="duplicate:http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology" uri="jobs_with_scores.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1766373690610" name="http://triplr.org/rdf/bloody-byte.net/rdf/dc_owl2dl/dc.ttl" uri=".venv/Lib/site-packages/owlready2/ontos/dc.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1766373690610" name="http://triplr.org/rdf/bloody-byte.net/rdf/dc_owl2dl/dcam.ttl" uri=".venv/Lib/site-packages/owlready2/ontos/dcam.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1766373690610" name="http://triplr.org/rdf/bloody-byte.net/rdf/dc_owl2dl/dcmitype.ttl" uri=".venv/Lib/site-packages/owlready2/ontos/dcmitype.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1766373690610" name="http://triplr.org/rdf/bloody-byte.net/rdf/dc_owl2dl/dcterms.ttl" uri=".venv/Lib/site-packages/owlready2/ontos/dcterms.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1766373690610" name="duplicate:http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology" uri="jobs_reasoned.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1766373690610" name="duplicate:http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology" uri="jobs_with_scores.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1766373690610" name="duplicate:http://www.w3.org/2002/07/owl" uri=".venv/Lib/site-packages/owlready2/ontos/owlready_editor.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1766373690610" name="duplicate:http://www.w3.org/2002/07/owl" uri=".venv/Lib/site-packages/owlready2/ontos/owlready_ontology.owl"/>
     </group>
 </catalog>
