@@ -20,6 +20,13 @@ except:
 
 from rdflib import Graph
 
+PREFIXES = """
+PREFIX : <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+"""
+
 def sync_owl_to_ttl(owl_path, ttl_path):
     """
     Tambahkan triple baru dari OWL ke TTL secara manual (append), tanpa parse TTL dengan rdflib.
@@ -48,6 +55,7 @@ def sync_owl_to_ttl(owl_path, ttl_path):
 FUSEKI_BASE_URL = "http://localhost:3030/recruitment-ontology"
 FUSEKI_QUERY_URL = f"{FUSEKI_BASE_URL}/query" 
 FUSEKI_UPLOAD_URL = f"{FUSEKI_BASE_URL}/data"
+FUSEKI_UPDATE_URL = f"{FUSEKI_BASE_URL}/update"
 
 st.set_page_config(
     page_title="Job Recommendation System",
@@ -140,51 +148,85 @@ JOB_CATEGORIES = {
     }
 }
 
-def get_job_fields():
-    """Get all job fields from ontology"""
-    try:
-        # Force fresh load
-        world = World()
-        onto_path = os.path.abspath("jobs.owl")
-        onto = world.get_ontology(f"file://{onto_path}").load()
+# def get_job_fields():
+#     """Get all job fields from ontology"""
+#     try:
+#         # Force fresh load
+#         world = World()
+#         onto_path = os.path.abspath("jobs.owl")
+#         onto = world.get_ontology(f"file://{onto_path}").load()
         
-        fields = []
-        with onto:
-            JobField = onto.JobField
-            if JobField:
-                for field in JobField.instances():
-                    fields.append(field.name)
-        return sorted(fields)
-    except Exception as e:
-        st.error(f"Error loading job fields: {str(e)}")
-        return []
+#         fields = []
+#         with onto:
+#             JobField = onto.JobField
+#             if JobField:
+#                 for field in JobField.instances():
+#                     fields.append(field.name)
+#         return sorted(fields)
+#     except Exception as e:
+#         st.error(f"Error loading job fields: {str(e)}")
+#         return []
+
+# def get_occupations_with_fields():
+#     """Get all job occupations with their corresponding fields"""
+#     try:
+#         # Force fresh load
+#         world = World()
+#         onto_path = os.path.abspath("jobs.owl")
+#         onto = world.get_ontology(f"file://{onto_path}").load()
+        
+#         occupations = {}
+#         with onto:
+#             JobOccupation = onto.JobOccupation
+#             if JobOccupation:
+#                 for cls in JobOccupation.subclasses():
+#                     # Check restrictions for inJobField
+#                     for restriction in cls.is_a:
+#                         if hasattr(restriction, 'value') and hasattr(restriction, 'property'):
+#                             if restriction.property.name == 'inJobField':
+#                                 field_name = restriction.value.name
+#                                 occ_name = cls.name
+#                                 if occ_name not in occupations:
+#                                     occupations[occ_name] = field_name
+#                                 break
+#         return occupations
+#     except Exception as e:
+#         st.error(f"Error loading occupations: {str(e)}")
+#         return {}
+
+def get_job_fields():
+    """Ganti get_job_fields() yang lama"""
+    sparql = SPARQLWrapper(FUSEKI_QUERY_URL)
+    query = PREFIXES + """
+    SELECT DISTINCT ?name WHERE {
+      ?f rdf:type :JobField .
+      BIND(STRAFTER(STR(?f), "#") AS ?name)
+    }
+    """
+    sparql.setQuery(query)
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+    return sorted([r['name']['value'] for r in results['results']['bindings']])
 
 def get_occupations_with_fields():
-    """Get all job occupations with their corresponding fields"""
-    try:
-        # Force fresh load
-        world = World()
-        onto_path = os.path.abspath("jobs.owl")
-        onto = world.get_ontology(f"file://{onto_path}").load()
-        
-        occupations = {}
-        with onto:
-            JobOccupation = onto.JobOccupation
-            if JobOccupation:
-                for cls in JobOccupation.subclasses():
-                    # Check restrictions for inJobField
-                    for restriction in cls.is_a:
-                        if hasattr(restriction, 'value') and hasattr(restriction, 'property'):
-                            if restriction.property.name == 'inJobField':
-                                field_name = restriction.value.name
-                                occ_name = cls.name
-                                if occ_name not in occupations:
-                                    occupations[occ_name] = field_name
-                                break
-        return occupations
-    except Exception as e:
-        st.error(f"Error loading occupations: {str(e)}")
-        return {}
+    """Ganti get_occupations_with_fields() yang lama"""
+    sparql = SPARQLWrapper(FUSEKI_QUERY_URL)
+    query = PREFIXES + """
+    SELECT ?occ ?field WHERE {
+      ?occ rdfs:subClassOf ?restriction .
+      ?restriction owl:onProperty :inJobField ; owl:hasValue ?field .
+    }
+    """
+    sparql.setQuery(query)
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+    
+    occ_map = {}
+    for r in results['results']['bindings']:
+        occ = r['occ']['value'].split("#")[-1]
+        field = r['field']['value'].split("#")[-1]
+        occ_map[occ] = field
+    return occ_map
 
 def get_job_required_skills(job_name):
     """Get required skills for a specific job occupation from ontology"""
@@ -745,9 +787,22 @@ def run_complete_workflow():
         except Exception as e:
             print(f"Warning: Could not sync to TTL: {e}")
         
-        print("Reasoning skipped due to technical issues with Java/Pellet")
+        try:
+            with onto:
+                sync_reasoner_pellet(infer_property_values=True, debug=0)
+            
+            onto.save(file="jobs_with_scores.owl", format="rdfxml")
+            
+            sync_owl_to_ttl("jobs_with_scores.owl", "jobs_with_scores.ttl")
+            upload_ttl_to_fuseki("jobs_with_scores.ttl")
+            
+            return True, "Analisis Sukses! Pellet telah mengklasifikasikan pelamar berdasarkan Rule SWRL."
+        except Exception as e:
+            return False, f"Pellet Gagal Jalan: {str(e)}"
         
-        return True, "Analysis complete! Results in jobs_with_scores.owl and jobs_with_scores.ttl"
+        # print("Reasoning skipped due to technical issues with Java/Pellet")
+        
+        # return True, "Analysis complete! Results in jobs_with_scores.owl and jobs_with_scores.ttl"
         
     except Exception as e:
         return False, f"Error: {str(e)}"
