@@ -304,11 +304,15 @@
 
 <owl:Class rdf:about="#Skill"/>
 
-<owl:Class rdf:about="#BusinessOperationsSkill"/>
-
 <owl:Class rdf:about="#HardSkill">
   <rdfs:subClassOf rdf:resource="#Skill"/>
 </owl:Class>
+
+<owl:Class rdf:about="#SoftSkill">
+  <rdfs:subClassOf rdf:resource="#Skill"/>
+</owl:Class>
+
+<owl:Class rdf:about="#BusinessOperationsSkill"/>
 
 <owl:Class rdf:about="#OperationsHardSkill">
   <rdfs:subClassOf rdf:resource="#HardSkill"/>
@@ -404,10 +408,6 @@
 <owl:Class rdf:about="#SoftwareEngineeringSkill">
   <rdfs:subClassOf rdf:resource="#HardSkill"/>
   <rdfs:subClassOf rdf:resource="#TechHardSkill"/>
-</owl:Class>
-
-<owl:Class rdf:about="#SoftSkill">
-  <rdfs:subClassOf rdf:resource="#Skill"/>
 </owl:Class>
 
 <owl:Class rdf:about="#Application"/>
@@ -512,12 +512,12 @@
   <rdfs:subClassOf rdf:resource="#HardSkill"/>
 </owl:Class>
 
-<owl:Class rdf:about="#DataEngineeringSkill">
-  <rdfs:subClassOf rdf:resource="#DataHardSkill"/>
+<owl:Class rdf:about="#DataHardSkill">
   <rdfs:subClassOf rdf:resource="#HardSkill"/>
 </owl:Class>
 
-<owl:Class rdf:about="#DataHardSkill">
+<owl:Class rdf:about="#DataEngineeringSkill">
+  <rdfs:subClassOf rdf:resource="#DataHardSkill"/>
   <rdfs:subClassOf rdf:resource="#HardSkill"/>
 </owl:Class>
 
@@ -697,6 +697,10 @@
   </rdfs:subClassOf>
 </owl:Class>
 
+<owl:Class rdf:about="#SalesHardSkill">
+  <rdfs:subClassOf rdf:resource="#HardSkill"/>
+</owl:Class>
+
 <owl:Class rdf:about="#ProductManagementSkill">
   <rdfs:subClassOf rdf:resource="#HardSkill"/>
 </owl:Class>
@@ -766,10 +770,6 @@
 </owl:Class>
 
 <owl:Class rdf:about="#HRHardSkill">
-  <rdfs:subClassOf rdf:resource="#HardSkill"/>
-</owl:Class>
-
-<owl:Class rdf:about="#SalesHardSkill">
   <rdfs:subClassOf rdf:resource="#HardSkill"/>
 </owl:Class>
 
@@ -40901,6 +40901,252 @@
   <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</answerScore>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Dina">
+  <rdf:type rdf:resource="#Person"/>
+  <hasAnswer rdf:resource="#DinaAns_Q1"/>
+  <hasAnswer rdf:resource="#DinaAns_Q2"/>
+  <hasAnswer rdf:resource="#DinaAns_Q3"/>
+  <hasAnswer rdf:resource="#DinaAns_Q4"/>
+  <hasAnswer rdf:resource="#DinaAns_Q5"/>
+  <hasAnswer rdf:resource="#DinaAns_Q6"/>
+  <hasAnswer rdf:resource="#DinaAns_Q7"/>
+  <hasAnswer rdf:resource="#DinaAns_Q8"/>
+  <hasAnswer rdf:resource="#DinaAns_Q9"/>
+  <hasAnswer rdf:resource="#DinaAns_Q10"/>
+  <hasAnswer rdf:resource="#DinaAns_Q11"/>
+  <hasAnswer rdf:resource="#DinaAns_Q12"/>
+  <hasAnswer rdf:resource="#DinaAns_Q13"/>
+  <hasAnswer rdf:resource="#DinaAns_Q14"/>
+  <hasAnswer rdf:resource="#DinaAns_Q15"/>
+  <hasAnswer rdf:resource="#DinaAns_Q16"/>
+  <hasAnswer rdf:resource="#DinaAns_Q17"/>
+  <hasAnswer rdf:resource="#DinaAns_Q18"/>
+  <hasAnswer rdf:resource="#DinaAns_Q19"/>
+  <hasAnswer rdf:resource="#DinaAns_Q20"/>
+  <hasAnswer rdf:resource="#DinaAns_Q21"/>
+  <hasAnswer rdf:resource="#DinaAns_Q22"/>
+  <hasAnswer rdf:resource="#DinaAns_Q23"/>
+  <hasAnswer rdf:resource="#DinaAns_Q24"/>
+  <hasAnswer rdf:resource="#DinaAns_Q25"/>
+  <hasAnswer rdf:resource="#DinaAns_Q26"/>
+  <hasAnswer rdf:resource="#DinaAns_Q27"/>
+  <hasAnswer rdf:resource="#DinaAns_Q28"/>
+  <hasAnswer rdf:resource="#DinaAns_Q29"/>
+  <hasAnswer rdf:resource="#DinaAns_Q30"/>
+  <inJobField rdf:resource="#Sales_Field"/>
+  <hasSoftSkill rdf:resource="#AdaptableCommunicationSkill"/>
+  <hasSoftSkill rdf:resource="#CreativitySoftSkill"/>
+  <hasSoftSkill rdf:resource="#CriticalThinking"/>
+  <hasSoftSkill rdf:resource="#NetworkingSoftSkill"/>
+  <hasSoftSkill rdf:resource="#ReadingComprehension"/>
+  <hasSoftSkill rdf:resource="#SystemsEvaluation"/>
+  <hasHardSkill rdf:resource="#AccountingSkill"/>
+  <hasHardSkill rdf:resource="#CashFlowManagementSkill"/>
+  <hasHardSkill rdf:resource="#ContentStrategySkill"/>
+  <hasHardSkill rdf:resource="#DeepLearningSkill"/>
+  <rdf:type rdf:resource="#HighFitApplicant"/>
+  <hasSkill rdf:resource="#CashFlowManagementSkill"/>
+  <hasSkill rdf:resource="#ContentStrategySkill"/>
+  <hasSkill rdf:resource="#DeepLearningSkill"/>
+  <hasSkill rdf:resource="#NetworkingSoftSkill"/>
+  <hasSkill rdf:resource="#AdaptableCommunicationSkill"/>
+  <hasSkill rdf:resource="#SystemsEvaluation"/>
+  <hasSkill rdf:resource="#AccountingSkill"/>
+  <hasSkill rdf:resource="#ReadingComprehension"/>
+  <hasSkill rdf:resource="#CriticalThinking"/>
+  <hasSkill rdf:resource="#CreativitySoftSkill"/>
+  <hasYearsOfExperience rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</hasYearsOfExperience>
+  <hasAgreeablenessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</hasAgreeablenessScore>
+  <hasConscientiousnessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.33</hasConscientiousnessScore>
+  <hasExtraversionScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.0</hasExtraversionScore>
+  <hasNeuroticismScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.67</hasNeuroticismScore>
+  <hasOpennessScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.33</hasOpennessScore>
+  <hasWeightedScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">59.73</hasWeightedScore>
+  <hasCategoryFitScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.4</hasCategoryFitScore>
+  <hasSkillMatchScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</hasSkillMatchScore>
+  <hasExperienceScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.0</hasExperienceScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q1">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q1"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q2">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q2"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q3">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q3"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q4">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q4"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q5">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q5"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q6">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q6"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q7">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q7"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q8">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q8"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q9">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q9"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q10">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q10"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q11">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q11"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q12">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q12"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q13">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q13"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q14">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q14"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q15">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q15"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q16">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q16"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q17">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q17"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q18">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q18"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q19">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q19"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q20">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q20"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q21">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q21"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q22">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q22"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q23">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q23"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q24">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q24"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q25">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q25"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q26">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q26"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q27">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q27"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q28">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q28"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q29">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q29"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DinaAns_Q30">
+  <rdf:type rdf:resource="#Answer"/>
+  <forQuestion rdf:resource="#Q30"/>
+  <answerScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</answerScore>
+</owl:NamedIndividual>
+
 <swrl:Variable rdf:about="#p"/>
 
 <swrl:Variable rdf:about="#s"/>
@@ -40928,20 +41174,173 @@
 
 <rdf:Description>
   <swrl:argument1 rdf:resource="#var_p"/>
+</rdf:Description>
+
+<rdf:Description>
+  <swrl:argument1 rdf:resource="#var_p"/>
+</rdf:Description>
+
+<rdf:Description>
+  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+  <swrl:arguments rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+  </swrl:arguments>
+</rdf:Description>
+
+<rdf:Description>
+  <swrl:argument1 rdf:resource="#var_p"/>
+</rdf:Description>
+
+<swrl:Imp>
+  <swrl:body>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="#Person"/>
+          <swrl:argument1 rdf:resource="#p"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest>
+        <swrl:AtomList>
+          <rdf:first>
+            <swrl:DatavaluedPropertyAtom>
+              <swrl:propertyPredicate rdf:resource="#hasWeightedScore"/>
+              <swrl:argument1 rdf:resource="#p"/>
+              <swrl:argument2 rdf:resource="#s"/>
+            </swrl:DatavaluedPropertyAtom>
+          </rdf:first>
+          <rdf:rest>
+            <swrl:AtomList>
+              <rdf:first>
+                <swrl:BuiltinAtom>
+                  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                  <swrl:arguments>
+                    <rdf:List>
+                      <rdf:first rdf:resource="#s"/>
+                      <rdf:rest>
+                        <rdf:List>
+                          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</rdf:first>
+                        </rdf:List>
+                      </rdf:rest>
+                    </rdf:List>
+                  </swrl:arguments>
+                </swrl:BuiltinAtom>
+              </rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </swrl:AtomList>
+          </rdf:rest>
+        </swrl:AtomList>
+      </rdf:rest>
+    </swrl:AtomList>
+  </swrl:body>
+  <swrl:head>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="#LowFitApplicant"/>
+          <swrl:argument1 rdf:resource="#p"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </swrl:AtomList>
+  </swrl:head>
+  <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowFit</rdfs:label>
+</swrl:Imp>
+
+<rdf:Description>
+  <swrl:argument1 rdf:resource="#var_p"/>
   <swrl:classPredicate rdf:resource="#Person"/>
 </rdf:Description>
 
 <rdf:Description>
-  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+  <swrl:argument1 rdf:resource="#var_p"/>
+  <swrl:argument2 rdf:resource="#var_s"/>
+  <swrl:propertyPredicate rdf:resource="#hasWeightedScore"/>
+</rdf:Description>
+
+<rdf:Description>
+  <swrl:argument1 rdf:resource="#var_p"/>
+  <swrl:argument2 rdf:resource="#var_s"/>
+  <swrl:propertyPredicate rdf:resource="#hasWeightedScore"/>
+</rdf:Description>
+
+<rdf:Description>
+  <swrl:argument1 rdf:resource="#var_p"/>
+  <swrl:classPredicate rdf:resource="#Person"/>
+</rdf:Description>
+
+<rdf:Description>
+  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
   <swrl:arguments rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
   </swrl:arguments>
 </rdf:Description>
 
 <rdf:Description>
-  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
-  <swrl:arguments rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
-  </swrl:arguments>
+  <swrl:argument1 rdf:resource="#var_p"/>
+  <swrl:argument2 rdf:resource="#var_s"/>
+  <swrl:propertyPredicate rdf:resource="#hasWeightedScore"/>
 </rdf:Description>
+
+<swrl:Imp>
+  <swrl:body>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="#Person"/>
+          <swrl:argument1 rdf:resource="#p"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest>
+        <swrl:AtomList>
+          <rdf:first>
+            <swrl:DatavaluedPropertyAtom>
+              <swrl:propertyPredicate rdf:resource="#hasWeightedScore"/>
+              <swrl:argument1 rdf:resource="#p"/>
+              <swrl:argument2 rdf:resource="#s"/>
+            </swrl:DatavaluedPropertyAtom>
+          </rdf:first>
+          <rdf:rest>
+            <swrl:AtomList>
+              <rdf:first>
+                <swrl:BuiltinAtom>
+                  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                  <swrl:arguments>
+                    <rdf:List>
+                      <rdf:first rdf:resource="#s"/>
+                      <rdf:rest>
+                        <rdf:List>
+                          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</rdf:first>
+                        </rdf:List>
+                      </rdf:rest>
+                    </rdf:List>
+                  </swrl:arguments>
+                </swrl:BuiltinAtom>
+              </rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </swrl:AtomList>
+          </rdf:rest>
+        </swrl:AtomList>
+      </rdf:rest>
+    </swrl:AtomList>
+  </swrl:body>
+  <swrl:head>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="#HighFitApplicant"/>
+          <swrl:argument1 rdf:resource="#p"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </swrl:AtomList>
+  </swrl:head>
+  <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighFit</rdfs:label>
+</swrl:Imp>
 
 <swrl:Imp>
   <swrl:body>
@@ -41022,73 +41421,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MediumFit</rdfs:label>
 </swrl:Imp>
 
-<swrl:Imp>
-  <swrl:body>
-    <swrl:AtomList>
-      <rdf:first>
-        <swrl:ClassAtom>
-          <swrl:classPredicate rdf:resource="#Person"/>
-          <swrl:argument1 rdf:resource="#p"/>
-        </swrl:ClassAtom>
-      </rdf:first>
-      <rdf:rest>
-        <swrl:AtomList>
-          <rdf:first>
-            <swrl:DatavaluedPropertyAtom>
-              <swrl:propertyPredicate rdf:resource="#hasWeightedScore"/>
-              <swrl:argument1 rdf:resource="#p"/>
-              <swrl:argument2 rdf:resource="#s"/>
-            </swrl:DatavaluedPropertyAtom>
-          </rdf:first>
-          <rdf:rest>
-            <swrl:AtomList>
-              <rdf:first>
-                <swrl:BuiltinAtom>
-                  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
-                  <swrl:arguments>
-                    <rdf:List>
-                      <rdf:first rdf:resource="#s"/>
-                      <rdf:rest>
-                        <rdf:List>
-                          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</rdf:first>
-                        </rdf:List>
-                      </rdf:rest>
-                    </rdf:List>
-                  </swrl:arguments>
-                </swrl:BuiltinAtom>
-              </rdf:first>
-              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-            </swrl:AtomList>
-          </rdf:rest>
-        </swrl:AtomList>
-      </rdf:rest>
-    </swrl:AtomList>
-  </swrl:body>
-  <swrl:head>
-    <swrl:AtomList>
-      <rdf:first>
-        <swrl:ClassAtom>
-          <swrl:classPredicate rdf:resource="#HighFitApplicant"/>
-          <swrl:argument1 rdf:resource="#p"/>
-        </swrl:ClassAtom>
-      </rdf:first>
-      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    </swrl:AtomList>
-  </swrl:head>
-  <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighFit</rdfs:label>
-</swrl:Imp>
-
 <rdf:Description>
-  <swrl:argument1 rdf:resource="#var_p"/>
-  <swrl:argument2 rdf:resource="#var_s"/>
-  <swrl:propertyPredicate rdf:resource="#hasWeightedScore"/>
+  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+  <swrl:arguments rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+  </swrl:arguments>
 </rdf:Description>
 
 <rdf:Description>
-  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
   <swrl:arguments rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
   </swrl:arguments>
 </rdf:Description>
@@ -41096,100 +41436,6 @@
 <rdf:Description>
   <swrl:argument1 rdf:resource="#var_p"/>
   <swrl:classPredicate rdf:resource="#Person"/>
-</rdf:Description>
-
-<rdf:Description>
-  <swrl:argument1 rdf:resource="#var_p"/>
-  <swrl:argument2 rdf:resource="#var_s"/>
-  <swrl:propertyPredicate rdf:resource="#hasWeightedScore"/>
-</rdf:Description>
-
-<rdf:Description>
-  <swrl:argument1 rdf:resource="#var_p"/>
-  <swrl:argument2 rdf:resource="#var_s"/>
-  <swrl:propertyPredicate rdf:resource="#hasWeightedScore"/>
-</rdf:Description>
-
-<rdf:Description>
-  <swrl:argument1 rdf:resource="#var_p"/>
-  <swrl:classPredicate rdf:resource="#Person"/>
-</rdf:Description>
-
-<swrl:Imp>
-  <swrl:body>
-    <swrl:AtomList>
-      <rdf:first>
-        <swrl:ClassAtom>
-          <swrl:classPredicate rdf:resource="#Person"/>
-          <swrl:argument1 rdf:resource="#p"/>
-        </swrl:ClassAtom>
-      </rdf:first>
-      <rdf:rest>
-        <swrl:AtomList>
-          <rdf:first>
-            <swrl:DatavaluedPropertyAtom>
-              <swrl:propertyPredicate rdf:resource="#hasWeightedScore"/>
-              <swrl:argument1 rdf:resource="#p"/>
-              <swrl:argument2 rdf:resource="#s"/>
-            </swrl:DatavaluedPropertyAtom>
-          </rdf:first>
-          <rdf:rest>
-            <swrl:AtomList>
-              <rdf:first>
-                <swrl:BuiltinAtom>
-                  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
-                  <swrl:arguments>
-                    <rdf:List>
-                      <rdf:first rdf:resource="#s"/>
-                      <rdf:rest>
-                        <rdf:List>
-                          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</rdf:first>
-                        </rdf:List>
-                      </rdf:rest>
-                    </rdf:List>
-                  </swrl:arguments>
-                </swrl:BuiltinAtom>
-              </rdf:first>
-              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-            </swrl:AtomList>
-          </rdf:rest>
-        </swrl:AtomList>
-      </rdf:rest>
-    </swrl:AtomList>
-  </swrl:body>
-  <swrl:head>
-    <swrl:AtomList>
-      <rdf:first>
-        <swrl:ClassAtom>
-          <swrl:classPredicate rdf:resource="#LowFitApplicant"/>
-          <swrl:argument1 rdf:resource="#p"/>
-        </swrl:ClassAtom>
-      </rdf:first>
-      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    </swrl:AtomList>
-  </swrl:head>
-  <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
-  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowFit</rdfs:label>
-</swrl:Imp>
-
-<rdf:Description>
-  <swrl:argument1 rdf:resource="#var_p"/>
-</rdf:Description>
-
-<rdf:Description>
-  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
-  <swrl:arguments rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
-  </swrl:arguments>
-</rdf:Description>
-
-<rdf:Description>
-  <swrl:argument1 rdf:resource="#var_p"/>
-</rdf:Description>
-
-<rdf:Description>
-  <swrl:argument1 rdf:resource="#var_p"/>
 </rdf:Description>
 
 
