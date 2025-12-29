@@ -34,14 +34,12 @@ def sync_owl_to_ttl(owl_path, ttl_path):
     from rdflib import Graph
     g_owl = Graph()
     g_owl.parse(owl_path, format='xml')
-    # Baca triple yang sudah ada di TTL secara manual
     existing_triples = set()
     with open(ttl_path, 'r', encoding='utf-8') as f:
         for line in f:
             line = line.strip()
             if line and not line.startswith('@') and not line.startswith('#'):
                 existing_triples.add(line)
-    # Format triple baru ke Turtle
     def triple_to_ttl(s, p, o):
         return f"{s.n3()} {p.n3()} {o.n3()} ."
     ttl_lines = []
@@ -63,16 +61,14 @@ st.set_page_config(
     layout="wide"
 )
 
-# Trait mapping for Big Five
 TRAIT_MAPPING = {
-    'Openness': list(range(1, 7)),           # Q1-Q6
-    'Conscientiousness': list(range(7, 13)), # Q7-Q12
-    'Extraversion': list(range(13, 19)),     # Q13-Q18
-    'Agreeableness': list(range(19, 25)),    # Q19-Q24
-    'Neuroticism': list(range(25, 31))       # Q25-Q30
+    'Openness': list(range(1, 7)),
+    'Conscientiousness': list(range(7, 13)),
+    'Extraversion': list(range(13, 19)),
+    'Agreeableness': list(range(19, 25)),
+    'Neuroticism': list(range(25, 31))
 }
 
-# Questions for Big Five assessment (Indonesian)
 QUESTIONS = {
     # Openness (Q1-Q6)
     1: "Saya tertarik mencoba hal-hal baru meskipun belum pernah ada yang saya kenal mencobanya.",
@@ -243,7 +239,6 @@ def get_job_required_skills(job_name):
         onto = world.get_ontology(f"file://{onto_path}").load()
         
         with onto:
-            # Find the job occupation class
             job_class = None
             for cls in onto.classes():
                 if cls.name == job_name:
@@ -251,7 +246,6 @@ def get_job_required_skills(job_name):
                     break
             
             if job_class:
-                # Get required skills from restrictions
                 for restriction in job_class.is_a:
                     if hasattr(restriction, 'value') and hasattr(restriction, 'property'):
                         prop_name = restriction.property.name
@@ -259,7 +253,6 @@ def get_job_required_skills(job_name):
                             skill = restriction.value
                             if hasattr(skill, 'name'):
                                 skill_name = skill.name
-                                # Check if it's a hard skill or soft skill
                                 skill_instance = onto.search_one(iri=f"*{skill_name}")
                                 if skill_instance:
                                     if hasattr(onto, 'HardSkill') and isinstance(skill_instance, onto.HardSkill):
@@ -267,7 +260,7 @@ def get_job_required_skills(job_name):
                                     elif hasattr(onto, 'SoftSkill') and isinstance(skill_instance, onto.SoftSkill):
                                         required_skills['soft_skills'].append(skill_name)
     except Exception as e:
-        pass  # Silent fail, return empty lists
+        pass
     
     return required_skills
 
@@ -281,18 +274,11 @@ def calculate_skill_match(applicant_skills, applicant_soft_skills, job_name):
     all_applicant = applicant_skills + applicant_soft_skills
     
     if not all_required:
-        # If no required skills defined, consider all skills as relevant
         return 100, {'matched': all_applicant, 'missing': []}
-    
-    # Convert to lowercase for comparison
     required_lower = [s.lower() for s in all_required]
     applicant_lower = [s.lower() for s in all_applicant]
-    
-    # Find matched skills
     matched = [skill for skill in all_applicant if skill.lower() in required_lower]
     missing = [skill for skill in all_required if skill.lower() not in applicant_lower]
-    
-    # Calculate percentage
     match_percentage = (len(matched) / len(all_required) * 100) if all_required else 0
     
     return round(match_percentage, 1), {'matched': matched, 'missing': missing}
@@ -314,12 +300,11 @@ def calculate_big_five(answers):
 def get_soft_skills():
     """Get all soft skills from ontology"""
     try:
-        # Force fresh load
         world = World()
         onto_path = os.path.abspath("jobs.owl")
         onto = world.get_ontology(f"file://{onto_path}").load()
         
-        skills = set()  # Use set to avoid duplicates
+        skills = set()
         with onto:
             SoftSkill = onto.SoftSkill
             if SoftSkill:
@@ -333,12 +318,11 @@ def get_soft_skills():
 def get_hard_skills():
     """Get all hard skills from ontology"""
     try:
-        # Force fresh load
         world = World()
         onto_path = os.path.abspath("jobs.owl")
         onto = world.get_ontology(f"file://{onto_path}").load()
         
-        skills = set()  # Use set to avoid duplicates
+        skills = set()
         with onto:
             HardSkill = onto.HardSkill
             if HardSkill:
@@ -353,8 +337,6 @@ def create_radar_chart(scores):
     """Create a radar chart for Big Five personality scores"""
     categories = list(scores.keys())
     values = list(scores.values())
-    
-    # Close the radar chart by repeating the first value
     categories += [categories[0]]
     values += [values[0]]
     
@@ -398,66 +380,44 @@ def add_applicant_to_ontology(name, answers, job_field=None, JobOccupation=None,
         print(f"  Hard Skills: {hard_skills}")
         print(f"  Total Answers: {len(answers)}")
         print(f"{'='*60}\n")
-        
-        # Load ontology from jobs_with_scores.owl (main working file)
         onto_path = os.path.abspath("jobs_with_scores.owl")
         if not os.path.exists(onto_path):
-            # Fallback to jobs.owl if jobs_with_scores doesn't exist yet
             onto_path = os.path.abspath("jobs.owl")
         onto = get_ontology(f"file://{onto_path}").load()
         
         with onto:
-            # Create Person individual
             person_name = name.replace(" ", "_")
             Person = onto.Person
             new_person = Person(person_name)
-            
-            # Create Answer individuals for each question
             print(f"Creating {len(answers)} answer individuals...")
             for q_num, score in answers.items():
                 answer_name = f"{person_name}Ans_Q{q_num}"
                 Answer = onto.Answer
                 new_answer = Answer(answer_name)
-                
-                # Set answer properties
                 new_answer.answerScore = [score]
-                
-                # Link to question
                 question_name = f"Q{q_num}"
                 if hasattr(onto, question_name):
                     new_answer.forQuestion = [onto[question_name]]
-                
-                # Link answer to person
                 if not hasattr(new_person, 'hasAnswer'):
                     new_person.hasAnswer = []
                 new_person.hasAnswer.append(new_answer)
             print(f"✓ Created all {len(answers)} answers")
-            
-            # Add job field
             if job_field and hasattr(onto, job_field):
                 new_person.inJobField = [onto[job_field]]
                 print(f"✓ Added job field: {job_field}")
-            
-            # Add job occupation
             if JobOccupation and hasattr(onto, JobOccupation):
                 new_person.hasJobOccupation = [onto[JobOccupation]]
                 print(f"✓ Added job occupation: {JobOccupation}")
-            
-            # Add years of experience
             if years_experience is not None:
                 new_person.hasYearsOfExperience = [years_experience]
                 print(f"✓ Added years of experience: {years_experience}")
-            
-            # Add soft skills
             if soft_skills:
                 print(f"Adding soft skills: {soft_skills}")
                 for skill in soft_skills:
-                    # Try to find the skill in ontology
                     skill_obj = None
                     if hasattr(onto, skill):
                         skill_obj = onto[skill]
                     else:
-                        # Try searching for skill
                         skill_obj = onto.search_one(iri=f"*{skill}")
                     
                     if skill_obj:
@@ -467,17 +427,13 @@ def add_applicant_to_ontology(name, answers, job_field=None, JobOccupation=None,
                         print(f"  ✓ Added soft skill: {skill}")
                     else:
                         print(f"  ✗ Soft skill not found in ontology: {skill}")
-            
-            # Add hard skills
             if hard_skills:
                 print(f"Adding hard skills: {hard_skills}")
                 for skill in hard_skills:
-                    # Try to find the skill in ontology
                     skill_obj = None
                     if hasattr(onto, skill):
                         skill_obj = onto[skill]
                     else:
-                        # Try searching for skill
                         skill_obj = onto.search_one(iri=f"*{skill}")
                     
                     if skill_obj:
@@ -488,12 +444,11 @@ def add_applicant_to_ontology(name, answers, job_field=None, JobOccupation=None,
                     else:
                         print(f"  ✗ Hard skill not found in ontology: {skill}")
         
-        # Calculate Big Five scores immediately
+        # Calculate Big Five scores
         print(f"\nCalculating Big Five scores...")
         trait_scores = calculate_big_five(answers)
         print(f"Trait scores: {trait_scores}")
-        
-        # Save scores as data properties
+
         if 'Agreeableness' in trait_scores:
             new_person.hasAgreeablenessScore = [trait_scores['Agreeableness']]
         if 'Conscientiousness' in trait_scores:
@@ -505,7 +460,7 @@ def add_applicant_to_ontology(name, answers, job_field=None, JobOccupation=None,
         if 'Openness' in trait_scores:
             new_person.hasOpennessScore = [trait_scores['Openness']]
         
-        # Calculate weighted overall score
+        # Calculate weighted score
         applicant_data_for_score = {
             'scores': trait_scores,
             'categories': [],
@@ -518,8 +473,7 @@ def add_applicant_to_ontology(name, answers, job_field=None, JobOccupation=None,
         overall_score = calculate_overall_fit_score(applicant_data_for_score)
         new_person.hasWeightedScore = [float(overall_score)]
         print(f"✓ Overall weighted score: {overall_score}")
-        
-        # Save component scores to ontology
+
         score_breakdown = applicant_data_for_score.get('score_breakdown', {})
         new_person.hasCategoryFitScore = [float(score_breakdown.get('category_fit', 0.0))]
         new_person.hasSkillMatchScore = [float(score_breakdown.get('skill_match', 0.0))]
@@ -531,11 +485,8 @@ def add_applicant_to_ontology(name, answers, job_field=None, JobOccupation=None,
         print(f"\n{'='*60}")
         print(f"All data saved for: {name}")
         print(f"{'='*60}\n")
-        
-        # Save to jobs_with_scores.owl (working file)
         onto.save(file="jobs_with_scores.owl", format="rdfxml")
         print("✓ Saved to jobs_with_scores.owl")
-        # Append new triples from OWL to TTL
         try:
             sync_owl_to_ttl("jobs_with_scores.owl", "jobs_with_scores.ttl")
             print("✓ Appended new triples to jobs_with_scores.ttl (for viewing)")
@@ -567,18 +518,14 @@ def upload_ttl_to_fuseki(file_path):
         
         with open(file_path, 'rb') as f:
             data = f.read()
-            
-        # Header wajib agar Fuseki tahu ini file Turtle
         headers = {'Content-Type': 'text/turtle; charset=utf-8'}
-        
-        # POST request ke endpoint /data
         response = requests.post(FUSEKI_UPLOAD_URL, data=data, headers=headers)
         
         if response.status_code in [200, 204]:
-            print("✅ Upload ke Fuseki Sukses!")
+            print("Upload ke Fuseki Sukses!")
             return True
         else:
-            print(f"❌ Upload Gagal: {response.status_code} - {response.text}")
+            print(f"Upload Gagal: {response.status_code} - {response.text}")
             return False
             
     except Exception as e:
@@ -589,8 +536,7 @@ def get_applicants_from_fuseki():
     """Ambil data pelamar & status klasifikasi dari Fuseki"""
     sparql = SPARQLWrapper(FUSEKI_QUERY_URL)
     sparql.setReturnFormat(JSON)
-    
-    # Query mengambil Nama, Skor, dan Tipe Klasifikasi (High/Medium/Low)
+
     query = """
     PREFIX : <http://www.semanticweb.org/asyifafadhilah/ontologies/2025/10/recruitment-ontology#>
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -622,8 +568,6 @@ def get_applicants_from_fuseki():
         for item in bindings:
             nama = item['nama']['value'].replace('_', ' ')
             skor = float(item['skor']['value'])
-            
-            # Default status jika belum ada
             status = item['status']['value'] if 'status' in item else "Belum Diklasifikasi"
             
             cleaned_data.append({
@@ -674,19 +618,13 @@ def get_applicants_from_fuseki():
 def run_complete_workflow():
     """Run complete workflow: calculate scores + reasoning"""
     try:
-        # Load ontology from jobs_with_scores.owl (working file)
         onto_path = os.path.abspath("jobs_with_scores.owl")
         if not os.path.exists(onto_path):
-            # Fallback to jobs.owl
             onto_path = os.path.abspath("jobs.owl")
         onto = get_ontology(f"file://{onto_path}").load()
-        
-        # Calculate Big Five scores
         with onto:
             Person = onto.Person
             persons = list(Person.instances())
-            
-            # Only run analysis if there is at least one applicant with no score
             new_applicants = []
             for person in persons:
                 need_analysis = True
@@ -698,7 +636,7 @@ def run_complete_workflow():
                     new_applicants.append(person)
             if not new_applicants:
                 pass
-            # Only process new applicants
+
             for person in new_applicants:
                 if hasattr(person, 'hasAnswer'):
                     answers = {}
@@ -712,8 +650,6 @@ def run_complete_workflow():
                     
                     if answers:
                         trait_scores = calculate_big_five(answers)
-                        
-                        # Add scores as data properties
                         if 'Agreeableness' in trait_scores:
                             person.hasAgreeablenessScore = [trait_scores['Agreeableness']]
                         if 'Conscientiousness' in trait_scores:
@@ -724,8 +660,6 @@ def run_complete_workflow():
                             person.hasNeuroticismScore = [trait_scores['Neuroticism']]
                         if 'Openness' in trait_scores:
                             person.hasOpennessScore = [trait_scores['Openness']]
-                        
-                        # Calculate and save weighted overall score
                         applicant_data = {
                             'scores': trait_scores,
                             'categories': [],
@@ -737,15 +671,12 @@ def run_complete_workflow():
                         }
                         
                         overall_score = calculate_overall_fit_score(applicant_data)
-                        # Only overwrite scores if missing or zero
                         def preserve_or_update(prop, new_val):
                             old_val = getattr(person, prop)[0] if hasattr(person, prop) and getattr(person, prop) else 0.0
-                            # Only update if new_val > 0 or property not set
                             if new_val > 0:
                                 setattr(person, prop, [float(new_val)])
                             elif old_val > 0:
                                 setattr(person, prop, [float(old_val)])
-                            # else: do not set property (remains empty or zero)
 
                         preserve_or_update('hasWeightedScore', overall_score)
                         score_breakdown = applicant_data.get('score_breakdown', {})
@@ -755,29 +686,22 @@ def run_complete_workflow():
                             preserve_or_update('hasSkillMatchScore', score_breakdown['skill_match'])
                         if 'experience' in score_breakdown:
                             preserve_or_update('hasExperienceScore', score_breakdown['experience'])
-                        # Save years of experience
                         if applicant_data['years_experience'] is not None:
                             person.hasYearsOfExperience = [int(applicant_data['years_experience'])]
-        
-        # Save to jobs_with_scores.owl (working file)
+
         onto.save(file="jobs_with_scores.owl", format="rdfxml")
         print("✓ Saved to jobs_with_scores.owl")
-        # Append new triples from OWL to TTL
         try:
             sync_owl_to_ttl("jobs_with_scores.owl", "jobs_with_scores.ttl")
             print("✓ Appended new triples to jobs_with_scores.ttl (for viewing)")
         except Exception as e:
             print(f"Warning: Could not append to TTL: {e}")
-        
-        # Sync to jobs_with_scores.ttl for viewing
         try:
             from rdflib import Graph, Namespace
             from rdflib.namespace import RDF, RDFS, OWL
             
             g = Graph()
             g.parse("jobs_with_scores.owl", format="xml")
-            
-            # Bind namespaces
             g.bind("owl", OWL)
             g.bind("rdf", RDF)
             g.bind("rdfs", RDFS)
@@ -800,18 +724,12 @@ def run_complete_workflow():
         except Exception as e:
             return False, f"Pellet Gagal Jalan: {str(e)}"
         
-        # print("Reasoning skipped due to technical issues with Java/Pellet")
-        
-        # return True, "Analysis complete! Results in jobs_with_scores.owl and jobs_with_scores.ttl"
-        
     except Exception as e:
         return False, f"Error: {str(e)}"
 
 def get_all_applicants():
     """Get all applicants with their scores and classifications"""
     try:
-        # Load from jobs_with_scores.owl (working file with all data)
-        # Force fresh load with new world to avoid cache
         world = World()
         onto_path = os.path.abspath("jobs_with_scores.owl")
         if not os.path.exists(onto_path):
@@ -821,7 +739,7 @@ def get_all_applicants():
         print(f"\n[VIEW RESULTS] Loading from: {onto_path}")
         
         applicants = []
-        seen_names = set()  # Track seen names to avoid duplicates
+        seen_names = set()
         with onto:
             Person = onto.Person
             persons = list(Person.instances())
@@ -829,7 +747,7 @@ def get_all_applicants():
             
             for person in persons:
                 if person.name in seen_names:
-                    continue  # Skip duplicates
+                    continue
                 seen_names.add(person.name)
                 applicant_data = {
                     'name': person.name,
@@ -842,8 +760,7 @@ def get_all_applicants():
                     'soft_skills': [],
                     'hard_skills': []
                 }
-                
-                # Get Big Five scores
+
                 if hasattr(person, 'hasOpennessScore') and person.hasOpennessScore:
                     applicant_data['scores']['Openness'] = person.hasOpennessScore[0]
                 if hasattr(person, 'hasConscientiousnessScore') and person.hasConscientiousnessScore:
@@ -854,31 +771,18 @@ def get_all_applicants():
                     applicant_data['scores']['Agreeableness'] = person.hasAgreeablenessScore[0]
                 if hasattr(person, 'hasNeuroticismScore') and person.hasNeuroticismScore:
                     applicant_data['scores']['Neuroticism'] = person.hasNeuroticismScore[0]
-                
-                # Get job field
                 if hasattr(person, 'inJobField') and person.inJobField:
                     applicant_data['job_field'] = person.inJobField[0].name
-                
-                # Get job occupation
                 if hasattr(person, 'hasJobOccupation') and person.hasJobOccupation:
                     occ_name = person.hasJobOccupation[0].name
                     applicant_data['JobOccupation'] = occ_name
                     applicant_data['job_occupation'] = occ_name
-                
-                # Get years of experience
                 if hasattr(person, 'hasYearsOfExperience') and person.hasYearsOfExperience:
                     applicant_data['years_experience'] = person.hasYearsOfExperience[0]
-                
-                # Get soft skills
                 if hasattr(person, 'hasSoftSkill'):
                     applicant_data['soft_skills'] = [skill.name for skill in person.hasSoftSkill]
-                
-                # Get hard skills
                 if hasattr(person, 'hasHardSkill'):
                     applicant_data['hard_skills'] = [skill.name for skill in person.hasHardSkill]
-                
-                # Load component scores from ontology
-                # If these exist, prefer them and build a score_breakdown so UI can display without recomputing
                 if hasattr(person, 'hasCategoryFitScore') and person.hasCategoryFitScore:
                     applicant_data['category_fit_score'] = float(person.hasCategoryFitScore[0])
                 if hasattr(person, 'hasSkillMatchScore') and person.hasSkillMatchScore:
@@ -887,7 +791,6 @@ def get_all_applicants():
                     applicant_data['experience_score'] = float(person.hasExperienceScore[0])
                 if hasattr(person, 'hasWeightedScore') and person.hasWeightedScore:
                     applicant_data['overall_fit_score'] = float(person.hasWeightedScore[0])
-                # Build breakdown when ontology already stores component scores
                 if ('category_fit_score' in applicant_data or 'skill_match_score' in applicant_data or 'experience_score' in applicant_data):
                     breakdown = {
                         'category_fit': applicant_data.get('category_fit_score', 0.0),
@@ -900,8 +803,6 @@ def get_all_applicants():
                         avg_personality = sum(applicant_data['scores'].values()) / len(applicant_data['scores'])
                         breakdown['personality'] = round((avg_personality / 5.0) * 25, 2)
                     applicant_data['score_breakdown'] = breakdown
-                
-                # Calculate skill match if job occupation exists
                 if applicant_data['JobOccupation']:
                     match_pct, _ = calculate_skill_match(
                         applicant_data['hard_skills'],
@@ -911,11 +812,8 @@ def get_all_applicants():
                     applicant_data['skill_match_percentage'] = match_pct
                 else:
                     applicant_data['skill_match_percentage'] = 0
-                
-                # Get fit categories (mock for now since reasoning is disabled)
-                # In a real implementation, this would come from reasoned ontology
+
                 if applicant_data['scores']:
-                    # Simple rule-based classification based on scores
                     openness = applicant_data['scores'].get('Openness', 0)
                     conscientiousness = applicant_data['scores'].get('Conscientiousness', 0)
                     extraversion = applicant_data['scores'].get('Extraversion', 0)
@@ -972,8 +870,8 @@ def calculate_overall_fit_score(applicant):
     support_roles = {"customersuccess", "customersupport", "hrmanager", "peopleandculture", "customersupportjob"}
     writing_roles = {"contentwriter", "copywriter", "uxwriter", "contentstrategist"}
     interpersonal_roles = {"salesmanager", "accountmanager", "accountmanagerjob", "communitymanager"}
-    
-    # 1. Personality score component (25% weight) - Reduced to give more weight to skills
+
+    # 1. Personality score component (25%)
     if applicant['scores']:
         avg_personality = sum(applicant['scores'].values()) / len(applicant['scores'])
         personality_score = (avg_personality / 5.0) * 25
@@ -981,42 +879,33 @@ def calculate_overall_fit_score(applicant):
         breakdown['personality'] = round(personality_score, 2)
     else:
         breakdown['personality'] = 0
-    
-    # 2. Category Fit score component (20% weight) - Based on personality match with job category
+    # 2. Category Fit score component (20%)
     category_score = 0
     if applicant['scores'] and normalized_job:
         scores = applicant['scores']
-        
-        # Define ideal personality profiles for each category
         if normalized_job in analytical_roles:
-            # Analytical roles: high Conscientiousness & Openness, low Neuroticism
             category_score = ((scores.get('Conscientiousness', 0) / 5.0) * 8 + 
                             (scores.get('Openness', 0) / 5.0) * 8 + 
                             ((5 - scores.get('Neuroticism', 5)) / 5.0) * 4)
         elif normalized_job in technical_roles:
-            # Technical roles: high Conscientiousness
             category_score = ((scores.get('Conscientiousness', 0) / 5.0) * 12 + 
                             (scores.get('Openness', 0) / 5.0) * 8)
         elif normalized_job in support_roles:
-            # Support roles: high Agreeableness & Extraversion
             category_score = ((scores.get('Agreeableness', 0) / 5.0) * 10 + 
                             (scores.get('Extraversion', 0) / 5.0) * 10)
         elif normalized_job in writing_roles:
-            # Writing roles: high Openness
             category_score = ((scores.get('Openness', 0) / 5.0) * 15 + 
                             (scores.get('Conscientiousness', 0) / 5.0) * 5)
         elif normalized_job in interpersonal_roles:
-            # Interpersonal roles: high Extraversion
             category_score = ((scores.get('Extraversion', 0) / 5.0) * 12 + 
                             (scores.get('Agreeableness', 0) / 5.0) * 8)
         else:
-            # Default: balanced scoring
             category_score = (sum(scores.values()) / len(scores) / 5.0) * 20
     
     score += category_score
     breakdown['category_fit'] = round(category_score, 2)
 
-    # 3. Skill Match component (35% weight) - HIGHEST PRIORITY
+    # 3. Skill Match component (35%)
     JobOccupation = applicant.get('JobOccupation')
     if JobOccupation:
         required_skills = get_job_required_skills(JobOccupation)
@@ -1024,20 +913,14 @@ def calculate_overall_fit_score(applicant):
         all_applicant = applicant.get('hard_skills', []) + applicant.get('soft_skills', [])
         
         if all_required:
-            # Required skills matched (20 points)
             required_lower = [s.lower() for s in all_required]
             applicant_lower = [s.lower() for s in all_applicant]
             matched = [s for s in all_applicant if s.lower() in required_lower]
-            
             matched_score = (len(matched) / len(all_required)) * 20
-            
-            # Additional relevant skills (10 points) - bonus for extra skills
             additional_skills = [s for s in all_applicant if s.lower() not in required_lower]
             additional_score = min(len(additional_skills) * 0.5, 10)
-            
-            # Skill proficiency bonus (5 points) - if high match rate
             proficiency_bonus = 0
-            if len(matched) >= len(all_required) * 0.8:  # 80% or more matched
+            if len(matched) >= len(all_required) * 0.8:
                 proficiency_bonus = 5
             
             skill_score = matched_score + additional_score + proficiency_bonus
@@ -1046,35 +929,27 @@ def calculate_overall_fit_score(applicant):
             breakdown['matched_skills'] = len(matched)
             breakdown['required_skills'] = len(all_required)
         else:
-            # If no required skills defined, use basic scoring
             basic_skill_score = min(len(all_applicant) * 1.5, 35)
             score += basic_skill_score
             breakdown['skill_match'] = round(basic_skill_score, 2)
     else:
         breakdown['skill_match'] = 0
     
-    # 4. Experience component (20% weight) - NEW weighted component
-    years_exp = applicant.get('years_experience') or 0  # Handle None or missing value
+    # 4. Experience component (20%)
+    years_exp = applicant.get('years_experience') or 0
     job_field = applicant.get('job_field')
-    
-    # Years of experience score (10 points)
-    years_score = min((years_exp / 10.0) * 10, 10)  # Max 10 points for 10+ years
-    
-    # Relevant experience bonus (10 points) - if has experience AND applying to same field
+
+    years_score = min((years_exp / 10.0) * 10, 10)
     relevant_bonus = 0
     if years_exp >= 1 and job_field and JobOccupation:
-        # Bonus if has at least 1 year experience
         relevant_bonus = 10
     elif years_exp >= 2:
-        # Smaller bonus for 2+ years experience even without field match
         relevant_bonus = 5
     
     experience_score = years_score + relevant_bonus
     score += experience_score
     breakdown['experience'] = round(experience_score, 2)
     breakdown['years_experience'] = years_exp
-    
-    # Store breakdown for detailed display
     applicant['score_breakdown'] = breakdown
     
     return round(score, 2)
@@ -1083,7 +958,7 @@ def calculate_overall_fit_score(applicant):
 st.title("Job Recommendation System")
 st.markdown("### Ontology-Based Personality Assessment & Job Matching")
 
-# Sidebar navigation
+# Sidebar
 page = st.sidebar.radio(
     "Navigation", 
     ["Home", "Add Applicant", "Run Analysis", "View Results"],
@@ -1116,9 +991,12 @@ if page == "Home":
     st.subheader("System Workflow")
     st.markdown("""
     1. **Add Applicant** - Enter applicant data and complete 30 Big Five personality assessment questions
-       - ✅ Scores are calculated automatically
-       - ✅ Overall fit score is computed instantly
-       - ✅ All data saved to ontology immediately
+                
+       a. Scores are calculated automatically
+                
+       b. Overall fit score is computed instantly
+                
+       c. All data saved to ontology immediately
     
     2. **View Results** - Review personality scores, matching job categories, and applicant classifications
        - View Big Five personality profiles
@@ -1134,7 +1012,7 @@ if page == "Home":
     - **Category Fit** (20%) - Personality match with job category profile
     """)
     
-    st.success("✨ **New:** Scores are now calculated automatically when adding applicants!")
+    st.success("**New:** Scores are now calculated automatically when adding applicants!")
 
 elif page == "Add Applicant":
     st.header("Add New Applicant")
@@ -1147,7 +1025,6 @@ elif page == "Add Applicant":
         with col1:
             years_exp = st.number_input("Years of Experience", min_value=0, max_value=50, value=0)
         with col2:
-            # Get available hard skills from ontology
             available_hard_skills = get_hard_skills()
             selected_hard_skills = st.multiselect(
                 "Hard Skills",
@@ -1155,8 +1032,6 @@ elif page == "Add Applicant":
                 default=[],
                 help="Select technical skills from the list"
             )
-        
-        # Get available soft skills from ontology
         available_soft_skills = get_soft_skills()
         selected_soft_skills = st.multiselect(
             "Soft Skills",
@@ -1192,8 +1067,7 @@ elif page == "Add Applicant":
             4: "Setuju",
             5: "Sangat Setuju"
         }
-        
-        # All 30 questions displayed sequentially
+
         for q_num in range(1, 31):
             st.markdown(f"**{q_num}.** {QUESTIONS[q_num]}")
             answers[q_num] = st.radio(
@@ -1221,9 +1095,9 @@ elif page == "Add Applicant":
                         years_exp, selected_soft_skills, selected_hard_skills
                     )
                     if success:
-                        st.success(f"✅ {message}")
-                        st.success("✅ Big Five scores calculated and saved!")
-                        st.success("✅ Overall fit score calculated and saved!")
+                        st.success(f"{message}")
+                        st.success("Big Five scores calculated and saved!")
+                        st.success("Overall fit score calculated and saved!")
                         st.info("**Next step:** Go to 'View Results' to see the analysis!")
                     else:
                         st.error(f"{message}")
@@ -1232,7 +1106,7 @@ elif page == "Run Analysis":
     st.header("Re-calculate Scores (Optional)")
     
     st.info("""
-    ℹ️ **Note:** Scores are now calculated automatically when adding applicants.
+    [INFO] **Note:** Scores are now calculated automatically when adding applicants.
     
     Use this only if you want to **re-calculate all scores** for existing applicants.
     """)
@@ -1244,7 +1118,7 @@ elif page == "Run Analysis":
     3. Update all results in ontology files
     """)
     
-    st.warning("⚠️ This will overwrite existing scores!")
+    st.warning("[ALERT]This will overwrite existing scores!")
     
     st.markdown("---")
     
@@ -1296,15 +1170,9 @@ elif page == "View Results":
                 st.write(f"- {name}")
     except Exception as e:
         st.error(f"Gagal memuat hasil reasoning: {str(e)}")
-    
-    # Load applicants once so filters and sorting stay in sync
     applicants = get_all_applicants()
-
-    # Pull ontology-based field/occupation list so dropdowns are never empty
     ontology_fields = get_job_fields()
-    ontology_occ_map = get_occupations_with_fields()  # {occupation: field}
-
-    # Collect seen fields from applicants too (union)
+    ontology_occ_map = get_occupations_with_fields()
     applicant_fields = {a.get('job_field') for a in applicants if a.get('job_field')}
     job_fields = sorted(set(ontology_fields).union(applicant_fields))
 
@@ -1340,18 +1208,15 @@ elif page == "View Results":
             st.rerun()
 
     try:
-        # Apply filters
         if selected_field != "All Fields":
             applicants = [app for app in applicants if app.get('job_field') == selected_field]
         if filter_job != "All Positions":
             applicants = [app for app in applicants if app.get('JobOccupation') == filter_job]
         
         for app in applicants:
-            # If ontology already has overall/component scores, keep them; otherwise compute fresh
             if 'overall_fit_score' not in app or app['overall_fit_score'] is None:
                 app['overall_fit_score'] = calculate_overall_fit_score(app)
             elif 'score_breakdown' not in app:
-                # Still compute breakdown for UI if missing
                 calculate_overall_fit_score(app)
         
         if sort_by == "Highest Score":
@@ -1387,13 +1252,10 @@ elif page == "View Results":
                 interpretation, recommendation, status_type = get_score_interpretation(overall_score)
                 
                 with st.expander(f"{applicant['name']} | {interpretation}: {overall_score}/100 {recommendation}", expanded=False):
-                    # TOP SECTION - Applicant Info (Left) and Big Five Plot (Right)
                     col_top_left, col_top_right = st.columns([1, 1])
                     
                     with col_top_left:
                         st.subheader(f"{applicant['name']}")
-                        
-                        # Job Preferences
                         if applicant['job_field'] or applicant['JobOccupation']:
                             st.markdown("**Job Preferences**")
                             col1, col2 = st.columns(2)
@@ -1403,8 +1265,6 @@ elif page == "View Results":
                             with col2:
                                 if applicant['JobOccupation']:
                                     st.info(f"**Position:** {applicant['JobOccupation'].replace('_', ' ').title()}")
-                        
-                        # Total Score
                         st.markdown("**Overall Fit Score**")
                         total_score = overall_score
                         
@@ -1437,8 +1297,7 @@ elif page == "View Results":
                             st.warning("No Big Five scores calculated yet. Run analysis first!")
                     
                     st.markdown("---")
-                    
-                    # MIDDLE SECTION - Score Breakdown
+
                     if 'score_breakdown' in applicant:
                         st.subheader("Score Breakdown (Weighted)")
                         breakdown = applicant['score_breakdown']
@@ -1476,12 +1335,10 @@ elif page == "View Results":
                         
                         st.markdown("---")
                     elif 'category_fit_score' in applicant or 'skill_match_score' in applicant or 'experience_score' in applicant:
-                        # Display scores loaded from ontology
                         st.subheader("Score Breakdown (from Ontology)")
                         
                         col1, col2, col3, col4 = st.columns(4)
                         with col1:
-                            # Calculate personality score from Big Five averages
                             if applicant['scores']:
                                 avg = sum(applicant['scores'].values()) / len(applicant['scores'])
                                 personality_score = (avg / 5.0) * 25
@@ -1498,13 +1355,9 @@ elif page == "View Results":
                             st.metric(f"Experience (20%) [{years}yr]", f"{exp_score:.1f}/20")
                         
                         st.markdown("---")
-                    
-                    # BOTTOM SECTION - Experience & Skills
-                    # BOTTOM SECTION - Experience & Skills
+
                     if applicant['years_experience'] is not None or applicant['soft_skills'] or applicant['hard_skills']:
                         st.subheader("Experience & Skills")
-                        
-                        # Show skill match details if job occupation is selected
                         if applicant.get('JobOccupation'):
                             match_pct, match_details = calculate_skill_match(
                                 applicant.get('hard_skills', []),
@@ -1517,8 +1370,6 @@ elif page == "View Results":
                                 if len(match_details['matched']) > 5:
                                     matched_display += f" ... (+{len(match_details['matched'])-5} more)"
                                 st.success(f"**Matched Skills ({len(match_details['matched'])}):** {matched_display}")
-                                
-                                # Show all matched skills if more than 5
                                 if len(match_details['matched']) > 5:
                                     all_matched = ', '.join([s.replace('_', ' ').title() for s in match_details['matched']])
                                     st.caption(f"All matched: {all_matched}")
@@ -1528,8 +1379,6 @@ elif page == "View Results":
                                 if len(match_details['missing']) > 5:
                                     missing_display += f" ... (+{len(match_details['missing'])-5} more)"
                                 st.warning(f"**Missing Required Skills ({len(match_details['missing'])}):** {missing_display}")
-                                
-                                # Show all missing skills if more than 5
                                 if len(match_details['missing']) > 5:
                                     all_missing = ', '.join([s.replace('_', ' ').title() for s in match_details['missing']])
                                     st.caption(f"All missing: {all_missing}")
@@ -1541,14 +1390,14 @@ elif page == "View Results":
                         with col2:
                             if applicant['soft_skills']:
                                 st.write("**Soft Skills:**")
-                                for skill in applicant['soft_skills'][:3]:  # Show first 3
+                                for skill in applicant['soft_skills'][:3]:
                                     st.caption(f"• {skill.replace('_', ' ').title()}")
                                 if len(applicant['soft_skills']) > 3:
                                     st.caption(f"+{len(applicant['soft_skills'])-3} more")
                         with col3:
                             if applicant['hard_skills']:
                                 st.write("**Hard Skills:**")
-                                for skill in applicant['hard_skills'][:3]:  # Show first 3
+                                for skill in applicant['hard_skills'][:3]:
                                     st.caption(f"• {skill.replace('_', ' ').title()}")
                                 if len(applicant['hard_skills']) > 3:
                                     st.caption(f"+{len(applicant['hard_skills'])-3} more")
@@ -1556,7 +1405,7 @@ elif page == "View Results":
     except FileNotFoundError:
         st.error("Reasoned ontology file not found. Please run analysis first!")
 
-elif page == "🔄 Run Analysis":
+elif page == "[PROCESS] Run Analysis":
     st.header("Run Analysis & Reasoning")
     
     st.markdown("""
@@ -1566,7 +1415,7 @@ elif page == "🔄 Run Analysis":
     3. Generate recommendations based on personality traits
     """)
     
-    if st.button("🚀 Run Complete Analysis", type="primary"):
+    if st.button("Run Complete Analysis", type="primary"):
         with st.spinner("Running analysis... This may take 10-15 seconds..."):
             progress_bar = st.progress(0)
             
@@ -1583,10 +1432,10 @@ elif page == "🔄 Run Analysis":
             progress_bar.progress(100)
             
             if success:
-                st.success(f"✅ {message}")
-                st.info("💡 Go to 'View Applicants' to see the results!")
+                st.success(f"[INFO] {message}")
+                st.info("Go to 'View Applicants' to see the results!")
             else:
-                st.error(f"❌ {message}")
+                st.error(f"[ERROR] {message}")
 
 # Footer
 st.markdown("---")
